@@ -52,6 +52,7 @@ public class SearchFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+        getActivity().setTitle("Search");
         title = (EditText) view.findViewById(R.id.title_edittext);
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);
         toyear = (EditText) view.findViewById(R.id.toYear_editText);

@@ -112,6 +112,13 @@ public class MainActivity extends AppCompatActivity
                     triviafragment,
                     triviafragment.getTag()
             ).commit();
+        } else if (id == R.id.nav_settings) {
+            SettingsFragment settingsfragment = new SettingsFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment_main,
+                    settingsfragment,
+                    settingsfragment.getTag()
+            ).commit();
         }
 
 
