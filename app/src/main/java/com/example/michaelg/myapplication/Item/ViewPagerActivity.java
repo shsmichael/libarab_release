@@ -1,4 +1,4 @@
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Item;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;

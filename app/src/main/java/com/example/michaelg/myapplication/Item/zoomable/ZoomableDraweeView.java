@@ -10,7 +10,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Item.zoomable;
 
 import android.content.Context;
 import android.graphics.Canvas;

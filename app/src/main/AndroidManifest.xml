@@ -28,10 +28,10 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ViewPagerActivity"
+            android:name=".Item.ViewPagerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BookinfoActivity"
+            android:name=".Item.BookinfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

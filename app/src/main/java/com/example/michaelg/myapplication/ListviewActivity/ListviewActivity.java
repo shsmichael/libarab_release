@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
-import com.example.michaelg.myapplication.ViewPagerActivity;
+import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 //import com.example.misho.login.Item.ViewPagerActivity;
 
 import org.apache.http.HttpEntity;

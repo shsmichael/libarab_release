@@ -1,4 +1,4 @@
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Item.gestures;
 
 /*
  * This file provided by Facebook is for non-commercial testing and evaluation

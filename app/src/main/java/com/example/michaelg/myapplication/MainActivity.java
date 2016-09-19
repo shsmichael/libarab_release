@@ -1,10 +1,8 @@
 package com.example.michaelg.myapplication;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,14 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
+import com.example.michaelg.myapplication.Fragments.MenuFragment;
+import com.example.michaelg.myapplication.Fragments.SearchFragment;
+import com.example.michaelg.myapplication.Fragments.SettingsFragment;
+import com.example.michaelg.myapplication.Fragments.TriviaFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_menu) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
             MenuFragment menufragment = new MenuFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
@@ -89,15 +94,18 @@ public class MainActivity extends AppCompatActivity
                     menufragment.getTag()
             ).commit();
 
-        } else if (id == R.id.nav_search) {
 
+        } else if (id == R.id.nav_search) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
             SearchFragment searchfragment = new SearchFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     searchfragment,
                     searchfragment.getTag()
             ).commit();
+
         } else if (id == R.id.nav_favorites) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorFav)));
             FavoritesFragment favoritesfragment = new FavoritesFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
@@ -106,6 +114,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
 
         } else if (id == R.id.nav_trivia) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
             TriviaFragment triviafragment = new TriviaFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
@@ -113,6 +122,7 @@ public class MainActivity extends AppCompatActivity
                     triviafragment.getTag()
             ).commit();
         } else if (id == R.id.nav_settings) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
             SettingsFragment settingsfragment = new SettingsFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,

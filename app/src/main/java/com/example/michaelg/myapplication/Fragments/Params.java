@@ -1,4 +1,4 @@
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Fragments;
 
 /**
  * Created by Misho on 9/12/2016.

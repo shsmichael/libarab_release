@@ -1,9 +1,11 @@
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Item;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;

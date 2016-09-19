@@ -1,4 +1,4 @@
-package com.example.michaelg.myapplication;
+package com.example.michaelg.myapplication.Fragments;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.michaelg.myapplication.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TriviaFragment extends Fragment {
-    private final String TAG =this.getClass().getSimpleName();
+public class MenuFragment extends Fragment {
 
-    public TriviaFragment() {
+    private final String TAG =this.getClass().getSimpleName();
+    public MenuFragment() {
         // Required empty public constructor
     }
 
@@ -23,8 +25,8 @@ public class TriviaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
-        getActivity().setTitle("Trivia");
+        View myview = inflater.inflate(R.layout.fragment_menu, container, false);
+        getActivity().setTitle("Menu");
         return myview;
     }
 
