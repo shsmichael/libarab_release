@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:background="@color/accent_material_light">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/accent_material_light"
+        android:focusable="false" >
+        <com.github.ivbaranov.mfb.MaterialFavoriteButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="left" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Book Viewer"
+            android:id="@+id/textView4"
+            android:singleLine="false"
+            android:textStyle="bold|normal"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="25dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView11"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/book_info"
+            android:layout_marginRight="10dp"
+            android:onClick="bookinfo" />
+
+    </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vp_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="427dp"
+        android:layout_weight="0.87" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="New Text"
+            android:id="@+id/textView"
+            android:textColor="#ffffff"
+            android:background="@android:drawable/zoom_plate" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="24dp"
+                android:text="Go"
+                android:id="@+id/btn_changepage"
+                android:layout_gravity="right|bottom"
+                android:onClick="changepage"
+                android:textSize="4dp" />
+
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="24dp"
+                android:id="@+id/et_changepage"
+                android:layout_gravity="left|bottom" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
+
+

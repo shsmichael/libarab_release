@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.ViewPagerActivity;
 //import com.example.misho.login.Item.ViewPagerActivity;
 
 import org.apache.http.HttpEntity;
@@ -29,8 +30,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-//import com.example.misho.login.Item.ViewPagerActivity;
 
 public class ListviewActivity extends Activity {
 
@@ -50,11 +49,9 @@ public class ListviewActivity extends Activity {
               myURL = extras.getString("Value1");
          }
 
-        //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
-        //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
         Log.v("test",myURL);
         new JSONAsyncTask().execute(myURL);
-        //http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970
+
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row, bookList);
 
@@ -65,14 +62,11 @@ public class ListviewActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long id) {
-                // TODO Auto-generated method stub
-                Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
-                //Intent intent = getIntent();
-                //ID = intent.getStringExtra("recordID");
+
                 ID = "nananana";
-                //Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
-                //intent1.putExtra("recordID",ID);
-                //startActivity(intent1);
+                Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
+                intent1.putExtra("recordID",ID);
+                startActivity(intent1);
 
             }
         });
