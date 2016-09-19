@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.SearchFragment;
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //set main frag
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+        MenuFragment menufragment = new MenuFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragment_main,
+                menufragment,
+                menufragment.getTag()
+        ).commit();
     }
 
     @Override
@@ -122,12 +131,20 @@ public class MainActivity extends AppCompatActivity
                     triviafragment.getTag()
             ).commit();
         } else if (id == R.id.nav_settings) {
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSettings)));
             SettingsFragment settingsfragment = new SettingsFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     settingsfragment,
                     settingsfragment.getTag()
+            ).commit();
+        } else if (id == R.id.nav_about) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
+            AboutFragment aboutfragment = new AboutFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment_main,
+                    aboutfragment,
+                    aboutfragment.getTag()
             ).commit();
         }
 

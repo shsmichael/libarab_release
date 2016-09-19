@@ -4,32 +4,6 @@
     android:layout_height="fill_parent"
     android:weightSum="100">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSearch"
-        android:focusable="false">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search By Title"
-            android:id="@+id/searchtitle"
-            android:singleLine="false"
-            android:textStyle="bold|normal"
-            android:layout_gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="25dp" />
-
-        <ImageView
-            android:layout_width="54dp"
-            android:layout_height="55dp"
-            android:id="@+id/imageView5"
-            android:layout_gravity="left|center_vertical"
-            android:src="@drawable/menu_big_search"
-            android:paddingLeft="10dp" />
-    </FrameLayout>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
