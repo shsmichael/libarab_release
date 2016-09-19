@@ -29,7 +29,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewPagerActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BookinfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 
