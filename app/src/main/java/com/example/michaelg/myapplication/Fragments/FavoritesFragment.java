@@ -29,6 +29,7 @@ public class FavoritesFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_favorites, container, false);
         getActivity().setTitle("Favorites");
+
         //getActivity().getActionBar().setBackgroundDrawable(new ColorDrawable(0xff00DDED));
         return myview;
     }

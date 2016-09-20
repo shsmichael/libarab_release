@@ -16,7 +16,7 @@
         android:id="@+id/imageView"
         android:layout_width="1049dp"
         android:layout_height="32dp"
-        android:src="@drawable/menu_circleimage"
+        android:src="@drawable/menu_profile_pict"
         android:layout_weight="1.09"
         android:scaleType="fitStart"
         android:paddingTop="30dp" />

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -34,7 +33,7 @@
                 android:layout_width="147dp"
                 android:layout_height="93dp"
                 android:id="@+id/imageView2"
-                android:src="@drawable/menu_circleimage"
+                android:src="@drawable/menu_profile_pict"
                 android:layout_gravity="left|center_vertical" />
 
             <TextView
@@ -62,13 +61,15 @@
             android:layout_height="match_parent"
             android:background="@drawable/rippleorange"
             android:clickable="true"
-            android:layout_weight="0.5">
+            android:visibility="invisible"
+            android:layout_weight="0.5"
+            android:id="@+id/frame_search">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search"
-                android:id="@+id/textView8"
+                android:id="@+id/tv_search"
                 android:layout_gravity="center_horizontal|bottom"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
@@ -79,7 +80,7 @@
                 android:layout_height="64dp"
                 android:id="@+id/imageView4"
                 android:layout_gravity="center"
-                android:src="@drawable/menu_big_trivia" />
+                android:src="@drawable/menu_big_search" />
 
         </FrameLayout>
         <FrameLayout
@@ -87,6 +88,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:clickable="true"
+            android:id="@+id/frame_biblio"
             android:background="@drawable/ripplepurple">
 
             <TextView
@@ -118,7 +120,8 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:layout_weight="0.5"
-            android:background="@drawable/ripplegreen">
+            android:background="@drawable/ripplegreen"
+            android:id="@+id/frame_favorites">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -143,6 +146,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:clickable="true"
+            android:id="@+id/frame_trivia"
             android:background="@drawable/rippleblue" >
 
             <TextView
@@ -174,7 +178,8 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:layout_weight="0.5"
-            android:background="#ff5d5d">
+            android:background="@color/colorAbout"
+            android:id="@+id/frame_about">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -191,7 +196,7 @@
                 android:layout_height="64dp"
                 android:id="@+id/imageView9"
                 android:layout_gravity="center"
-                android:src="@drawable/menu_big_fav" />
+                android:src="@drawable/menu_big_about" />
         </FrameLayout>
 
         <FrameLayout
@@ -199,7 +204,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:clickable="true"
-            android:background="#5badff">
+            android:background="@color/colorSettings"
+            android:id="@+id/frame_settings">
 
             <TextView
                 android:layout_width="wrap_content"
