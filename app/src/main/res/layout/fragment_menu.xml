@@ -16,7 +16,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:clickable="true"
-            android:layout_height="100dp">
+            android:layout_height="100dp"
+            >
 
             <TextView
                 android:layout_width="179dp"
