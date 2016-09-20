@@ -25,7 +25,7 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_about, container, false);
-        getActivity().setTitle("About");
+        getActivity().setTitle(R.string.menu_about);
         return myview;
     }
 

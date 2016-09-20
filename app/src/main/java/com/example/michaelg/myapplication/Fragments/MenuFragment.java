@@ -36,7 +36,7 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_menu, container, false);
-        getActivity().setTitle("Menu");
+        getActivity().setTitle(R.string.menu);
         txt = (TextView) myview.findViewById(R.id.tv_search);
 
         search = (FrameLayout) myview.findViewById(R.id.frame_search);

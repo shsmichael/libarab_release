@@ -42,7 +42,7 @@ public class SearchFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        getActivity().setTitle("Search");
+        getActivity().setTitle(R.string.menu_search);
         title = (EditText) view.findViewById(R.id.title_edittext);
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
@@ -58,7 +58,7 @@ public class SearchFragment extends Fragment {
                 Uri builtUri = Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    "4")
                         // .appendQueryParameter("title",    title.getText().toString())
-                        .appendQueryParameter("title",    "تاريخ")
+                        .appendQueryParameter("title",    title.getText().toString())
                         .appendQueryParameter("fromyear", fromyear.getText().toString())
                         .appendQueryParameter("toyear",   toyear.getText().toString())
                         .build();

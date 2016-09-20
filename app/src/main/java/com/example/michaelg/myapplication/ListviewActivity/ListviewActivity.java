@@ -49,9 +49,11 @@ public class ListviewActivity extends Activity {
               myURL = extras.getString("Value1");
          }
 
+        //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
+        //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
         Log.v("test",myURL);
         new JSONAsyncTask().execute(myURL);
-
+        //http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row, bookList);
 
@@ -62,7 +64,10 @@ public class ListviewActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long id) {
-
+                // TODO Auto-generated method stub
+                Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
+                //Intent intent = getIntent();
+                //ID = intent.getStringExtra("recordID");
                 ID = "nananana";
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 intent1.putExtra("recordID",ID);
@@ -111,10 +116,16 @@ public class ListviewActivity extends Activity {
                         JSONObject object = jarray.getJSONObject(i);
                         Book currentbook = new Book();
                         currentbook.setRecordid(object.getString("recordId"));
-                        currentbook.setTitle(object.getString("title"));
-                        currentbook.setCreationdate(object.getString("creationdate"));
-                        currentbook.setPublisher(object.getString("publisher"));
-                        currentbook.setAuthor(object.getString("author"));
+                        String  author = new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8");
+                        author = author.replace("?","");
+                        //currentbook.setTitle(new String(object.getString("title").getBytes("ISO-8859-1"), "UTF-8"));
+                        String  title = new String(object.getString("title").getBytes("ISO-8859-1"), "UTF-8");
+                        title = title.replace("?","");
+                        currentbook.setTitle(title);
+                        currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
+                        currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
+                        currentbook.setAuthor(author);
+                        //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
                         bookList.add(currentbook);
                     }
                     return true;

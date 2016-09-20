@@ -27,7 +27,7 @@ public class SettingsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_settings, container, false);
-        getActivity().setTitle("Settings");
+        getActivity().setTitle(R.string.menu_settings);
         return myview;
 
     }

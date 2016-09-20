@@ -26,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/title_edittext"
-                android:hint="Enter Title" />
+                android:hint="Enter Title"
+                android:text="تاريخ" />
 
             <EditText
                 android:layout_width="match_parent"

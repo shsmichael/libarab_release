@@ -26,7 +26,7 @@ public class TriviaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
-        getActivity().setTitle("Trivia");
+        getActivity().setTitle(R.string.menu_trivia);
         return myview;
     }
 
