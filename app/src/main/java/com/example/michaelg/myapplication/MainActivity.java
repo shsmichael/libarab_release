@@ -94,6 +94,14 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //set settings frag
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSettings)));
+            SettingsFragment settingsfragment = new SettingsFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment_main,
+                    settingsfragment,
+                    settingsfragment.getTag()
+            ).commit();
             return true;
         }
 

@@ -25,8 +25,8 @@
         </activity>
         <activity
             android:name=".ListviewActivity.ListviewActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Item.ViewPagerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
