@@ -69,11 +69,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Locale locale = new Locale("iw");
+      /*  Locale locale = new Locale("iw");
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        */
         setContentView(R.layout.activity_login);
         ImageView imageView = (ImageView) findViewById(R.id.logo);
         imageView.setImageResource(R.drawable.logo);
