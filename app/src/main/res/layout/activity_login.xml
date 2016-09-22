@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.misho.login.LoginActivity">
+    tools:context="com.example.michaelg.myapplication.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -57,7 +57,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="mothana@amaria" />
+                android:text="dror@d" />
 
         </android.support.design.widget.TextInputLayout>
 
