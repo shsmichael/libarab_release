@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.michaelg.myapplication.LoginActivity">
+    tools:context="com.example.misho.login.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -56,6 +56,7 @@
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:text="mothana@amaria" />
 
         </android.support.design.widget.TextInputLayout>
@@ -77,6 +78,7 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:text="123456" />
 
         </android.support.design.widget.TextInputLayout>
@@ -112,7 +114,7 @@
                 android:text="@string/have_account"
                 android:gravity="center"
                 android:paddingTop="10dp"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="@color/black"
                 android:id="@+id/textView" />
 
