@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
+import com.example.michaelg.myapplication.Fragments.MainFragmentTest;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.SearchFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
@@ -132,12 +133,21 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_search) {
+            /*
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
             SearchFragment searchfragment = new SearchFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     searchfragment,
                     searchfragment.getTag()
+            ).commit();
+            */
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+            MainFragmentTest mainfragmenttest = new MainFragmentTest();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.fragment_main,
+                    mainfragmenttest,
+                    mainfragmenttest.getTag()
             ).commit();
 
         } else if (id == R.id.nav_favorites) {
