@@ -47,6 +47,40 @@
             android:name=".SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
 
+
+
+        <activity
+            android:name=".Trivia.AddQuestion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.ConceptActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.Create"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.Leader"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.Progress"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.ResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.Start"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.StartQuiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trivia.ViewAnswerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
     </application>
 
 </manifest>

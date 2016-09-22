@@ -1,11 +1,13 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.michaelg.myapplication.R;
 
@@ -27,6 +29,18 @@ public class TriviaFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
         getActivity().setTitle(R.string.menu_trivia);
+        Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
+
+        btn_triv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext() , com.example.michaelg.myapplication.Trivia.MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
         return myview;
     }
 

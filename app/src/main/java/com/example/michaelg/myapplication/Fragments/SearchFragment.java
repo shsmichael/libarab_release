@@ -76,6 +76,7 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
+
     /*public class Search extends AsyncTask<String[], Void, JSONObject> {
 
         //    private String _ssfor;

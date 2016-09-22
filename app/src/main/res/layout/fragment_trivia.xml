@@ -11,4 +11,10 @@
         android:text="Trivia"
         android:layout_gravity="center_horizontal|top" />
 
+    <Button
+        android:text="Trivia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_trivia" />
+
 </FrameLayout>
