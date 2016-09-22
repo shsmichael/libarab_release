@@ -9,7 +9,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -35,10 +34,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Fragments.Params;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.example.michaelg.myapplication.Fragments.Params;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,7 +47,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -173,8 +171,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void loginGuest() {
-        Intent intent = new Intent(getApplicationContext(), SignUp.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("Type",0);
+        finish();
         startActivity(intent);
 
     }

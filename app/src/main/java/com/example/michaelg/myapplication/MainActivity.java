@@ -1,22 +1,17 @@
 package com.example.michaelg.myapplication;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
@@ -24,13 +19,11 @@ import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.SearchFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
 import com.example.michaelg.myapplication.Fragments.TriviaFragment;
-import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
+    int userType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,18 +49,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
         */
-        /*
-        btn_triv.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-
-                Intent i = new Intent(v.getContext() , com.example.michaelg.myapplication.Trivia.MainActivity.class);
-                startActivity(i);
-
-            }
-
-        });
-        */
+        Intent intent = getIntent();
+        userType = intent.getIntExtra("Type",0);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -76,20 +59,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
         //set main frag
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
         MenuFragment menufragment = new MenuFragment();
         FragmentManager manager = getSupportFragmentManager();
+        Bundle bundle = new Bundle();
+        bundle.putInt("Type", userType);
+        menufragment.setArguments(bundle);
         manager.beginTransaction().replace(R.id.fragment_main,
                 menufragment,
                 menufragment.getTag()
         ).commit();
-
-
-
     }
 
     @Override
@@ -142,6 +122,9 @@ public class MainActivity extends AppCompatActivity
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
             MenuFragment menufragment = new MenuFragment();
             FragmentManager manager = getSupportFragmentManager();
+            Bundle bundle = new Bundle();
+            bundle.putInt("Type", userType);
+            menufragment.setArguments(bundle);
             manager.beginTransaction().replace(R.id.fragment_main,
                     menufragment,
                     menufragment.getTag()

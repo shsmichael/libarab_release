@@ -35,8 +35,17 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_menu, container, false);
         getActivity().setTitle(R.string.menu);
+        Bundle bundle = this.getArguments();
+        int i=0;
+        if (bundle != null) {
+            i = bundle.getInt("Type", 0);
+        }
+
         txt = (TextView) myview.findViewById(R.id.tv_search);
         txtemail = (TextView) myview.findViewById(R.id.textView);
+        if (i == 0){
+            txtemail.setVisibility(View.INVISIBLE);
+        }
         search = (FrameLayout) myview.findViewById(R.id.frame_search);
         trivia = (FrameLayout) myview.findViewById(R.id.frame_trivia);
         favorites = (FrameLayout) myview.findViewById(R.id.frame_favorites);
