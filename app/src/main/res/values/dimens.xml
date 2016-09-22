@@ -11,4 +11,5 @@
     <dimen name="ImageView_Left_Right">25dp</dimen>
     <dimen name="TextView_To_Button">10dp</dimen>
     <dimen name="text_size">15sp</dimen>
+    <dimen name="activity_vertical_eight">8dp</dimen>
 </resources>
