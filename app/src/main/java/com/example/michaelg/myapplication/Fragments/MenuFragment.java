@@ -2,8 +2,10 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.michaelg.myapplication.MainActivity;
 import com.example.michaelg.myapplication.R;
 
 
