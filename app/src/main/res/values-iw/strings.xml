@@ -24,7 +24,6 @@
         <item>Female</item>
     </string-array>
     <string-array name="UserType_array">
-        <item>Account type</item>
         <item>Regular</item>
         <item>Curator</item>
     </string-array>

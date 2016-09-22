@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
 
-import static android.R.attr.id;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +25,7 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
     Button btn;
-    TextView txt;
+    TextView txt,txtemail;
     FrameLayout search,trivia,favorites,about,settings,bibilo;
     View myview;
 
@@ -38,7 +36,7 @@ public class MenuFragment extends Fragment {
         View myview = inflater.inflate(R.layout.fragment_menu, container, false);
         getActivity().setTitle(R.string.menu);
         txt = (TextView) myview.findViewById(R.id.tv_search);
-
+        txtemail = (TextView) myview.findViewById(R.id.textView);
         search = (FrameLayout) myview.findViewById(R.id.frame_search);
         trivia = (FrameLayout) myview.findViewById(R.id.frame_trivia);
         favorites = (FrameLayout) myview.findViewById(R.id.frame_favorites);

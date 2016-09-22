@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     Button mEmailSignInButton;
+    Button mGuestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (!hasFocus) {
                     mEmailSignInButton.requestFocus();
                 }
+            }
+        });
+
+        mGuestButton = (Button) findViewById(R.id.guestButton);
+
+        mGuestButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginGuest();
             }
         });
 
@@ -162,6 +172,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    private void loginGuest() {
+        Intent intent = new Intent(getApplicationContext(), SignUp.class);
+        intent.putExtra("Type",0);
+        startActivity(intent);
+
+    }
     private void attemptLogin() {
 
         if (mAuthTask != null) {
@@ -353,13 +369,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             String format = "json";
 
             try {
-                final String FORECAST_BASE_URL =
+                final String SERVER_BASE_URL =
                         Params.getServer() + "signIn/doSignIn?";
 
                 final String USER_PARAM = "username";
                 final String PASS_PARAM = "password";
 
-                Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+                Uri builtUri = Uri.parse(SERVER_BASE_URL).buildUpon()
                         .appendQueryParameter(USER_PARAM, mEmail)
                         .appendQueryParameter(PASS_PARAM, mPassword)
                         .build();
@@ -444,6 +460,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 showProgress(false);
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("Type",1);
                 startActivity(intent);
 
             } else {   // case failed
