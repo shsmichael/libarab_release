@@ -100,7 +100,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/action_continue_as_a_guest"
             android:background="@drawable/change_color"
-            android:id="@+id/button"
+            android:id="@+id/guestButton"
             android:textStyle="bold" />
 
         <LinearLayout

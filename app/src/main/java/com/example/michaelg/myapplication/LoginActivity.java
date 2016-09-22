@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     Button mEmailSignInButton;
+    Button mGuestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (!hasFocus) {
                     mEmailSignInButton.requestFocus();
                 }
+            }
+        });
+
+        mGuestButton = (Button) findViewById(R.id.guestButton);
+
+        mGuestButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginGuest();
             }
         });
 
@@ -162,6 +172,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    private void loginGuest() {
+        Intent intent = new Intent(getApplicationContext(), SignUp.class);
+        intent.putExtra("Type",0);
+        startActivity(intent);
+
+    }
     private void attemptLogin() {
 
         if (mAuthTask != null) {
@@ -313,6 +329,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void textViewSignUp(View view) {
         Intent intent = new Intent(getApplicationContext(), SignUp.class);
+        intent.putExtra("Type",1);
         startActivity(intent);
 
     }
