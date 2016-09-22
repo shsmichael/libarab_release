@@ -8,8 +8,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="about_details">LibArab app gives you an access to data of the NATIONAL LIBRARY OF ISREAL.
-    Use LibArab to:\n
-    Search and read books in different topics.\n
+    Use LibArab to:
+    Search and read books in different topics.
     Create your own bibliography and use it for home works and researches.</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
