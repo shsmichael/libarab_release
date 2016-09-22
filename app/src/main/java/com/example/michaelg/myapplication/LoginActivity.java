@@ -360,7 +360,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return null;
             }
 
-            Log.v("connect", "CONNECTED");
+          //  Log.v("connect", "CONNECTED");
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
