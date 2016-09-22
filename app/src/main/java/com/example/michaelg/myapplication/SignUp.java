@@ -3,6 +3,7 @@ package com.example.michaelg.myapplication;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -20,10 +21,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.michaelg.myapplication.Fragments.Params;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.example.michaelg.myapplication.Fragments.Params;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,6 +46,7 @@ public class SignUp extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
     private Button signUpButton;
+    private User user;
 
 
     @Override
@@ -123,6 +126,16 @@ public class SignUp extends AppCompatActivity {
             focusView = mEmailView;
             cancel = true;
         }
+        if(TextUtils.isEmpty(firstname)) {
+            mFirstNameView.setError(getString(R.string.error_field_required));
+            focusView = mFirstNameView;
+            cancel = true;
+        }
+        if(TextUtils.isEmpty(lastname)) {
+            mLastNameView.setError(getString(R.string.error_field_required));
+            focusView = mLastNameView;
+            cancel = true;
+        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -188,8 +201,8 @@ public class SignUp extends AppCompatActivity {
         private final String mPassword;
         private final String mFirstname;
         private final String mLastname;
-        private final String mGender;
-        private final String mUsertype;
+        private String mGender;
+        private String mUsertype;
 
         public UserSignUpTask(String mEmail, String mPassword, String mFirstname, String mLastname, String mGender, String mUsertype) {
             this.mEmail = mEmail;
@@ -202,6 +215,9 @@ public class SignUp extends AppCompatActivity {
 
         @Override
         protected JSONObject doInBackground(Void... params) {
+            Resources res = getResources();
+            String[] genderArr = res.getStringArray(R.array.Gender_array);
+            String[] accountArr = res.getStringArray(R.array.UserType_array);
 
             if (params.length == 0) {
 
@@ -215,17 +231,19 @@ public class SignUp extends AppCompatActivity {
 
             try {
                 final String Server_BASE_URL = Params.getServer() +
-                        "SignUp/dosignup?";
+                        "signup/dosignup?";
 
                 final String USER_PARAM = "username";
                 final String PASS_PARAM = "password";
                 final String FIRSTNAME_PARAM = "firstname";
                 final String LASTNAME_PARAM = "lastname";
-                final String GENDER_PARAM = "gender";
+                final String GENDER_PARAM = "gendertype";
                 final String USERTYPE_PARAM = "usertype";
+                final String BDAY_PARAM = "bday";
                 Uri builtUri = Uri.parse(Server_BASE_URL).buildUpon()
                         .appendQueryParameter(USER_PARAM, mEmail)
                         .appendQueryParameter(PASS_PARAM, mPassword)
+                        .appendQueryParameter(BDAY_PARAM,"04-07-1986")
                         .build();
                 if (!mFirstname.isEmpty()) {
                     builtUri = Uri.parse(builtUri.toString()).buildUpon()
@@ -237,16 +255,26 @@ public class SignUp extends AppCompatActivity {
                             .appendQueryParameter(LASTNAME_PARAM, mLastname)
                             .build();
                 }
-                if (mGender.equals("Gender")) {
+                if (!mGender.equals(genderArr[0])) {
+                    if(mGender.equals(genderArr[1]))
+                    {
+                        mGender = "m";
+                    }else
+                    {
+                        mGender = "f";
+                    }
                     builtUri = Uri.parse(builtUri.toString()).buildUpon()
                             .appendQueryParameter(GENDER_PARAM, mGender)
                             .build();
                 }
-                if (mUsertype.equals("Account type")) {
-                    builtUri = Uri.parse(builtUri.toString()).buildUpon()
-                            .appendQueryParameter(USERTYPE_PARAM, mUsertype)
-                            .build();
+                if (mUsertype.equals(accountArr[0])) {
+                    mUsertype = "Regular";
+                }else{
+                    mUsertype = "Curator";
                 }
+                builtUri = Uri.parse(builtUri.toString()).buildUpon()
+                        .appendQueryParameter(USERTYPE_PARAM, mUsertype)
+                        .build();
                 URL url = new URL(builtUri.toString());
                 Log.v("URL", builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -312,6 +340,25 @@ public class SignUp extends AppCompatActivity {
         protected void onPostExecute(final JSONObject success) {
             mAuthTask = null;
             showProgress(false);
+            boolean answer;
+            JSONArray jsonarray;
+            JSONObject tmp;
+            if (success == null){
+                // TODO: 9/21/2016 Server error msg  
+            }
+            try{
+                answer = success.getBoolean("status");
+                if (answer){
+                    jsonarray = success.getJSONArray("paramsArray");
+                    tmp = jsonarray.getJSONObject(0);
+                    user.setFirstname(tmp.getString("firstname"));
+                    user.setLastname(tmp.getString("lastname"));
+                }else{
+                    // TODO: 9/21/2016 signUp Error
+                }
+            }catch (JSONException e){
+
+            }
         }
     }
 }
