@@ -33,11 +33,11 @@ public class MainFragmentTest extends Fragment {
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 
         mTabHost.addTab(mTabHost.newTabSpec("fragmentb").setIndicator("Book"),
-                SearchFragment.class, null);
+                SearchBookFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator("Sheet"),
-                SettingsFragment.class, null);
+                SearchSheetFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("fragmentd").setIndicator("Map"),
-                TriviaFragment.class, null);
+                SearchMapFragment.class, null);
 
 
         return rootView;

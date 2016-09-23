@@ -125,6 +125,7 @@ public class ListviewActivity extends Activity {
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
+                     //   currentbook.setThumbnail(object.getString());
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
                         bookList.add(currentbook);
                     }

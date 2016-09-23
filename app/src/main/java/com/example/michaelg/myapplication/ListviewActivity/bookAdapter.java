@@ -43,6 +43,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
             holder.creationdate = (TextView) v.findViewById(R.id.tv_creationdate);
             holder.publisher = (TextView) v.findViewById(R.id.tv_publisher);
             holder.author = (TextView) v.findViewById(R.id.tv_author);
+            holder.imageview =(ImageView) v.findViewById(R.id.ivImage);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
@@ -59,7 +60,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
     }
 
     static class ViewHolder {
-        //public ImageView imageview;
+        public ImageView imageview;
         public TextView title;
         //public TextView tvDescription;
         public TextView creationdate;

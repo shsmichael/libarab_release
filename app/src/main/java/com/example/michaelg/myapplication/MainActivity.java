@@ -17,7 +17,6 @@ import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
 import com.example.michaelg.myapplication.Fragments.MainFragmentTest;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
-import com.example.michaelg.myapplication.Fragments.SearchFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
 import com.example.michaelg.myapplication.Fragments.TriviaFragment;
 
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_search) {
             /*
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
-            SearchFragment searchfragment = new SearchFragment();
+            SearchBookFragment searchfragment = new SearchBookFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     searchfragment,

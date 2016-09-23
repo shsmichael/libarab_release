@@ -24,10 +24,10 @@ import org.json.JSONObject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchFragment extends Fragment {
+public class SearchBookFragment extends Fragment {
 
     private final String TAG =this.getClass().getSimpleName();
-    public SearchFragment() {
+    public SearchBookFragment() {
         // Required empty public constructor
     }
 
@@ -44,7 +44,7 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_book, container, false);
         getActivity().setTitle(R.string.menu_search);
         title = (EditText) view.findViewById(R.id.title_edittext);
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:background="@drawable/search_map_background">
 
     <LinearLayout
         android:orientation="horizontal"
