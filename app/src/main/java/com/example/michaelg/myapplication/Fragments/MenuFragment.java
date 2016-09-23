@@ -2,6 +2,7 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.animation.Animator;
+
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -144,20 +145,21 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 // TODO: 23/09/2016 Fix color change
                 //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
-                SettingsFragment settingsfragment = new SettingsFragment();
+                PreferenceFragment preffragment = new PreferenceFragment();
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 Bundle bundle = new Bundle();
                 //bundle.putInt("Type", userType);
-                settingsfragment.setArguments(bundle);
+                preffragment.setArguments(bundle);
                 manager.beginTransaction().replace(R.id.fragment_main,
-                        settingsfragment,
-                        settingsfragment.getTag()
+                         preffragment,
+                        preffragment.getTag()
                 ).commit();
 
 
 
             }
         });
+
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override

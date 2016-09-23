@@ -17,6 +17,7 @@ import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
 import com.example.michaelg.myapplication.Fragments.MainFragmentTest;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
+import com.example.michaelg.myapplication.Fragments.PreferenceFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
 import com.example.michaelg.myapplication.Fragments.TriviaFragment;
 
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
         } else if (id == R.id.nav_settings) {
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSettings)));
-            SettingsFragment settingsfragment = new SettingsFragment();
+            PreferenceFragment settingsfragment = new PreferenceFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     settingsfragment,
