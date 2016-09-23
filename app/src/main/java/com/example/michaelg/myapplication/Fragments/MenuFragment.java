@@ -3,8 +3,10 @@ package com.example.michaelg.myapplication.Fragments;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,7 @@ public class MenuFragment extends Fragment {
     }
     Button btn;
     TextView txt,txtemail;
-    FrameLayout search,trivia,favorites,about,settings,bibilo;
+    FrameLayout search,trivia,favorites,about,settings,bibilo,profile;
     View myview;
 
     @Override
@@ -55,12 +57,127 @@ public class MenuFragment extends Fragment {
         about = (FrameLayout) myview.findViewById(R.id.frame_about);
         settings = (FrameLayout) myview.findViewById(R.id.frame_settings);
         bibilo = (FrameLayout) myview.findViewById(R.id.frame_biblio);
+        profile =(FrameLayout) myview.findViewById(R.id.frame_profile);
 
 
-// previously invisible view
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                MainFragmentTest mainfragmentestfragment = new MainFragmentTest();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                mainfragmentestfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        mainfragmentestfragment,
+                        mainfragmentestfragment.getTag()
+                ).commit();
 
 
-        // make the view visible and start the animation
+
+            }
+        });
+
+        trivia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                TriviaFragment triviafragmentestfragment = new TriviaFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                triviafragmentestfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        triviafragmentestfragment,
+                        triviafragmentestfragment.getTag()
+                ).commit();
+
+
+
+            }
+        });
+
+        favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                FavoritesFragment favoritesfragmentestfragment = new FavoritesFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                favoritesfragmentestfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        favoritesfragmentestfragment,
+                        favoritesfragmentestfragment.getTag()
+                ).commit();
+
+
+
+            }
+        });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                AboutFragment aboutfragment = new AboutFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                aboutfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        aboutfragment,
+                        aboutfragment.getTag()
+                ).commit();
+
+
+
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                SettingsFragment settingsfragment = new SettingsFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                settingsfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        settingsfragment,
+                        settingsfragment.getTag()
+                ).commit();
+
+
+
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 23/09/2016 Fix color change
+                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                ProfileFragment profilefragmentestfragment = new ProfileFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                //bundle.putInt("Type", userType);
+                profilefragmentestfragment.setArguments(bundle);
+                manager.beginTransaction().replace(R.id.fragment_main,
+                        profilefragmentestfragment,
+                        profilefragmentestfragment.getTag()
+                ).commit();
+
+
+
+            }
+        });
 
         myview.post(new Runnable()
         {

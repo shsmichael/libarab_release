@@ -76,9 +76,10 @@
                 android:text="Go!"
                 android:id="@+id/searchbtn"
                 android:layout_gravity="right"
-                android:background="@drawable/rippleorange"
+                android:background="@drawable/ripplesearch"
                 android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                style="@android:style/Widget.Material.Button.Colored" />
         </LinearLayout>
 
         <FrameLayout
