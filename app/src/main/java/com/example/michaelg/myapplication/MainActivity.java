@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -20,6 +21,8 @@ import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.PreferenceFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
 import com.example.michaelg.myapplication.Fragments.TriviaFragment;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
