@@ -27,6 +27,7 @@ import org.json.JSONObject;
 public class SearchSheetFragment extends Fragment {
 
     private final String TAG =this.getClass().getSimpleName();
+
     public SearchSheetFragment() {
         // Required empty public constructor
     }

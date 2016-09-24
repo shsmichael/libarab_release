@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
-import com.example.michaelg.myapplication.Fragments.MainFragmentTest;
+import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.PreferenceFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
             */
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
-            MainFragmentTest mainfragmenttest = new MainFragmentTest();
+            SearchTabHostFragment mainfragmenttest = new SearchTabHostFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     mainfragmenttest,

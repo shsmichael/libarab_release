@@ -26,8 +26,8 @@ import com.example.michaelg.myapplication.ImageAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class FavoritesFragment extends Fragment {
-    private final String TAG =this.getClass().getSimpleName();
 
+    private final String TAG =this.getClass().getSimpleName();
     GridView gridView;
     static final String[] MOBILE_OS = new String[] { "Android", "iOS","Windows", "Blackberry" ,"A" , "B", "C" ,  "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
     public FavoritesFragment() {

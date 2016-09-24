@@ -224,7 +224,7 @@
                 android:layout_height="64dp"
                 android:id="@+id/imageView10"
                 android:layout_gravity="center"
-                android:src="@drawable/menu_big_trivia" />
+                android:src="@drawable/menu_big_settings" />
         </FrameLayout>
     </LinearLayout>
 

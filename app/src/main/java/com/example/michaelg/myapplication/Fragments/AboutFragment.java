@@ -20,7 +20,7 @@ import com.example.michaelg.myapplication.R;
  */
 public class AboutFragment extends Fragment {
 
-
+    private final String TAG =this.getClass().getSimpleName();
     public AboutFragment() {
         // Required empty public constructor
     }

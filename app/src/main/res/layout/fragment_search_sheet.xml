@@ -21,26 +21,75 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:layout_weight="0.8">
+            android:layout_weight="0.8"
+            android:weightSum="1">
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/title_edittext"
-                android:hint="Enter Title"
-                android:text="تاريخ" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fromyear_editText"
-                android:hint="From Year" />
+                <TextView
+                    android:text="Title:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/title"
+                    android:fontFamily="sans-serif" />
 
-            <EditText
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title_edittext"
+                    android:hint="Enter Title"
+                    android:text="تاريخ"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toYear_editText"
-                android:hint="To Year" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="From Year:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/fromyear"
+                    android:fontFamily="sans-serif" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fromyear_editText"
+                    android:hint="Enter from year" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="To Year:"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/toyear" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toYear_editText"
+                    android:hint="Enter to year" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -78,7 +127,8 @@
                 android:layout_gravity="right"
                 android:background="@drawable/ripplesearch"
                 android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                style="@android:style/Widget.Material.Button.Colored" />
         </LinearLayout>
 
         <FrameLayout

@@ -18,7 +18,7 @@ import com.example.michaelg.myapplication.R;
  */
 public class SettingsFragment extends Fragment {
 
-
+    private final String TAG =this.getClass().getSimpleName();
     public SettingsFragment() {
         // Required empty public constructor
     }

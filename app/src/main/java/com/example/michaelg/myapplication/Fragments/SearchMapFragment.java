@@ -27,6 +27,7 @@ import org.json.JSONObject;
 public class SearchMapFragment extends Fragment {
 
     private final String TAG =this.getClass().getSimpleName();
+
     public SearchMapFragment() {
         // Required empty public constructor
     }

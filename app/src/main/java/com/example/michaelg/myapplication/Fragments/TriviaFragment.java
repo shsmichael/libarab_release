@@ -19,6 +19,7 @@ import com.example.michaelg.myapplication.R;
  * A simple {@link Fragment} subclass.
  */
 public class TriviaFragment extends Fragment {
+
     private final String TAG =this.getClass().getSimpleName();
 
     public TriviaFragment() {
@@ -33,7 +34,9 @@ public class TriviaFragment extends Fragment {
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
         getActivity().setTitle(R.string.menu_trivia);
         Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
-
+        Intent i = new Intent(getContext() , com.example.michaelg.myapplication.Trivia.MainActivity.class);
+        startActivity(i);
+        /*
         btn_triv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +44,7 @@ public class TriviaFragment extends Fragment {
                 startActivity(i);
             }
         });
+        */
 
 
 

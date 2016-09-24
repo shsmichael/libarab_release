@@ -13,6 +13,8 @@ import com.example.michaelg.myapplication.R;
 
 public  class PreferenceFragment extends com.github.machinarius.preferencefragment.PreferenceFragment {
 
+    private final String TAG =this.getClass().getSimpleName();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){

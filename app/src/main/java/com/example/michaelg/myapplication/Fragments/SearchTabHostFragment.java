@@ -11,11 +11,13 @@ package com.example.michaelg.myapplication.Fragments;
 
         import com.example.michaelg.myapplication.R;
 
-public class MainFragmentTest extends Fragment {
+public class SearchTabHostFragment extends Fragment {
+
+    private final String TAG =this.getClass().getSimpleName();
     private FragmentTabHost mTabHost;
 
     //Mandatory Constructor
-    public MainFragmentTest() {
+    public SearchTabHostFragment() {
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class MainFragmentTest extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_main_fragment_test,container, false);
+        View rootView = inflater.inflate(R.layout.fragment_search_tabhost,container, false);
 
 
         mTabHost = (FragmentTabHost)rootView.findViewById(android.R.id.tabhost);

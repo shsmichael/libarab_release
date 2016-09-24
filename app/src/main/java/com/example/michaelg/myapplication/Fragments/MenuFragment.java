@@ -3,12 +3,9 @@ package com.example.michaelg.myapplication.Fragments;
 
 import android.animation.Animator;
 
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -17,7 +14,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.michaelg.myapplication.MainActivity;
 import com.example.michaelg.myapplication.R;
 
 
@@ -67,7 +63,7 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 // TODO: 23/09/2016 Fix color change
                 //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
-                MainFragmentTest mainfragmentestfragment = new MainFragmentTest();
+                SearchTabHostFragment mainfragmentestfragment = new SearchTabHostFragment();
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 Bundle bundle = new Bundle();
                 //bundle.putInt("Type", userType);
@@ -232,16 +228,16 @@ public class MenuFragment extends Fragment {
                 settings.setVisibility(View.VISIBLE);
                 //anim.setStartDelay(500);
                 anim.start();
-                anim3.setStartDelay(100);
+                //anim3.setStartDelay(100);
                 anim3.start();
 
-                anim4.setStartDelay(200);
+               //anim4.setStartDelay(200);
                 anim4.start();
-                anim5.setStartDelay(300);
+                //anim5.setStartDelay(300);
                 anim5.start();
-                anim2.setStartDelay(400);
+                //anim2.setStartDelay(400);
                 anim2.start();
-                anim6.setStartDelay(500);
+                //anim6.setStartDelay(500);
                 anim6.start();
             }
         });

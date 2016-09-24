@@ -3,14 +3,15 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:weightSum="1">
 
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center">
+        android:layout_height="310dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.38">
 
         <!---User Circular Image -->
 
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_user_name"
             android:textAlignment="center"
+            android:textColor="@android:color/white"
             android:layout_below="@+id/img_circular_profile_user"
             android:layout_alignParentStart="true"
             android:padding="@dimen/activity_vertical_eight"
@@ -52,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/profile_user_email"
+            android:textColor="@android:color/white"
             android:textAlignment="center"
             android:layout_below="@+id/user_name"
             android:layout_alignParentStart="true"
@@ -77,29 +80,34 @@
             <TextView
                 android:id="@+id/user_first_name"
                 android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_first_name" />
 
             <TextView
                 android:id="@+id/user_last_name"
                 android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_last_name" />
 
             <TextView
                 android:id="@+id/user_age"
                 android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_age" />
 
             <TextView
                 android:id="@+id/user_gender"
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_gender" />
 
             <TextView
                 android:id="@+id/user_game_score"
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_game_score" />
@@ -114,26 +122,31 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin">
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shalom" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weiss" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="18" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Male" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100" />
