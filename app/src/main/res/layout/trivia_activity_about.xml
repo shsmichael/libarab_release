@@ -12,20 +12,24 @@
 
     <TextView
         android:text="@string/aboutTrivia2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="42dp"
         android:id="@+id/textView20"
+        android:typeface="serif"
+        android:textSize="60sp"
+        android:layout_marginStart="62dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="127dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/aboutTrivia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="91dp"
+        android:textSize="21sp"
+        android:typeface="serif"
         android:id="@+id/textView22"
         android:layout_below="@+id/textView20"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

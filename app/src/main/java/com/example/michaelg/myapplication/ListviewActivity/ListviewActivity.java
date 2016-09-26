@@ -36,6 +36,7 @@ public class ListviewActivity extends Activity {
     ArrayList<Book> bookList;
     String myURL="any";
     private String ID;
+    private String user;
     bookAdapter adapter;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -46,6 +47,8 @@ public class ListviewActivity extends Activity {
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
+             //TODO: after we recieve the userId from the prev intent that is searchBookFragment/searchSheet..
+             //user=extras.getString("userId");
               myURL = extras.getString("Value1");
          }
 
@@ -66,11 +69,12 @@ public class ListviewActivity extends Activity {
                                     long id) {
                 // TODO Auto-generated method stub
                 Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
-                //Intent intent = getIntent();
-                //ID = intent.getStringExtra("recordID");
-                ID = "nananana";
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
-                intent1.putExtra("recordID",ID);
+                intent1.putExtra("recordId",bookList.get(position).getRecordid());
+                //TODO: change to -> intent1.putExtra("userId",user);
+                // Remember that variable (user) is the private variable above that is sent by the search
+                intent1.putExtra("userId","100");
+
                 startActivity(intent1);
 
             }
