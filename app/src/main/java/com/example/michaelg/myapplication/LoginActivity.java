@@ -463,7 +463,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 showProgress(false);
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("Type", 1);
+                //should be populated trough server details
+                User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+                intent.putExtra("user", givenuser);
                 startActivity(intent);
 
             } else {   // case failed

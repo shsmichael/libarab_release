@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -12,14 +13,20 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 /**
@@ -41,8 +48,10 @@ public class SearchBookFragment extends Fragment {
     private EditText title ,
             fromyear ,
             toyear;
+    private Spinner spinner;
     private Button searchbutton ;
     private JSONObject returnedjson;
+    private TextView tv_titleorauthor;
      String _SEARCH_URL ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,12 +59,51 @@ public class SearchBookFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
-        View view = inflater.inflate(R.layout.fragment_search_book, container, false);
+        final View view = inflater.inflate(R.layout.fragment_search_book, container, false);
         getActivity().setTitle(R.string.menu_search);
+        spinner = (Spinner) view.findViewById(R.id.spinner);
         title = (EditText) view.findViewById(R.id.title_edittext);
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
+        tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
+            {
+
+
+                switch (position){
+                    case 0:
+                        tv_titleorauthor.setText("Title");
+                        _SEARCH_URL =   Params.server +"search/booktitle?";
+                        str_serchby=true;
+                        break;
+                    case 1:
+                        tv_titleorauthor.setText("Author");
+                        _SEARCH_URL = Params.server +"search/bookauthor?";
+                        str_serchby=false;
+                    default:
+                        break;
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+        });
+
+        /*
         searchby = (Switch) view.findViewById(R.id.switch2);
         searchby.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -71,14 +119,11 @@ public class SearchBookFragment extends Fragment {
                 }
             }});
 
-
+        */
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 //perform action on click
-
-
-                Uri builtUrii ;
 
                 //TODO: @michael change userId not 4 in both cases
                 if(str_serchby)

@@ -23,14 +23,24 @@ public class User implements Serializable{
         isWantToPlay = wantToPlay;
     }
 
-    public User(String firstname, String lastname, String gender, String bday){
+    public User(String firstname, String lastname,String username, String gender, String bday, String usertype,Boolean iswanttoplay){
         this.firstname = firstname;
         this.lastname  =lastname;
         this.gender = gender;
         this.bday = bday;
+        this.userType=usertype;
+        this.username=username;
+        this.isWantToPlay=iswanttoplay;
     }
 
     public User() {
+        firstname="Guest";
+        lastname="User";
+        gender="None";
+        bday="None";
+        userType="0";
+        username="Guest User";
+        isWantToPlay=false;
     }
 
     public User(String firstname, String lastname, String gender, String bday, String userType, String username) {

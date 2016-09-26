@@ -36,7 +36,7 @@ import java.util.Date;
  */
 public class ProfileFragment extends Fragment {
 
-    User user = new User("eden","sharvit","male","8/4/86");
+    User user;
 
 
     private final String TAG =this.getClass().getSimpleName();
@@ -49,24 +49,19 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        user= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        TextView textView_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
-        textView_userprofile_fname.setText(user.getFirstname());
-        TextView textView_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
-        textView_userprofile_lname.setText(user.getLastname());
-        TextView textView_userprofile_age = (TextView) rootView.findViewById(R.id.tv_userprofile_age);
-        textView_userprofile_age.setText(user.getBday());
-        TextView textView_userprofile_gender = (TextView) rootView.findViewById(R.id.tv_userprofile_gender);
-        textView_userprofile_gender.setText(user.getGender());
-
+        TextView tv_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
+        TextView tv_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
+        TextView tv_userprofile_age = (TextView) rootView.findViewById(R.id.tv_userprofile_age);
+        TextView tv_userprofile_gender = (TextView) rootView.findViewById(R.id.tv_userprofile_gender);
+        tv_userprofile_fname.setText(user.getFirstname());
+        tv_userprofile_lname.setText(user.getLastname());
+        tv_userprofile_age.setText(user.getBday());
+        tv_userprofile_gender.setText(user.getGender());
 
         return rootView;
     }
-
-
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -74,7 +69,6 @@ public class ProfileFragment extends Fragment {
         if(getView() == null){
             return;
         }
-
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {

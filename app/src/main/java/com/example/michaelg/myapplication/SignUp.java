@@ -361,10 +361,10 @@ public class SignUp extends AppCompatActivity {
                     user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
                     user.setBday(tmp.getString("bday"));
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    Bundle mBundle = new Bundle();
-                   // mBundle.putSerializable("user",user);
+                    //Bundle mBundle = new Bundle();
                     intent.putExtra("user",user);
-                    intent.putExtra("Type",1);
+                    //intent.putExtra("user",user);
+                    //intent.putExtra("Type",1);
                     startActivity(intent);
                 }else{
                     // TODO: 9/21/2016 signUp Error

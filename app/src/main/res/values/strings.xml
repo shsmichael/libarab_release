@@ -63,6 +63,11 @@
         <item>Hebrew</item>
         <item>Arabic</item>
     </string-array>
+    <string-array name="searcharray">
+        <item>Search By Title</item>
+        <item>Search By Author</item>
+    </string-array>
+
 
     <string name="title_activity_settings">Settings</string>
 

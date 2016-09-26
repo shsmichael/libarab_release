@@ -26,7 +26,6 @@ public class MenuFragment extends Fragment {
     public MenuFragment() {
         // Required empty public constructor
     }
-    Button btn;
     TextView txt,txtemail,txtfullname;
     FrameLayout search,trivia,favorites,about,settings,bibilo,profile;
     View myview;
@@ -38,25 +37,9 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview = inflater.inflate(R.layout.fragment_menu, container, false);
         getActivity().setTitle(R.string.menu);
-        Bundle bundle = this.getArguments();
-        int i=0;
-        if (bundle != null) {
-            i = bundle.getInt("Type", 0);
-        }
-
         txt = (TextView) myview.findViewById(R.id.tv_search);
         txtfullname = (TextView) myview.findViewById(R.id.tv_fullname) ;
         txtemail = (TextView) myview.findViewById(R.id.textView);
-        if (i == 0){
-            txtfullname.setText("Guest");
-            txtemail.setVisibility(View.INVISIBLE);
-        }
-        else{
-            newUser = new User();
-            newUser = (User) bundle.getSerializable("user");
-            txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
-            txtemail.setText(newUser.getUsername());
-        }
         search = (FrameLayout) myview.findViewById(R.id.frame_search);
         trivia = (FrameLayout) myview.findViewById(R.id.frame_trivia);
         favorites = (FrameLayout) myview.findViewById(R.id.frame_favorites);
@@ -64,6 +47,21 @@ public class MenuFragment extends Fragment {
         settings = (FrameLayout) myview.findViewById(R.id.frame_settings);
         bibilo = (FrameLayout) myview.findViewById(R.id.frame_biblio);
         profile =(FrameLayout) myview.findViewById(R.id.frame_profile);
+
+        newUser= (User) getActivity().getIntent().getSerializableExtra("user");
+       // newUser =(User) this.getArguments().getSerializable("user");
+        String usertype =newUser.getUserType();
+
+        if (usertype == "0"){       //user type is guest
+            txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
+            txtemail.setVisibility(View.INVISIBLE);
+        }
+        else{
+
+            txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
+            txtemail.setText(newUser.getUsername());
+        }
+
 
 
         search.setOnClickListener(new View.OnClickListener() {

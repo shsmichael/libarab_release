@@ -54,9 +54,9 @@ public class ListviewActivity extends Activity {
 
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
-        Log.v("test",myURL);
+        Log.v("Url given by intent to ListviewActivity:",myURL);
         new JSONAsyncTask().execute(myURL);
-        //http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970
+
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row, bookList);
 
@@ -113,6 +113,10 @@ public class ListviewActivity extends Activity {
                     String data = EntityUtils.toString(entity);
 
                     JSONObject jsono = new JSONObject(data);
+                    String res = jsono.getString("result");
+                    if (res.equals("false"))
+                        return false;
+
                     JSONArray jarray = jsono.getJSONArray("docs");
 
                     for (int i = 0; i < jarray.length(); i++)

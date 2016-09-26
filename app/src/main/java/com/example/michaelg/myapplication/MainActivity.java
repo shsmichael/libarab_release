@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     int userType;
+    User myuser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,9 @@ public class MainActivity extends AppCompatActivity
         });
         */
         Intent intent = getIntent();
-        userType = intent.getIntExtra("Type",0);
+        //userType = intent.getIntExtra("Type",0);
+        myuser =(User) intent.getSerializableExtra("user");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -68,7 +71,8 @@ public class MainActivity extends AppCompatActivity
         MenuFragment menufragment = new MenuFragment();
         FragmentManager manager = getSupportFragmentManager();
         Bundle bundle = new Bundle();
-        bundle.putInt("Type", userType);
+        //bundle.put("Type", userType);
+        bundle.putSerializable("user",myuser);
         menufragment.setArguments(bundle);
         manager.beginTransaction().replace(R.id.fragment_main,
                 menufragment,
@@ -136,15 +140,6 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_search) {
-            /*
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
-            SearchBookFragment searchfragment = new SearchBookFragment();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.fragment_main,
-                    searchfragment,
-                    searchfragment.getTag()
-            ).commit();
-            */
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
             SearchTabHostFragment mainfragmenttest = new SearchTabHostFragment();
             FragmentManager manager = getSupportFragmentManager();
