@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
@@ -25,20 +26,24 @@ import org.json.JSONObject;
  * A simple {@link Fragment} subclass.
  */
 public class SearchBookFragment extends Fragment {
-
+    //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
+    //private userId;
+    //TODO: @michael inorder to recieve it we should get it from the prev intent,
+    // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
+    private boolean str_serchby;
     private final String TAG =this.getClass().getSimpleName();
 
     public SearchBookFragment() {
         // Required empty public constructor
     }
+    private Switch searchby;
 
     private EditText title ,
             fromyear ,
             toyear;
     private Button searchbutton ;
     private JSONObject returnedjson;
-    final String _SEARCH_URL = Params.server +"search/booktitle?";
-
+     String _SEARCH_URL ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +56,20 @@ public class SearchBookFragment extends Fragment {
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
-
+        searchby = (Switch) view.findViewById(R.id.switch2);
+        searchby.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(searchby.isChecked())
+                {
+                    _SEARCH_URL =   Params.server +"search/booktitle?";
+                    str_serchby=true;
+                }
+                else
+                {
+                    _SEARCH_URL = Params.server +"search/bookauthor?";
+                    str_serchby=false;
+                }
+            }});
 
 
         searchbutton.setOnClickListener(new View.OnClickListener() {
@@ -59,17 +77,41 @@ public class SearchBookFragment extends Fragment {
 
                 //perform action on click
 
-                Uri builtUri = Uri.parse(_SEARCH_URL).buildUpon()
-                        .appendQueryParameter("userId",    "4")
-                        // .appendQueryParameter("title",    title.getText().toString())
-                        .appendQueryParameter("title",    title.getText().toString())
-                        .appendQueryParameter("fromyear", fromyear.getText().toString())
-                        .appendQueryParameter("toyear",   toyear.getText().toString())
-                        .build();
-                Log.v("URL", builtUri.toString());
-                Intent i = new Intent(v.getContext() ,ListviewActivity.class);
-                i.putExtra("Value1", builtUri.toString());
-                startActivity(i);
+
+                Uri builtUrii ;
+
+                //TODO: @michael change userId not 4 in both cases
+                if(str_serchby)
+                {
+                    Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
+                            .appendQueryParameter("userId",    "4")
+                            // .appendQueryParameter("title",    title.getText().toString())
+                            .appendQueryParameter("title",    title.getText().toString())
+                            .appendQueryParameter("fromyear", fromyear.getText().toString())
+                            .appendQueryParameter("toyear",   toyear.getText().toString())
+                            .build();
+
+                    Log.v("URL", builtUri.toString());
+                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                    i.putExtra("Value1", builtUri.toString());
+                    //TODO: @Michael i.putExtra("userId",userId);
+                    startActivity(i);
+                }
+                else
+                {
+                    Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
+                            .appendQueryParameter("userId",    "4")
+                            .appendQueryParameter("author",    title.getText().toString())
+                            .appendQueryParameter("fromyear", fromyear.getText().toString())
+                            .appendQueryParameter("toyear",   toyear.getText().toString())
+                            .build();
+                    Log.v("URL", builtUri.toString());
+                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                    i.putExtra("Value1", builtUri.toString());
+                    startActivity(i);
+                }
+
+
 
                 //  Search searchtask = new Search(total);
                 //  searchtask.execute();

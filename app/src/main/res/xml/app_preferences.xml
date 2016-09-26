@@ -6,7 +6,7 @@
         <ListPreference
             android:key="Language"
             android:title="Choose Language"
-            android:dialogTitle="DialogTitle"
+            android:dialogTitle="Choose Language"
             android:entries="@array/Lan_array"
             android:entryValues="@array/entryvalues_list_preference" />
     </PreferenceCategory>

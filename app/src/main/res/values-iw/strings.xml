@@ -15,6 +15,8 @@
     <string name="error_field_required">שדה חובה</string>
     <string name="prompt_firstname">שם פרטי</string>
     <string name="prompt_lastname">שם משפחה</string>
+    <string name="aboutTrivia2">אודות</string>
+    <string name="aboutTrivia">משחק טריוויה הוא משחק שאלות ותשובות, המשתמש יכול להוסיף שאלות לפריט מסוים וגם אפשר לשחק משחק של 5 שאלות עם 4 תשובות שאחת מהן נכונה וכל תשובה נכונה מוסיפה 3 נקודות לסכום הכללי של המשתמש, הנקודות יתוספו בסוף המחשק ותוצג הודעה מתאימה. </string>
     <string name="about_details">האוסף מכיל אלפי ספרים, מגוון רחב של עיתונים מראשית המאה ה-20 וכ-200 כתבי עת ועיתונים בשפה הערבית, הפרסית והתורכית היוצאים לאור בימינו. בנוסף, קיים אוסף עשיר של כ-2,200 כתבי יד בערבית ובפרסית.</string>
     <string name="permission_rationale">הרשאות אנשי קשר נדרשות לשם השלמת פרטי אימייל.</string>
     <string name="menu">תפריט</string>
