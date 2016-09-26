@@ -449,6 +449,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             showProgress(false);
             String answer = null;
+            if(success == null){
+                Toast.makeText(LoginActivity.this, "Server isn't responding", Toast.LENGTH_SHORT).show();
+                return;
+            }
             try {
                 answer = success.getString("client reply");
             } catch (JSONException e) {
