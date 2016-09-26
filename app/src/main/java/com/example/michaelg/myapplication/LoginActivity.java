@@ -360,7 +360,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return null;
             }
 
-          //  Log.v("connect", "CONNECTED");
+            //  Log.v("connect", "CONNECTED");
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
@@ -459,7 +459,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 showProgress(false);
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("Type",1);
+                intent.putExtra("Type", 1);
                 startActivity(intent);
 
             } else {   // case failed

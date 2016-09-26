@@ -122,30 +122,31 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin">
 
             <TextView
+                android:id="@+id/tv_userprofile_f_name"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shalom" />
+                android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_userprofile_l_name"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Weiss" />
+                android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_userprofile_age"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18" />
+                android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_userprofile_gender"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male" />
+                android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_userprofile_score"
                 android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

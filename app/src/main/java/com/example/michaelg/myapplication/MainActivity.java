@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             //set settings frag
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSettings)));
-            SettingsFragment settingsfragment = new SettingsFragment();
+            PreferenceFragment preffragment = new PreferenceFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
-                    settingsfragment,
-                    settingsfragment.getTag()
+                    preffragment,
+                    preffragment.getTag()
             ).commit();
             return true;
         }
