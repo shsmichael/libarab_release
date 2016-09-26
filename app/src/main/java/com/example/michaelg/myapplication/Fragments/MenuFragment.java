@@ -2,7 +2,6 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.animation.Animator;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 
 /**
@@ -27,9 +27,10 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
     Button btn;
-    TextView txt,txtemail;
+    TextView txt,txtemail,txtfullname;
     FrameLayout search,trivia,favorites,about,settings,bibilo,profile;
     View myview;
+    User newUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,9 +45,17 @@ public class MenuFragment extends Fragment {
         }
 
         txt = (TextView) myview.findViewById(R.id.tv_search);
+        txtfullname = (TextView) myview.findViewById(R.id.tv_fullname) ;
         txtemail = (TextView) myview.findViewById(R.id.textView);
         if (i == 0){
+            txtfullname.setText("Guest");
             txtemail.setVisibility(View.INVISIBLE);
+        }
+        else{
+            newUser = new User();
+            newUser = (User) bundle.getSerializable("user");
+            txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
+            txtemail.setText(newUser.getUsername());
         }
         search = (FrameLayout) myview.findViewById(R.id.frame_search);
         trivia = (FrameLayout) myview.findViewById(R.id.frame_trivia);
@@ -55,7 +64,6 @@ public class MenuFragment extends Fragment {
         settings = (FrameLayout) myview.findViewById(R.id.frame_settings);
         bibilo = (FrameLayout) myview.findViewById(R.id.frame_biblio);
         profile =(FrameLayout) myview.findViewById(R.id.frame_profile);
-
 
 
         search.setOnClickListener(new View.OnClickListener() {

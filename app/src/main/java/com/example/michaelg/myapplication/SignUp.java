@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 
@@ -308,8 +309,6 @@ public class SignUp extends AppCompatActivity {
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
-                // If the code didn't successfully get the weather data, there's no point in attemping
-                // to parse it.
                 return null;
             } finally {
                 if (urlConnection != null) {
@@ -345,7 +344,8 @@ public class SignUp extends AppCompatActivity {
             JSONArray jsonarray;
             JSONObject tmp;
             if (success == null){
-                // TODO: 9/21/2016 Server error msg  
+                Toast.makeText(SignUp.this, "Server isn't Responding", Toast.LENGTH_SHORT).show();
+                return;
             }
             try{
                 answer = success.getBoolean("result");
@@ -362,7 +362,9 @@ public class SignUp extends AppCompatActivity {
                     user.setBday(tmp.getString("bday"));
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("user",user);
+                   // mBundle.putSerializable("user",user);
+                    intent.putExtra("user",user);
+                    intent.putExtra("Type",1);
                     startActivity(intent);
                 }else{
                     // TODO: 9/21/2016 signUp Error

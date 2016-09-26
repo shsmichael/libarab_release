@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         //
         */
+
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        user = (User)getIntent().getSerializableExtra("user");
+      //  user = (User)getIntent().getSerializableExtra("user");
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,10 @@ public class MainActivity extends AppCompatActivity
         */
         Intent intent = getIntent();
         userType = intent.getIntExtra("Type",0);
+        user = new User();
+        //if(userType == 1){
+        //    user = (User) intent.getSerializableExtra("user");
+        //}
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         Bundle bundle = new Bundle();
         bundle.putInt("Type", userType);
+        bundle.putSerializable("user",user);
         menufragment.setArguments(bundle);
         manager.beginTransaction().replace(R.id.fragment_main,
                 menufragment,
