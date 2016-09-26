@@ -13,6 +13,8 @@
     <string name="error_field_required">هذه الخانة الزاميه</string>
     <string name="prompt_firstname">الاسم الشخصي</string>
     <string name="prompt_lastname">اسم العائلة</string>
+    <string name="aboutTrivia">هذه اللعبه تتضمن نموذج يحوي  5 اسئله, حيث يستطيع المستخدم اضافه نموذج جديد او حل نموذج قائم, ولكل جواب صحيح يحصل المستخدم على 3 نقاط تضاف في نهايه اللعبه للمجموع الكلي للمستخدم</string>
+    <string name="aboutTrivia2">تعليمات</string>
     <string name="about_details">האוסף מכיל אלפי ספרים, מגוון רחב של עיתונים מראשית המאה ה-20 וכ-200 כתבי עת ועיתונים בשפה הערבית, הפרסית והתורכית היוצאים לאור בימינו. בנוסף, קיים אוסף עשיר של כ-2,200 כתבי יד בערבית ובפרסית.</string>
     <string name="permission_rationale">محتاج اذن لجهات اتصال لتوفير اكمال بريد إلكتروني.</string>
     <string name="menu">Menu</string>

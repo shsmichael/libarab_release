@@ -21,6 +21,13 @@
         android:layout_weight="15" />
 
     <Button
+        android:text="About"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_weight="15" />
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="start"
