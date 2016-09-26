@@ -73,7 +73,6 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
         });
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -108,6 +107,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
             }
         });
     }
+
     /*
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

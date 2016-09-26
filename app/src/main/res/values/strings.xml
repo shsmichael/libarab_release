@@ -40,9 +40,6 @@
     <string name="profile_age">Age:</string>
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
-    <string name="aboutTrivia">there are two options for the game, the user can create a new quiz of 5 questions or he can solve an existing quiz of 5 questions and he gets  points for each correct answer</string>
-    <string name="aboutTrivia2">About</string>
-
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

@@ -3,6 +3,7 @@ package com.example.michaelg.myapplication;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -347,17 +348,27 @@ public class SignUp extends AppCompatActivity {
                 // TODO: 9/21/2016 Server error msg  
             }
             try{
-                answer = success.getBoolean("status");
+                answer = success.getBoolean("result");
                 if (answer){
                     jsonarray = success.getJSONArray("paramsArray");
                     tmp = jsonarray.getJSONObject(0);
+                    user = new User();
                     user.setFirstname(tmp.getString("firstname"));
                     user.setLastname(tmp.getString("lastname"));
+                    user.setGender(tmp.getString("gender"));
+                    user.setUsername(tmp.getString("username"));
+                    user.setUserType(tmp.getString("userType"));
+                    user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
+                    user.setBday(tmp.getString("bday"));
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("user",user);
+                    startActivity(intent);
                 }else{
                     // TODO: 9/21/2016 signUp Error
                 }
             }catch (JSONException e){
-
+                e.printStackTrace();
             }
         }
     }
