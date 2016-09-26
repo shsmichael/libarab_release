@@ -7,10 +7,14 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="about_details">LibArab app gives you an access to data of the NATIONAL LIBRARY OF ISREAL.
-    Use LibArab to:
-    Search and read books in different topics.
-    Create your own bibliography and use it for home works and researches.</string>
+    <string name="about_details">
+        This application will give you the access to the data of the THE NATIONAL LIBRARY OF ISREAL.\n
+        •	Search and read books in different topics.\n
+        •	Create your own bibliography and use it for home works and researc hes.\n
+        •	Show another contents: handwritings, maps, article etc…\n
+        •	Create your own collection of favorite contents.\n
+        •	Interaction with the User through games.\n
+    </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -27,6 +31,8 @@
     <string name="prompt_firstname">First Name</string>
     <string name="prompt_lastname">Last Name</string>
     <string name="menu_search">Search</string>
+    <string name="search_from_year">From Year</string>
+    <string name="search_to_year">To Year</string>
     <string name="menu_bibliography">Bibliography</string>
     <string name="menu_favorites">Favorites</string>
     <string name="menu_trivia">Trivia</string>
@@ -40,6 +46,11 @@
     <string name="profile_age">Age:</string>
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
+    <string name="view_pager_book_viewer">Book Viewer</string>
+    <string name="book_info_header">Book Info</string>
+    <string name="row_creation_date">Creation Date:</string>
+    <string name="row_title">Title:</string>
+    <string name="row_author">Author:</string>
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

@@ -1,7 +1,6 @@
 package com.example.michaelg.myapplication;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,18 +15,20 @@ import android.view.MenuItem;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
-import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
 import com.example.michaelg.myapplication.Fragments.PreferenceFragment;
+import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.Fragments.SettingsFragment;
 import com.example.michaelg.myapplication.Fragments.TriviaFragment;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     int userType;
+    User user;
+    public User getUser (){
+        return user;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        user = (User)getIntent().getSerializableExtra("user");
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,19 +1,31 @@
 package com.example.michaelg.myapplication;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by Misho on 9/21/2016.
  */
-public class User {
+public class User implements Serializable {
     String firstname;
     String lastname;
     String gender;
-    Date   bday;
-    Boolean userType;
+    String bday;
+    String userType;
     String username;
+    Boolean isWantToPlay;
 
-    public User(String firstname, String lastname, String gender, Date bday, Boolean userType, String username) {
+    public Boolean getWantToPlay() {
+        return isWantToPlay;
+}
+
+    public void setWantToPlay(Boolean wantToPlay) {
+        isWantToPlay = wantToPlay;
+    }
+
+    public User(){
+
+    }
+    public User(String firstname, String lastname, String gender, String bday, String userType, String username) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
@@ -46,19 +58,19 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getBday() {
+    public String getBday() {
         return bday;
     }
 
-    public void setBday(Date bday) {
+    public void setBday(String bday) {
         this.bday = bday;
     }
 
-    public Boolean getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(Boolean userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
