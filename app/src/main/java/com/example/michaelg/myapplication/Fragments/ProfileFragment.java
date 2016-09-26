@@ -4,11 +4,9 @@ package com.example.michaelg.myapplication.Fragments;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,12 +51,14 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        TextView textView_userprofile_fname;
-        textView_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
+        TextView textView_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
         textView_userprofile_fname.setText(user.getFirstname());
-        TextView textView_userprofile_lname;
-        textView_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
+        TextView textView_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
         textView_userprofile_lname.setText(user.getLastname());
+        TextView textView_userprofile_age = (TextView) rootView.findViewById(R.id.tv_userprofile_age);
+        textView_userprofile_age.setText(user.getBday());
+        TextView textView_userprofile_gender = (TextView) rootView.findViewById(R.id.tv_userprofile_gender);
+        textView_userprofile_gender.setText(user.getGender());
 
 
         return rootView;
