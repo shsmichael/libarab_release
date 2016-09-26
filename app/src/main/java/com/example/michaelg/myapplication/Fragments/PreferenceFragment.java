@@ -29,6 +29,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.app_preferences);
+        getActivity().setTitle(R.string.menu_settings);
 
         mListPreference = (ListPreference)  getPreferenceManager().findPreference("Language");
         mListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
