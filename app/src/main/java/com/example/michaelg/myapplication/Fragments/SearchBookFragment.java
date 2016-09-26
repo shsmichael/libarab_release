@@ -26,7 +26,10 @@ import org.json.JSONObject;
  * A simple {@link Fragment} subclass.
  */
 public class SearchBookFragment extends Fragment {
-
+    //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
+    //private userId;
+    //TODO: @michael inorder to recieve it we should get it from the prev intent,
+    // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
     private boolean str_serchby;
     private final String TAG =this.getClass().getSimpleName();
 
@@ -77,6 +80,7 @@ public class SearchBookFragment extends Fragment {
 
                 Uri builtUrii ;
 
+                //TODO: @michael change userId not 4 in both cases
                 if(str_serchby)
                 {
                     Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
@@ -90,6 +94,7 @@ public class SearchBookFragment extends Fragment {
                     Log.v("URL", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                     i.putExtra("Value1", builtUri.toString());
+                    //TODO: @Michael i.putExtra("userId",userId);
                     startActivity(i);
                 }
                 else
