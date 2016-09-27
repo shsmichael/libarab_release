@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.LoginActivity;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.Trivia.MainActivity;
 
 import java.util.Locale;
 
@@ -51,6 +52,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                     Configuration config = new Configuration();
                     config.locale = locale;
                     getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
                 }
 
                 else if (current.equals("Hebrew")){
@@ -59,6 +61,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                     Configuration config = new Configuration();
                     config.locale = locale;
                     getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
                 }
                 else if (current.equals("English")){
                     Locale locale = new Locale("en");
@@ -66,6 +69,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                     Configuration config = new Configuration();
                     config.locale = locale;
                     getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
 
                 }
 

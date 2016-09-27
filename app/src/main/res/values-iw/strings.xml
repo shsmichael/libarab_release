@@ -35,4 +35,11 @@
     <string name="menu_search">חיפוש</string>
     <string name="menu_settings">הגדרות</string>
     <string name="menu_trivia">טריוויה</string>
+    <string name="profile_user_name">שם משתמש:</string>
+    <string name="profile_user_email">אימייל:</string>
+    <string name="profile_last_name">שם משפחה:</string>
+    <string name="profile_gender">מין:</string>
+    <string name="profile_game_score">נקודות:</string>
+    <string name="profile_first_name">שם פרטי:</string>
+    <string name="profile_age">גיל:</string>
 </resources>

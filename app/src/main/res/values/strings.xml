@@ -41,6 +41,12 @@
     <string name="profile_age">Age:</string>
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
+    <string name="title">Title:</string>
+    <string name="fromyear">From Year:</string>
+    <string name="toyear">To Year:</string>
+    <string name="go">Go!</string>
+
+
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

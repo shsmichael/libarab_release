@@ -188,7 +188,14 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void refreshUI(){
 
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
+
+    }
 
 
 

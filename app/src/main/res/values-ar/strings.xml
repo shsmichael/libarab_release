@@ -28,5 +28,18 @@
         <item>أمين مكتبة</item>
     </string-array>
     <string name="app_name" translatable="false"></string>
-    <string name="menu_about"></string>
+    <string name="menu_about">לתרגם</string>
+    <string name="action_settings">לתרגם</string>
+    <string name="menu_bibliography">לתרגם</string>
+    <string name="menu_favorites">לתרגם</string>
+    <string name="menu_search">לתרגם</string>
+    <string name="menu_settings">לתרגם</string>
+    <string name="menu_trivia">לתרגם</string>
+    <string name="profile_gender">לתרגם</string>
+    <string name="profile_game_score">לתרגם</string>
+    <string name="profile_age">לתרגם</string>
+    <string name="profile_first_name">לתרגם</string>
+    <string name="profile_last_name">לתרגם</string>
+    <string name="profile_user_name">לתרגם</string>
+    <string name="profile_user_email">לתרגם</string>
 </resources>
