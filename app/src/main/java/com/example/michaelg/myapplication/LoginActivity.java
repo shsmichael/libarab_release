@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -406,7 +407,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
 
                 serverJsonStr = buffer.toString();
-                Log.d("PROBLEM", serverJsonStr);
+                Log.d("EmilisWromg", serverJsonStr);
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
@@ -462,6 +463,41 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (answer.equals("success")) {  //case the user does'nt exist
                 showProgress(false);
                 finish();
+
+                JSONObject tmp = null;
+                try {
+                    tmp = success.getJSONObject("Profile");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray array=null;
+                try {
+                    array = success.getJSONArray("paramsArray");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONObject my=null;
+                try {
+                   my = array.getJSONObject(0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                User user = new User();
+                try {
+                    user.setFirstname(my.getString("firstname"));
+
+                user.setLastname(tmp.getString("lastname"));
+                user.setGender(tmp.getString("gender"));
+                user.setUsername(tmp.getString("username"));
+                user.setUserType(tmp.getString("userType"));
+                user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
+                user.setBday(tmp.getString("bday"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //should be populated trough server details
                 User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
