@@ -145,7 +145,7 @@ public class SearchBookFragment extends Fragment {
                 else
                 {
                     Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    "4")
+                            .appendQueryParameter("userId",    "dror@d")
                             .appendQueryParameter("author",    title.getText().toString())
                             .appendQueryParameter("fromyear", fromyear.getText().toString())
                             .appendQueryParameter("toyear",   toyear.getText().toString())
