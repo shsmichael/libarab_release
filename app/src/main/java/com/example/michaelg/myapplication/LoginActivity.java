@@ -445,17 +445,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
         @Override
-        protected void onPostExecute(final JSONObject success) {
+        protected void onPostExecute(final JSONObject object) {
             mAuthTask = null;
 
             showProgress(false);
             String answer = null;
-            if(success == null){
+            if(object == null){
                 Toast.makeText(LoginActivity.this, "Server isn't responding", Toast.LENGTH_SHORT).show();
                 return;
             }
             try {
-                answer = success.getString("client reply");
+                answer = object.getString("client reply");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -466,13 +466,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 JSONObject tmp = null;
                 try {
-                    tmp = success.getJSONObject("Profile");
+                    tmp = object.getJSONObject("profile");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 JSONArray array=null;
                 try {
-                    array = success.getJSONArray("paramsArray");
+                    array = tmp.getJSONArray("paramsArray");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -500,13 +500,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //should be populated trough server details
-                User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
-                intent.putExtra("user", givenuser);
+                //User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+
+                intent.putExtra("user", user);
                 startActivity(intent);
 
             } else {   // case failed
                 try {
-                    Toast.makeText(LoginActivity.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, object.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
