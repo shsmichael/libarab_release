@@ -35,4 +35,26 @@
     <string name="menu_search">חיפוש</string>
     <string name="menu_settings">הגדרות</string>
     <string name="menu_trivia">טריוויה</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="navigation_drawer_close">סגור את חלונית הניווט</string>
+    <string name="navigation_drawer_open">פתח את חלונית הניווט</string>
+    <string name="pref_description_social_recommendations">המלצות לאנשים לפנות[...]</string>
+    <string name="pref_header_general">כללי</string>
+    <string name="pref_header_notifications">הודעות</string>
+    <string name="pref_ringtone_silent">שקט</string>
+    <string name="pref_title_add_friends_to_messages">הוספת חברים להודעה</string>
+    <string name="pref_title_display_name">השם המוצג</string>
+    <string name="pref_title_new_message_notifications"></string>
+    <string name="pref_title_ringtone">צלצול</string>
+    <string name="pref_title_social_recommendations">לאפשר המלצות חברתיות</string>
+    <string name="pref_title_sync_frequency">תדירות סינכרון</string>
+    <string name="pref_title_system_sync_settings">הגדרות הסינכרון למערכת</string>
+    <string name="pref_title_vibrate">רוטט</string>
+    <string name="profile_age">הגיל</string>
+    <string name="profile_first_name">שם האישי</string>
+    <string name="profile_game_score">תוצאת המשחק</string>
+    <string name="profile_gender">מין</string>
+    <string name="profile_last_name">שם המשפחה</string>
+    <string name="profile_user_name">שם משתמש</string>
+    <string name="title_activity_settings">הגדרות</string>
 </resources>
