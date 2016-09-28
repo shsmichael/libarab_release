@@ -27,6 +27,11 @@
         <item>عادي</item>
         <item>أمين مكتبة</item>
     </string-array>
+    <string-array name="searcharray">
+        <item>ابحث عن عنوان</item>
+        <item>ابحث عن مؤلف</item>
+    </string-array>
+
     <string name="app_name" translatable="false"></string>
     <string name="menu_about">الوصف</string>
     <string name="action_settings">اعدادات</string>
@@ -59,12 +64,12 @@
     <string name="pref_header_data_sync"></string>
     <string name="search_author">مؤلف:</string>
     <string name="search_choose">اختار:</string>
-    <string name="search_creation_date">تاريخ الانشاء</string>
-    <string name="search_enter_title">ادخل عنوان الكتاب</string>
-    <string name="search_from_year">من سنه</string>
-    <string name="search_publisher">الناشر</string>
-    <string name="search_title">عنوان</string>
-    <string name="search_to_year">لسنه</string>
-    <string name="search_enter_from_year">ادخل بدايه مجال السنوات</string>
-    <string name="search_enter_to_year">ادخل نهايه مجال السنوات</string>
+    <string name="search_creation_date">تاريخ الانشاء:</string>
+    <string name="search_enter_title">ادخل عنوان الكتاب:</string>
+    <string name="search_publisher">الناشر:</string>
+    <string name="search_title">عنوان:</string>
+    <string name="search_to_year">لسنه:</string>
+    <string name="search_enter_from_year">ادخل مجال السنوات:</string>
+    <string name="search_enter_to_year">ادخل مجال السنوات:</string>
+    <string name="search_from_year">من سنه:</string>
 </resources>
