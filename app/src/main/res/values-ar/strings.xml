@@ -33,6 +33,7 @@
     <string name="menu_bibliography">المراجع</string>
     <string name="menu_favorites">المواد المفضلة</string>
     <string name="menu_search">بحث</string>
+
     <string name="menu_settings">اعدادات</string>
     <string name="menu_trivia">لعبة المعلومات</string>
     <string name="navigation_drawer_close">اغلاق درج التنقل</string>

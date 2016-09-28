@@ -49,8 +49,7 @@
                     android:textSize="20dp"
                     android:textColor="@color/black"
                     android:id="@+id/tv_title"
-                    android:fontFamily="sans-serif"
-                    android:layout_weight="1.53" />
+                    android:fontFamily="sans-serif" />
 
                 <EditText
                     android:layout_width="255dp"
@@ -141,7 +140,7 @@
                 android:background="@drawable/ripplesearch"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                style="@android:style/Widget.Material.Button.Colored" />
+                 />
         </LinearLayout>
 
         <FrameLayout

@@ -29,6 +29,10 @@
         <item>Regular</item>
         <item>Curator</item>
     </string-array>
+    <string-array name="searcharray">
+        <item>חפש לפי כותרת</item>
+        <item>חפש לפי סופר</item>
+    </string-array>
     <string name="menu_about">אודות</string>
     <string name="menu_bibliography">ביבליוגרפיה</string>
     <string name="menu_favorites">מועדפים</string>
