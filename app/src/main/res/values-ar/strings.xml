@@ -57,4 +57,7 @@
     <string name="title_activity_settings">اعدادات</string>
     <string name="pref_description_social_recommendations">توصيات للاشخاص للتواصل[...]</string>
     <string name="pref_header_data_sync"></string>
+    <string name="search_author">مؤلف:</string>
+    <string name="search_choose">اختار:</string>
+    <string name="search_creation_date"></string>
 </resources>
