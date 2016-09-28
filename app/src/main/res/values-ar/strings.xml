@@ -59,5 +59,12 @@
     <string name="pref_header_data_sync"></string>
     <string name="search_author">مؤلف:</string>
     <string name="search_choose">اختار:</string>
-    <string name="search_creation_date"></string>
+    <string name="search_creation_date">تاريخ الانشاء</string>
+    <string name="search_enter_title">ادخل عنوان الكتاب</string>
+    <string name="search_from_year">من سنه</string>
+    <string name="search_publisher">الناشر</string>
+    <string name="search_title">عنوان</string>
+    <string name="search_to_year">لسنه</string>
+    <string name="search_enter_from_year">ادخل بدايه مجال السنوات</string>
+    <string name="search_enter_to_year">ادخل نهايه مجال السنوات</string>
 </resources>

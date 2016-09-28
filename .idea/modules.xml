@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/Main_frag.iml" filepath="$PROJECT_DIR$/Main_frag.iml" />
       <module fileurl="file://$PROJECT_DIR$/Main_frag1.iml" filepath="$PROJECT_DIR$/Main_frag1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Main_frag2.iml" filepath="$PROJECT_DIR$/Main_frag2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Main_frag22.iml" filepath="$PROJECT_DIR$/Main_frag22.iml" />
       <module fileurl="file://$PROJECT_DIR$/Main_frag_current.iml" filepath="$PROJECT_DIR$/Main_frag_current.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

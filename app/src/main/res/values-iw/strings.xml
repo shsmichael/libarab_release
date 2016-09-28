@@ -60,9 +60,9 @@
     <string name="search_author">סופר:</string>
     <string name="search_choose">בחר</string>
     <string name="search_creation_date">תאריך יצירה:</string>
-    <string name="search_enter_from_year">הכנס טווח סיום שנים</string>
+    <string name="search_enter_from_year">הכנס תחילת טווח שנים</string>
     <string name="search_enter_title">הכנס כותרת ספר:</string>
-    <string name="search_enter_to_year">הכנס תחילת טווח שנים</string>
+    <string name="search_enter_to_year">הכנס טווח סיום שנים</string>
     <string name="search_from_year">משנת:</string>
     <string name="search_publisher">מפרסם:</string>
     <string name="search_title">כותרת:</string>
