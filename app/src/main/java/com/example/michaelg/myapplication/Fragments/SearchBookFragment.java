@@ -82,12 +82,12 @@ public class SearchBookFragment extends Fragment {
 
                 switch (position){
                     case 0:
-                        tv_titleorauthor.setText("Title");
+                        tv_titleorauthor.setText(R.string.search_title);
                         _SEARCH_URL =   Params.server +"search/booktitle?";
                         str_serchby=true;
                         break;
                     case 1:
-                        tv_titleorauthor.setText("Author");
+                        tv_titleorauthor.setText(R.string.search_author);
                         _SEARCH_URL = Params.server +"search/bookauthor?";
                         str_serchby=false;
                     default:
@@ -102,24 +102,6 @@ public class SearchBookFragment extends Fragment {
                 // your code here
             }
         });
-
-        /*
-        searchby = (Switch) view.findViewById(R.id.switch2);
-        searchby.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if(searchby.isChecked())
-                {
-                    _SEARCH_URL =   Params.server +"search/booktitle?";
-                    str_serchby=true;
-                }
-                else
-                {
-                    _SEARCH_URL = Params.server +"search/bookauthor?";
-                    str_serchby=false;
-                }
-            }});
-
-        */
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

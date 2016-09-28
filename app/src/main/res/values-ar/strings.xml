@@ -17,7 +17,7 @@
     <string name="aboutTrivia2">تعليمات</string>
     <string name="about_details">האוסף מכיל אלפי ספרים, מגוון רחב של עיתונים מראשית המאה ה-20 וכ-200 כתבי עת ועיתונים בשפה הערבית, הפרסית והתורכית היוצאים לאור בימינו. בנוסף, קיים אוסף עשיר של כ-2,200 כתבי יד בערבית ובפרסית.</string>
     <string name="permission_rationale">محتاج اذن لجهات اتصال لتوفير اكمال بريد إلكتروني.</string>
-    <string name="menu">Menu</string>
+    <string name="menu">القائمة</string>
     <string-array name="Gender_array">
         <item>جنس</item>
         <item>ذكر</item>
@@ -27,6 +27,50 @@
         <item>عادي</item>
         <item>أمين مكتبة</item>
     </string-array>
+    <string-array name="searcharray">
+        <item>ابحث عن عنوان</item>
+        <item>ابحث عن مؤلف</item>
+    </string-array>
+
     <string name="app_name" translatable="false"></string>
-    <string name="menu_about"></string>
+    <string name="menu_about">الوصف</string>
+    <string name="action_settings">اعدادات</string>
+    <string name="menu_bibliography">المراجع</string>
+    <string name="menu_favorites">المواد المفضلة</string>
+    <string name="menu_search">بحث</string>
+
+    <string name="menu_settings">اعدادات</string>
+    <string name="menu_trivia">لعبة المعلومات</string>
+    <string name="navigation_drawer_close">اغلاق درج التنقل</string>
+    <string name="navigation_drawer_open">فتح درج التنقل</string>
+    <string name="pref_header_general">عام</string>
+    <string name="pref_header_notifications">اشعارات</string>
+    <string name="pref_ringtone_silent">صامت</string>
+    <string name="pref_title_add_friends_to_messages">اضافة اصدقاء للرسائل</string>
+    <string name="pref_title_display_name">الاسم المعروض</string>
+    <string name="pref_title_new_message_notifications">اشعارات رسالة جديدة</string>
+    <string name="pref_title_ringtone">النغمة</string>
+    <string name="pref_title_social_recommendations">السماح بالتوصيات الاجتماعية</string>
+    <string name="pref_title_sync_frequency">تردد التزامن</string>
+    <string name="pref_title_system_sync_settings">اعدادات تزامن النظام</string>
+    <string name="pref_title_vibrate">اهتزاز</string>
+    <string name="profile_age">العمر</string>
+    <string name="profile_first_name">الاسم الاول</string>
+    <string name="profile_game_score">نتيجة اللعبة</string>
+    <string name="profile_gender">الجنس</string>
+    <string name="profile_last_name">الاسم الاخير</string>
+    <string name="profile_user_name">اسم المستخدم</string>
+    <string name="title_activity_settings">اعدادات</string>
+    <string name="pref_description_social_recommendations">توصيات للاشخاص للتواصل[...]</string>
+    <string name="pref_header_data_sync"></string>
+    <string name="search_author">مؤلف:</string>
+    <string name="search_choose">اختار:</string>
+    <string name="search_creation_date">تاريخ الانشاء:</string>
+    <string name="search_enter_title">ادخل عنوان الكتاب:</string>
+    <string name="search_publisher">الناشر:</string>
+    <string name="search_title">عنوان:</string>
+    <string name="search_to_year">لسنه:</string>
+    <string name="search_enter_from_year">ادخل مجال السنوات:</string>
+    <string name="search_enter_to_year">ادخل مجال السنوات:</string>
+    <string name="search_from_year">من سنه:</string>
 </resources>

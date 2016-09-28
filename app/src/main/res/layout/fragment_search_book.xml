@@ -39,10 +39,11 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="1">
 
                 <TextView
-                    android:text="Title:"
+                    android:text="@string/search_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -51,12 +52,11 @@
                     android:fontFamily="sans-serif" />
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="255dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
-                    android:hint="Enter Title"
-                    android:text="تاريخ"
-                    android:layout_weight="1" />
+                    android:hint="@string/search_enter_title"
+                    android:text="تاريخ" />
 
             </LinearLayout>
 
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="From Year:"
+                    android:text="@string/search_from_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/fromyear_editText"
-                    android:hint="Enter from year" />
+                    android:hint="@string/search_enter_from_year" />
 
             </LinearLayout>
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="To Year:"
+                    android:text="@string/search_to_year"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/toYear_editText"
-                    android:hint="Enter to year" />
+                    android:hint="@string/search_enter_to_year" />
             </LinearLayout>
 
         </LinearLayout>
@@ -134,13 +134,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="searchfunct"
-                android:text="Go!"
+                android:text="@string/menu_search"
                 android:id="@+id/searchbtn"
                 android:layout_gravity="right"
                 android:background="@drawable/ripplesearch"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                style="@android:style/Widget.Material.Button.Colored" />
+                 />
         </LinearLayout>
 
         <FrameLayout
