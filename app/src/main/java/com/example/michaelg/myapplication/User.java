@@ -13,6 +13,7 @@ public class User implements Serializable{
     String bday;
     String userType;
     String username;
+    String userid;
     Boolean isWantToPlay;
 
     public Boolean getWantToPlay() {
@@ -41,15 +42,17 @@ public class User implements Serializable{
         userType="0";
         username="Guest User";
         isWantToPlay=false;
+        userid="id";
     }
 
-    public User(String firstname, String lastname, String gender, String bday, String userType, String username) {
+    public User(String firstname, String lastname, String gender, String bday, String userType, String username,String userid) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
         this.bday = bday;
         this.userType = userType;
         this.username = username;
+        this.userid=userid;
     }
 
     public String getFirstname() {
@@ -58,6 +61,14 @@ public class User implements Serializable{
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getuserid() {
+        return userid;
+    }
+
+    public void setuserid(String firstname) {
+        this.userid = userid;
     }
 
     public String getLastname() {
