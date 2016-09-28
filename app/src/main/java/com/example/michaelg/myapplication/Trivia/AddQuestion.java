@@ -1,7 +1,11 @@
 package com.example.michaelg.myapplication.Trivia;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +14,18 @@ import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AddQuestion extends AppCompatActivity {
     EditText question;
@@ -20,7 +35,7 @@ public class AddQuestion extends AppCompatActivity {
     EditText uncorrect3;
     Button addQuestionButton;
 
-    //private UserLoginTask mAuthTask = null;
+    private AddQTask addQueTask = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,15 +100,15 @@ public class AddQuestion extends AppCompatActivity {
             //Toast.makeText(AddQuestion.this, "yes", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), Progress.class);
             startActivity(intent);
-            //mAuthTask = new UserLoginTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3);
-            // mAuthTask.execute((Void) null);
+            //addQueTask = new AddQTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3);
+            // addQueTask.execute((Void) null);
         }
     }
 
 
 /***************************************************************************/
-/*
-    public class UserLoginTask extends AsyncTask<Void, Void, JSONObject> {
+
+    public class AddQTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String question1;
         private final String correct1;
@@ -101,7 +116,7 @@ public class AddQuestion extends AppCompatActivity {
         private final String uncorrect21;
         private final String uncorrect31;
 
-        UserLoginTask(String q, String cor,String wrong1,String wrong2,String wrong3) {
+        AddQTask(String q, String cor,String wrong1,String wrong2,String wrong3) {
             question1=q;
             correct1=cor;
             uncorrect11=wrong1;
@@ -109,7 +124,6 @@ public class AddQuestion extends AppCompatActivity {
             uncorrect31=wrong3;
         }
 
-        @Override
         protected JSONObject doInBackground(Void... params) {
 
             if (params.length == 0) {
@@ -125,7 +139,7 @@ public class AddQuestion extends AppCompatActivity {
 
             try {
                 final String FORECAST_BASE_URL =
-                        Params.server + "signIn/doSignIn?";
+                        Params.getServer() + "signIn/doSignIn?";
 
                 final String QUESTION = "question";
                 final String CORRECT_ANSWER = "correct answer";
@@ -172,7 +186,7 @@ public class AddQuestion extends AppCompatActivity {
                 Log.d("PROBLEM", serverJsonStr);
 
             } catch (IOException e) {
-                Log.e("LOGE", "Error ", e);
+
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
@@ -205,9 +219,8 @@ public class AddQuestion extends AppCompatActivity {
         ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
         @Override
         protected void onPostExecute(final JSONObject success) {
-            mAuthTask = null;
+            addQueTask = null;
 
-            showProgress(false);
             String answer = null;
             try {
                 answer = success.getString("client reply");
@@ -216,9 +229,9 @@ public class AddQuestion extends AppCompatActivity {
             }
 
             if (answer.equals("success")) {  //case the user does'nt exist
-                showProgress(false);
+
                 finish();
-                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                Intent intent = new Intent(getApplicationContext(), Progress.class);
                 startActivity(intent);
 
             } else {   // case failed
@@ -232,11 +245,11 @@ public class AddQuestion extends AppCompatActivity {
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
+            addQueTask = null;
+
         }
     }
-*/
+
 
 
 
