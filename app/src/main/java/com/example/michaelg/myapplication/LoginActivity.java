@@ -326,7 +326,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-
     public void textViewSignUp(View view) {
         Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
@@ -485,14 +484,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 User user = new User();
                 try {
-                    user.setFirstname(my.getString("firstname"));
 
-                user.setLastname(tmp.getString("lastname"));
-                user.setGender(tmp.getString("gender"));
-                user.setUsername(tmp.getString("username"));
-                user.setUserType(tmp.getString("userType"));
-                user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
-                user.setBday(tmp.getString("bday"));
+                    user.setFirstname(my.getString("firstname"));
+                    user.setLastname(my.getString("lastname"));
+                    user.setGender(my.getString("gender"));
+                    user.setUsername(my.getString("username"));
+                    user.setUserType(my.getString("userType"));
+                    user.setWantToPlay(my.getBoolean("isWantToPlay"));
+                    user.setBday(my.getString("bday"));
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
