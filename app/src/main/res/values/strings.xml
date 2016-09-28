@@ -42,8 +42,8 @@
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
     <string name="search_title">Title:   </string>
-    <string name="search_from_year">From Year:   </string>
-    <string name="search_to_year">To Year:   </string>
+    <string name="search_from_year">From year:   </string>
+    <string name="search_to_year">To year:   </string>
     <string name="search_enter_title">Enter Title</string>
     <string name="search_enter_from_year">Enter From Year</string>
     <string name="search_enter_to_year">Enter To Year</string>

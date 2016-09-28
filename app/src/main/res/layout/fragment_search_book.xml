@@ -79,8 +79,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/fromyear_editText"
-                    android:hint="@string/search_enter_from_year" />
+                    android:id="@+id/fromyear_editText" />
 
             </LinearLayout>
 
@@ -101,8 +100,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/toYear_editText"
-                    android:hint="@string/search_enter_to_year" />
+                    android:id="@+id/toYear_editText" />
             </LinearLayout>
 
         </LinearLayout>
