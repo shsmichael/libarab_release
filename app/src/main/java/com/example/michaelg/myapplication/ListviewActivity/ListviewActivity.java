@@ -58,7 +58,7 @@ public class ListviewActivity extends Activity {
         new JSONAsyncTask().execute(myURL);
 
         ListView listview = (ListView)findViewById(R.id.list);
-        adapter = new bookAdapter(getApplicationContext(), R.layout.row, bookList);
+        adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
 
         listview.setAdapter(adapter);
 

@@ -77,13 +77,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         setContentView(R.layout.activity_view_pager);
         etchange =(EditText)findViewById(R.id.et_changepage);
         textView1=(TextView) findViewById(R.id.textView);
-        discreteSeekBar1 = (DiscreteSeekBar) findViewById(R.id.discrete3);
-        discreteSeekBar1.setNumericTransformer(new DiscreteSeekBar.NumericTransformer() {
-            @Override
-            public int transform(int value) {
-                return value * 100;
-            }
-        });
+
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {

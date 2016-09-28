@@ -41,16 +41,16 @@
     <string name="profile_age">Age:</string>
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
-    <string name="search_title">Title:</string>
-    <string name="search_from_year">From Year:</string>
-    <string name="search_to_year">To Year:</string>
+    <string name="search_title">Title:   </string>
+    <string name="search_from_year">From Year:   </string>
+    <string name="search_to_year">To Year:   </string>
     <string name="search_enter_title">Enter Title</string>
     <string name="search_enter_from_year">Enter From Year</string>
     <string name="search_enter_to_year">Enter To Year</string>
     <string name="search_choose">Choose</string>
-    <string name="search_creation_date">Creation Date:</string>
-    <string name="search_author">Author:</string>
-    <string name="search_publisher">Publisher:</string>
+    <string name="search_creation_date">Creation Date:  </string>
+    <string name="search_author">Author:    </string>
+    <string name="search_publisher">Publisher:  </string>
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

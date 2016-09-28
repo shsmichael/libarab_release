@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class bookAdapter extends ArrayAdapter<Book> {
-    ArrayList<Book> actorList;
+    ArrayList<Book> bookList;
     LayoutInflater vi;
     int Resource;
     ViewHolder holder;
@@ -29,7 +29,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
         vi = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Resource = resource;
-        actorList = objects;
+        bookList = objects;
     }
 
     @Override
@@ -50,11 +50,11 @@ public class bookAdapter extends ArrayAdapter<Book> {
         }
         //holder.imageview.setImageResource(R.drawable.ic_launcher);
         //new DownloadImageTask(holder.imageview).execute(actorList.get(position).getImage());
-        holder.title.setText(actorList.get(position).getTitle());
+        holder.title.setText(bookList.get(position).getTitle());
         //holder.tvDescription.setText(actorList.get(position).getDescription());
-        holder.creationdate.setText( actorList.get(position).getCreationdate());
-        holder.publisher.setText(actorList.get(position).getPublisher());
-        holder.author.setText(actorList.get(position).getAuthor());
+        holder.creationdate.setText( bookList.get(position).getCreationdate());
+        holder.publisher.setText(bookList.get(position).getPublisher());
+        holder.author.setText(bookList.get(position).getAuthor());
         return v;
 
     }
