@@ -8,17 +8,10 @@
     <string name="aboutTrivia2">About</string>
 <string name="aboutTrivia">There are two options for the game, the user can create a quiz of 5 questions, or he can solve an existed quiz of 5 questions and gets 3 points for each correct answer. </string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="about_details">Libarab app gives you access to archives of the  National Library Of Israel
-    This app was ment to give access to the vast archive of the National Library.
-        The Main features of this app are:
-         Searching books on the archive,
-         viewing book
-         adding books to a favorite list
-         maintaning a bibilography list for specail schollar tasks.
-         this app should be usefull for people such as: Students,Resarchers,Librians .
-        This app being developed by a team of student at the University Of Haifa
-        and led by Tsofen Organiztion.
-    </string>
+    <string name="about_details">LibArab app gives you an access to data of the NATIONAL LIBRARY OF ISREAL.
+    Use LibArab to:
+    Search and read books in different topics.
+    Create your own bibliography and use it for home works and researches.</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -42,18 +35,22 @@
     <string name="menu_settings">Settings</string>
     <string name="menu">Menu</string>
     <string name="profile_user_name">User Name</string>
-    <string name="profile_user_email">useremail@gmail.com</string>
+    <string name="profile_user_email" translatable="false">useremail@gmail.com</string>
     <string name="profile_first_name">First Name:</string>
     <string name="profile_last_name">Last Name:</string>
     <string name="profile_age">Age:</string>
     <string name="profile_gender">Gender:</string>
     <string name="profile_game_score">Game Score:</string>
-    <string name="title">Title:</string>
-    <string name="fromyear">From Year:</string>
-    <string name="toyear">To Year:</string>
-    <string name="go">Go!</string>
-
-
+    <string name="search_title">Title:</string>
+    <string name="search_from_year">From Year:</string>
+    <string name="search_to_year">To Year:</string>
+    <string name="search_enter_title">Enter Title</string>
+    <string name="search_enter_from_year">Enter From Year</string>
+    <string name="search_enter_to_year">Enter To Year</string>
+    <string name="search_choose">Choose</string>
+    <string name="search_creation_date">Creation Date:</string>
+    <string name="search_author">Author:</string>
+    <string name="search_publisher">Publisher:</string>
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -95,7 +92,7 @@
     </string>
 
     <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_example_list_titles">
