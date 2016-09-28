@@ -17,4 +17,14 @@
     <color name="colorSettings">#735ec7ed</color>
     <color name="gradient_start1">#ffffff</color>
     <color name="gradient_end1">#c7c7c7</color>
+
+
+
+    <color name="book_item_points">#fbbc05</color>
+    <color name="book_item_price_bg">#fbbc05</color>
+    <color name="book_item_textpricecolor">#ffffff</color>
+    <color name="book_item_texttitlecolor">#111111</color>
+    <color name="book_item_textcontentcolor">#444444</color>
+    <color name="boo_item_icon">#bcbcbc</color>
+
 </resources>
