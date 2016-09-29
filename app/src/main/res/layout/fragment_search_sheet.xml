@@ -3,25 +3,19 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="100"
-    android:background="@drawable/search_sheet_background">
+    android:background="@drawable/search_book_background">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:paddingTop="50dp">
+        android:paddingTop="25dp">
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
-            <Switch
-                android:text="@string/search_choose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/switch2"
-                android:layout_weight="1" />
 
 
         </LinearLayout>
@@ -33,33 +27,38 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_weight="0.8"
+            android:layout_height="223dp"
+            android:layout_weight="0.80"
             android:weightSum="1">
 
-
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/textview_tag_bg"
+                android:id="@+id/spinner" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:paddingTop="60dp">
 
                 <TextView
                     android:text="@string/search_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:id="@+id/title"
+                    android:id="@+id/tv_title"
+                    android:background="@drawable/textview_tag_bg"
                     android:fontFamily="sans-serif" />
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="255dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
-                    android:hint="Enter Title"
-                    android:text="تاريخ"
-                    android:layout_weight="1" />
+                    android:hint="@string/search_enter_title"
+                    android:text="تاريخ" />
 
             </LinearLayout>
 
@@ -72,16 +71,15 @@
                     android:text="@string/search_from_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:textColor="@color/black"
+                    android:background="@drawable/textview_tag_bg"
                     android:id="@+id/fromyear"
                     android:fontFamily="sans-serif" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/fromyear_editText"
-                    android:hint="@string/search_enter_from_year" />
+                    android:id="@+id/fromyear_editText" />
 
             </LinearLayout>
 
@@ -94,16 +92,15 @@
                     android:text="@string/search_to_year"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:textColor="@color/black"
+                    android:background="@drawable/textview_tag_bg"
                     android:fontFamily="sans-serif"
                     android:id="@+id/toyear" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/toYear_editText"
-                    android:hint="@string/search_enter_to_year" />
+                    android:id="@+id/toYear_editText" />
             </LinearLayout>
 
         </LinearLayout>
@@ -141,9 +138,9 @@
                 android:id="@+id/searchbtn"
                 android:layout_gravity="right"
                 android:background="@drawable/ripplesearch"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textStyle="bold"
-                style="@android:style/Widget.Material.Button.Colored" />
+                />
         </LinearLayout>
 
         <FrameLayout
