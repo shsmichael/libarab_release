@@ -35,20 +35,20 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/userRank"
                 android:text="1" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/userName"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="USER NAME" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/userScore"
 
@@ -85,20 +85,20 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/rank1"
                 android:text="1" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name1"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Rabeea" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score1"
 
@@ -110,21 +110,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/rank2"
 
                 android:text="2" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name2"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Bader" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score2"
 
@@ -135,21 +135,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rank3"
 
                 android:layout_weight="1"
                 android:text="3" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name3"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="mohammed" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score3"
 
@@ -163,21 +163,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
             android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rank4"
 
                 android:layout_weight="1"
                 android:text="4" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name4"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="dania" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score4"
 
@@ -189,21 +189,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/rank5"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="5" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name5"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="nadine" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score5"
 
@@ -214,21 +214,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/rank6"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="6" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name6"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Rrrr" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/score6"
@@ -239,21 +239,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/rank7"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="7" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name7"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="eee" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score7"
 
@@ -264,21 +264,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/rank8"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="8" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name8"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="tttt" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score8"
 
@@ -289,21 +289,21 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rank9"
 
                 android:layout_weight="1"
                 android:text="9" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/name9"
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="zzzz" />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/score9"
 
@@ -314,14 +314,14 @@ tools:context="com.example.mohamed.ourapp.Leader">
         <TableRow
             android:background="#ECEFF1"
             android:padding="5dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rank10"
 
                 android:layout_weight="1"
                 android:text="10" />
-            <EditText
+            <TextView
 
                 android:layout_width="wrap_content"
                 android:id="@+id/name10"
@@ -329,7 +329,7 @@ tools:context="com.example.mohamed.ourapp.Leader">
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="xxxx" />
-            <EditText
+            <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
