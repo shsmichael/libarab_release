@@ -232,7 +232,7 @@ public class Leader extends AppCompatActivity {
             //else Toast.makeText(getApplicationContext(),"done", Toast.LENGTH_LONG).show();
 
             else {
-                 Toast.makeText(getApplicationContext(),leaders.toString(), Toast.LENGTH_LONG).show();
+
                 String jsonRank1;
                 String jsonRank2;
                 String jsonRank3;
@@ -276,10 +276,12 @@ public class Leader extends AppCompatActivity {
                     JSONArray leadersArray = leaders.getJSONArray("Leaders");
 
 
+
                     JSONObject perUser1 = leadersArray.getJSONObject(1);
                     jsonRank1 = perUser1.getString("rank");
                     jsonScore1 = perUser1.getString("score");
                     jsonName1 = perUser1.getString("name");
+                    Toast.makeText(getApplicationContext(),jsonName1, Toast.LENGTH_LONG).show();
 
                     JSONObject perUser2 = leadersArray.getJSONObject(2);
                     jsonRank2 = perUser2.getString("rank");
@@ -301,7 +303,7 @@ public class Leader extends AppCompatActivity {
                     jsonScore5 = perUser5.getString("score");
                     jsonName5 = perUser5.getString("name");
 
-                    JSONObject perUser6 = leadersArray.getJSONObject(6);
+                   /* JSONObject perUser6 = leadersArray.getJSONObject(6);
                     jsonRank6 = perUser6.getString("rank");
                     jsonScore6 = perUser6.getString("score");
                     jsonName6 = perUser6.getString("name");
@@ -329,7 +331,7 @@ public class Leader extends AppCompatActivity {
                     JSONObject perUser0 = leadersArray.getJSONObject(0);
                     jsonUserRank = perUser0.getString("rank");
                     jsonUserScore = perUser0.getString("score");
-                    jsonUserName = perUser0.getString("name");
+                    jsonUserName = perUser0.getString("name");*/
 
 
                     rank1.setText(jsonRank1);
@@ -337,37 +339,37 @@ public class Leader extends AppCompatActivity {
                     rank3.setText(jsonRank3);
                     rank4.setText(jsonRank4);
                     rank5.setText(jsonRank5);
-                    rank6.setText(jsonRank6);
+                   /* rank6.setText(jsonRank6);
                     rank7.setText(jsonRank7);
                     rank8.setText(jsonRank8);
                     rank9.setText(jsonRank9);
-                    rank10.setText(jsonRank10);
+                    rank10.setText(jsonRank10);*/
 
                     name1.setText(jsonName1);
                     name2.setText(jsonName2);
                     name3.setText(jsonName3);
                     name4.setText(jsonName4);
                     name5.setText(jsonName5);
-                    name6.setText(jsonName6);
+                   /* name6.setText(jsonName6);
                     name7.setText(jsonName7);
                     name8.setText(jsonName8);
                     name9.setText(jsonName9);
-                    name10.setText(jsonName10);
+                    name10.setText(jsonName10);*/
 
                     score1.setText(jsonScore1);
                     score2.setText(jsonScore2);
                     score3.setText(jsonScore3);
                     score4.setText(jsonScore4);
                     score5.setText(jsonScore5);
-                    score6.setText(jsonScore6);
+                   /* score6.setText(jsonScore6);
                     score7.setText(jsonScore7);
                     score8.setText(jsonScore8);
                     score9.setText(jsonScore9);
-                    score10.setText(jsonScore10);
+                    score10.setText(jsonScore10);*/
 
-                    userRank1.setText(jsonUserRank);
+                  /*  userRank1.setText(jsonUserRank);
                     userName1.setText(jsonUserName);
-                    userScore1.setText(jsonUserScore);
+                    userScore1.setText(jsonUserScore);*/
 
 
                     //String id = c.getString("id");
