@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
 
@@ -40,7 +41,7 @@ public class SearchSheetFragment extends Fragment {
     public SearchSheetFragment() {
         // Required empty public constructor
     }
-
+    User user = new User ();
     private EditText title ,
             fromyear ,
             toyear;
@@ -74,12 +75,12 @@ public class SearchSheetFragment extends Fragment {
                 switch (position){
                     case 0:
                         tv_titleorauthor.setText("Title");
-                        _SEARCH_URL =   Params.server +"search/booktitle?";
+                        _SEARCH_URL =   Params.server +"search/sheettitle?";
                         str_serchby=true;
                         break;
                     case 1:
                         tv_titleorauthor.setText("Author");
-                        _SEARCH_URL = Params.server +"search/bookauthor?";
+                        _SEARCH_URL = Params.server +"search/sheetauthor?";
                         str_serchby=false;
                     default:
                         break;
