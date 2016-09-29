@@ -74,12 +74,12 @@ public class SearchSheetFragment extends Fragment {
             {
                 switch (position){
                     case 0:
-                        tv_titleorauthor.setText("Title");
+                        tv_titleorauthor.setText(R.string.sheet_title);
                         _SEARCH_URL =   Params.server +"search/sheettitle?";
                         str_serchby=true;
                         break;
                     case 1:
-                        tv_titleorauthor.setText("Author");
+                        tv_titleorauthor.setText(R.string.search_author);
                         _SEARCH_URL = Params.server +"search/sheetauthor?";
                         str_serchby=false;
                     default:
