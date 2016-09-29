@@ -71,4 +71,7 @@
     <string name="search_publisher">מפרסם:</string>
     <string name="search_title">כותרת:</string>
     <string name="search_to_year">עד שנה:</string>
+    <string name="search_sheet">גליון</string>
+    <string name="search_book">ספר</string>
+    <string name="sheet_title">כותרת:</string>
 </resources>

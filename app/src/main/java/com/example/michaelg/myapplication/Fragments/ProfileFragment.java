@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       // user= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+
         user= (User) getActivity().getIntent().getSerializableExtra("user");
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 

@@ -71,6 +71,12 @@ public class ListviewActivity extends Activity {
                 Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
+                intent1.putExtra("author",bookList.get(position).getAuthor());
+                intent1.putExtra("title",bookList.get(position).getTitle());
+                intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
+                intent1.putExtra("publisher",bookList.get(position).getPublisher());
+                intent1.putExtra("webLink",bookList.get(position).getWeblink());
+                intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);
@@ -78,7 +84,6 @@ public class ListviewActivity extends Activity {
             }
         });
     }
-
 
     class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
@@ -131,6 +136,8 @@ public class ListviewActivity extends Activity {
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
+                        currentbook.setWeblink(object.getString("webLink"));
+                        currentbook.setSource(object.getString("source"));
                      //   currentbook.setThumbnail(object.getString());
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
                         bookList.add(currentbook);
@@ -158,7 +165,4 @@ public class ListviewActivity extends Activity {
 
         }
     }
-
-
-
 }

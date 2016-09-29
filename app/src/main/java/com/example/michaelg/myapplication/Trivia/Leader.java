@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
@@ -28,42 +28,42 @@ public class Leader extends AppCompatActivity {
     String userId;
     private LeaderBoardTask userRank; //= null;
 
-    EditText rank1;
-    EditText rank2;
-    EditText rank3;
-    EditText rank4;
-    EditText rank5;
-    EditText rank6;
-    EditText rank7;
-    EditText rank8;
-    EditText rank9;
-    EditText rank10;
+    TextView rank1;
+    TextView rank2;
+    TextView rank3;
+    TextView rank4;
+    TextView rank5;
+    TextView rank6;
+    TextView rank7;
+    TextView rank8;
+    TextView rank9;
+    TextView rank10;
 
-    EditText name1;
-    EditText name2;
-    EditText name3;
-    EditText name4;
-    EditText name5;
-    EditText name6;
-    EditText name7;
-    EditText name8;
-    EditText name9;
-    EditText name10;
+    TextView name1;
+    TextView name2;
+    TextView name3;
+    TextView name4;
+    TextView name5;
+    TextView name6;
+    TextView name7;
+    TextView name8;
+    TextView name9;
+    TextView name10;
 
-    EditText score1;
-    EditText score2;
-    EditText score3;
-    EditText score4;
-    EditText score5;
-    EditText score6;
-    EditText score7;
-    EditText score8;
-    EditText score9;
-    EditText score10;
+    TextView score1;
+    TextView score2;
+    TextView score3;
+    TextView score4;
+    TextView score5;
+    TextView score6;
+    TextView score7;
+    TextView score8;
+    TextView score9;
+    TextView score10;
 
-    EditText userRank1;
-    EditText  userName1;
-    EditText userScore1;
+    TextView userRank1;
+    TextView  userName1;
+    TextView userScore1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,43 +80,43 @@ public class Leader extends AppCompatActivity {
         userId = myuser.getuserid();
         userRank=new LeaderBoardTask(userId);
 
-        rank1=(EditText) findViewById(R.id.rank1);
-        rank2=(EditText) findViewById(R.id.rank2);
-        rank3=(EditText) findViewById(R.id.rank3);
-        rank4=(EditText) findViewById(R.id.rank4);
-        rank5=(EditText) findViewById(R.id.rank5);
-        rank6=(EditText) findViewById(R.id.rank6);
-        rank7=(EditText) findViewById(R.id.rank7);
-        rank8=(EditText) findViewById(R.id.rank8);
-        rank9=(EditText) findViewById(R.id.rank9);
-        rank10=(EditText) findViewById(R.id.rank10);
+        rank1=(TextView) findViewById(R.id.rank1);
+        rank2=(TextView) findViewById(R.id.rank2);
+        rank3=(TextView) findViewById(R.id.rank3);
+        rank4=(TextView) findViewById(R.id.rank4);
+        rank5=(TextView) findViewById(R.id.rank5);
+        rank6=(TextView) findViewById(R.id.rank6);
+        rank7=(TextView) findViewById(R.id.rank7);
+        rank8=(TextView) findViewById(R.id.rank8);
+        rank9=(TextView) findViewById(R.id.rank9);
+        rank10=(TextView) findViewById(R.id.rank10);
 
-        name1=(EditText) findViewById(R.id.name1);
-        name2=(EditText) findViewById(R.id.name2);
-        name3=(EditText) findViewById(R.id.name3);
-        name4=(EditText) findViewById(R.id.name4);
-        name5=(EditText) findViewById(R.id.name5);
-        name6=(EditText) findViewById(R.id.name6);
-        name7=(EditText) findViewById(R.id.name7);
-        name8=(EditText) findViewById(R.id.name8);
-        name9=(EditText) findViewById(R.id.name9);
-        name10=(EditText) findViewById(R.id.name10);
+        name1=(TextView) findViewById(R.id.name1);
+        name2=(TextView) findViewById(R.id.name2);
+        name3=(TextView) findViewById(R.id.name3);
+        name4=(TextView) findViewById(R.id.name4);
+        name5=(TextView) findViewById(R.id.name5);
+        name6=(TextView) findViewById(R.id.name6);
+        name7=(TextView) findViewById(R.id.name7);
+        name8=(TextView) findViewById(R.id.name8);
+        name9=(TextView) findViewById(R.id.name9);
+        name10=(TextView) findViewById(R.id.name10);
 
-        score1=(EditText) findViewById(R.id.score1);
-        score2=(EditText) findViewById(R.id.score2);
-        score3=(EditText) findViewById(R.id.score3);
-        score4=(EditText) findViewById(R.id.score4);
-        score5=(EditText) findViewById(R.id.score5);
-        score6=(EditText) findViewById(R.id.score6);
-        score7=(EditText) findViewById(R.id.score7);
-        score8=(EditText) findViewById(R.id.score8);
-        score9=(EditText) findViewById(R.id.score9);
-        score10=(EditText) findViewById(R.id.score10);
+        score1=(TextView) findViewById(R.id.score1);
+        score2=(TextView) findViewById(R.id.score2);
+        score3=(TextView) findViewById(R.id.score3);
+        score4=(TextView) findViewById(R.id.score4);
+        score5=(TextView) findViewById(R.id.score5);
+        score6=(TextView) findViewById(R.id.score6);
+        score7=(TextView) findViewById(R.id.score7);
+        score8=(TextView) findViewById(R.id.score8);
+        score9=(TextView) findViewById(R.id.score9);
+        score10=(TextView) findViewById(R.id.score10);
 
 
-        userRank1=(EditText) findViewById(R.id.userRank);
-        userName1=(EditText) findViewById(R.id.userName);
-        userScore1=(EditText) findViewById(R.id.userScore);
+        userRank1=(TextView) findViewById(R.id.userRank);
+        userName1=(TextView) findViewById(R.id.userName);
+        userScore1=(TextView) findViewById(R.id.userScore);
         userRank.execute((Void) null);
 
 
