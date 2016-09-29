@@ -51,6 +51,9 @@
     <string name="search_creation_date">Creation Date:  </string>
     <string name="search_author">Author:    </string>
     <string name="search_publisher">Publisher:  </string>
+    <string name="settings_chose_lang">Click To Choose Language</string>
+    <string name="settings_lang">Language</string>
+
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
