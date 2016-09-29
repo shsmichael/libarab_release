@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,13 +54,18 @@ public class AddQuestion extends AppCompatActivity {
         String question1 = question.getText().toString();
 
         addQuestionButton = (Button) findViewById(R.id.button);
+        Intent intent = getIntent();
+        final String myuserid =(String) intent.getSerializableExtra("userid");
+        final String thisItemid =(String) intent.getSerializableExtra("itemid");
+        final String thisAuther =(String) intent.getSerializableExtra("auther");
+        final String thisItemName =(String) intent.getSerializableExtra("itemname");
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //EditText question = (EditText) findViewById(R.id.question_text);
                 //String question1 = question.getText().toString();
                 //Toast.makeText(AddQuestion.this, question1, Toast.LENGTH_LONG).show();
-                attemptAddQuestion();
+                attemptAddQuestion(myuserid,thisItemid,thisAuther,thisItemName);
             }
         });
 
@@ -68,7 +74,7 @@ public class AddQuestion extends AppCompatActivity {
     }
 
 
-    private void attemptAddQuestion(){
+    private void attemptAddQuestion(String userID, String itemId, String auther,String itemName){
         String question1 = question.getText().toString();
         String correctAns=correct.getText().toString();
         String wrongAns1=uncorrect1.getText().toString();
@@ -98,10 +104,11 @@ public class AddQuestion extends AppCompatActivity {
             Toast.makeText(AddQuestion.this,  "space", Toast.LENGTH_LONG).show();
         if(flag==0) {
             //Toast.makeText(AddQuestion.this, "yes", Toast.LENGTH_LONG).show();
+            addQueTask = new AddQTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3,userID,itemId,auther, itemName);
+            addQueTask.execute((Void) null);
             Intent intent = new Intent(getApplicationContext(), Progress.class);
             startActivity(intent);
-            //addQueTask = new AddQTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3);
-            // addQueTask.execute((Void) null);
+
         }
     }
 
@@ -115,13 +122,23 @@ public class AddQuestion extends AppCompatActivity {
         private final String uncorrect11;
         private final String uncorrect21;
         private final String uncorrect31;
+        private final String userid;
+        private final String itemid;
+        private final String auther;
+        private final String itemname;
 
-        AddQTask(String q, String cor,String wrong1,String wrong2,String wrong3) {
+
+        AddQTask(String q, String cor,String wrong1,String wrong2,String wrong3,String user,String item,String auther1,String itemName) {
             question1=q;
             correct1=cor;
             uncorrect11=wrong1;
             uncorrect21=wrong2;
             uncorrect31=wrong3;
+            userid=user;
+            itemid=item;
+            auther=auther1;
+            itemname=itemName;
+
         }
 
         protected JSONObject doInBackground(Void... params) {
@@ -138,14 +155,19 @@ public class AddQuestion extends AppCompatActivity {
             String format = "json";
 
             try {
+                //change
                 final String FORECAST_BASE_URL =
                         Params.getServer() + "signIn/doSignIn?";
 
                 final String QUESTION = "question";
-                final String CORRECT_ANSWER = "correct answer";
-                final String UNCORRECT_ANSWER1 = "uncorrect answer 1";
-                final String UNCORRECT_ANSWER2 = "uncorrect answer 2";
-                final String UNCORRECT_ANSWER3 = "uncorrect answer 3";
+                final String CORRECT_ANSWER = "answer1";
+                final String UNCORRECT_ANSWER1 = "answer2";
+                final String UNCORRECT_ANSWER2 = "answer3";
+                final String UNCORRECT_ANSWER3 = "answer4";
+                final String USER_ID = "userid";
+                final String ITEM_ID = "itemid";
+                final String AUTHER = "auther";
+                final String ITEM_NAME = "itemname";
 
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
@@ -154,6 +176,10 @@ public class AddQuestion extends AppCompatActivity {
                         .appendQueryParameter(UNCORRECT_ANSWER1, uncorrect11)
                         .appendQueryParameter(UNCORRECT_ANSWER2, uncorrect21)
                         .appendQueryParameter(UNCORRECT_ANSWER3, uncorrect31)
+                        .appendQueryParameter(USER_ID, userid)
+                        .appendQueryParameter(ITEM_ID, itemid)
+                        .appendQueryParameter(AUTHER, auther)
+                        .appendQueryParameter(ITEM_NAME, itemname)
                         .build();
 
                 URL url = new URL(builtUri.toString());
