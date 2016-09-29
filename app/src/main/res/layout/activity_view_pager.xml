@@ -13,13 +13,31 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         >
-
         <com.github.ivbaranov.mfb.MaterialFavoriteButton
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
             android:layout_gravity="left" />
+
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView28"
+            tools:layout_width="match_parent"
+            tools:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView11"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/book_info"
+            android:layout_marginRight="10dp"
+            android:onClick="bookinfo" />
 
         <TextView
             android:layout_width="150dp"
@@ -32,40 +50,20 @@
             android:textColor="#ffffff"
             android:textSize="25dp" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/imageView11"
-            android:layout_gravity="right|center_vertical"
-            android:src="@drawable/book_info"
-            android:layout_marginRight="10dp"
-            android:onClick="bookinfo" />
-
     </FrameLayout>
-
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textView28"
-        tools:layout_width="match_parent"
-        tools:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"
-        />
 
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/vp_gallery"
         android:layout_width="match_parent"
         android:layout_height="427dp"
-        android:layout_weight="0.87" >
+        >
 
         <TextView
             android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView27" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView13" />
     </android.support.v4.view.ViewPager>
 
 
