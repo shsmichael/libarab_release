@@ -2,9 +2,13 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.animation.Animator;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -249,11 +253,44 @@ public class MenuFragment extends Fragment {
             }
         });
 
-
-
         return myview;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+
+//                    getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+//                    MenuFragment menufragment = new MenuFragment();
+//                    FragmentManager manager = getActivity().getSupportFragmentManager();
+//                    Bundle bundle = new Bundle();
+//                    //bundle.putInt("Type", userType);
+//                    menufragment.setArguments(bundle);
+//                    manager.beginTransaction().replace(R.id.fragment_main,
+//                            menufragment,
+//                            menufragment.getTag()
+//                    ).commit();
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 
 
 }
