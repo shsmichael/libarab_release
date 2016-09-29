@@ -3,13 +3,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1"
-    android:background="@color/accent_material_light">
+    android:background="@color/colorAccent">
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/accent_material_light"
+        android:background="@color/colorAccent"
         android:focusable="false" >
 
         <TextView
