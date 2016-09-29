@@ -31,12 +31,12 @@
                 android:textStyle="bold"
                 android:textColor="?android:attr/colorBackground" />
 
-            <ImageView
-                android:layout_width="147dp"
-                android:layout_height="93dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/menu_profile_pict"
-                android:layout_gravity="left|center_vertical" />
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/img_circular_profile_user"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/userprofilefinal"
+                android:layout_centerInParent="true" />
 
             <TextView
                 android:layout_width="176dp"
