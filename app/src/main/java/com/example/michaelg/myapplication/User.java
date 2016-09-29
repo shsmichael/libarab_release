@@ -1,7 +1,6 @@
 package com.example.michaelg.myapplication;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Misho on 9/21/2016.

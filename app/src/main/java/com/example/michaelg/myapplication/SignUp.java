@@ -245,7 +245,6 @@ public class SignUp extends AppCompatActivity {
                 Uri builtUri = Uri.parse(Server_BASE_URL).buildUpon()
                         .appendQueryParameter(USER_PARAM, mEmail)
                         .appendQueryParameter(PASS_PARAM, mPassword)
-                        .appendQueryParameter(BDAY_PARAM,"04-07-1986")
                         .build();
                 if (!mFirstname.isEmpty()) {
                     builtUri = Uri.parse(builtUri.toString()).buildUpon()

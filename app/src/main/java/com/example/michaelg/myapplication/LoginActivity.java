@@ -174,7 +174,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void loginGuest() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         User guestuser= new User();
-
         intent.putExtra("user", guestuser);
         startActivity(intent);
 
@@ -407,7 +406,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
 
                 serverJsonStr = buffer.toString();
-                Log.d("EmilisWromg", serverJsonStr);
+                Log.d("EmilisWrong", serverJsonStr);
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
