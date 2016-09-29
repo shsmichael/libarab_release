@@ -11,11 +11,6 @@ tools:context="com.example.mohamed.ourapp.Leader">
 
 
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hello World!"
-    android:id="@+id/textView" />
 
 <LinearLayout
     android:orientation="vertical"
