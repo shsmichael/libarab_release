@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication.Item;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     private ViewItemTask mAuthTask = null;
     int i = 0;
     int j = 0;
+    int flag=0;
     ViewPager vpGallery;
     EditText etchange;
     TextView textView1;
@@ -79,10 +81,12 @@ public class ViewPagerActivity extends AppCompatActivity{
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
-            userId="100";
+            userId=extras.getString("userId");
+            //  userId="100";
         }
         Intent intent = getIntent();
-        // ID = intent.getStringExtra("recordID");
+        ID = intent.getStringExtra("recordId");
+        userId=intent.getStringExtra("userId");
         mAuthTask = new ViewItemTask(ID,userId);
         mAuthTask.execute((Void) null);
 
@@ -211,6 +215,15 @@ public class ViewPagerActivity extends AppCompatActivity{
                     pagesStr.add(tmp);
                     Log.e("Book pages",tmp);
                 }
+                int a=pagesStr.size();
+                if((pagesStr.size()==0)||(pagesStr.size()==1)){
+                    TextView textView9=(TextView) findViewById(R.id.textView28);
+                    textView9.setText("There               "+'\n'+"are                 "+'\n'+ "No                 "+'\n'+ "pages               ");
+                    textView9.setTextSize(50);
+                    textView9.setTextColor(Color.RED);
+                    textView9.setVisibility(View.VISIBLE);
+                    flag=1;
+                }
                 // ViewPagerActivity.GalleryAdapter(pagesStr);
 
                 // Intent intent=new Intent(getApplicationContext(),ViewPagerActivity.class);
@@ -242,22 +255,24 @@ public class ViewPagerActivity extends AppCompatActivity{
             if(items.addAll(pagesStr)==false){
                 return;
             }
+
         }
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
 
-
-            if(j==0) {
-                textView1.setText(position + "/" + items.size());
-                textView1.setTextSize(20);
-                if(position==items.size()-1){
-                    i=1;
+            if(flag==0) {
+                if (j == 0) {
+                    textView1.setText(position + "/" + items.size());
+                    textView1.setTextSize(20);
+                    if (position == items.size() - 1) {
+                        i = 1;
+                    }
                 }
-            }
-            if(j==1){
-                textView1.setText(items.size()-1 + "/" + items.size());
-                j=0;
+                if (j == 1) {
+                    textView1.setText(items.size() - 1 + "/" + items.size());
+                    j = 0;
+                }
             }
 
             ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
