@@ -85,7 +85,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("title",bookList.get(position).getTitle());
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
                 intent1.putExtra("publisher",bookList.get(position).getPublisher());
-                intent1.putExtra("webLink",bookList.get(position).getWeblink());
+         //       intent1.putExtra("webLink",bookList.get(position).getWeblink());
                 intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
@@ -151,7 +151,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
-                        currentbook.setWeblink(object.getString("webLink"));
+        //                currentbook.setWeblink(object.getString("webLink"));
                         currentbook.setSource(object.getString("source"));
                      //   currentbook.setThumbnail(object.getString());
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));

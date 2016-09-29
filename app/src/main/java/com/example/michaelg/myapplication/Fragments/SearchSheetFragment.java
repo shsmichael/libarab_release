@@ -21,48 +21,58 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SearchSheetFragment extends Fragment {
+    //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
+    //private userId;
+    //TODO: @michael inorder to recieve it we should get it from the prev intent,
+    // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
     private boolean str_serchby;
-
-    private Spinner spinner;
-    private TextView tv_titleorauthor;
-
     private final String TAG =this.getClass().getSimpleName();
 
     public SearchSheetFragment() {
         // Required empty public constructor
     }
-    User user = new User ();
+    private Switch searchby;
+
     private EditText title ,
             fromyear ,
             toyear;
+    private Spinner spinner;
     private Button searchbutton ;
     private JSONObject returnedjson;
-    private Switch searchby;
-     String _SEARCH_URL ;
-
+    private TextView tv_titleorauthor;
+    String _SEARCH_URL ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search_sheet, container, false);
+        // Inflate the layout for this fragment
+
+
+        final View view = inflater.inflate(R.layout.fragment_search_sheet, container, false);
         getActivity().setTitle(R.string.menu_search);
+        spinner = (Spinner) view.findViewById(R.id.spinner);
         title = (EditText) view.findViewById(R.id.title_edittext);
         fromyear = (EditText) view.findViewById(R.id.fromyear_editText);
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
-        spinner = (Spinner) view.findViewById(R.id.spinner);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
+
+
+        User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
+        final String username =newUser.getUsername();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 android.R.layout.simple_spinner_item);
@@ -74,9 +84,11 @@ public class SearchSheetFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
             {
+
+
                 switch (position){
                     case 0:
-                        tv_titleorauthor.setText(R.string.sheet_title);
+                        tv_titleorauthor.setText(R.string.search_title);
                         _SEARCH_URL =   Params.server +"search/sheettitle?";
                         str_serchby=true;
                         break;
@@ -93,11 +105,10 @@ public class SearchSheetFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                                                  // your code here
-            }});
-
-
-            searchbutton.setOnClickListener(new View.OnClickListener() {
+                // your code here
+            }
+        });
+        searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 //perform action on click
@@ -106,7 +117,7 @@ public class SearchSheetFragment extends Fragment {
                 if(str_serchby)
                 {
                     Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    "dror@d")
+                            .appendQueryParameter("userId",    username)
                             // .appendQueryParameter("title",    title.getText().toString())
                             .appendQueryParameter("title",    title.getText().toString())
                             .appendQueryParameter("fromyear", fromyear.getText().toString())
@@ -115,7 +126,9 @@ public class SearchSheetFragment extends Fragment {
 
 
 
-                    Log.v("URL", builtUri.toString());
+
+
+                    Log.v("URLBookFRAG", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                     i.putExtra("Value1", builtUri.toString());
                     //TODO: @Michael i.putExtra("userId",userId);
@@ -124,17 +137,16 @@ public class SearchSheetFragment extends Fragment {
                 else
                 {
                     Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    "dror@d")
+                            .appendQueryParameter("userId",   username)
                             .appendQueryParameter("author",    title.getText().toString())
                             .appendQueryParameter("fromyear", fromyear.getText().toString())
                             .appendQueryParameter("toyear",   toyear.getText().toString())
                             .build();
-                    Log.v("URL", builtUri.toString());
+                    Log.v("URLSheetFRAG", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                     i.putExtra("Value1", builtUri.toString());
                     startActivity(i);
                 }
-
 
 
 
@@ -143,7 +155,8 @@ public class SearchSheetFragment extends Fragment {
         });
         return view;
     }
-    
+
+
     @Override
     public void onResume() {
         super.onResume();
