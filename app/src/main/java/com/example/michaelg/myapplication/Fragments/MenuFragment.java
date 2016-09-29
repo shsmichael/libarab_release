@@ -2,17 +2,24 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -93,6 +100,8 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO: 23/09/2016 Fix color change
+                //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
+
                 //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
                 TriviaFragment triviafragmentestfragment = new TriviaFragment();
                 FragmentManager manager = getActivity().getSupportFragmentManager();
@@ -241,8 +250,7 @@ public class MenuFragment extends Fragment {
                 anim.start();
                 //anim3.setStartDelay(100);
                 anim3.start();
-
-               //anim4.setStartDelay(200);
+                //anim4.setStartDelay(200);
                 anim4.start();
                 //anim5.setStartDelay(300);
                 anim5.start();
@@ -270,16 +278,6 @@ public class MenuFragment extends Fragment {
 
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
 
-//                    getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
-//                    MenuFragment menufragment = new MenuFragment();
-//                    FragmentManager manager = getActivity().getSupportFragmentManager();
-//                    Bundle bundle = new Bundle();
-//                    //bundle.putInt("Type", userType);
-//                    menufragment.setArguments(bundle);
-//                    manager.beginTransaction().replace(R.id.fragment_main,
-//                            menufragment,
-//                            menufragment.getTag()
-//                    ).commit();
                     Intent intent = new Intent(Intent.ACTION_MAIN);
                     intent.addCategory(Intent.CATEGORY_HOME);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -292,5 +290,10 @@ public class MenuFragment extends Fragment {
         });
     }
 
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+    }
 }
