@@ -364,6 +364,7 @@ public class SignUp extends AppCompatActivity {
                     intent.putExtra("user",user);
                     //intent.putExtra("user",user);
                     //intent.putExtra("Type",1);
+                    finish();
                     startActivity(intent);
                 }else{
                     // TODO: 9/21/2016 signUp Error

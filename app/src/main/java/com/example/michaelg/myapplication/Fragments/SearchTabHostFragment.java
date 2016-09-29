@@ -2,9 +2,12 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+        import android.content.Context;
+        import android.graphics.drawable.ColorDrawable;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentTabHost;
+        import android.support.v7.app.AppCompatActivity;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -43,5 +46,12 @@ public class SearchTabHostFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
     }
 }

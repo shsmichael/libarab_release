@@ -1,12 +1,14 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -141,9 +143,6 @@ public class SearchSheetFragment extends Fragment {
         });
         return view;
     }
-
-
-
     
     @Override
     public void onResume() {
@@ -180,5 +179,11 @@ public class SearchSheetFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+    }
 
 }
