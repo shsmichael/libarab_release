@@ -11,6 +11,18 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
      >
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_next"
+        app:backgroundTint="@color/colorSearch"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="true" />
+
     <ListView
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
@@ -21,14 +33,15 @@
         >
 
     </ListView>
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email"/>
-
-
-
+        android:src="@drawable/ic_back"
+        app:backgroundTint="@color/colorSearch"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
