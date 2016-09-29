@@ -111,6 +111,8 @@ public class SearchSheetFragment extends Fragment {
                             .appendQueryParameter("toyear",   toyear.getText().toString())
                             .build();
 
+
+
                     Log.v("URL", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                     i.putExtra("Value1", builtUri.toString());
