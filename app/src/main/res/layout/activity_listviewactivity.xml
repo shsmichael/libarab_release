@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/LinearLayout1"
@@ -9,39 +9,66 @@
     android:clickable="false"
     android:descendantFocusability="blocksDescendants"
     android:focusable="false"
-    android:focusableInTouchMode="false"
-     >
+    android:focusableInTouchMode="false">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_next"
-        app:backgroundTint="@color/colorSearch"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true" />
-
-    <ListView
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:clickable="true"
-        android:id="@+id/list"
-        android:layout_height="fill_parent"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        >
 
-    </ListView>
+        android:layout_height="70dp"
+        android:background="@color/colorSearch">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab1"
+        <TextView
+            android:text="Results [0-24]"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            android:paddingTop="20dp" />
+    </LinearLayout>
+
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_back"
-        app:backgroundTint="@color/colorSearch"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true" />
-</RelativeLayout>
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_next"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/book_item_price_background"
+            app:backgroundTint="@android:color/holo_orange_light" />
+
+        <ListView
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:clickable="true"
+            android:id="@+id/list"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            >
+
+        </ListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_back"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="true"
+            android:background="@color/book_item_points"
+            app:backgroundTint="@android:color/holo_orange_light" />
+    </RelativeLayout>
+
+</LinearLayout>
