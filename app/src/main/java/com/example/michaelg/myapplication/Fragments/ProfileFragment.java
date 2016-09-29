@@ -74,7 +74,11 @@ public class ProfileFragment extends Fragment {
         if(gendertmp.equals("m")){
             tv_userprofile_gender.setText("Male");
         }else{
-            tv_userprofile_gender.setText("Female");
+            if(gendertmp.equals("f")) {
+                tv_userprofile_gender.setText("Female");
+            }else{
+                tv_userprofile_gender.setText("None");
+            }
         }
 
         tv_name.setText(user.getFirstname() + " " + user.getLastname());
