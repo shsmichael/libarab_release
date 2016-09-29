@@ -123,6 +123,7 @@ public class SearchBookFragment extends Fragment {
                             .appendQueryParameter("toyear",   toyear.getText().toString())
                             .build();
 
+
                     Log.v("URLBookFRAG", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                     i.putExtra("Value1", builtUri.toString());
