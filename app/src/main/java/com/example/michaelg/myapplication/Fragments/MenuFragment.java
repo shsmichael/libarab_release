@@ -11,6 +11,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
@@ -27,7 +28,8 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
     TextView txt,txtemail,txtfullname;
-    FrameLayout search,trivia,favorites,about,settings,bibilo,profile;
+    FrameLayout search,trivia,favorites,about,settings,bibilo;
+    LinearLayout profile;
     View myview;
     User newUser;
 
@@ -46,7 +48,7 @@ public class MenuFragment extends Fragment {
         about = (FrameLayout) myview.findViewById(R.id.frame_about);
         settings = (FrameLayout) myview.findViewById(R.id.frame_settings);
         bibilo = (FrameLayout) myview.findViewById(R.id.frame_biblio);
-        profile =(FrameLayout) myview.findViewById(R.id.frame_profile);
+        profile =(LinearLayout) myview.findViewById(R.id.frame_profile);
 
         newUser= (User) getActivity().getIntent().getSerializableExtra("user");
        // newUser =(User) this.getArguments().getSerializable("user");
