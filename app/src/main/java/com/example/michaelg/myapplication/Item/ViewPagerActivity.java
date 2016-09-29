@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
+import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
 import com.facebook.common.logging.FLog;
@@ -49,11 +50,20 @@ public class ViewPagerActivity extends AppCompatActivity{
     EditText etchange;
     TextView textView1;
     DiscreteSeekBar discreteSeekBar1;
+    Book book = new Book();
 
 
     public void bookinfo(View v){
 
+
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
+        bookinfoactivity.putExtra("recordId",book.getRecordid());
+        bookinfoactivity.putExtra("author",book.getAuthor());
+        bookinfoactivity.putExtra("title",book.getTitle());
+        bookinfoactivity.putExtra("creationdate",book.getCreationdate());
+        bookinfoactivity.putExtra("publisher",book.getPublisher());
+        bookinfoactivity.putExtra("source",book.getSource());
+        bookinfoactivity.putExtra("webLink",book.getWeblink());
         startActivity(bookinfoactivity);
     }
 
@@ -78,7 +88,17 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
+
+            book.setRecordid(extras.getString("recordId"));
+            book.setAuthor(extras.getString("author"));
+            book.setTitle(extras.getString("title"));
+            book.setCreationdate(extras.getString("creationdate"));
+            book.setPublisher(extras.getString("publisher"));
+            book.setSource(extras.getString("source"));
+            book.setWeblink(extras.getString("webLink"));
+
             ID  = extras.getString("recordId");
+
             userId="100";
         }
         Intent intent = getIntent();
@@ -102,7 +122,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         ViewItemTask(String bookId,String userId) {
             this.bookId = bookId;
-            this.userId=userId;
+            this.userId = userId;
         }
 
         @Override
@@ -120,7 +140,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             try {
                 final String ID_PARAM = "recordId";
                 final String USER_PARAM ="userId";
-                final String SERVER_BASE_URL = //"http://172.20.10.6:8080/LibArab/"+"search/bookquery?";
+                final String SERVER_BASE_URL =
                         Params.getServer() + "search/bookquery?";
                 //TODO: amal sheetquery
                 // "search/bookquery/userId/recordId
@@ -239,7 +259,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         // };
         public GalleryAdapter(List<String> pages){
             items=new ArrayList<String>();
-            if(items.addAll(pagesStr)==false){
+            if(items.addAll(pagesStr) == false){
                 return;
             }
         }
