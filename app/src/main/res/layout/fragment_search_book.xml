@@ -58,7 +58,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
                     android:hint="@string/search_enter_title"
-                    android:text="تاريخ" />
+                    android:text="تاريخ"
+                    android:linksClickable="false"
+                    android:maxLines="1"/>
 
             </LinearLayout>
 
@@ -74,12 +76,14 @@
                     android:textColor="@color/black"
                     android:background="@drawable/textview_tag_bg"
                     android:id="@+id/fromyear"
-                    android:fontFamily="sans-serif" />
+                    android:fontFamily="sans-serif"
+                    android:maxLines="1"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/fromyear_editText" />
+                    android:id="@+id/fromyear_editText"
+                    android:maxLines="1" />
 
             </LinearLayout>
 
@@ -100,7 +104,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/toYear_editText" />
+                    android:id="@+id/toYear_editText"
+                    android:maxLines="1"/>
             </LinearLayout>
 
         </LinearLayout>

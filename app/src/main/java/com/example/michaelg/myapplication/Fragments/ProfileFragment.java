@@ -1,12 +1,14 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +76,11 @@ public class ProfileFragment extends Fragment {
         if(gendertmp.equals("m")){
             tv_userprofile_gender.setText("Male");
         }else{
-            tv_userprofile_gender.setText("Female");
+            if(gendertmp.equals("f")) {
+                tv_userprofile_gender.setText("Female");
+            }else{
+                tv_userprofile_gender.setText("None");
+            }
         }
 
         tv_name.setText(user.getFirstname() + " " + user.getLastname());
@@ -114,4 +120,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
 }

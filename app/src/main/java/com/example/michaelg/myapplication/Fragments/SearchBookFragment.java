@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -122,6 +123,10 @@ public class SearchBookFragment extends Fragment {
                             .appendQueryParameter("fromyear", fromyear.getText().toString())
                             .appendQueryParameter("toyear",   toyear.getText().toString())
                             .build();
+
+
+
+
 
                     Log.v("URLBookFRAG", builtUri.toString());
                     Intent i = new Intent(v.getContext() ,ListviewActivity.class);
@@ -307,5 +312,11 @@ public class SearchBookFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+    }
 
 }

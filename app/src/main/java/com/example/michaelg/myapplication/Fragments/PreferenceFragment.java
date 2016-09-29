@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication.Fragments;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
@@ -10,6 +11,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,21 +115,10 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
         });
     }
 
-    /*
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        mListPreference = (ListPreference)  getPreferenceManager().findPreference("preference_key");
-        mListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                // insert custom code
-
-                return false;
-            }
-        });
-
-        return inflater.inflate(R.xml.app_preferences, container, false);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSettings)));
     }
-*/
 }

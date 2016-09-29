@@ -174,7 +174,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void loginGuest() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         User guestuser= new User();
-
         intent.putExtra("user", guestuser);
         startActivity(intent);
 
@@ -407,7 +406,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
 
                 serverJsonStr = buffer.toString();
-                Log.d("EmilisWromg", serverJsonStr);
+                Log.d("EmilisWrong", serverJsonStr);
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
@@ -488,11 +487,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                     user.setFirstname(my.getString("firstname"));
                     user.setLastname(my.getString("lastname"));
-                    user.setGender(my.getString("gender"));
+                    // TODO: 29/09/2016  fix with server team location of json value gener & bday 
+                    user.setGender(tmp.getString("gender"));
                     user.setUsername(my.getString("username"));
                     user.setUserType(my.getString("userType"));
                     user.setWantToPlay(my.getBoolean("isWantToPlay"));
-                    user.setBday(my.getString("bday"));
+                    user.setBday(tmp.getString("bday"));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

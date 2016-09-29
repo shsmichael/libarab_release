@@ -8,7 +8,13 @@ import android.net.ParseException;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
+import com.example.michaelg.myapplication.User;
 //import com.example.misho.login.Item.ViewPagerActivity;
 
 import org.apache.http.HttpEntity;
@@ -31,7 +38,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ListviewActivity extends Activity {
+public class ListviewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ArrayList<Book> bookList;
     String myURL="any";
@@ -44,6 +51,9 @@ public class ListviewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
+
+
+
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -83,6 +93,11 @@ public class ListviewActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
     class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
