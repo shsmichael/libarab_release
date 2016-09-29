@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
 
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorSearch">
 
         <TextView
@@ -26,8 +26,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textSize="18sp"
-            android:textStyle="normal|bold"
-            android:paddingTop="20dp" />
+            android:textStyle="normal|bold" />
     </LinearLayout>
 
 
