@@ -36,12 +36,12 @@ public class BookinfoActivity extends AppCompatActivity {
         txtSource = (TextView) findViewById(R.id.textView_source);
         txtWebLink = (TextView) findViewById(R.id.textView_weblink);
 
-        txtTitle.setText("Title: " + title);
-        txtAuthor.setText("Author: " + author);
+        txtTitle.setText(       "Title        : " + title);
+        txtAuthor.setText(      "Author       : " + author);
         txtCreationdate.setText("Creation Date: " + creationdate);
-        txtPublisher.setText("Publisher: " + publisher);
-        txtSource.setText("Source: " + source);
-        txtWebLink.setText("Web Link: " + webLink);
+        txtPublisher.setText(   "Publisher    : " + publisher);
+        txtSource.setText(      "Source       : " + source);
+        txtWebLink.setText(     "Web Link     : " + webLink);
 
     }
 }
