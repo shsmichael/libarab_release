@@ -11,44 +11,62 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="81dp"
+        android:id="@+id/frame_profile">
 
-        <FrameLayout
-            android:id="@+id/frame_profile"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.github.siyamed.shapeimageview.CircularImageView
+                android:id="@+id/img_circular_profile_user"
+                android:src="@drawable/userprofilefinal"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:layout_weight="0.41" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:clickable="true"
-            android:layout_height="100dp"
-            >
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
             <TextView
-                android:layout_width="179dp"
-                android:layout_height="wrap_content"
                 android:text="@string/profile_user_name"
                 android:id="@+id/tv_fullname"
-                android:layout_gravity="right|center_vertical"
-                android:textSize="20dp"
-                android:autoText="false"
-                android:textStyle="bold"
-                android:textColor="?android:attr/colorBackground" />
-
-            <ImageView
-                android:layout_width="147dp"
-                android:layout_height="93dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/menu_profile_pict"
-                android:layout_gravity="left|center_vertical" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_tag_bg"
+                android:textColor="?android:attr/colorBackground"
+                android:paddingTop="10dp"
+                android:paddingBottom="2dp"
+                android:layout_margin="4dp" />
 
             <TextView
-                android:layout_width="176dp"
-                android:layout_height="38dp"
                 android:text="@string/profile_user_email"
                 android:id="@+id/textView"
-                android:layout_gravity="right|bottom"
-                android:textSize="10dp"
-                android:textStyle="bold"
-                android:textColor="?android:attr/colorBackground" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_tag_bg"
+                android:textColor="?android:attr/colorBackground"
+                android:paddingTop="10dp"
+                android:paddingBottom="2dp"
+                android:layout_margin="4dp" />
+        </LinearLayout>
 
-        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     </LinearLayout>
 
     <LinearLayout

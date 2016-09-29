@@ -73,4 +73,8 @@
     <string name="search_enter_from_year">ادخل مجال السنوات:</string>
     <string name="search_enter_to_year">ادخل مجال السنوات:</string>
     <string name="search_from_year">من سنه:</string>
+    <string name="search_sheet">صحيفه</string>
+    <string name="search_book">كتاب</string>
+    <string name="sheet_title">عنوان:</string>
+
 </resources>

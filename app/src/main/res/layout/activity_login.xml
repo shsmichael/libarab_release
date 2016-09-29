@@ -57,7 +57,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="emil@nerd" />
+                android:text="shsmichael@gmail.com" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +79,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="789" />
+                android:text="123456" />
 
         </android.support.design.widget.TextInputLayout>
 
