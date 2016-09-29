@@ -58,7 +58,7 @@ public class ListviewActivity extends Activity {
         new JSONAsyncTask().execute(myURL);
 
         ListView listview = (ListView)findViewById(R.id.list);
-        adapter = new bookAdapter(getApplicationContext(), R.layout.row, bookList);
+        adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
 
         listview.setAdapter(adapter);
 
@@ -71,9 +71,7 @@ public class ListviewActivity extends Activity {
                 Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
-                //TODO: change to -> intent1.putExtra("userId",user);
                 // Remember that variable (user) is the private variable above that is sent by the search
-                intent1.putExtra("userId","100");
 
                 startActivity(intent1);
 

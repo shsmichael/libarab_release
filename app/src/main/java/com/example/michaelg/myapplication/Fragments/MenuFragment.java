@@ -57,7 +57,6 @@ public class MenuFragment extends Fragment {
             txtemail.setVisibility(View.INVISIBLE);
         }
         else{
-
             txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
             txtemail.setText(newUser.getUsername());
         }

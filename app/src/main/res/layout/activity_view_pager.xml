@@ -5,14 +5,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1"
-    android:background="@color/accent_material_light">
+    android:background="@color/colorAccent">
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/accent_material_light"
-        android:focusable="false" >
+        android:background="@color/colorAccent"
+        >
         <com.github.ivbaranov.mfb.MaterialFavoriteButton
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -56,15 +56,16 @@
 
 
         <TextView
-            android:layout_width="264dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="New Text"
             android:id="@+id/textView"
             android:textColor="#ffffff"
-            android:background="@android:drawable/zoom_plate" />
+            android:background="@android:drawable/zoom_plate"
+            android:layout_width="wrap_content" />
 
         <FrameLayout
+            android:focusable="false"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_gravity="center_horizontal|bottom"
@@ -88,50 +89,6 @@
         </FrameLayout>
 
     </FrameLayout>
-
-
-    <LinearLayout
-        android:layout_width="414dp"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        tools:context=".MainActivity"
-
-        >
-
-
-        <com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar
-            android:id="@+id/discrete3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:dsb_min="1"
-            app:dsb_max="1000"
-            app:dsb_indicatorFormatter="%04d"/>
-
-        <!--<org.adw.library.widgets.discreteseekbar.DiscreteSeekBar-->
-        <!--android:id="@+id/discrete3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:dsb_allowTrackClickToDrag="false"-->
-        <!--app:dsb_indicatorTextAppearance="@style/CustomFloaterTextAppearance"-->
-        <!--app:dsb_progressColor="@color/my_progress_color"-->
-        <!--app:dsb_rippleColor="#FF7788FF"-->
-        <!--app:dsb_indicatorColor="@color/my_floater_color"-->
-        <!--app:dsb_indicatorFormatter="\\o/ %d"/>-->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
 
 
 </LinearLayout>

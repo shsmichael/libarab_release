@@ -1,7 +1,11 @@
 package com.example.michaelg.myapplication.Trivia;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +14,19 @@ import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class AddQuestion extends AppCompatActivity {
     EditText question;
@@ -20,7 +36,7 @@ public class AddQuestion extends AppCompatActivity {
     EditText uncorrect3;
     Button addQuestionButton;
 
-    //private UserLoginTask mAuthTask = null;
+    private AddQTask addQueTask = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +54,18 @@ public class AddQuestion extends AppCompatActivity {
         String question1 = question.getText().toString();
 
         addQuestionButton = (Button) findViewById(R.id.button);
+        Intent intent = getIntent();
+        final String myuserid =(String) intent.getSerializableExtra("userid");
+        final String thisItemid =(String) intent.getSerializableExtra("itemid");
+        final String thisAuther =(String) intent.getSerializableExtra("auther");
+        final String thisItemName =(String) intent.getSerializableExtra("itemname");
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //EditText question = (EditText) findViewById(R.id.question_text);
                 //String question1 = question.getText().toString();
                 //Toast.makeText(AddQuestion.this, question1, Toast.LENGTH_LONG).show();
-                attemptAddQuestion();
+                attemptAddQuestion(myuserid,thisItemid,thisAuther,thisItemName);
             }
         });
 
@@ -53,7 +74,7 @@ public class AddQuestion extends AppCompatActivity {
     }
 
 
-    private void attemptAddQuestion(){
+    private void attemptAddQuestion(String userID, String itemId, String auther,String itemName){
         String question1 = question.getText().toString();
         String correctAns=correct.getText().toString();
         String wrongAns1=uncorrect1.getText().toString();
@@ -83,33 +104,43 @@ public class AddQuestion extends AppCompatActivity {
             Toast.makeText(AddQuestion.this,  "space", Toast.LENGTH_LONG).show();
         if(flag==0) {
             //Toast.makeText(AddQuestion.this, "yes", Toast.LENGTH_LONG).show();
+            addQueTask = new AddQTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3,userID,itemId,auther, itemName);
+            addQueTask.execute((Void) null);
             Intent intent = new Intent(getApplicationContext(), Progress.class);
             startActivity(intent);
-            //mAuthTask = new UserLoginTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3);
-            // mAuthTask.execute((Void) null);
+
         }
     }
 
 
 /***************************************************************************/
-/*
-    public class UserLoginTask extends AsyncTask<Void, Void, JSONObject> {
+
+    public class AddQTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String question1;
         private final String correct1;
         private final String uncorrect11;
         private final String uncorrect21;
         private final String uncorrect31;
+        private final String userid;
+        private final String itemid;
+        private final String auther;
+        private final String itemname;
 
-        UserLoginTask(String q, String cor,String wrong1,String wrong2,String wrong3) {
+
+        AddQTask(String q, String cor,String wrong1,String wrong2,String wrong3,String user,String item,String auther1,String itemName) {
             question1=q;
             correct1=cor;
             uncorrect11=wrong1;
             uncorrect21=wrong2;
             uncorrect31=wrong3;
+            userid=user;
+            itemid=item;
+            auther=auther1;
+            itemname=itemName;
+
         }
 
-        @Override
         protected JSONObject doInBackground(Void... params) {
 
             if (params.length == 0) {
@@ -124,14 +155,19 @@ public class AddQuestion extends AppCompatActivity {
             String format = "json";
 
             try {
+                //change
                 final String FORECAST_BASE_URL =
-                        Params.server + "signIn/doSignIn?";
+                        Params.getServer() + "signIn/doSignIn?";
 
                 final String QUESTION = "question";
-                final String CORRECT_ANSWER = "correct answer";
-                final String UNCORRECT_ANSWER1 = "uncorrect answer 1";
-                final String UNCORRECT_ANSWER2 = "uncorrect answer 2";
-                final String UNCORRECT_ANSWER3 = "uncorrect answer 3";
+                final String CORRECT_ANSWER = "answer1";
+                final String UNCORRECT_ANSWER1 = "answer2";
+                final String UNCORRECT_ANSWER2 = "answer3";
+                final String UNCORRECT_ANSWER3 = "answer4";
+                final String USER_ID = "userid";
+                final String ITEM_ID = "itemid";
+                final String AUTHER = "auther";
+                final String ITEM_NAME = "itemname";
 
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
@@ -140,6 +176,10 @@ public class AddQuestion extends AppCompatActivity {
                         .appendQueryParameter(UNCORRECT_ANSWER1, uncorrect11)
                         .appendQueryParameter(UNCORRECT_ANSWER2, uncorrect21)
                         .appendQueryParameter(UNCORRECT_ANSWER3, uncorrect31)
+                        .appendQueryParameter(USER_ID, userid)
+                        .appendQueryParameter(ITEM_ID, itemid)
+                        .appendQueryParameter(AUTHER, auther)
+                        .appendQueryParameter(ITEM_NAME, itemname)
                         .build();
 
                 URL url = new URL(builtUri.toString());
@@ -172,7 +212,7 @@ public class AddQuestion extends AppCompatActivity {
                 Log.d("PROBLEM", serverJsonStr);
 
             } catch (IOException e) {
-                Log.e("LOGE", "Error ", e);
+
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
@@ -205,9 +245,8 @@ public class AddQuestion extends AppCompatActivity {
         ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
         @Override
         protected void onPostExecute(final JSONObject success) {
-            mAuthTask = null;
+            addQueTask = null;
 
-            showProgress(false);
             String answer = null;
             try {
                 answer = success.getString("client reply");
@@ -216,9 +255,9 @@ public class AddQuestion extends AppCompatActivity {
             }
 
             if (answer.equals("success")) {  //case the user does'nt exist
-                showProgress(false);
+
                 finish();
-                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                Intent intent = new Intent(getApplicationContext(), Progress.class);
                 startActivity(intent);
 
             } else {   // case failed
@@ -232,11 +271,11 @@ public class AddQuestion extends AppCompatActivity {
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
+            addQueTask = null;
+
         }
     }
-*/
+
 
 
 

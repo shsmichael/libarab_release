@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -325,7 +326,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-
     public void textViewSignUp(View view) {
         Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
@@ -406,7 +406,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
 
                 serverJsonStr = buffer.toString();
-                Log.d("PROBLEM", serverJsonStr);
+                Log.d("EmilisWromg", serverJsonStr);
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
@@ -444,17 +444,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
         @Override
-        protected void onPostExecute(final JSONObject success) {
+        protected void onPostExecute(final JSONObject object) {
             mAuthTask = null;
 
             showProgress(false);
             String answer = null;
-            if(success == null){
+            if(object == null){
                 Toast.makeText(LoginActivity.this, "Server isn't responding", Toast.LENGTH_SHORT).show();
                 return;
             }
             try {
-                answer = success.getString("client reply");
+                answer = object.getString("client reply");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -462,15 +462,52 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (answer.equals("success")) {  //case the user does'nt exist
                 showProgress(false);
                 finish();
+
+                JSONObject tmp = null;
+                try {
+                    tmp = object.getJSONObject("profile");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray array=null;
+                try {
+                    array = tmp.getJSONArray("paramsArray");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONObject my=null;
+                try {
+                   my = array.getJSONObject(0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                User user = new User();
+                try {
+
+                    user.setFirstname(my.getString("firstname"));
+                    user.setLastname(my.getString("lastname"));
+                    user.setGender(my.getString("gender"));
+                    user.setUsername(my.getString("username"));
+                    user.setUserType(my.getString("userType"));
+                    user.setWantToPlay(my.getBoolean("isWantToPlay"));
+                    user.setBday(my.getString("bday"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //should be populated trough server details
-                User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
-                intent.putExtra("user", givenuser);
+                //User givenuser= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+
+                intent.putExtra("user", user);
                 startActivity(intent);
 
             } else {   // case failed
                 try {
-                    Toast.makeText(LoginActivity.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, object.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -52,6 +52,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
     public void bookinfo(View v){
+
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
         startActivity(bookinfoactivity);
     }
@@ -59,16 +60,13 @@ public class ViewPagerActivity extends AppCompatActivity{
     public void changepage(View v){
 
         String stringnumber = etchange.getText().toString();
+
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
             textView1.setText(Integer.parseInt(stringnumber)  + "/" + pagesStr.size());
-            //// TODO: 13/09/16 fix page number after change ( Mostafa )
         }
 
     }
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +75,10 @@ public class ViewPagerActivity extends AppCompatActivity{
         setContentView(R.layout.activity_view_pager);
         etchange =(EditText)findViewById(R.id.et_changepage);
         textView1=(TextView) findViewById(R.id.textView);
-        discreteSeekBar1 = (DiscreteSeekBar) findViewById(R.id.discrete3);
-        discreteSeekBar1.setNumericTransformer(new DiscreteSeekBar.NumericTransformer() {
-            @Override
-            public int transform(int value) {
-                return value * 100;
-            }
-        });
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
-            //TODO: pages are not digitilized yet
-            //   ID = "NNL_ALEPH003157499";
-            //  userId=extras.getString("userId");
             userId="100";
         }
         Intent intent = getIntent();
@@ -127,32 +115,26 @@ public class ViewPagerActivity extends AppCompatActivity{
             Log.v("connect", "CONNECTED");
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-
             String serverJsonStr = null;
 
             try {
-                final String SERVER_BASE_URL = //"http://172.20.10.6:8080/LibArab/"+"search/bookquery?";
-                        Params.getServer() +"search/bookquery?";
-                // "search/bookquery/userId/recordId
-                //TODO: change according to the server function format
                 final String ID_PARAM = "recordId";
                 final String USER_PARAM ="userId";
+                final String SERVER_BASE_URL = //"http://172.20.10.6:8080/LibArab/"+"search/bookquery?";
+                        Params.getServer() + "search/bookquery?";
+                //TODO: amal sheetquery
+                // "search/bookquery/userId/recordId
+                //TODO: change according to the server function format
 
-                Uri builtUri = Uri.parse(SERVER_BASE_URL).buildUpon()
-                        .appendQueryParameter(ID_PARAM, bookId).appendQueryParameter(USER_PARAM,userId).build();
-//Uri builtUri = Uri.parse(SERVER_BASE_URL).buildUpon()
-//                        .appendQueryParameter(ID_PARAM, bookId).appendQueryParameter(USER_PARAM,100+"").build();
-
+                Uri builtUri = Uri.parse(SERVER_BASE_URL)
+                        .buildUpon()
+                        .appendQueryParameter(ID_PARAM, bookId)
+                        .appendQueryParameter(USER_PARAM,userId)
+                        .build();
                 URL url = new URL(builtUri.toString());
-//
-
                 Log.v("URL", builtUri.toString());
-                //   URL url = new URL(SERVER_BASE_URL);
-                //Log.v("URL", builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
-
-
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
                 if (inputStream == null) {
@@ -178,8 +160,6 @@ public class ViewPagerActivity extends AppCompatActivity{
 
             } catch (IOException e) {
                 Log.e("LOGE", "Error ", e);
-                // If the code didn't successfully get the weather data, there's no point in attemping
-                // to parse it.
                 return null;
 
             } finally {

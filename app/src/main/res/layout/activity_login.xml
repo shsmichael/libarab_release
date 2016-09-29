@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/change_color"
+            android:background="@drawable/textview_tag_bg"
             android:text="@string/action_sign_in"
             android:textStyle="bold" />
 
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/action_continue_as_a_guest"
-            android:background="@drawable/change_color"
+            android:background="@drawable/textview_tag_bg"
             android:id="@+id/guestButton"
             android:textStyle="bold" />
 

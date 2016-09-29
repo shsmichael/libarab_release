@@ -22,6 +22,7 @@ import com.example.michaelg.myapplication.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,10 +37,13 @@ import java.util.Date;
  */
 public class ProfileFragment extends Fragment {
 
-    User user;
-
-
     private final String TAG =this.getClass().getSimpleName();
+    User user;
+    TextView tv_userprofile_fname
+    , tv_userprofile_lname
+    , tv_userprofile_age
+    , tv_userprofile_gender ;
+    TextView tv_name,tv_mail;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -49,16 +53,32 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        user= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+       // user= new User("Michael","Gonic","shsmichael@gmail.com","Male","10102000","Regular",true);
+        user= (User) getActivity().getIntent().getSerializableExtra("user");
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        TextView tv_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
-        TextView tv_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
-        TextView tv_userprofile_age = (TextView) rootView.findViewById(R.id.tv_userprofile_age);
-        TextView tv_userprofile_gender = (TextView) rootView.findViewById(R.id.tv_userprofile_gender);
+
+        tv_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
+        tv_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
+        tv_userprofile_age = (TextView) rootView.findViewById(R.id.tv_userprofile_age);
+        tv_userprofile_gender = (TextView) rootView.findViewById(R.id.tv_userprofile_gender);
+
+        tv_name =(TextView)rootView.findViewById(R.id.user_name) ;
+        tv_mail =(TextView)rootView.findViewById(R.id.user_email) ;
+
+
         tv_userprofile_fname.setText(user.getFirstname());
         tv_userprofile_lname.setText(user.getLastname());
         tv_userprofile_age.setText(user.getBday());
-        tv_userprofile_gender.setText(user.getGender());
+        String gendertmp = user.getGender();
+
+        if(gendertmp.equals("m")){
+            tv_userprofile_gender.setText("Male");
+        }else{
+            tv_userprofile_gender.setText("Female");
+        }
+
+        tv_name.setText(user.getFirstname() + " " + user.getLastname());
+        tv_mail.setText(user.getUsername());
 
         return rootView;
     }
