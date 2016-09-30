@@ -23,25 +23,25 @@ public class BookinfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String author = intent.getStringExtra("author");
-        String recordid = intent.getStringExtra("recordId");
+        //String recordid = intent.getStringExtra("recordId");
         String title = intent.getStringExtra("title");
         String creationdate = intent.getStringExtra("creationdate");
         String publisher = intent.getStringExtra("publisher");
         String source = intent.getStringExtra("source");
         String webLink = intent.getStringExtra("webLink");
-        txtAuthor = (TextView) findViewById(R.id.textView_author);
+        txtAuthor = (TextView) findViewById(R.id.textView_author2);
         txtTitle = (TextView) findViewById(R.id.textView_title2);
-        txtPublisher = (TextView) findViewById(R.id.textView_publisher);
-        txtCreationdate = (TextView) findViewById(R.id.textView_creationdate);
-        txtSource = (TextView) findViewById(R.id.textView_source);
-        txtWebLink = (TextView) findViewById(R.id.textView_weblink);
+        txtPublisher = (TextView) findViewById(R.id.textView_publisher2);
+        txtCreationdate = (TextView) findViewById(R.id.textView_creationdate2);
+        txtSource = (TextView) findViewById(R.id.textView_source2);
+        txtWebLink = (TextView) findViewById(R.id.textView_weblink2);
 
-        txtTitle.setText(       "Title        : " + title);
-        txtAuthor.setText(      "Author       : " + author);
-        txtCreationdate.setText("Creation Date: " + creationdate);
-        txtPublisher.setText(   "Publisher    : " + publisher);
-        txtSource.setText(      "Source       : " + source);
-        txtWebLink.setText(     "Web Link     : " + webLink);
+        txtTitle.setText("" +title);
+        txtAuthor.setText("" +author);
+        txtCreationdate.setText("" +creationdate);
+        txtPublisher.setText("" +publisher);
+        txtSource.setText("" +source);
+        txtWebLink.setText("" +webLink);
 
     }
 }

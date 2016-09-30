@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
+import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
 import com.facebook.common.logging.FLog;
@@ -44,6 +45,12 @@ public class ViewPagerActivity extends AppCompatActivity{
     List<String> pagesStr = new ArrayList<String>();
     private String ID = "NNL_ALEPH003157499";
     private String userId= "100";
+    private String creationdate;
+    private String title;
+    private String author;
+    private String weblink;
+    private String publisher;
+    private String source;
     private ViewItemTask mAuthTask = null;
     int i = 0;
     int j = 0;
@@ -52,11 +59,18 @@ public class ViewPagerActivity extends AppCompatActivity{
     EditText etchange;
     TextView textView1;
     DiscreteSeekBar discreteSeekBar1;
+    private Book book;
 
 
     public void bookinfo(View v){
 
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
+        bookinfoactivity.putExtra("creationdate",creationdate);
+        bookinfoactivity.putExtra("title",title);
+        bookinfoactivity.putExtra("author",author);
+        bookinfoactivity.putExtra("webLink",weblink);
+        bookinfoactivity.putExtra("publisher",publisher);
+        bookinfoactivity.putExtra("source",source);
         startActivity(bookinfoactivity);
     }
 
@@ -87,7 +101,22 @@ public class ViewPagerActivity extends AppCompatActivity{
         }
         Intent intent = getIntent();
         ID = intent.getStringExtra("recordId");
-        userId=intent.getStringExtra("userId");
+        userId = intent.getStringExtra("userId");
+        creationdate = intent.getStringExtra("creationdate");
+        title = intent.getStringExtra("title");
+        author = intent.getStringExtra("author");
+        weblink = intent.getStringExtra("webLink");
+        publisher = intent.getStringExtra("publisher");
+        source = intent.getStringExtra("source");
+
+        book = new Book();
+        book.setCreationdate(creationdate);
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setWeblink(weblink);
+        book.setPublisher(publisher);
+        book.setSource(source);
+
         mAuthTask = new ViewItemTask(ID,userId);
         mAuthTask.execute((Void) null);
 

@@ -36,7 +36,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:weightSum="1"
         android:paddingTop="50dp"
         android:baselineAligned="false">
@@ -49,60 +49,111 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="214dp"
-            android:layout_weight="0.8" >
+            android:layout_height="match_parent"
+            android:layout_weight="0.80" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView_author"
-                android:textColor="#ffff"
-                android:textSize="15dp" />
-
-            <TextView
-                android:text="TextView"
+                android:text="@string/title_bold"
                 android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/book_item_texttitlecolor"
                 android:id="@+id/textView_title1" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Title:   اعلان من معمل السجائر الوطنية"
                 android:id="@+id/textView_title2"
                 android:textColor="#ffff"
                 android:textSize="15dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:text="@string/author_bold"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/book_item_texttitlecolor"
+                android:id="@+id/textView_author1" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ffff"
+                android:id="@+id/textView_author2" />
+
+            <TextView
+                android:text="@string/publisher_bold"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/book_item_texttitlecolor"
+                android:id="@+id/textView_publisher1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Publisher: معمل السجائر الوطنية لصاحبها محمد ميقاتي"
-                android:id="@+id/textView_publisher"
-                android:textColor="#ffff"
-                android:textSize="15dp" />
+                android:id="@+id/textView_publisher2"
+                android:textColor="#ffff" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:text="@string/creationdate_bold"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/book_item_texttitlecolor"
+                android:id="@+id/textView_creationdate1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Creation Date:   1938"
-                android:id="@+id/textView_creationdate"
-                android:textColor="#ffff"
-                android:textSize="15dp" />
+                android:id="@+id/textView_creationdate2"
+                android:textColor="#ffff" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:text="@string/source_bold"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Source:   Ephemera Collection - The National Library of Israel"
-                android:id="@+id/textView_source"
-                android:textColor="#ffff"
-                android:textSize="15dp" />
+                android:textColor="@color/book_item_texttitlecolor"
+                android:id="@+id/textView_source1" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="101dp"
-                android:text=" Web Link:   http://primo.nli.org.il/primo_library/libweb/action/dlDisplay.do?vid=NNL_Ephemera&amp;docId=NNL_Ephemera700072300"
-                android:id="@+id/textView_weblink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Source:   Ephemera Collection - The National Library of Israel"
+                android:id="@+id/textView_source2"
+                android:textColor="#ffff" />
+
+            <TextView
+                android:text="@string/weblink_bold"
+                android:gravity="center"
+                android:background="@drawable/textview_tag_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/book_item_texttitlecolor"
+                android:id="@+id/textView_weblink1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=" Web Link:   http://primo.nli.org.il/primo_library/"
+                android:id="@+id/textView_weblink2"
                 android:textColor="#ffff" />
         </LinearLayout>
 
