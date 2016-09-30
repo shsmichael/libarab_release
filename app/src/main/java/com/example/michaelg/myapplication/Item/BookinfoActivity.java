@@ -30,7 +30,7 @@ public class BookinfoActivity extends AppCompatActivity {
         String source = intent.getStringExtra("source");
         String webLink = intent.getStringExtra("webLink");
         txtAuthor = (TextView) findViewById(R.id.textView_author);
-        txtTitle = (TextView) findViewById(R.id.textView_title);
+        txtTitle = (TextView) findViewById(R.id.textView_title2);
         txtPublisher = (TextView) findViewById(R.id.textView_publisher);
         txtCreationdate = (TextView) findViewById(R.id.textView_creationdate);
         txtSource = (TextView) findViewById(R.id.textView_source);

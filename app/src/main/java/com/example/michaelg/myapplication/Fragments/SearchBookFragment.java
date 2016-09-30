@@ -2,6 +2,7 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.content.Context;
+import android.widget.TextView.OnEditorActionListener;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +48,7 @@ public class SearchBookFragment extends Fragment {
         // Required empty public constructor
     }
     private Switch searchby;
+    private String username;
 
     private EditText title ,
             fromyear ,
@@ -72,7 +75,7 @@ public class SearchBookFragment extends Fragment {
 
 
         User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
-        final String username =newUser.getUsername();
+        username = newUser.getUsername();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 android.R.layout.simple_spinner_item);
@@ -110,53 +113,52 @@ public class SearchBookFragment extends Fragment {
         });
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 //perform action on click
-
-                //TODO: @michael change userId not 4 in both cases
-                if(str_serchby)
-                {
-                    Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    username)
-                            // .appendQueryParameter("title",    title.getText().toString())
-                            .appendQueryParameter("title",    title.getText().toString())
-                            .appendQueryParameter("fromyear", fromyear.getText().toString())
-                            .appendQueryParameter("toyear",   toyear.getText().toString())
-                            .build();
-
-
-
-
-
-                    Log.v("URLBookFRAG", builtUri.toString());
-                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
-                    i.putExtra("Value1", builtUri.toString());
-                    //TODO: @Michael i.putExtra("userId",userId);
-                    startActivity(i);
-                }
-                else
-                {
-                    Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    username)
-                            .appendQueryParameter("author",    title.getText().toString())
-                            .appendQueryParameter("fromyear", fromyear.getText().toString())
-                            .appendQueryParameter("toyear",   toyear.getText().toString())
-                            .build();
-                    Log.v("URLBookFRAG", builtUri.toString());
-                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
-                    i.putExtra("Value1", builtUri.toString());
-                    startActivity(i);
-                }
-
-
-
-                //  Search searchtask = new Search(total);
-                //  searchtask.execute();
-                //check if json fetched
+                doSearch(v);
             }
 
         });
+
         return view;
+    }
+
+    private void doSearch(View v){
+
+        //TODO: @michael change userId not 4 in both cases
+        if(str_serchby)
+        {
+            Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
+                    .appendQueryParameter("userId",    username)
+                    // .appendQueryParameter("title",    title.getText().toString())
+                    .appendQueryParameter("title",    title.getText().toString())
+                    .appendQueryParameter("fromyear", fromyear.getText().toString())
+                    .appendQueryParameter("toyear",   toyear.getText().toString())
+                    .build();
+
+            Log.v("URLBookFRAG", builtUri.toString());
+            Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+            i.putExtra("Value1", builtUri.toString());
+            //TODO: @Michael i.putExtra("userId",userId);
+            startActivity(i);
+        }
+        else
+        {
+            Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
+                    .appendQueryParameter("userId",    username)
+                    .appendQueryParameter("author",    title.getText().toString())
+                    .appendQueryParameter("fromyear", fromyear.getText().toString())
+                    .appendQueryParameter("toyear",   toyear.getText().toString())
+                    .build();
+            Log.v("URLBookFRAG", builtUri.toString());
+            Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+            i.putExtra("Value1", builtUri.toString());
+            startActivity(i);
+        }
+
+        //  Search searchtask = new Search(total);
+        //  searchtask.execute();
+        //check if json fetched
+
     }
 
 
