@@ -35,7 +35,12 @@
             android:layout_gravity="center|center_vertical"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/img_circular_profile_user"
-            android:background="@drawable/userprofilefinal" />
+            android:background="@drawable/userprofilefinal"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
 
         <!---basic user data: name and email (temporary data)-->
         <TextView
