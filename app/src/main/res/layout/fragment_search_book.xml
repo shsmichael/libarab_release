@@ -57,10 +57,12 @@
                     android:layout_width="255dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
+                    android:imeOptions="actionGo"
                     android:hint="@string/search_enter_title"
                     android:text="تاريخ"
                     android:linksClickable="false"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -83,7 +85,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/fromyear_editText"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
 
             </LinearLayout>
 
@@ -105,7 +109,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/toYear_editText"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -2,7 +2,6 @@ package com.example.michaelg.myapplication.Fragments;
 
 
 import android.content.Context;
-import android.widget.TextView.OnEditorActionListener;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -23,14 +22,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 /**
@@ -73,7 +70,36 @@ public class SearchBookFragment extends Fragment {
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
 
-
+        title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                doSearch(v);
+                return true;
+            }
+            return false;
+            }
+        });
+        fromyear.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    doSearch(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+        toyear.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    doSearch(v);
+                    return true;
+                }
+                return false;
+            }
+        });
         User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
 

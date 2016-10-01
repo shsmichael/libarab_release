@@ -21,14 +21,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 /**
