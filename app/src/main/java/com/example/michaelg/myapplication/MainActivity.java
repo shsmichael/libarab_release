@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
@@ -47,6 +49,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        TextView textView = (TextView) header.findViewById(R.id.textView_first_header);
+        TextView textView1 = (TextView) header.findViewById(R.id.textView_second_header);
+        textView.setText(myuser.getFirstname() + " " + myuser.getLastname());
+        textView1.setText(myuser.getUsername());
 
         //set main frag
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
