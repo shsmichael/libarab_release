@@ -229,7 +229,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     String  book = pages.getString(i);
                     tmp = first +book + last;
                     pagesStr.add(tmp);
-                    Log.e("Book pages",tmp);
+                    Log.e("ItemsQ pages",tmp);
                 }
                 // ViewPagerActivity.GalleryAdapter(pagesStr);
 

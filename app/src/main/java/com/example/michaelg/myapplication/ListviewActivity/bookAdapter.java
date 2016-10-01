@@ -59,7 +59,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
 
     }
 
-    static class ViewHolder {
+    public static class ViewHolder {
         public ImageView imageview;
         public TextView title;
         //public TextView tvDescription;

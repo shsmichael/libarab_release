@@ -179,11 +179,11 @@ public class SearchMapFragment extends Fragment {
                 //get arraysize (length -1 )
                 //int arraysize =list.length();
                 //list.length();
-                JSONObject book =list.getJSONObject(0);
+                JSONObject ItemsQ =list.getJSONObject(0);
                 JSONObject book2 =list.getJSONObject(1);
                 JSONObject book3 =list.getJSONObject(2);
 
-                String bookid =book.getString("recordId");
+                String bookid =ItemsQ.getString("recordId");
 
                 Log.e("back from do in back",bookid);
 

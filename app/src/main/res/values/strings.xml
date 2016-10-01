@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="aboutTrivia2">About</string>
-<string name="aboutTrivia">There are two options for the game, the user can create a quiz of 5 questions, or he can solve an existed quiz of 5 questions and gets 3 points for each correct answer. </string>
+    <string name="aboutTrivia">There are two options for the game, the user can create a quiz of 5 questions, or he can solve an existed quiz of 5 questions and gets 3 points for each correct answer. </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="about_details">LibArab app gives you an access to data of the NATIONAL LIBRARY OF ISREAL.
     Use LibArab to:

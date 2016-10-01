@@ -54,11 +54,15 @@ public class AddQuestion extends AppCompatActivity {
         String question1 = question.getText().toString();
 
         addQuestionButton = (Button) findViewById(R.id.button);
-        Intent intent = getIntent();
-        final String myuserid =(String) intent.getSerializableExtra("userid");
+       /* Intent intent = getIntent();*/
+        /*final String myuserid =(String) intent.getSerializableExtra("userid");
         final String thisItemid =(String) intent.getSerializableExtra("itemid");
         final String thisAuther =(String) intent.getSerializableExtra("auther");
-        final String thisItemName =(String) intent.getSerializableExtra("itemname");
+        final String thisItemName =(String) intent.getSerializableExtra("itemname");*/
+        final String myuserid ="basel@tsofen";
+        final String thisItemid ="12444";
+        final String thisAuther ="abu-khater";
+        final String thisItemName ="ala5dar";
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +79,7 @@ public class AddQuestion extends AppCompatActivity {
 
 
     private void attemptAddQuestion(String userID, String itemId, String auther,String itemName){
+
         String question1 = question.getText().toString();
         String correctAns=correct.getText().toString();
         String wrongAns1=uncorrect1.getText().toString();
@@ -157,7 +162,7 @@ public class AddQuestion extends AppCompatActivity {
             try {
                 //change
                 final String FORECAST_BASE_URL =
-                        Params.getServer() + "signIn/doSignIn?";
+                        /*Params.getServer() +*/ "192.168.43.65:8080/LibArab/gamification?";
 
                 final String QUESTION = "question";
                 final String CORRECT_ANSWER = "answer1";
@@ -246,25 +251,28 @@ public class AddQuestion extends AppCompatActivity {
         @Override
         protected void onPostExecute(final JSONObject success) {
             addQueTask = null;
-
-            String answer = null;
-            try {
-                answer = success.getString("client reply");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            if (answer.equals("success")) {  //case the user does'nt exist
-
-                finish();
-                Intent intent = new Intent(getApplicationContext(), Progress.class);
-                startActivity(intent);
-
-            } else {   // case failed
+            if(success==null)
+                Toast.makeText(AddQuestion.this, "null", Toast.LENGTH_LONG).show();
+            else {
+                String answer = null;
                 try {
-                    Toast.makeText(AddQuestion.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                    answer = success.getString("client reply");
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }
+
+                if (answer.equals("success")) {  //case the user does'nt exist
+
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(), Progress.class);
+                    startActivity(intent);
+
+                } else {   // case failed
+                    try {
+                        Toast.makeText(AddQuestion.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
