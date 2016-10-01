@@ -8,7 +8,13 @@ import android.net.ParseException;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
+import com.example.michaelg.myapplication.User;
 //import com.example.misho.login.Item.ViewPagerActivity;
 
 import org.apache.http.HttpEntity;
@@ -31,7 +38,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ListviewActivity extends Activity {
+public class ListviewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ArrayList<Book> bookList;
     String myURL="any";
@@ -44,6 +51,9 @@ public class ListviewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
+
+
+
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -76,6 +86,7 @@ public class ListviewActivity extends Activity {
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
                 intent1.putExtra("publisher",bookList.get(position).getPublisher());
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
+
                 intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
@@ -83,6 +94,11 @@ public class ListviewActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
     class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
@@ -136,7 +152,17 @@ public class ListviewActivity extends Activity {
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
-                        currentbook.setWeblink(object.getString("webLink"));
+                        if(object.has("libWebLink"))
+                        {
+                            currentbook.setWeblink(object.getString("libWebLink"));
+
+                        }
+                        else
+                        {
+                            currentbook.setWeblink(object.getString("webLink"));
+
+                        }
+
                         currentbook.setSource(object.getString("source"));
                      //   currentbook.setThumbnail(object.getString());
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));

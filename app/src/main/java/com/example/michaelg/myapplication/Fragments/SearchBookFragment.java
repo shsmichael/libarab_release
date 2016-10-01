@@ -8,11 +8,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,14 +22,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 /**
@@ -45,6 +45,7 @@ public class SearchBookFragment extends Fragment {
         // Required empty public constructor
     }
     private Switch searchby;
+    private String username;
 
     private EditText title ,
             fromyear ,
@@ -69,9 +70,38 @@ public class SearchBookFragment extends Fragment {
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
 
-
+        title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                doSearch(v);
+                return true;
+            }
+            return false;
+            }
+        });
+        fromyear.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    doSearch(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+        toyear.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    doSearch(v);
+                    return true;
+                }
+                return false;
+            }
+        });
         User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
-        final String username =newUser.getUsername();
+        username = newUser.getUsername();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 android.R.layout.simple_spinner_item);
@@ -109,53 +139,52 @@ public class SearchBookFragment extends Fragment {
         });
         searchbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 //perform action on click
-
-                //TODO: @michael change userId not 4 in both cases
-                if(str_serchby)
-                {
-                    Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    username)
-                            // .appendQueryParameter("title",    title.getText().toString())
-                            .appendQueryParameter("title",    title.getText().toString())
-                            .appendQueryParameter("fromyear", fromyear.getText().toString())
-                            .appendQueryParameter("toyear",   toyear.getText().toString())
-                            .build();
-
-
-
-
-
-                    Log.v("URLBookFRAG", builtUri.toString());
-                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
-                    i.putExtra("Value1", builtUri.toString());
-                    //TODO: @Michael i.putExtra("userId",userId);
-                    startActivity(i);
-                }
-                else
-                {
-                    Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
-                            .appendQueryParameter("userId",    username)
-                            .appendQueryParameter("author",    title.getText().toString())
-                            .appendQueryParameter("fromyear", fromyear.getText().toString())
-                            .appendQueryParameter("toyear",   toyear.getText().toString())
-                            .build();
-                    Log.v("URLBookFRAG", builtUri.toString());
-                    Intent i = new Intent(v.getContext() ,ListviewActivity.class);
-                    i.putExtra("Value1", builtUri.toString());
-                    startActivity(i);
-                }
-
-
-
-                //  Search searchtask = new Search(total);
-                //  searchtask.execute();
-                //check if json fetched
+                doSearch(v);
             }
 
         });
+
         return view;
+    }
+
+    private void doSearch(View v){
+
+        //TODO: @michael change userId not 4 in both cases
+        if(str_serchby)
+        {
+            Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
+                    .appendQueryParameter("userId",    username)
+                    // .appendQueryParameter("title",    title.getText().toString())
+                    .appendQueryParameter("title",    title.getText().toString())
+                    .appendQueryParameter("fromyear", fromyear.getText().toString())
+                    .appendQueryParameter("toyear",   toyear.getText().toString())
+                    .build();
+
+            Log.v("URLBookFRAG", builtUri.toString());
+            Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+            i.putExtra("Value1", builtUri.toString());
+            //TODO: @Michael i.putExtra("userId",userId);
+            startActivity(i);
+        }
+        else
+        {
+            Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
+                    .appendQueryParameter("userId",    username)
+                    .appendQueryParameter("author",    title.getText().toString())
+                    .appendQueryParameter("fromyear", fromyear.getText().toString())
+                    .appendQueryParameter("toyear",   toyear.getText().toString())
+                    .build();
+            Log.v("URLBookFRAG", builtUri.toString());
+            Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+            i.putExtra("Value1", builtUri.toString());
+            startActivity(i);
+        }
+
+        //  Search searchtask = new Search(total);
+        //  searchtask.execute();
+        //check if json fetched
+
     }
 
 
@@ -311,5 +340,11 @@ public class SearchBookFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+    }
 
 }

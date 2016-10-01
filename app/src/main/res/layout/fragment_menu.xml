@@ -44,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="?android:attr/colorBackground"
+                android:gravity="center_horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="2dp"
                 android:layout_margin="4dp" />
@@ -53,6 +54,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="?android:attr/colorBackground"
                 android:paddingTop="10dp"

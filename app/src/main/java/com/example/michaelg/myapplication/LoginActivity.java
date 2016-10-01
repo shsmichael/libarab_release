@@ -485,14 +485,70 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 User user = new User();
                 try {
 
-                    user.setFirstname(my.getString("firstname"));
-                    user.setLastname(my.getString("lastname"));
-                    user.setGender(my.getString("gender"));
-                    user.setUsername(my.getString("username"));
-                    user.setUserType(my.getString("userType"));
-                    user.setWantToPlay(my.getBoolean("isWantToPlay"));
-                    user.setBday(my.getString("bday"));
-
+                    if(my.has("firstname")) {
+                        user.setFirstname(my.getString("firstname"));
+                    }else{
+                        if(object.has("firstname")){
+                            user.setFirstname(object.getString("firstname"));
+                        }else{
+                            user.setFirstname("Unknown");
+                        }
+                    }
+                    if(my.has("lastname")){
+                        user.setLastname(my.getString("lastname"));
+                    }else{
+                        if(object.has("lastname")){
+                            user.setLastname(object.getString("lastname"));
+                        }else{
+                            user.setLastname("Unknown");
+                        }
+                    }
+                    // TODO: 29/09/2016  fix with server team location of json value gener & bday
+                    if(my.has("gender")){
+                        user.setGender(my.getString("gender"));
+                    }else{
+                        if(object.has("gender")){
+                            user.setGender(object.getString("gender"));
+                        }else{
+                            user.setGender("Unknown");
+                        }
+                    }
+                    if(my.has("username")){
+                        user.setUsername(my.getString("username"));
+                    }else{
+                        if(object.has("username")){
+                            user.setUsername(object.getString("username"));
+                        }else{
+                            user.setUsername("Unknown");
+                        }
+                    }
+                    if(my.has("userType")){
+                        user.setUserType(my.getString("userType"));
+                    }else{
+                        if(object.has("userType")){
+                            user.setUserType(object.getString("userType"));
+                        }else{
+                            user.setUserType("Unknown");
+                        }
+                    }
+                    if(my.has("isWantToPlay")){
+                        user.setWantToPlay(my.getBoolean("isWantToPlay"));
+                    }else{
+                        if(object.has("isWantToPlay")){
+                            user.setWantToPlay(object.getBoolean("isWantToPlay"));
+                        }else{
+                            user.setWantToPlay(false);
+                        }
+                    }
+                    if(my.has("bday")){
+                        user.setBday(my.getString("bday"));
+                    }else{
+                        if(object.has("isWantToPlay")){
+                            user.setBday(object.getString("bday"));
+                        }else{
+                            user.setBday("Unknown");
+                        }
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

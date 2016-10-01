@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="100"
-    android:background="@drawable/search_book_background">
+    android:background="@drawable/search_sheet_background">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -58,7 +58,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
                     android:hint="@string/search_enter_title"
-                    android:text="تاريخ" />
+                    android:text="تاريخ"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
 
             </LinearLayout>
 
@@ -79,7 +81,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/fromyear_editText" />
+                    android:id="@+id/fromyear_editText"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
 
             </LinearLayout>
 
@@ -100,7 +104,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/toYear_editText" />
+                    android:id="@+id/toYear_editText"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -51,6 +51,9 @@
     <string name="search_creation_date">Creation Date:  </string>
     <string name="search_author">Author:    </string>
     <string name="search_publisher">Publisher:  </string>
+    <string name="settings_chose_lang">Click To Choose Language</string>
+    <string name="settings_lang">Language</string>
+
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -158,5 +161,11 @@
     <string name="search_sheet">Sheet</string>
     <string name="search_book">Book</string>
     <string name="sheet_title">Title</string>
+    <string name="title_bold"><b>Title</b></string>
+    <string name="publisher_bold"><b>Publisher</b></string>
+    <string name="creationdate_bold"><b>Creation Date</b></string>
+    <string name="source_bold"><b>Source</b></string>
+    <string name="weblink_bold"><b>Web Link</b></string>
+    <string name="author_bold"><b>Author</b></string>
 
 </resources>

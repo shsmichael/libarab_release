@@ -339,7 +339,7 @@ public class SignUp extends AppCompatActivity {
         protected void onPostExecute(final JSONObject success) {
             mAuthTask = null;
             showProgress(false);
-            boolean answer;
+            boolean answer = false;
             JSONArray jsonarray;
             JSONObject tmp;
             if (success == null){
@@ -347,26 +347,65 @@ public class SignUp extends AppCompatActivity {
                 return;
             }
             try{
-                answer = success.getBoolean("result");
+                if(success.has("result")){
+                    answer = success.getBoolean("result");
+                }else{
+                    if(success.has("status")){
+                        answer = success.getBoolean("status");
+                    }
+                }
                 if (answer){
                     jsonarray = success.getJSONArray("paramsArray");
                     tmp = jsonarray.getJSONObject(0);
                     user = new User();
-                    user.setFirstname(tmp.getString("firstname"));
-                    user.setLastname(tmp.getString("lastname"));
-                    user.setGender(tmp.getString("gender"));
-                    user.setUsername(tmp.getString("username"));
-                    user.setUserType(tmp.getString("userType"));
-                    user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
-                    user.setBday(tmp.getString("bday"));
+                    if(tmp.has("firstname")){
+                        user.setFirstname(tmp.getString("firstname"));
+                    }else{
+                        user.setFirstname("Unknown");
+                    }
+                    if(tmp.has("lastname")){
+                        user.setLastname(tmp.getString("lastname"));
+                    }
+                    else {
+                        user.setLastname("Unknown");
+                    }
+                    if(tmp.has("gender")){
+                        user.setGender(tmp.getString("gender"));
+                    }else{
+                        user.setGender("Unknown");
+                    }
+                    if(tmp.has("username")){
+                        user.setUsername(tmp.getString("username"));
+                    }else{
+                        user.setUsername("Unknown");
+                    }
+                    if(tmp.has("userType")){
+                        user.setUserType(tmp.getString("userType"));
+                    }else{
+                        user.setUserType("Unknown");
+                    }
+                    if(tmp.has("isWantToPlay")){
+                        user.setWantToPlay(tmp.getBoolean("isWantToPlay"));
+                    }else{
+                        user.setWantToPlay(false);
+                    }
+                    if(tmp.has("bday")){
+                        user.setBday(tmp.getString("bday"));
+                    }else{
+                        user.setBday("Unknown");
+                    }
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     //Bundle mBundle = new Bundle();
                     intent.putExtra("user",user);
                     //intent.putExtra("user",user);
                     //intent.putExtra("Type",1);
+                    finish();
                     startActivity(intent);
                 }else{
-                    // TODO: 9/21/2016 signUp Error
+                    String msg = success.getString("error_msg");
+                    if(msg.equals("Exists in DB")){
+                        Toast.makeText(SignUp.this,"User already exists", Toast.LENGTH_LONG).show();
+                    }
                 }
             }catch (JSONException e){
                 e.printStackTrace();

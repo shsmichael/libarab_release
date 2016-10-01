@@ -50,6 +50,7 @@ app:cardBackgroundColor="#ffffff"
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="0dp"
+                android:gravity="right"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Book Title"
@@ -75,10 +76,12 @@ app:cardBackgroundColor="#ffffff"
 
             <TextView
                 android:id="@+id/tv_creationdate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="right"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/tertiary_text_light"
-                android:text="July 3, 1962" />
+                android:text="July 3, 1962"
+                android:autoText="false" />
 
         </LinearLayout>
 
@@ -100,6 +103,7 @@ app:cardBackgroundColor="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Michael Jackson"
+                android:gravity="right"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:singleLine="false"
@@ -123,6 +127,7 @@ app:cardBackgroundColor="#ffffff"
             <TextView
                 android:id="@+id/tv_publisher"
                 android:layout_width="match_parent"
+                android:gravity="right"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/tertiary_text_light"
                 android:text="The National Libary"
