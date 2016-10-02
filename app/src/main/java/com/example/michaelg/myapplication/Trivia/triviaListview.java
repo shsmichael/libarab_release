@@ -67,7 +67,6 @@ public class triviaListview extends AppCompatActivity {
 
         //configure the list view
         ListView list=(ListView)findViewById(R.id.listview);
-        Toast.makeText(getApplicationContext(), "score:"  , Toast.LENGTH_SHORT).show();
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
