@@ -54,7 +54,7 @@
                     android:fontFamily="sans-serif" />
 
                 <EditText
-                    android:layout_width="255dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/title_edittext"
                     android:imeOptions="actionGo"
@@ -87,7 +87,7 @@
                     android:id="@+id/fromyear_editText"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:imeOptions="actionGo"/>
+                    android:imeOptions="actionGo" />
 
             </LinearLayout>
 
