@@ -123,7 +123,7 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 // TODO: 23/09/2016 Fix color change
                 //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
-                FavoritesFragment favoritesfragmentestfragment = new FavoritesFragment();
+                FavoriteFragmentnew favoritesfragmentestfragment = new FavoriteFragmentnew();
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 Bundle bundle = new Bundle();
                 //bundle.putInt("Type", userType);

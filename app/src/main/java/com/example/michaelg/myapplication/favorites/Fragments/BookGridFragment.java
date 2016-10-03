@@ -83,9 +83,11 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
           bookList = new ArrayList<Book>();
-        if (getArguments() != null) {
+       /* if (getArguments() != null) {
             type = getArguments().getInt(ARG_TYPE);
         }
+        */
+        type =2;
     }
 
     @Override
