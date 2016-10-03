@@ -38,7 +38,10 @@ import java.util.ArrayList;
 
 //import cn.pedant.SweetAlert.SweetAlertDialog;
 //import me.icxd.bookshelve.activity.BookInfoActivity;
+
 import com.example.michaelg.myapplication.favorites.adapter.BookGridAdapter;
+
+import com.example.michaelg.myapplication.favorites.BookInfoActivity;
 
 /**
  * Created by HaPBoy on 5/18/16.
@@ -133,11 +136,11 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // TODO: 03/10/2016    Intent intent = new Intent(getActivity(), BookInfoActivity.class);
-        // TODO: 03/10/2016    intent.putExtra("book",  (Book)bookGridAdapter.getItem(position));
+            Intent intent = new Intent(getActivity(), BookInfoActivity.class);
+           intent.putExtra("book",  (Book)bookGridAdapter.getItem(position));
        // intent.putExtra("id", (int) bookGridAdapter.getItemId(position));
 
-        // TODO: 03/10/2016   startActivity(intent);
+          startActivity(intent);
     }
 
     @Override

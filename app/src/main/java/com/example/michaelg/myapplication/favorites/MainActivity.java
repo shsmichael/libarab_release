@@ -30,7 +30,6 @@ import java.util.List;
 import com.example.michaelg.myapplication.favorites.Fragments.BookGridFragment;
 //import me.icxd.bookshelve.view.ViewPagerIndicator;
 
-import static android.support.design.R.styleable.FloatingActionButton;
 
 /**
  * Created by HaPBoy on 5/11/16.
