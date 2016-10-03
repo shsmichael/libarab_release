@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.Fragments.AboutFragment;
+import com.example.michaelg.myapplication.Fragments.FavoriteFragmentnew;
 import com.example.michaelg.myapplication.Fragments.FavoritesFragment;
 import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.Fragments.MenuFragment;
@@ -139,7 +140,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_favorites) {
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorFav)));
-            FavoritesFragment favoritesfragment = new FavoritesFragment();
+            FavoriteFragmentnew favoritesfragment = new FavoriteFragmentnew();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.fragment_main,
                     favoritesfragment,

@@ -175,13 +175,5 @@ public class BookInfoActivity extends BaseActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            startActivity(new Intent(this, MainActivity.class));
-            return true;
-        } else {
-            return super.onKeyDown(keyCode, event);
-        }
-    }
+
 }
