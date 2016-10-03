@@ -33,14 +33,14 @@ public class FavoriteFragmentnew extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_search_tabhost,container, false);
-
+        getActivity().setTitle(R.string.menu_favorites);
 
         mTabHost = (FragmentTabHost)rootView.findViewById(android.R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 
-        mTabHost.addTab(mTabHost.newTabSpec("fragmentb").setIndicator(getString(R.string.search_book)),
+        mTabHost.addTab(mTabHost.newTabSpec("fragmentb").setIndicator("My Books"),
                 BookGridFragment.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator(getString(R.string.search_sheet)),
+        mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator("My Sheets"),
                 BookGridFragment.class, null);
         // mTabHost.addTab(mTabHost.newTabSpec("fragmentd").setIndicator("Map"),
         //       SearchMapFragment.class, null);
@@ -53,6 +53,6 @@ public class FavoriteFragmentnew extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorFav)));
     }
 }

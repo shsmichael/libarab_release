@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
 
         user= (User) getActivity().getIntent().getSerializableExtra("user");
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        getActivity().setTitle("Profile");
 
         tv_userprofile_fname = (TextView) rootView.findViewById(R.id.tv_userprofile_f_name);
         tv_userprofile_lname = (TextView) rootView.findViewById(R.id.tv_userprofile_l_name);
@@ -119,6 +120,12 @@ public class ProfileFragment extends Fragment {
                 return false;
             }
         });
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
     }
 
 }
