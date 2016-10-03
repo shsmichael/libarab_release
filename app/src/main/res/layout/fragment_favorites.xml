@@ -1,21 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:weightSum="90">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.michaelg.myapplication.Fragments.FavoritesFragment">
 
-    <GridView
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gridView"
-        android:numColumns="3"
-        android:columnWidth="30dp"
-        android:minHeight="30dp"
-        android:backgroundTintMode="src_in"
-        android:choiceMode="singleChoice"
-        android:clickable="true"
-        android:smoothScrollbar="true"/>
+        android:text="@string/hello_blank_fragment" />
 
-</LinearLayout>
+</FrameLayout>

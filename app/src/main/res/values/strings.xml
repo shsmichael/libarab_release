@@ -168,4 +168,12 @@
     <string name="weblink_bold"><b>Web Link</b></string>
     <string name="author_bold"><b>Author</b></string>
 
+    <string name="fav_navigation_drawer_open">Open the menu</string>
+    <string name="fav_navigation_drawer_close">Close menu</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_favorite">Collect</string>
+    <string name="menu_more">menu</string>
+    <string name="menu_browser">Open the browser</string>
+
+
 </resources>
