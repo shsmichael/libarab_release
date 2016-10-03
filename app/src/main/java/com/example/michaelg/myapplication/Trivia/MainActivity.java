@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         // myuser =(User) intent.getSerializableExtra("user");
          myuser = new User();
         myuser.setuserid("dror@d");
-        Button bt= (Button) findViewById(R.id.button4);
+       /* Button bt= (Button) findViewById(R.id.button4);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 aboutTrivia();
             }
-        });
+        });*/
 
     }
 

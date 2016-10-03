@@ -80,7 +80,7 @@ public class Leader extends AppCompatActivity {
         userId = myuser.getuserid();
         userRank=new LeaderBoardTask(userId);
 
-        rank1=(TextView) findViewById(R.id.rank1);
+        /*rank1=(TextView) findViewById(R.id.rank1);
         rank2=(TextView) findViewById(R.id.rank2);
         rank3=(TextView) findViewById(R.id.rank3);
         rank4=(TextView) findViewById(R.id.rank4);
@@ -89,7 +89,7 @@ public class Leader extends AppCompatActivity {
         rank7=(TextView) findViewById(R.id.rank7);
         rank8=(TextView) findViewById(R.id.rank8);
         rank9=(TextView) findViewById(R.id.rank9);
-        rank10=(TextView) findViewById(R.id.rank10);
+        rank10=(TextView) findViewById(R.id.rank10);*/
 
         name1=(TextView) findViewById(R.id.name1);
         name2=(TextView) findViewById(R.id.name2);
@@ -156,7 +156,7 @@ public class Leader extends AppCompatActivity {
                 //future change
                 //"http://172.20.10.6:8080/LibArab/gamification/leaderBoard?";
                 final String FORECAST_BASE_URL ="http://52.29.110.203:8080/LibArab/gamification/leaderBorad?";
-                       // Params.getServer() + "gamification/leaderBorad?";
+                // Params.getServer() + "gamification/leaderBorad?";
                 //check format
                 final String USER = "userId";
 
@@ -233,7 +233,7 @@ public class Leader extends AppCompatActivity {
 
             else {
 
-                String jsonRank1;
+              /*  String jsonRank1;
                 String jsonRank2;
                 String jsonRank3;
                 String jsonRank4;
@@ -242,7 +242,7 @@ public class Leader extends AppCompatActivity {
                 String jsonRank7;
                 String jsonRank8;
                 String jsonRank9;
-                String jsonRank10;
+                String jsonRank10;*/
 
                 String jsonScore1;
                 String jsonScore2;
@@ -275,97 +275,111 @@ public class Leader extends AppCompatActivity {
                 try {
                     JSONArray leadersArray = leaders.getJSONArray("Leaders");
 
+                    if(leadersArray.length()>1) {
+                        JSONObject perUser1 = leadersArray.getJSONObject(1);
+                       // jsonRank1 = perUser1.getString("rank");
+                        jsonScore1 = perUser1.getString("score");
+                        jsonName1 = perUser1.getString("name");
+                        //rank1.setText(jsonRank1);
+                        name1.setText(jsonName1);
+                        score1.setText(jsonScore1);
 
+                    }
+                    //Toast.makeText(getApplicationContext(), jsonName1, Toast.LENGTH_LONG).show();
+                    if(leadersArray.length()>2) {
+                        JSONObject perUser2 = leadersArray.getJSONObject(2);
+                        //jsonRank2 = perUser2.getString("rank");
+                        jsonScore2 = perUser2.getString("score");
+                        jsonName2 = perUser2.getString("name");
+                        //rank2.setText(jsonRank2);
+                        name2.setText(jsonName2);
+                        score2.setText(jsonScore2);
+                    }
 
-                    JSONObject perUser1 = leadersArray.getJSONObject(1);
-                    jsonRank1 = perUser1.getString("rank");
-                    jsonScore1 = perUser1.getString("score");
-                    jsonName1 = perUser1.getString("name");
-                    Toast.makeText(getApplicationContext(),jsonName1, Toast.LENGTH_LONG).show();
+                    if(leadersArray.length()>3) {
+                        JSONObject perUser3 = leadersArray.getJSONObject(3);
+                       // jsonRank3 = perUser3.getString("rank");
+                        jsonScore3 = perUser3.getString("score");
+                        jsonName3 = perUser3.getString("name");
+                       // rank3.setText(jsonRank3);
+                        name3.setText(jsonName3);
+                        score3.setText(jsonScore3);
+                    }
 
-                    JSONObject perUser2 = leadersArray.getJSONObject(2);
-                    jsonRank2 = perUser2.getString("rank");
-                    jsonScore2 = perUser2.getString("score");
-                    jsonName2 = perUser2.getString("name");
+                    if(leadersArray.length()>4) {
+                        JSONObject perUser4 = leadersArray.getJSONObject(4);
+                       // jsonRank4 = perUser4.getString("rank");
+                        jsonScore4 = perUser4.getString("score");
+                        jsonName4 = perUser4.getString("name");
+                        //rank4.setText(jsonRank4);
+                        name4.setText(jsonName4);
+                        score4.setText(jsonScore4);
+                    }
+                    if(leadersArray.length()>5) {
+                        JSONObject perUser5 = leadersArray.getJSONObject(5);
+                        //jsonRank5 = perUser5.getString("rank");
+                        jsonScore5 = perUser5.getString("score");
+                        jsonName5 = perUser5.getString("name");
+                        //rank5.setText(jsonRank5);
+                        name5.setText(jsonName5);
+                        score5.setText(jsonScore5);
 
-                    JSONObject perUser3 = leadersArray.getJSONObject(3);
-                    jsonRank3 = perUser3.getString("rank");
-                    jsonScore3 = perUser3.getString("score");
-                    jsonName3 = perUser3.getString("name");
+                    }
 
-                    JSONObject perUser4 = leadersArray.getJSONObject(4);
-                    jsonRank4 = perUser4.getString("rank");
-                    jsonScore4 = perUser4.getString("score");
-                    jsonName4 = perUser4.getString("name");
+                    if(leadersArray.length()>6) {
+                         JSONObject perUser6 = leadersArray.getJSONObject(6);
+                        //jsonRank6 = perUser6.getString("rank");
+                        jsonScore6 = perUser6.getString("score");
+                        jsonName6 = perUser6.getString("name");
+                        //rank6.setText(jsonRank6);
+                        name6.setText(jsonName6);
+                        score6.setText(jsonScore6);
 
-                    JSONObject perUser5 = leadersArray.getJSONObject(5);
-                    jsonRank5 = perUser5.getString("rank");
-                    jsonScore5 = perUser5.getString("score");
-                    jsonName5 = perUser5.getString("name");
+                    }
+                    if(leadersArray.length()>7) {
+                        JSONObject perUser7 = leadersArray.getJSONObject(7);
+                        //jsonRank7 = perUser7.getString("rank");
+                        jsonScore7 = perUser7.getString("score");
+                        jsonName7 = perUser7.getString("name");
+                        score7.setText(jsonScore7);
+                        name7.setText(jsonName7);
+                        //rank7.setText(jsonRank7);
+                    }
+                    if(leadersArray.length()>8) {
+                        JSONObject perUser8 = leadersArray.getJSONObject(8);
+                        //jsonRank8 = perUser8.getString("rank");
+                        jsonScore8 = perUser8.getString("score");
+                        jsonName8 = perUser8.getString("name");
+                        //rank8.setText(jsonRank8);
+                        name8.setText(jsonName8);
+                        score8.setText(jsonScore8);
+                    }
+                    if(leadersArray.length()>9) {
 
-                   /* JSONObject perUser6 = leadersArray.getJSONObject(6);
-                    jsonRank6 = perUser6.getString("rank");
-                    jsonScore6 = perUser6.getString("score");
-                    jsonName6 = perUser6.getString("name");
-
-                    JSONObject perUser7 = leadersArray.getJSONObject(7);
-                    jsonRank7 = perUser7.getString("rank");
-                    jsonScore7 = perUser7.getString("score");
-                    jsonName7 = perUser7.getString("name");
-
-                    JSONObject perUser8 = leadersArray.getJSONObject(8);
-                    jsonRank8 = perUser8.getString("rank");
-                    jsonScore8 = perUser8.getString("score");
-                    jsonName8 = perUser8.getString("name");
-
-                    JSONObject perUser9 = leadersArray.getJSONObject(9);
-                    jsonRank9 = perUser9.getString("rank");
-                    jsonScore9 = perUser9.getString("score");
-                    jsonName9 = perUser9.getString("name");
-
-                    JSONObject perUser10 = leadersArray.getJSONObject(10);
-                    jsonRank10 = perUser10.getString("rank");
-                    jsonScore10 = perUser10.getString("score");
-                    jsonName10 = perUser10.getString("name");
+                        JSONObject perUser9 = leadersArray.getJSONObject(9);
+                        //jsonRank9 = perUser9.getString("rank");
+                        jsonScore9 = perUser9.getString("score");
+                        jsonName9 = perUser9.getString("name");
+                       // rank9.setText(jsonRank9);
+                        name9.setText(jsonName9);
+                        score9.setText(jsonScore9);
+                    }
+                    if(leadersArray.length()>10) {
+                        JSONObject perUser10 = leadersArray.getJSONObject(10);
+                        //jsonRank10 = perUser10.getString("rank");
+                        jsonScore10 = perUser10.getString("score");
+                        jsonName10 = perUser10.getString("name");
+                        //rank10.setText(jsonRank10);
+                        name10.setText(jsonName10);
+                        score10.setText(jsonScore10);
+                    }
 
                     JSONObject perUser0 = leadersArray.getJSONObject(0);
-                    jsonUserRank = perUser0.getString("rank");
-                    jsonUserScore = perUser0.getString("score");
-                    jsonUserName = perUser0.getString("name");*/
-
-
-                    rank1.setText(jsonRank1);
-                    rank2.setText(jsonRank2);
-                    rank3.setText(jsonRank3);
-                    rank4.setText(jsonRank4);
-                    rank5.setText(jsonRank5);
-                   /* rank6.setText(jsonRank6);
-                    rank7.setText(jsonRank7);
-                    rank8.setText(jsonRank8);
-                    rank9.setText(jsonRank9);
-                    rank10.setText(jsonRank10);*/
-
-                    name1.setText(jsonName1);
-                    name2.setText(jsonName2);
-                    name3.setText(jsonName3);
-                    name4.setText(jsonName4);
-                    name5.setText(jsonName5);
-                   /* name6.setText(jsonName6);
-                    name7.setText(jsonName7);
-                    name8.setText(jsonName8);
-                    name9.setText(jsonName9);
-                    name10.setText(jsonName10);*/
-
-                    score1.setText(jsonScore1);
-                    score2.setText(jsonScore2);
-                    score3.setText(jsonScore3);
-                    score4.setText(jsonScore4);
-                    score5.setText(jsonScore5);
-                   /* score6.setText(jsonScore6);
-                    score7.setText(jsonScore7);
-                    score8.setText(jsonScore8);
-                    score9.setText(jsonScore9);
-                    score10.setText(jsonScore10);*/
+                    if(perUser0!=null) {
+                        jsonUserRank = perUser0.getString("rank");
+                        jsonUserScore = perUser0.getString("score");
+                        jsonUserName = perUser0.getString("name");
+                    }
 
                   /*  userRank1.setText(jsonUserRank);
                     userName1.setText(jsonUserName);
@@ -378,6 +392,10 @@ public class Leader extends AppCompatActivity {
                     String userRank = user.getString("rank");
                     String userScore = user.getString("score");
                     String userName = user.getString("name");
+                    userRank1.setText(userRank);
+                    userName1.setText(userName);
+                    userScore1.setText(userScore);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
