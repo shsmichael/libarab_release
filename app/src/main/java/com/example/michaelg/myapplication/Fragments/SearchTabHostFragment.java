@@ -52,6 +52,6 @@ public class SearchTabHostFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
+       activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorSearch)));
     }
 }
