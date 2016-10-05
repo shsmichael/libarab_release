@@ -171,6 +171,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
+            i.putExtra("searchby", "title");
 
             //TODO: @Michael i.putExtra("userId",userId);
             startActivity(i);
@@ -193,6 +194,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
+            i.putExtra("searchby", "author");
 
             startActivity(i);
         }
