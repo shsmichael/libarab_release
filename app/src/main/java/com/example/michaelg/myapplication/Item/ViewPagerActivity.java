@@ -247,18 +247,28 @@ public class ViewPagerActivity extends AppCompatActivity{
                 }
                 int a=pagesStr.size();
                 if((pagesStr.size()==0)||(pagesStr.size()==1)){
-                    TextView textView9=(TextView) findViewById(R.id.textView28);
-                    textView9.setText("There               "+'\n'+"are                  "+'\n'+ "No                   "+'\n'+ "pages               ");
-                    textView9.setTextSize(50);
-                    textView9.setTextColor(Color.RED);
-            //        textView9.setVisibility(View.VISIBLE);
+                    TextView textView9=(TextView) findViewById(R.id.textView13);
+                    ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
+                    viewPager.setVisibility(View.GONE);
+                    textView9.setText('\n'+""+'\n'+""+'\n'+'\n'+""+'\n'+""+'\n'+"There "+"are "+"no "+"pages      ");
+                    textView9.setTextSize(30);
+                    textView9.setTextColor(Color.WHITE);
+                    textView9.setVisibility(View.VISIBLE);
+                    //        textView9.setVisibility(View.VISIBLE);
                     TextView textView4=(TextView) findViewById(R.id.textView4);
                     textView4.setVisibility(textView4.INVISIBLE);
-                    ImageView imageView11= (ImageView) findViewById(R.id.imageView11);
-                    imageView11.setVisibility(imageView11.INVISIBLE);
+                    //     ImageView imageView11= (ImageView) findViewById(R.id.imageView11);
+                    //       imageView11.setVisibility(imageView11.INVISIBLE);
 
 
                     flag=1;
+                }
+                if(flag==0){
+
+                    TextView textView9=(TextView) findViewById(R.id.textView13);
+                    textView9.setVisibility(textView9.GONE);
+                    ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
+                    viewPager.setVisibility(View.VISIBLE);
                 }
                 // ViewPagerActivity.GalleryAdapter(pagesStr);
 
@@ -298,6 +308,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         public Object instantiateItem(ViewGroup container, int position) {
 
             if(flag==0) {
+
                 if (j == 0) {
                     textView1.setText(position + "/" + items.size());
                     textView1.setTextSize(20);

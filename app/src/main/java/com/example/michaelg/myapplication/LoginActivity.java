@@ -174,6 +174,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void loginGuest() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         User guestuser= new User();
+        guestuser.setUsername("guest@lib");
         intent.putExtra("user", guestuser);
         startActivity(intent);
 
