@@ -52,6 +52,12 @@
 
     </FrameLayout>
 
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textView13" />
+
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/vp_gallery"
@@ -59,11 +65,6 @@
         android:layout_height="427dp"
         >
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/textView13" />
     </android.support.v4.view.ViewPager>
 
 
