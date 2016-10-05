@@ -53,7 +53,7 @@ public class AddQuestion extends AppCompatActivity {
 
         String question1 = question.getText().toString();
 
-        addQuestionButton = (Button) findViewById(R.id.button);
+        //addQuestionButton = (Button) findViewById(R.id.imageButton);
        /* Intent intent = getIntent();*/
         /*final String myuserid =(String) intent.getSerializableExtra("userid");
         final String thisItemid =(String) intent.getSerializableExtra("itemid");
@@ -162,7 +162,7 @@ public class AddQuestion extends AppCompatActivity {
             try {
                 //change
                 final String FORECAST_BASE_URL =
-                        /*Params.getServer() +*/ "192.168.43.65:8080/LibArab/gamification?";
+                        Params.getServer() +"LibArab/gamification?";
 
                 final String QUESTION = "question";
                 final String CORRECT_ANSWER = "answer1";
