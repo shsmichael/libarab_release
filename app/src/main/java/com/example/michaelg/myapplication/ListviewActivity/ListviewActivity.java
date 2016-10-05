@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
@@ -43,7 +44,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ListviewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    int index=0;
+    int index;
     ArrayList<Book> bookList;
     String myURL="any";
     private String ID;
@@ -54,6 +55,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     String _SEARCH_URL ;
     private String toyear;
     private String txt;
+    private TextView resultstitle;
 
 
     bookAdapter adapter;
@@ -79,6 +81,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
              searchfor=extras.getString("searchfor");
              txt=extras.getString("txt");
              _SEARCH_URL=extras.getString("searchurl");
+             index=extras.getInt("index");
 
 
          }
@@ -94,9 +97,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
         listview.setAdapter(adapter);
-        Log.v("ABC","CCC");
+      //  Log.v("ABC","CCC");
+        resultstitle = (TextView) findViewById(R.id.textView11) ;
+        resultstitle.setText("Results ["+Integer.toString(index*24)+"-"+ Integer.toString(index*24+24)+"]");
 
-        prev= (FloatingActionButton) findViewById(R.id.fab1);
+
+                prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
         if(index==0)
         {
@@ -133,6 +139,17 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
 
+                Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                i.putExtra("Value1", builtUri.toString());
+                i.putExtra("searchurl",_SEARCH_URL);
+                i.putExtra("userid",user);
+                i.putExtra("txt", txt);
+                i.putExtra("fromyear", fromyear);
+                i.putExtra("toyear", toyear);
+                i.putExtra("index", index);
+                //TODO: @Michael i.putExtra("userId",userId);
+                startActivity(i);
+
 
             }
 
@@ -161,6 +178,17 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
+                Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                i.putExtra("Value1", builtUri.toString());
+                i.putExtra("searchurl",_SEARCH_URL);
+                i.putExtra("userid",user);
+                i.putExtra("txt", txt);
+                i.putExtra("fromyear", fromyear);
+                i.putExtra("toyear", toyear);
+                i.putExtra("index", index);
+                //TODO: @Michael i.putExtra("userId",userId);
+                startActivity(i);
+
 
 
             }

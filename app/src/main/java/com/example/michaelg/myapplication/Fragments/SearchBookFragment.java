@@ -170,6 +170,8 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("txt", title.getText().toString());
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
+            i.putExtra("index", Integer.toString(0));
+
             //TODO: @Michael i.putExtra("userId",userId);
             startActivity(i);
         }
@@ -185,10 +187,12 @@ public class SearchBookFragment extends Fragment {
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
+            i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
             i.putExtra("txt", title.getText().toString());
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
+            i.putExtra("index", Integer.toString(0));
 
             startActivity(i);
         }
