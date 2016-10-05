@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ParseException;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,9 +19,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -39,12 +44,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ListviewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    int index;
     ArrayList<Book> bookList;
     String myURL="any";
     private String ID;
     private String user;
+    private String searchfor;
+    private String fromyear;
+    String _SEARCH_URL ;
+    private String toyear;
+    private String txt;
+    private TextView resultstitle;
+    private String searchby;
+
+
     bookAdapter adapter;
+    private FloatingActionButton nxt, prev;
+
+
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -53,25 +70,135 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_listviewactivity);
 
 
-
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
              //TODO: after we recieve the userId from the prev intent that is searchBookFragment/searchSheet..
-             //user=extras.getString("userId");
+             user=extras.getString("userId");
               myURL = extras.getString("Value1");
+             fromyear=extras.getString("fromyear");
+             toyear=extras.getString("toyear");
+             searchfor=extras.getString("searchfor");
+             txt=extras.getString("txt");
+             _SEARCH_URL=extras.getString("searchurl");
+             index=extras.getInt("index");
+             searchby= extras.getString("searchby");
+
+
          }
+
 
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
         Log.v("Url given by intent to ListviewActivity:",myURL);
+
+
         new JSONAsyncTask().execute(myURL);
 
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
-
         listview.setAdapter(adapter);
+      //  Log.v("ABC","CCC");
+        resultstitle = (TextView) findViewById(R.id.textView11) ;
+        resultstitle.setText("Results ["+Integer.toString(index*24)+"-"+ Integer.toString(index*24+24)+"]");
 
+
+                prev= (FloatingActionButton) findViewById(R.id.fab1);
+        nxt= (FloatingActionButton) findViewById(R.id.fab);
+        if(index==0)
+        {
+            prev.hide();
+        }
+        if(index>0)
+        {
+            prev.show();
+        }
+
+
+        //  Log.v("TAA",Integer.toString(nxt.getId()));
+
+        nxt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //perform action on click
+                index=index+1;
+                if(index>0)
+                {
+                    prev.show();
+                }
+
+
+                Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
+                        .appendQueryParameter("userId",    user)
+                        // .appendQueryParameter("title",    title.getText().toString())
+                        .appendQueryParameter(searchby,    txt)
+                        .appendQueryParameter("fromyear", fromyear)
+                        .appendQueryParameter("toyear",   toyear)
+                        .appendQueryParameter("index", Integer.toString(index) )
+
+                        .build();
+
+                Log.v("URLBookFRAG", builtUri.toString());
+                Log.v("Iam","Heere");
+/////
+                Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                i.putExtra("Value1", builtUri.toString());
+                i.putExtra("searchurl",_SEARCH_URL);
+                i.putExtra("userid",user);
+                i.putExtra("txt", txt);
+                i.putExtra("fromyear", fromyear);
+                i.putExtra("toyear", toyear);
+                i.putExtra("index", index);
+                i.putExtra("searchby", searchby);
+
+                //TODO: @Michael i.putExtra("userId",userId);
+                startActivity(i);
+
+
+            }
+
+        });
+
+        prev.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                index=index-1;
+                //perform action on click
+                if(index==0)
+                {
+                    prev.hide();
+                }
+
+
+                Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
+                        .appendQueryParameter("userId",    user)
+                        // .appendQueryParameter("title",    title.getText().toString())
+                        .appendQueryParameter(searchby,    txt)
+                        .appendQueryParameter("fromyear", fromyear)
+                        .appendQueryParameter("toyear",   toyear)
+                        .appendQueryParameter("index", Integer.toString(index) )
+
+                        .build();
+
+                Log.v("URLBookFRAG", builtUri.toString());
+                Log.v("Iam","Heere");
+                Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                i.putExtra("Value1", builtUri.toString());
+                i.putExtra("searchurl",_SEARCH_URL);
+                i.putExtra("userid",user);
+                i.putExtra("txt", txt);
+                i.putExtra("fromyear", fromyear);
+                i.putExtra("toyear", toyear);
+                i.putExtra("index", index);
+                i.putExtra("searchby", searchby);
+
+                //TODO: @Michael i.putExtra("userId",userId);
+                startActivity(i);
+
+
+
+            }
+
+        });
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -91,9 +218,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);
-
             }
         });
+
+
+
     }
 
     @Override

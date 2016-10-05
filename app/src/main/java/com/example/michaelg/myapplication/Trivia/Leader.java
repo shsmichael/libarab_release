@@ -27,6 +27,7 @@ import java.net.URL;
 public class Leader extends AppCompatActivity {
     String userId;
     private LeaderBoardTask userRank; //= null;
+    //Leaderboard
 
     TextView rank1;
     TextView rank2;
