@@ -139,7 +139,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
-
+/////
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
