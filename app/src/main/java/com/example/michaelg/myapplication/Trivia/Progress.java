@@ -32,7 +32,7 @@ public class Progress extends AppCompatActivity {
 
 
 
-        addQuestionButton = (Button) findViewById(R.id.addQ);
+        addQuestionButton = (Button) findViewById(R.id.button);
         addQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
