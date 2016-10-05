@@ -58,7 +58,6 @@ public class SearchSheetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
 
         final View view = inflater.inflate(R.layout.fragment_search_sheet, container, false);
@@ -69,7 +68,7 @@ public class SearchSheetFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
-
+//
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -123,7 +122,7 @@ public class SearchSheetFragment extends Fragment {
                         break;
                     case 1:
                         tv_titleorauthor.setText(R.string.search_author);
-                        _SEARCH_URL = Params.server +"search/sheetuthor?";
+                        _SEARCH_URL = Params.server +"search/sheetauthor?";
                         str_serchby=false;
                     default:
                         break;
@@ -170,6 +169,9 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("txt", title.getText().toString());
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
+            i.putExtra("index", Integer.toString(0));
+            i.putExtra("searchby", "title");
+
             //TODO: @Michael i.putExtra("userId",userId);
             startActivity(i);
         }
@@ -185,10 +187,13 @@ public class SearchSheetFragment extends Fragment {
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
+            i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
             i.putExtra("txt", title.getText().toString());
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
+            i.putExtra("index", Integer.toString(0));
+            i.putExtra("searchby", "author");
 
             startActivity(i);
         }

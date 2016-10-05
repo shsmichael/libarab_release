@@ -49,13 +49,13 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     String myURL="any";
     private String ID;
     private String user;
-    private String searchby;
     private String searchfor;
     private String fromyear;
     String _SEARCH_URL ;
     private String toyear;
     private String txt;
     private TextView resultstitle;
+    private String searchby;
 
 
     bookAdapter adapter;
@@ -82,6 +82,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
              txt=extras.getString("txt");
              _SEARCH_URL=extras.getString("searchurl");
              index=extras.getInt("index");
+             searchby= extras.getString("searchby");
 
 
          }
@@ -129,7 +130,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    user)
                         // .appendQueryParameter("title",    title.getText().toString())
-                        .appendQueryParameter("title",    txt)
+                        .appendQueryParameter(searchby,    txt)
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
@@ -138,7 +139,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
-
+/////
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
@@ -147,6 +148,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
+                i.putExtra("searchby", searchby);
+
                 //TODO: @Michael i.putExtra("userId",userId);
                 startActivity(i);
 
@@ -169,7 +172,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    user)
                         // .appendQueryParameter("title",    title.getText().toString())
-                        .appendQueryParameter("title",    txt)
+                        .appendQueryParameter(searchby,    txt)
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
@@ -186,6 +189,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
+                i.putExtra("searchby", searchby);
+
                 //TODO: @Michael i.putExtra("userId",userId);
                 startActivity(i);
 
