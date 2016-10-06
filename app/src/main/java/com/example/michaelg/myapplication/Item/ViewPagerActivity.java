@@ -152,6 +152,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if(type.equals("sheet")){
             String pagesDirictFromSearch= intent.getStringExtra("webLink");
+            //Log.v("urlEmil",pagesDirictFromSearch);
             pagesStr.add(pagesDirictFromSearch);
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
@@ -303,11 +304,6 @@ public class ViewPagerActivity extends AppCompatActivity{
                     textView9.setTextSize(30);
                     textView9.setTextColor(Color.WHITE);
                     textView9.setVisibility(View.VISIBLE);
-                    //        textView9.setVisibility(View.VISIBLE);
-                    TextView textView4=(TextView) findViewById(R.id.textView4);
-                    textView4.setVisibility(textView4.INVISIBLE);
-                    //     ImageView imageView11= (ImageView) findViewById(R.id.imageView11);
-                    //       imageView11.setVisibility(imageView11.INVISIBLE);
 
 
                     flag=1;
