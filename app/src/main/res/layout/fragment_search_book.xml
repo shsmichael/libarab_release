@@ -29,6 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="223dp"
             android:layout_weight="0.80"
+            android:layoutAnimation="@anim/layoutanimation"
             android:weightSum="1">
 
             <Spinner
