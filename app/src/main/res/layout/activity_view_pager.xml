@@ -59,41 +59,38 @@
 
     </android.support.v4.view.ViewPager>
 
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:gravity="center"
+            android:textColorHighlight="@color/black"
+            android:textColor="@color/black"
+            android:shadowColor="@color/black"
+            android:textColorLink="@color/black"
+            android:hint="enter page number"
+            android:imeOptions="actionGo"
+            android:id="@+id/et_changepage"
+            android:layout_weight="1" />
 
         <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="New Text"
+            android:gravity="center"
+            android:backgroundTint="@color/black"
+            android:layout_weight="1"
             android:id="@+id/textView"
-            android:textColor="#ffffff"
-            android:background="@android:drawable/zoom_plate"
-            android:layout_width="wrap_content" />
+            android:text="10/255"/>
 
-        <FrameLayout
-            android:focusable="false"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_gravity="center_horizontal|bottom"
-            android:text="New Text">
-
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="24dp"
-                android:id="@+id/et_changepage"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:imeOptions="actionGo"
-                android:layout_gravity="left|bottom" />
-
-        </FrameLayout>
-
-    </FrameLayout>
-
+    </LinearLayout>
 
 </LinearLayout>
 
