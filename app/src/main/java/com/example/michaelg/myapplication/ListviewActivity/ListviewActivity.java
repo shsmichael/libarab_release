@@ -47,18 +47,18 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     int index;
     ArrayList<Book> bookList;
     String myURL="any";
+    String _SEARCH_URL;
+    bookAdapter adapter;
     private String ID;
     private String user;
     private String searchfor;
     private String fromyear;
-    String _SEARCH_URL ;
     private String toyear;
     private String txt;
     private TextView resultstitle;
+    private int totalhits;
     private String searchby;
-
-
-    bookAdapter adapter;
+    private  int counter;
     private FloatingActionButton nxt, prev;
 
 
@@ -69,7 +69,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
 
+    /*    if (user == "Guest") {
+            user="guest@lib";
 
+        }*/
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -90,7 +93,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
-        Log.v("Url given by intent to ListviewActivity:",myURL);
+       Log.v("ListviewActivity URL:",myURL);
 
 
         new JSONAsyncTask().execute(myURL);
@@ -100,7 +103,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         listview.setAdapter(adapter);
       //  Log.v("ABC","CCC");
         resultstitle = (TextView) findViewById(R.id.textView11) ;
-        resultstitle.setText("Results ["+Integer.toString(index*24)+"-"+ Integer.toString(index*24+24)+"]");
+        resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
 
 
                 prev= (FloatingActionButton) findViewById(R.id.fab1);
@@ -109,10 +112,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         {
             prev.hide();
         }
-        if(index>0)
+
+   /*     if(index>0)
         {
             prev.show();
-        }
+        }*/
+
 
 
         //  Log.v("TAA",Integer.toString(nxt.getId()));
@@ -120,12 +125,14 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         nxt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //perform action on click
-                index=index+1;
+                index=index+24;
                 if(index>0)
                 {
                     prev.show();
                 }
 
+                if(index>totalhits)
+                    nxt.hide();
 
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    user)
@@ -139,7 +146,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
-/////
+//
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
@@ -161,7 +168,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                index=index-1;
+                index=index-24;
                 //perform action on click
                 if(index==0)
                 {
@@ -213,7 +220,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
                 intent1.putExtra("publisher",bookList.get(position).getPublisher());
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
-
+                intent1.putExtra("type",searchfor);
                 intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
@@ -221,7 +228,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
-
+/************************/
 
     }
 
@@ -230,7 +237,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         return false;
     }
 
-    class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
+    class JSONAsyncTask extends AsyncTask<String, Void, String> {
 
         ProgressDialog dialog;
 
@@ -244,8 +251,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             dialog.setCancelable(false);
         }
 
+
         @Override
-        protected Boolean doInBackground(String... urls) {
+        protected String  doInBackground(String... urls) {
+            String total_hits = "";
             try {
 
                 //------------------>>
@@ -262,8 +271,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                     JSONObject jsono = new JSONObject(data);
                     String res = jsono.getString("result");
+                     total_hits= jsono.getString("totalHits");
+                    Log.v("totalHits", (total_hits));
+
                     if (res.equals("false"))
-                        return false;
+                        return total_hits;
 
                     JSONArray jarray = jsono.getJSONArray("docs");
 
@@ -297,7 +309,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
                         bookList.add(currentbook);
                     }
-                    return true;
+                    return total_hits;
                 }
 
                 //------------------>>
@@ -309,13 +321,14 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return false;
+            return total_hits;
         }
 
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(String total ) {
             dialog.cancel();
+            totalhits=Integer.parseInt(total);
             adapter.notifyDataSetChanged();
-            if(result == false)
+            if(total.equals("0"))
                 Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
 
         }
