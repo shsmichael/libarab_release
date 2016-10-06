@@ -57,12 +57,16 @@ public class AddQuestion extends AppCompatActivity {
        /* Intent intent = getIntent();*/
         /*final String myuserid =(String) intent.getSerializableExtra("userid");
         final String thisItemid =(String) intent.getSerializableExtra("itemid");
-        final String thisAuther =(String) intent.getSerializableExtra("auther");
+        String  thisAuther = (String) intent.getSerializableExtra("auther")
+        if(thisAuther == null)
+          thisAuther = "unknown";
         final String thisItemName =(String) intent.getSerializableExtra("itemname"); */
-        final String myuserid ="basel@tsofen";
+
+        final String myuserid ="shsmichael@gmail.com";
         final String thisItemid ="12444";
         final String thisAuther ="abu-khater";
         final String thisItemName ="ala5dar";
+
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,10 +115,12 @@ public class AddQuestion extends AppCompatActivity {
             //Toast.makeText(AddQuestion.this, "yes", Toast.LENGTH_LONG).show();
             addQueTask = new AddQTask(question1, correctAns,wrongAns1,wrongAns2,wrongAns3,userID,itemId,auther, itemName);
             addQueTask.execute((Void) null);
-            Intent intent = new Intent(getApplicationContext(), Progress.class);
-            startActivity(intent);
+            // Intent intent = new Intent(getApplicationContext(), Progress.class);
+            //  startActivity(intent);
 
         }
+        // Intent intent = new Intent(getApplicationContext(), Progress.class);
+        // startActivity(intent);
     }
 
 
@@ -135,16 +141,16 @@ public class AddQuestion extends AppCompatActivity {
         private final String itemname;
 
 
-        AddQTask(String q, String cor,String wrong1,String wrong2,String wrong3,String user,String item,String auther1,String itemName) {
-            question1=q;
-            correct1=cor;
-            uncorrect11=wrong1;
-            uncorrect21=wrong2;
-            uncorrect31=wrong3;
-            userid=user;
-            itemid=item;
-            auther=auther1;
-            itemname=itemName;
+        AddQTask(String q, String cor, String wrong1, String wrong2, String wrong3, String user, String item, String auther1, String itemName) {
+            question1 = q;
+            correct1 = cor;
+            uncorrect11 = wrong1;
+            uncorrect21 = wrong2;
+            uncorrect31 = wrong3;
+            userid = user;
+            itemid = item;
+            auther = auther1;
+            itemname = itemName;
 
         }
 
@@ -164,17 +170,17 @@ public class AddQuestion extends AppCompatActivity {
             try {
                 //change
                 final String FORECAST_BASE_URL =
-                        Params.getServer() +"LibArab/gamification?";
+                        Params.getServer() + "gamification/createQues?";
 
                 final String QUESTION = "question";
                 final String CORRECT_ANSWER = "answer1";
                 final String UNCORRECT_ANSWER1 = "answer2";
                 final String UNCORRECT_ANSWER2 = "answer3";
                 final String UNCORRECT_ANSWER3 = "answer4";
-                final String USER_ID = "userid";
+                final String USER_ID = "username";
                 final String ITEM_ID = "itemid";
-                final String AUTHER = "auther";
-                final String ITEM_NAME = "itemname";
+                final String AUTHER = "author";
+                final String ITEM_NAME = "ItemName";
 
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
@@ -253,43 +259,45 @@ public class AddQuestion extends AppCompatActivity {
         @Override
         protected void onPostExecute(final JSONObject success) {
             addQueTask = null;
-            if(success==null)
+            if (success == null)
                 Toast.makeText(AddQuestion.this, "null", Toast.LENGTH_LONG).show();
             else {
                 String answer = null;
                 try {
-                    answer = success.getString("client reply");
+                    answer = success.getString("result");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                if (answer.equals("success")) {  //case the user does'nt exist
+                if (answer.equals("true")) {  //case the user does'nt exist
 
                     finish();
-                    Intent intent = new Intent(getApplicationContext(), Progress.class);
-                    startActivity(intent);
+                    Toast.makeText(AddQuestion.this, "Thank you!", Toast.LENGTH_LONG).show();
+                    // Intent intent = new Intent(getApplicationContext(), Progress.class);
+                    ///startActivity(intent);
 
                 } else {   // case failed
-                    try {
-                        Toast.makeText(AddQuestion.this, success.getString("message"), Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
+                    Toast.makeText(AddQuestion.this, "not good", Toast.LENGTH_LONG).show();
+
+
                 }
             }
+
         }
 
-        @Override
+
         protected void onCancelled() {
             addQueTask = null;
 
         }
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
 
