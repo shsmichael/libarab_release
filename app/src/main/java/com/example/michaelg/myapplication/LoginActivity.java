@@ -1,5 +1,6 @@
 package com.example.michaelg.myapplication;
 
+import com.facebook.FacebookSdk;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;

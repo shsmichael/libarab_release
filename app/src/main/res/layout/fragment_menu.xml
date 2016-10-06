@@ -13,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="81dp"
         android:id="@+id/frame_profile"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:layoutAnimation="@anim/layoutanimation">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/img_circular_profile_user"
