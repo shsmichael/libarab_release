@@ -205,7 +205,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
                 intent1.putExtra("author",bookList.get(position).getAuthor());

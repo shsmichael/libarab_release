@@ -20,16 +20,6 @@
             android:layout_marginTop="3dp"
             android:layout_gravity="left" />
 
-        <TextView
-            android:text=""
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/textView28"
-            tools:layout_width="match_parent"
-            tools:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            />
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
