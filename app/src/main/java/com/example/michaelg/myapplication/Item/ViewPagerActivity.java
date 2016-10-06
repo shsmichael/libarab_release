@@ -1,5 +1,6 @@
 package com.example.michaelg.myapplication.Item;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -9,8 +10,12 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -99,6 +104,20 @@ public class ViewPagerActivity extends AppCompatActivity{
             userId=extras.getString("userId");
             //  userId="100";
         }
+
+        etchange.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    changepage(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+
         Intent intent = getIntent();
         ID = intent.getStringExtra("recordId");
         userId = intent.getStringExtra("userId");
