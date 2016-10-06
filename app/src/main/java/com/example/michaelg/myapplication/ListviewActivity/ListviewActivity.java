@@ -113,6 +113,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         {
             prev.hide();
         }
+
    /*     if(index>0)
         {
             prev.show();
@@ -131,7 +132,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                     prev.show();
                 }
 
-
+                if(index>totalhits)
+                    nxt.hide();
 
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    user)
@@ -236,7 +238,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         return false;
     }
 
-    class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
+    class JSONAsyncTask extends AsyncTask<String, Void, String> {
 
         ProgressDialog dialog;
 
@@ -250,8 +252,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             dialog.setCancelable(false);
         }
 
+
         @Override
-        protected Boolean doInBackground(String... urls) {
+        protected String  doInBackground(String... urls) {
+            String total_hits = "";
             try {
 
                 //------------------>>
@@ -268,11 +272,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                     JSONObject jsono = new JSONObject(data);
                     String res = jsono.getString("result");
-                    String totalhits= jsono.getString("totalHits");
-                    Log.v("totalHits", (totalhits));
+                     total_hits= jsono.getString("totalHits");
+                    Log.v("totalHits", (total_hits));
 
                     if (res.equals("false"))
-                        return false;
+                        return total_hits;
 
                     JSONArray jarray = jsono.getJSONArray("docs");
 
@@ -306,7 +310,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
                         bookList.add(currentbook);
                     }
-                    return true;
+                    return total_hits;
                 }
 
                 //------------------>>
@@ -318,13 +322,14 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return false;
+            return total_hits;
         }
 
-        protected void onPostExecute(Boolean result ) {
+        protected void onPostExecute(String total ) {
             dialog.cancel();
+            totalhits=Integer.parseInt(total);
             adapter.notifyDataSetChanged();
-            if(result == false)
+            if(total.equals("0"))
                 Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
 
         }
