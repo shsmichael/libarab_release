@@ -70,6 +70,9 @@ public class ViewPagerActivity extends AppCompatActivity{
     TextView textView1;
     DiscreteSeekBar discreteSeekBar1;
     private Book book;
+    private String type;
+    final String typeBook="book";
+    final String typeSheet="sheet";
 
 
     public void bookinfo(View v){
@@ -132,6 +135,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         if(extras != null) {
             ID  = extras.getString("recordId");
             userId=extras.getString("userId");
+            type= extras.getString("type");
             //  userId="100";
         }
 
@@ -144,6 +148,15 @@ public class ViewPagerActivity extends AppCompatActivity{
         weblink      = intent.getStringExtra("webLink");
         publisher    = intent.getStringExtra("publisher");
         source       = intent.getStringExtra("source");
+        type= intent.getStringExtra("type");
+
+        if(type.equals("sheet")){
+            String pagesDirictFromSearch= intent.getStringExtra("webLink");
+            pagesStr.add(pagesDirictFromSearch);
+            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
+            vpGallery.setAdapter(new GalleryAdapter(pagesStr));
+            return;
+        }
 
         book = new Book();
         book.setCreationdate(creationdate);
