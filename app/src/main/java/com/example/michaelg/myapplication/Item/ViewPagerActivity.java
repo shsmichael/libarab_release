@@ -64,6 +64,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     int i = 0;
     int j = 0;
     int flag=0;
+    boolean flag2 = false;
     ViewPager vpGallery;
     EditText etchange;
     TextView textView1;
@@ -89,10 +90,12 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
-            textView1.setText(Integer.parseInt(stringnumber)  + "/" + pagesStr.size());
+            textView1.setText(stringnumber + "/" + pagesStr.size());
+            flag2 = true;
         }
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -382,14 +385,15 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-            if(i==0){
-                textView1.setText((position - 1) + "/" + items.size());
+            if(!flag2) {
+                if (i == 0) {
+                    textView1.setText((position - 1) + "/" + items.size());
 
-            }
-            else {
-                j=1;
-                textView1.setText(items.size() + "/" + items.size());
-                i=0;
+                } else {
+                    j = 1;
+                    textView1.setText(items.size() + "/" + items.size());
+                    i = 0;
+                }
             }
 
             container.removeView((View) object);
