@@ -12,7 +12,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.*;
 
 import java.util.ArrayList;
 
@@ -77,7 +77,7 @@ public class ResultActivity extends AppCompatActivity {
         btnViewAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent vIntent=new Intent(ResultActivity.this,ViewAnswerActivity.class);
+                Intent vIntent=new Intent(ResultActivity.this, MainActivity.class);
                 vIntent.putStringArrayListExtra("myAnsList",myAnsList);
                 startActivity(vIntent);
 
