@@ -395,10 +395,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     i = 0;
                 }
             }
-
             container.removeView((View) object);
-
-
         }
 
         @Override
