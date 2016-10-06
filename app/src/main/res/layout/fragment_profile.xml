@@ -84,24 +84,24 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="6">
+            android:weightSum="10">
 
             <TextView
                 android:id="@+id/user_first_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@android:color/white"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:text="@string/profile_first_name" />
 
             <TextView
                 android:id="@+id/tv_userprofile_f_name"
                 android:textColor="@android:color/white"
                 android:gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="3"
                 android:text="Michael" />
 
         </LinearLayout>
@@ -111,25 +111,25 @@
             android:layout_width="match_parent"
             android:paddingTop="8dp"
             android:layout_height="match_parent"
-            android:weightSum="6"
+            android:weightSum="10"
             android:layout_weight="1">
 
             <TextView
                 android:id="@+id/user_last_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@android:color/white"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_last_name" />
 
             <TextView
                 android:id="@+id/tv_userprofile_l_name"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="3"
                 android:text="Gonic" />
         </LinearLayout>
 
@@ -138,26 +138,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="8dp"
-            android:weightSum="6"
+            android:weightSum="10"
             android:layout_weight="1"
             >
 
             <TextView
                 android:id="@+id/user_age"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@android:color/white"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_age" />
 
             <TextView
                 android:id="@+id/tv_userprofile_age"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:layout_weight="5"
+                android:layout_weight="3"
                 android:text="10" />
         </LinearLayout>
 
@@ -165,25 +165,25 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:paddingTop="8dp"
-            android:weightSum="6"
+            android:weightSum="10"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/user_gender"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_weight="7"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_gender" />
 
             <TextView
                 android:id="@+id/tv_userprofile_gender"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="3"
                 android:text="male" />
         </LinearLayout>
 
@@ -193,25 +193,25 @@
             android:layout_height="match_parent"
             android:paddingTop="8dp"
             android:layout_weight="1"
-            android:weightSum="6">
+            android:weightSum="10">
 
             <TextView
                 android:id="@+id/user_game_score"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_game_score"
-                android:layout_weight="1" />
+                android:layout_weight="7" />
 
             <TextView
                 android:id="@+id/tv_userprofile_score"
                 android:textColor="@android:color/white"
                 android:gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="100"
-                android:layout_weight="5" />
+                android:layout_weight="3" />
         </LinearLayout>
 
         <!---temporary data -->
