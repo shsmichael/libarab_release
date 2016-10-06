@@ -34,16 +34,13 @@ import org.json.JSONObject;
  * A simple {@link Fragment} subclass.
  */
 public class SearchBookFragment extends Fragment {
+    private final String TAG = this.getClass().getSimpleName();
+    String _SEARCH_URL;
     //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
     //private userId;
     //TODO: @michael inorder to recieve it we should get it from the prev intent,
     // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
-    private boolean str_serchby; 
-    private final String TAG =this.getClass().getSimpleName();
-
-    public SearchBookFragment() {
-        // Required empty public constructor
-    }
+    private boolean str_serchby;
     private Switch searchby;
     private String username;
 
@@ -54,7 +51,11 @@ public class SearchBookFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
-     String _SEARCH_URL ;
+
+    public SearchBookFragment() {
+        // Required empty public constructor
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -200,7 +201,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","book");
-
+/***************************************************/
             startActivity(i);
         }
 

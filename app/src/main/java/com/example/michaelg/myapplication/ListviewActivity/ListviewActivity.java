@@ -47,19 +47,18 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     int index;
     ArrayList<Book> bookList;
     String myURL="any";
+    String _SEARCH_URL;
+    bookAdapter adapter;
     private String ID;
     private String user;
     private String searchfor;
     private String fromyear;
-    String _SEARCH_URL ;
     private String toyear;
     private String txt;
     private TextView resultstitle;
     private int totalhits;
     private String searchby;
     private  int counter;
-
-    bookAdapter adapter;
     private FloatingActionButton nxt, prev;
 
 
@@ -229,7 +228,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
-/*****/
+/************************/
 
     }
 
