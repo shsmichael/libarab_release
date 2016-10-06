@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import android.content.Intent;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
@@ -34,14 +35,13 @@ public class AddQuestion extends AppCompatActivity {
     EditText uncorrect1;
     EditText uncorrect2;
     EditText uncorrect3;
-    Button addQuestionButton;
+    ImageButton addQuestionButton;
 
     private AddQTask addQueTask = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.ac);
         setContentView(R.layout.trivia_activity_add_question);
 
         question = (EditText) findViewById(R.id.question_text);
@@ -52,13 +52,13 @@ public class AddQuestion extends AppCompatActivity {
 
 
         String question1 = question.getText().toString();
-
+        addQuestionButton = (ImageButton) findViewById(R.id.imageButton);
         //addQuestionButton = (Button) findViewById(R.id.imageButton);
        /* Intent intent = getIntent();*/
         /*final String myuserid =(String) intent.getSerializableExtra("userid");
         final String thisItemid =(String) intent.getSerializableExtra("itemid");
         final String thisAuther =(String) intent.getSerializableExtra("auther");
-        final String thisItemName =(String) intent.getSerializableExtra("itemname");*/
+        final String thisItemName =(String) intent.getSerializableExtra("itemname"); */
         final String myuserid ="basel@tsofen";
         final String thisItemid ="12444";
         final String thisAuther ="abu-khater";
@@ -118,7 +118,9 @@ public class AddQuestion extends AppCompatActivity {
     }
 
 
-/***************************************************************************/
+
+
+    /***************************************************************************/
 
     public class AddQTask extends AsyncTask<Void, Void, JSONObject> {
 
