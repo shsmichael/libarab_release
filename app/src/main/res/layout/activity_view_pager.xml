@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         >
+
         <com.github.ivbaranov.mfb.MaterialFavoriteButton
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -42,53 +43,55 @@
 
     </FrameLayout>
 
-    <TextView
-        android:text=""
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:id="@+id/textView13" />
+        android:weightSum="16">
 
-    <android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/vp_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="427dp"
-        >
-
-    </android.support.v4.view.ViewPager>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
-
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:gravity="center"
-            android:textColorHighlight="@color/black"
-            android:textColor="@color/black"
-            android:shadowColor="@color/black"
-            android:textColorLink="@color/black"
-            android:hint="enter page number"
-            android:imeOptions="actionGo"
-            android:id="@+id/et_changepage"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="2">
 
-        <TextView
+            <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/textView13" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+            </android.support.v4.view.ViewPager>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:backgroundTint="@color/black"
-            android:layout_weight="1"
-            android:id="@+id/textView"
-            android:text="10/255"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="14"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:clickable="true"
+                android:textSize="26sp"
+                android:backgroundTint="@color/black"
+                android:id="@+id/textView"
+                android:text="10/255"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

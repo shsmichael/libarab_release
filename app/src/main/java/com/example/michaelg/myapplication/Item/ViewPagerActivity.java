@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication.Item;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,8 +20,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
@@ -95,9 +99,32 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.initialize(this);
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
-        etchange =(EditText)findViewById(R.id.et_changepage);
+        //etchange =(EditText)findViewById(R.id.et_changepage);
         textView1=(TextView) findViewById(R.id.textView);
 
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ViewPagerActivity.this);
+                alertDialog.setTitle("Jump To Page");
+                alertDialog.setMessage("Enter Page");
+
+                final EditText etchange = new EditText(ViewPagerActivity.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                etchange.setLayoutParams(lp);
+                alertDialog.setView(etchange);
+                alertDialog.setPositiveButton("GO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ViewPagerActivity.this, "hiiiiii", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
@@ -105,7 +132,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             //  userId="100";
         }
 
-        etchange.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        /*etchange.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_GO) {
@@ -116,7 +143,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                 }
                 return false;
             }
-        });
+        });*/
 
         Intent intent = getIntent();
         ID = intent.getStringExtra("recordId");
