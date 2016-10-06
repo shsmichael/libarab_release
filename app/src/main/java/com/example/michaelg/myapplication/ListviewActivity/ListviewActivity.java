@@ -120,6 +120,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
 
 
+
         //  Log.v("TAA",Integer.toString(nxt.getId()));
 
         nxt.setOnClickListener(new View.OnClickListener() {
@@ -271,11 +272,13 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                     JSONObject jsono = new JSONObject(data);
                     String res = jsono.getString("result");
-                     total_hits= jsono.getString("totalHits");
+                    if (res.equals("false")) {
+                        Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                    total_hits = jsono.getString("totalHits");
                     Log.v("totalHits", (total_hits));
 
-                    if (res.equals("false"))
-                        return total_hits;
 
                     JSONArray jarray = jsono.getJSONArray("docs");
 
@@ -307,7 +310,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         currentbook.setSource(object.getString("source"));
                      //   currentbook.setThumbnail(object.getString());
                         //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
-                        bookList.add(currentbook);
+                        if (!total_hits.equals("0")) {
+                            bookList.add(currentbook);
+
+                        }
                     }
                     return total_hits;
                 }
@@ -328,9 +334,21 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             dialog.cancel();
             totalhits=Integer.parseInt(total);
             adapter.notifyDataSetChanged();
-            if(total.equals("0"))
-                Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
+            if (total == null) {
+                Toast.makeText(getApplicationContext(), "Sorry , Unable to fetch data from server", Toast.LENGTH_LONG).show();
+                finish();
+            }
+            if (total.equals("0")) {
+                Toast.makeText(getApplicationContext(), "Sorry , No Results Found", Toast.LENGTH_LONG).show();
+                finish();
 
+            }
+            if (totalhits <= 24) {
+                nxt.hide();
+            }
+            if (index >= totalhits) {
+                nxt.hide();
+            }
         }
     }
 }

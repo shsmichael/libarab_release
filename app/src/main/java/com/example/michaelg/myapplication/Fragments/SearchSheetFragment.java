@@ -29,7 +29,9 @@ import com.example.michaelg.myapplication.User;
 
 import org.json.JSONObject;
 
-
+//TODO :   1. hide nxt when displaying the latest list
+// 2. change the message when we have no results
+// 3.
 /**
  * A simple {@link Fragment} subclass.
  */
