@@ -38,7 +38,7 @@ public class SearchBookFragment extends Fragment {
     //private userId;
     //TODO: @michael inorder to recieve it we should get it from the prev intent,
     // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
-    private boolean str_serchby;
+    private boolean str_serchby; 
     private final String TAG =this.getClass().getSimpleName();
 
     public SearchBookFragment() {
@@ -69,7 +69,10 @@ public class SearchBookFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
+     /*   if (username.equals("Guest")) {
+            username="guest@lib";
 
+        }*/
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

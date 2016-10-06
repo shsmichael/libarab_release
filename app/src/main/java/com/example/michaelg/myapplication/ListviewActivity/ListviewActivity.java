@@ -55,8 +55,9 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String toyear;
     private String txt;
     private TextView resultstitle;
+    private int totalhits;
     private String searchby;
-
+    private  int counter;
 
     bookAdapter adapter;
     private FloatingActionButton nxt, prev;
@@ -69,7 +70,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
 
+    /*    if (user == "Guest") {
+            user="guest@lib";
 
+        }*/
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -90,7 +94,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
-        Log.v("Url given by intent to ListviewActivity:",myURL);
+       Log.v("ListviewActivity URL:",myURL);
 
 
         new JSONAsyncTask().execute(myURL);
@@ -100,7 +104,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         listview.setAdapter(adapter);
       //  Log.v("ABC","CCC");
         resultstitle = (TextView) findViewById(R.id.textView11) ;
-        resultstitle.setText("Results ["+Integer.toString(index*24)+"-"+ Integer.toString(index*24+24)+"]");
+        resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
 
 
                 prev= (FloatingActionButton) findViewById(R.id.fab1);
@@ -109,10 +113,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         {
             prev.hide();
         }
-        if(index>0)
+   /*     if(index>0)
         {
             prev.show();
-        }
+        }*/
+
 
 
         //  Log.v("TAA",Integer.toString(nxt.getId()));
@@ -120,11 +125,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         nxt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //perform action on click
-                index=index+1;
+                index=index+24;
                 if(index>0)
                 {
                     prev.show();
                 }
+
 
 
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
@@ -139,7 +145,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                 Log.v("URLBookFRAG", builtUri.toString());
                 Log.v("Iam","Heere");
-/////
+//
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
@@ -161,7 +167,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                index=index-1;
+                index=index-24;
                 //perform action on click
                 if(index==0)
                 {
@@ -262,6 +268,9 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 
                     JSONObject jsono = new JSONObject(data);
                     String res = jsono.getString("result");
+                    String totalhits= jsono.getString("totalHits");
+                    Log.v("totalHits", (totalhits));
+
                     if (res.equals("false"))
                         return false;
 
@@ -312,7 +321,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             return false;
         }
 
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(Boolean result ) {
             dialog.cancel();
             adapter.notifyDataSetChanged();
             if(result == false)

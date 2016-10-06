@@ -61,6 +61,10 @@ public class SearchSheetFragment extends Fragment {
 
 
         final View view = inflater.inflate(R.layout.fragment_search_sheet, container, false);
+     /*   if (username.equals("Guest")) {
+            username="guest@lib";
+
+        }*/
         getActivity().setTitle(R.string.menu_search);
         spinner = (Spinner) view.findViewById(R.id.spinner);
         title = (EditText) view.findViewById(R.id.title_edittext);
