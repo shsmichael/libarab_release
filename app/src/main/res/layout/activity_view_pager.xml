@@ -91,19 +91,13 @@
             android:layout_gravity="center_horizontal|bottom"
             android:text="New Text">
 
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="24dp"
-                android:text="Go"
-                android:id="@+id/btn_changepage"
-                android:layout_gravity="right|bottom"
-                android:onClick="changepage"
-                android:textSize="4dp" />
-
             <EditText
                 android:layout_width="70dp"
                 android:layout_height="24dp"
                 android:id="@+id/et_changepage"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionGo"
                 android:layout_gravity="left|bottom" />
 
         </FrameLayout>
