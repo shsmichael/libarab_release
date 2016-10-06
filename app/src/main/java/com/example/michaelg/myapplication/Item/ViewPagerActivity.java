@@ -74,12 +74,12 @@ public class ViewPagerActivity extends AppCompatActivity{
     public void bookinfo(View v){
 
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
-        bookinfoactivity.putExtra("creationdate",creationdate);
-        bookinfoactivity.putExtra("title",title);
-        bookinfoactivity.putExtra("author",author);
-        bookinfoactivity.putExtra("webLink",weblink);
-        bookinfoactivity.putExtra("publisher",publisher);
-        bookinfoactivity.putExtra("source",source);
+        bookinfoactivity.putExtra("creationdate" ,creationdate);
+        bookinfoactivity.putExtra("title"        ,title);
+        bookinfoactivity.putExtra("author"       ,author);
+        bookinfoactivity.putExtra("webLink"      ,weblink);
+        bookinfoactivity.putExtra("publisher"    ,publisher);
+        bookinfoactivity.putExtra("source"       ,source);
         startActivity(bookinfoactivity);
     }
 
@@ -104,12 +104,12 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ViewPagerActivity.this);
                 alertDialog.setTitle("Jump To Page");
                 alertDialog.setMessage("Enter Page");
 
-                final EditText etchange = new EditText(ViewPagerActivity.this);
+                etchange = new EditText(ViewPagerActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -118,7 +118,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                 alertDialog.setPositiveButton("GO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ViewPagerActivity.this, "hiiiiii", Toast.LENGTH_SHORT).show();
+                        changepage(v);
                     }
                 });
 
@@ -132,28 +132,15 @@ public class ViewPagerActivity extends AppCompatActivity{
             //  userId="100";
         }
 
-        /*etchange.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_GO) {
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    changepage(v);
-                    return true;
-                }
-                return false;
-            }
-        });*/
-
         Intent intent = getIntent();
-        ID = intent.getStringExtra("recordId");
-        userId = intent.getStringExtra("userId");
+        ID           = intent.getStringExtra("recordId");
+        userId       = intent.getStringExtra("userId");
         creationdate = intent.getStringExtra("creationdate");
-        title = intent.getStringExtra("title");
-        author = intent.getStringExtra("author");
-        weblink = intent.getStringExtra("webLink");
-        publisher = intent.getStringExtra("publisher");
-        source = intent.getStringExtra("source");
+        title        = intent.getStringExtra("title");
+        author       = intent.getStringExtra("author");
+        weblink      = intent.getStringExtra("webLink");
+        publisher    = intent.getStringExtra("publisher");
+        source       = intent.getStringExtra("source");
 
         book = new Book();
         book.setCreationdate(creationdate);
