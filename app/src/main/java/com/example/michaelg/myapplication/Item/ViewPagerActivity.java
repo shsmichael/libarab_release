@@ -1,6 +1,5 @@
 package com.example.michaelg.myapplication.Item;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,18 +11,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
@@ -63,8 +55,8 @@ public class ViewPagerActivity extends AppCompatActivity{
     private ViewItemTask mAuthTask = null;
     int i = 0;
     int j = 0;
-    int flag=0;
-    boolean flag2 = false;
+    int isNoPages =0;
+    boolean isJump = false;
     ViewPager vpGallery;
     EditText etchange;
     TextView textView1;
@@ -94,7 +86,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
             textView1.setText(stringnumber + "/" + pagesStr.size());
-            flag2 = true;
+            isJump = true;
         }
 
     }
@@ -306,9 +298,9 @@ public class ViewPagerActivity extends AppCompatActivity{
                     textView9.setVisibility(View.VISIBLE);
 
 
-                    flag=1;
+                    isNoPages =1;
                 }
-                if(flag==0){
+                if(isNoPages ==0){
 
                     TextView textView9=(TextView) findViewById(R.id.textView13);
                     textView9.setVisibility(textView9.GONE);
@@ -352,7 +344,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
 
-            if(flag==0) {
+            if(isNoPages ==0) {
 
                 if (j == 0) {
                     textView1.setText(position + "/" + items.size());
@@ -394,7 +386,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-            if(!flag2) {
+            if(!isJump) {
                 if (i == 0) {
                     textView1.setText((position - 1) + "/" + items.size());
 
