@@ -175,6 +175,7 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
+            i.putExtra("searchfor","sheet");
 
             //TODO: @Michael i.putExtra("userId",userId);
             startActivity(i);
@@ -198,6 +199,8 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
+            i.putExtra("searchfor","sheet");
+
 
             startActivity(i);
         }

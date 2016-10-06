@@ -219,7 +219,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
                 intent1.putExtra("publisher",bookList.get(position).getPublisher());
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
-
+                intent1.putExtra("type",searchfor);
                 intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
