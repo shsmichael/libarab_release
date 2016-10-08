@@ -65,6 +65,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     private String type;
     final String typeBook="book";
     final String typeSheet="sheet";
+    int count=0;
 
 
     public void bookinfo(View v){
@@ -396,6 +397,13 @@ public class ViewPagerActivity extends AppCompatActivity{
                     i = 0;
                 }
             }
+            else{
+                if(count%2==1){
+                    isJump=false;
+                }
+                count++;
+            }
+
             container.removeView((View) object);
         }
 
