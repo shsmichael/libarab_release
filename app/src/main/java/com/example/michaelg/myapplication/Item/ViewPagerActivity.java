@@ -66,6 +66,8 @@ public class ViewPagerActivity extends AppCompatActivity{
     final String typeBook="book";
     final String typeSheet="sheet";
     int count=0;
+    int k=0;
+    int counti=0;
 
 
     public void bookinfo(View v){
@@ -345,20 +347,26 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
 
-            if(isNoPages ==0) {
-
-                if (j == 0) {
-                    textView1.setText(position + "/" + items.size());
-                    textView1.setTextSize(20);
-                    if (position == items.size() - 1) {
-                        i = 1;
+                //    count=0;
+            if(!isJump) {
+                counti=1;
+                if (isNoPages == 0) {
+                    if (j == 0) {
+                        textView1.setText(position + "/" + items.size());
+                        textView1.setTextSize(20);
+                        if (position == items.size() - 1) {
+                            i = 1;
+                        }
+                    }
+                    if (j == 1) {
+                        textView1.setText(items.size() - 1 + "/" + items.size());
+                        j = 0;
                     }
                 }
-                if (j == 1) {
-                    textView1.setText(items.size() - 1 + "/" + items.size());
-                    j = 0;
-                }
             }
+
+
+
 
             ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
             view.setController(
@@ -387,22 +395,27 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-            if(!isJump) {
-                if (i == 0) {
-                    textView1.setText((position - 1) + "/" + items.size());
+            if(counti==0) {
+                if (!isJump) {
+                    if (i == 0) {
+                        textView1.setText((position - 1) + "/" + items.size());
 
+                    } else {
+                        j = 1;
+                        textView1.setText(items.size() + "/" + items.size());
+                        i = 0;
+                    }
                 } else {
-                    j = 1;
-                    textView1.setText(items.size() + "/" + items.size());
-                    i = 0;
+                    if (count % 2 == 1) {
+                        isJump = false;
+                        count++;
+
+                    } else {
+                        count++;
+                    }
                 }
             }
-            else{
-                if(count%2==1){
-                    isJump=false;
-                }
-                count++;
-            }
+            else  counti=0;
 
             container.removeView((View) object);
         }
