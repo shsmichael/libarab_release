@@ -183,7 +183,7 @@ public class SearchMapFragment extends Fragment {
         } else {
             Uri builtUri = Uri.parse(_SEARCH_URL).buildUpon()
                     .appendQueryParameter("userId", username)
-                    .appendQueryParameter("author", title.getText().toString())
+                    .appendQueryParameter("author", txt)
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear", toyear.getText().toString())
                     .appendQueryParameter("index", Integer.toString(0))
