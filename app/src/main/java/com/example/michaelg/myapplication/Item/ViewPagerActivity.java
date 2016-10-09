@@ -10,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,6 +104,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         //etchange =(EditText)findViewById(R.id.et_changepage);
         textView1=(TextView) findViewById(R.id.textView);
 
+        textView1.setTextSize(20);
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -114,6 +116,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
+                etchange.setInputType(InputType.TYPE_CLASS_NUMBER);
                 etchange.setLayoutParams(lp);
                 alertDialog.setView(etchange);
                 alertDialog.setPositiveButton("GO", new DialogInterface.OnClickListener() {
@@ -173,7 +176,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.shutDown();
     }
 
-
+//////////////////////////////////////////////////////////////////////////////// ASYNC TASK
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String bookId;
@@ -348,22 +351,21 @@ public class ViewPagerActivity extends AppCompatActivity{
         public Object instantiateItem(ViewGroup container, int position) {
 
                 //    count=0;
-            if(!isJump) {
-                counti=1;
-                if (isNoPages == 0) {
-                    if (j == 0) {
+            //if(!isJump) {
+                //counti=1;
+               // if (isNoPages == 0) {
+                  //  if (j == 0) {
                         textView1.setText(position + "/" + items.size());
-                        textView1.setTextSize(20);
-                        if (position == items.size() - 1) {
-                            i = 1;
-                        }
-                    }
-                    if (j == 1) {
-                        textView1.setText(items.size() - 1 + "/" + items.size());
-                        j = 0;
-                    }
-                }
-            }
+//                        if (position == items.size() - 1) {
+//                            i = 1;
+//                        }
+//                    }
+//                    if (j == 1) {
+//                        textView1.setText(items.size() - 1 + "/" + items.size());
+//                        j = 0;
+//                    }
+//                }
+//            }
 
 
 
@@ -395,7 +397,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-            if(counti==0) {
+            /*if(counti==0) {
                 if (!isJump) {
                     if (i == 0) {
                         textView1.setText((position - 1) + "/" + items.size());
@@ -415,7 +417,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     }
                 }
             }
-            else  counti=0;
+            else  counti=0;*/
 
             container.removeView((View) object);
         }

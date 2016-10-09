@@ -53,6 +53,7 @@
     <string name="search_publisher">Publisher:  </string>
     <string name="settings_chose_lang">Click To Choose Language</string>
     <string name="settings_lang">Language</string>
+    <string name="no_pages_error">There are no pages</string>
 
    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."

@@ -76,4 +76,8 @@
     <string name="search_sheet">גליון</string>
     <string name="search_book">ספר</string>
     <string name="sheet_title">כותרת:</string>
+    <string name="no_pages_error">אין דפים</string>
+    <string name="title_bold">כותרת</string>
+    <string name="source_bold">מָקוֹר</string>
+    <string name="weblink_bold">קישור אינטרנט</string>
 </resources>
