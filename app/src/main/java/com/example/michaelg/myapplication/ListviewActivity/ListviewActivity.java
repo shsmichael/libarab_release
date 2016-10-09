@@ -123,6 +123,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
+                i.putExtra("searchfor", searchfor);
                 startActivity(i);
             }
 
@@ -155,6 +156,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
+                i.putExtra("searchfor", searchfor);
                 startActivity(i);
 
             }
