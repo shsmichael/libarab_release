@@ -41,14 +41,14 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
         mListPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String current =newValue.toString();
+                String current = newValue.toString();
                 /*
                 SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(getContext());
                 String mystring = shared.getString("Language","lang");
                 */
                 Toast.makeText(getContext(),  newValue.toString(), Toast.LENGTH_SHORT).show();
 
-                if(current.equals("Arabic")){
+                if(current.equals("العربيه")){
                     Locale locale = new Locale("ar");
                     Locale.setDefault(locale);
                     Configuration config = new Configuration();
@@ -57,7 +57,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                     ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
                 }
 
-                else if (current.equals("Hebrew")){
+                else if (current.equals("עברית")){
                     Locale locale = new Locale("iw");
                     Locale.setDefault(locale);
                     Configuration config = new Configuration();
