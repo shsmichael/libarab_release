@@ -86,5 +86,7 @@
     <string name="menu_save">حفظ</string>
     <string name="author_bold">مؤلف</string>
     <string name="creationdate_bold">تاريخ الإنشاء</string>
+    <string name="enter_page">ادخل رقم صفحه</string>
+    <string name="jump_to_page">نقل لصفحه</string>
 
 </resources>

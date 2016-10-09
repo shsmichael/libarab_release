@@ -109,8 +109,8 @@ public class ViewPagerActivity extends AppCompatActivity{
             @Override
             public void onClick(final View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ViewPagerActivity.this);
-                alertDialog.setTitle("Jump To Page");
-                alertDialog.setMessage("Enter Page");
+                alertDialog.setTitle(R.string.jump_to_page);
+                alertDialog.setMessage(R.string.enter_page);
 
                 etchange = new EditText(ViewPagerActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
