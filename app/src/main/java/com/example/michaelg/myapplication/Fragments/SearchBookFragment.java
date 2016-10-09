@@ -198,7 +198,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
-            i.putExtra("txt", title.getText().toString());
+            i.putExtra("txt", txt);
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
