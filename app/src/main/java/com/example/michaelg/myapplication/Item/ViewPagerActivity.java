@@ -14,9 +14,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
 import com.example.michaelg.myapplication.ListviewActivity.Book;
@@ -42,6 +45,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 public class ViewPagerActivity extends AppCompatActivity{
     List<String> pagesStr = new ArrayList<String>();
     private String ID = "NNL_ALEPH003157499";
@@ -60,6 +65,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     ViewPager vpGallery;
     EditText etchange;
     TextView textView1;
+    ImageView mybg;
     DiscreteSeekBar discreteSeekBar1;
     private Book book;
     private String type;
@@ -101,6 +107,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
         //etchange =(EditText)findViewById(R.id.et_changepage);
+        mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
 
         textView1.setOnClickListener(new View.OnClickListener() {
@@ -131,24 +138,18 @@ public class ViewPagerActivity extends AppCompatActivity{
             ID  = extras.getString("recordId");
             userId=extras.getString("userId");
             type= extras.getString("type");
+            creationdate = extras.getString("creationdate");
+            title        = extras.getString("title");
+            author       = extras.getString("author");
+            weblink      = extras.getString("webLink");
+            publisher    = extras.getString("publisher");
+            source       = extras.getString("source");
             //  userId="100";
         }
 
-        Intent intent = getIntent();
-        ID           = intent.getStringExtra("recordId");
-        userId       = intent.getStringExtra("userId");
-        creationdate = intent.getStringExtra("creationdate");
-        title        = intent.getStringExtra("title");
-        author       = intent.getStringExtra("author");
-        weblink      = intent.getStringExtra("webLink");
-        publisher    = intent.getStringExtra("publisher");
-        source       = intent.getStringExtra("source");
-        type= intent.getStringExtra("type");
-
         if(type.equals("sheet")){
-            String pagesDirictFromSearch= intent.getStringExtra("webLink");
-            //Log.v("urlEmil",pagesDirictFromSearch);
-            pagesStr.add(pagesDirictFromSearch);
+            pagesStr.add(weblink);
+
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
             return;
@@ -283,11 +284,16 @@ public class ViewPagerActivity extends AppCompatActivity{
                 String first = "http://iiif.nli.org.il/IIIF/";
                 String last = "/full/full/0/default.jpg";
                 String tmp = "";
+                /*
+                Glide.with(mybg.getContext())
+                        .load(first +pages.getString(1) + last)
+                        .centerCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .bitmapTransform(new BlurTransformation(mybg.getContext(),100,2 ))
+                        .into(mybg);
+                */
                 for (int i = 1; i < pages.length()-1; i++) {
-
-                    String  book = pages.getString(i);
-                    tmp = first +book + last;
-                    pagesStr.add(tmp);
+                    pagesStr.add(first +pages.getString(i) + last);
                     Log.e("ItemsQ pages",tmp);
                 }
                 int a=pagesStr.size();

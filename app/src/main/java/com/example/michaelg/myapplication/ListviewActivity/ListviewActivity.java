@@ -44,12 +44,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ListviewActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private final String TAG =this.getClass().getSimpleName();
     int index;
-    ArrayList<Book> bookList;
-    String myURL="any";
-    String _SEARCH_URL;
-    bookAdapter adapter;
-    private String ID;
+    private ArrayList<Book> bookList;
+    private String myURL="any";
+    private String _SEARCH_URL;
+    private bookAdapter adapter;
     private String user;
     private String searchfor;
     private String fromyear;
@@ -58,80 +58,46 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private TextView resultstitle;
     private int totalhits;
     private String searchby;
-    private  int counter;
     private FloatingActionButton nxt, prev;
-
-
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
-
-    /*    if (user == "Guest") {
-            user="guest@lib";
-
-        }*/
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
-             //TODO: after we recieve the userId from the prev intent that is searchBookFragment/searchSheet..
              user=extras.getString("userId");
-              myURL = extras.getString("Value1");
+             myURL = extras.getString("Value1");
              fromyear=extras.getString("fromyear");
              toyear=extras.getString("toyear");
-             searchfor=extras.getString("searchfor");
              txt=extras.getString("txt");
              _SEARCH_URL=extras.getString("searchurl");
              index=extras.getInt("index");
              searchby= extras.getString("searchby");
-
-
+             searchfor=extras.getString("searchfor");
          }
-
-
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
        Log.v("ListviewActivity URL:",myURL);
-
-
         new JSONAsyncTask().execute(myURL);
-
         ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
         listview.setAdapter(adapter);
-      //  Log.v("ABC","CCC");
         resultstitle = (TextView) findViewById(R.id.textView11) ;
         resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
-
-
-                prev= (FloatingActionButton) findViewById(R.id.fab1);
+        prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
+
         if(index==0)
-        {
             prev.hide();
-        }
-
-   /*     if(index>0)
-        {
-            prev.show();
-        }*/
-
-
-
-
-        //  Log.v("TAA",Integer.toString(nxt.getId()));
-
         nxt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //perform action on click
                 index=index+24;
                 if(index>0)
-                {
                     prev.show();
-                }
-
                 if(index>totalhits)
                     nxt.hide();
 
@@ -142,13 +108,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
-
                         .build();
 
-                Log.v("URLBookFRAG", builtUri.toString());
-                Log.v("Iam","Heere");
-//
+                Log.v(TAG, builtUri.toString());
+                // this is a intent to the same activity diffrent pages
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+                //this is the link
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
                 i.putExtra("userid",user);
@@ -157,26 +122,19 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
-
-                //TODO: @Michael i.putExtra("userId",userId);
+                i.putExtra("type",searchfor);
                 startActivity(i);
-
-
             }
 
         });
+        //prev Button ClickListener
 
         prev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 index=index-24;
-                //perform action on click
                 if(index==0)
-                {
                     prev.hide();
-                }
-
-
                 Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                         .appendQueryParameter("userId",    user)
                         // .appendQueryParameter("title",    title.getText().toString())
@@ -184,11 +142,9 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
-
                         .build();
 
-                Log.v("URLBookFRAG", builtUri.toString());
-                Log.v("Iam","Heere");
+                Log.v(TAG, builtUri.toString());
                 Intent i = new Intent(v.getContext() ,ListviewActivity.class);
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
@@ -198,15 +154,15 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
-
-                //TODO: @Michael i.putExtra("userId",userId);
+                i.putExtra("type",searchfor);
                 startActivity(i);
-
-
 
             }
 
         });
+
+        // when user chosses the book
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -215,11 +171,14 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 // TODO Auto-generated method stub
                 //Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
+                //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
+
                 intent1.putExtra("author",bookList.get(position).getAuthor());
                 intent1.putExtra("title",bookList.get(position).getTitle());
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
                 intent1.putExtra("publisher",bookList.get(position).getPublisher());
+                //this weblink used by the ViewPagerActivity
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
                 intent1.putExtra("type",searchfor);
                 intent1.putExtra("source",bookList.get(position).getSource());
@@ -296,9 +255,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
+                        //if there is a libweblink that means thats a sheet
+                        //else is a book
                         if(object.has("libWebLink"))
                         {
-                            currentbook.setWeblink(object.getString("libWebLink"));
+                            currentbook.setWeblink(object.getString("page"));
 
                         }
                         else
@@ -308,12 +269,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         }
 
                         currentbook.setSource(object.getString("source"));
-                     //   currentbook.setThumbnail(object.getString());
-                        //  currentbook.setAuthor(new String(object.getString("author").getBytes("ISO-8859-1"), "UTF-8"));
-                        if (!total_hits.equals("0")) {
+                        //   currentbook.setThumbnail(object.getString());
+                        //this solves the no results issue
+                        if (!total_hits.equals("0"))
                             bookList.add(currentbook);
 
-                        }
+
                     }
                     return total_hits;
                 }
