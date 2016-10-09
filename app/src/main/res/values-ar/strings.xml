@@ -88,5 +88,7 @@
     <string name="creationdate_bold">تاريخ الإنشاء</string>
     <string name="enter_page">ادخل رقم صفحه</string>
     <string name="jump_to_page">نقل لصفحه</string>
+    <string name="loading_wait">جاري التحميل الرجاء الانتظار</string>
+    <string name="connecting_server">الاتصال بالخادم</string>
 
 </resources>

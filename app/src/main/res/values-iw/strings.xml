@@ -86,4 +86,6 @@
     <string name="creationdate_bold">תאריך היווצרות</string>
     <string name="enter_page">הכנס מספר דף</string>
     <string name="jump_to_page">קפיצה לדף</string>
+    <string name="loading_wait">בטעינה אנא המתן</string>
+    <string name="connecting_server">מתחבר לשרת</string>
 </resources>
