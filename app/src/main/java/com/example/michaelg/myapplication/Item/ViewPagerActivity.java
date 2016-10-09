@@ -152,7 +152,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if(type.equals("sheet")){
             pagesStr.add(weblink);
-
+            Log.v("amal", weblink);
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
             return;
@@ -329,6 +329,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             }
 
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
+
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
         }
 

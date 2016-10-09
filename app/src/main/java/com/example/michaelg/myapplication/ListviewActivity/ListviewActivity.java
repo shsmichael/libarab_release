@@ -68,7 +68,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
-             user = extras.getString("userid");
+             user=extras.getString("userId");
              myURL = extras.getString("Value1");
              fromyear=extras.getString("fromyear");
              toyear=extras.getString("toyear");
@@ -123,7 +123,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
-                i.putExtra("searchfor", searchfor);
                 startActivity(i);
             }
 
@@ -156,7 +155,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
-                i.putExtra("searchfor", searchfor);
                 startActivity(i);
 
             }
@@ -207,7 +205,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         protected void onPreExecute() {
             super.onPreExecute();
             dialog = new ProgressDialog(ListviewActivity.this);
-            dialog.setMessage(getResources().getString(R.string.l_wait));
+//            dialog.setMessage(getResources().getString(R.string.loading_wait));
             dialog.setTitle(R.string.connecting_server);
             dialog.show();
             dialog.setCancelable(false);
