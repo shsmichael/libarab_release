@@ -80,4 +80,8 @@
     <string name="title_bold">כותרת</string>
     <string name="source_bold">מָקוֹר</string>
     <string name="weblink_bold">קישור אינטרנט</string>
+    <string name="publisher_bold">מוֹצִיא לָאוֹר</string>
+    <string name="menu_save">שמירה</string>
+    <string name="author_bold">מְחַבֵּר</string>
+    <string name="creationdate_bold">תאריך היווצרות</string>
 </resources>

@@ -81,5 +81,10 @@
     <string name="source_bold">مصدر</string>
     <string name="weblink_bold">رابط موقع</string>
     <string name="settings_lang">لغة</string>
+    <string name="settings_chose_lang">اضغط لاختيار اللغة</string>
+    <string name="publisher_bold">الناشر</string>
+    <string name="menu_save">حفظ</string>
+    <string name="author_bold">مؤلف</string>
+    <string name="creationdate_bold">تاريخ الإنشاء</string>
 
 </resources>

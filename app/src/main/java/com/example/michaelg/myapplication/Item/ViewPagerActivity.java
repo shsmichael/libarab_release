@@ -298,7 +298,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     TextView textView9=(TextView) findViewById(R.id.textView13);
                     ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
                     viewPager.setVisibility(View.GONE);
-                    textView9.setText("There are no pages");
+                    textView9.setText(R.string.no_pages_error);
                     textView9.setTextSize(30);
                     textView9.setTextColor(Color.WHITE);
                     textView9.setVisibility(View.VISIBLE);
