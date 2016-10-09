@@ -68,7 +68,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
-             user=extras.getString("userId");
+             user = extras.getString("userid");
              myURL = extras.getString("Value1");
              fromyear=extras.getString("fromyear");
              toyear=extras.getString("toyear");

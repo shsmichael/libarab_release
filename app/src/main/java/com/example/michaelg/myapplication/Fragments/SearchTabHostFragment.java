@@ -41,8 +41,8 @@ public class SearchTabHostFragment extends Fragment {
                 SearchBookFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("fragmentc").setIndicator(getString(R.string.search_sheet)),
                 SearchSheetFragment.class, null);
-       // mTabHost.addTab(mTabHost.newTabSpec("fragmentd").setIndicator("Map"),
-         //       SearchMapFragment.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("fragmentd").setIndicator(getString(R.string.search_map)),
+                SearchMapFragment.class, null);
 
 
         return rootView;

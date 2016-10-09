@@ -88,4 +88,5 @@
     <string name="jump_to_page">קפיצה לדף</string>
     <string name="loading_wait">בטעינה אנא המתן</string>
     <string name="connecting_server">מתחבר לשרת</string>
+    <string name="search_map">מפה</string>
 </resources>

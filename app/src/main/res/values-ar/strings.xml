@@ -90,5 +90,6 @@
     <string name="jump_to_page">نقل لصفحه</string>
     <string name="loading_wait">جاري التحميل الرجاء الانتظار</string>
     <string name="connecting_server">الاتصال بالخادم</string>
+    <string name="search_map">خريطه</string>
 
 </resources>
