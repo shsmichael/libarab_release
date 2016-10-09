@@ -54,8 +54,11 @@
     <string name="settings_chose_lang">Click To Choose Language</string>
     <string name="settings_lang">Language</string>
     <string name="no_pages_error">There are no pages</string>
-
-   <string name="permission_rationale">"Contacts permissions are needed for providing email
+    <string name="jump_to_page">Jump To Page</string>
+    <string name="enter_page">Enter Page</string>
+    <string name="l_wait">Loading, please wait</string>
+    <string name="connecting_server">Connecting to server</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
     <string-array name="Gender_array">
