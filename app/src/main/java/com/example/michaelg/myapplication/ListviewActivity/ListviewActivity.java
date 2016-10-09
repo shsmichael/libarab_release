@@ -205,7 +205,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         protected void onPreExecute() {
             super.onPreExecute();
             dialog = new ProgressDialog(ListviewActivity.this);
-            dialog.setMessage(getResources().getString(R.string.loading_wait));
+            dialog.setMessage(getResources().getString(R.string.l_wait));
             dialog.setTitle(R.string.connecting_server);
             dialog.show();
             dialog.setCancelable(false);
