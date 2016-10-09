@@ -76,5 +76,19 @@
     <string name="search_sheet">صحيفه</string>
     <string name="search_book">كتاب</string>
     <string name="sheet_title">عنوان:</string>
+    <string name="no_pages_error">لا توجد صفحات</string>
+    <string name="title_bold">عنوان</string>
+    <string name="source_bold">مصدر</string>
+    <string name="weblink_bold">رابط موقع</string>
+    <string name="settings_lang">لغة</string>
+    <string name="settings_chose_lang">اضغط لاختيار اللغة</string>
+    <string name="publisher_bold">الناشر</string>
+    <string name="menu_save">حفظ</string>
+    <string name="author_bold">مؤلف</string>
+    <string name="creationdate_bold">تاريخ الإنشاء</string>
+    <string name="enter_page">ادخل رقم صفحه</string>
+    <string name="jump_to_page">نقل لصفحه</string>
+    <string name="loading_wait">جاري التحميل الرجاء الانتظار</string>
+    <string name="connecting_server">الاتصال بالخادم</string>
 
 </resources>

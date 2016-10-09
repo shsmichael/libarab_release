@@ -76,4 +76,16 @@
     <string name="search_sheet">גליון</string>
     <string name="search_book">ספר</string>
     <string name="sheet_title">כותרת:</string>
+    <string name="no_pages_error">אין דפים</string>
+    <string name="title_bold">כותרת</string>
+    <string name="source_bold">מָקוֹר</string>
+    <string name="weblink_bold">קישור אינטרנט</string>
+    <string name="publisher_bold">מוֹצִיא לָאוֹר</string>
+    <string name="menu_save">שמירה</string>
+    <string name="author_bold">מְחַבֵּר</string>
+    <string name="creationdate_bold">תאריך היווצרות</string>
+    <string name="enter_page">הכנס מספר דף</string>
+    <string name="jump_to_page">קפיצה לדף</string>
+    <string name="loading_wait">בטעינה אנא המתן</string>
+    <string name="connecting_server">מתחבר לשרת</string>
 </resources>
