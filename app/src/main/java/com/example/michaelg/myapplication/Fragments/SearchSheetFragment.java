@@ -157,12 +157,16 @@ public class SearchSheetFragment extends Fragment {
     private void doSearch(View v){
 
         //TODO: @michael change userId not 4 in both cases
+        String txt = title.getText().toString();
+        if (txt.isEmpty()) {
+            txt = "any";
+        }
         if(str_serchby)
         {
             Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                     .appendQueryParameter("userId",    username)
                     // .appendQueryParameter("title",    title.getText().toString())
-                    .appendQueryParameter("title",    title.getText().toString())
+                    .appendQueryParameter("title", txt)
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
@@ -173,7 +177,7 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
-            i.putExtra("txt", title.getText().toString());
+            i.putExtra("txt", txt);
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
@@ -197,7 +201,7 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
-            i.putExtra("txt", title.getText().toString());
+            i.putExtra("txt", txt);
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
