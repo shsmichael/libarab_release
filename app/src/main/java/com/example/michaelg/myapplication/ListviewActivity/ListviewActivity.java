@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.ConsoleMessage;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -232,10 +233,13 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                     String data = EntityUtils.toString(entity);
 
                     JSONObject jsono = new JSONObject(data);
+                    if (!jsono.has("result")) {
+                        System.out.print(jsono.getString("result"));
+                    }
                     String res = jsono.getString("result");
+                    Log.v("results", res);
                     if (res.equals("false")) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
-                        finish();
+                        total_hits = "0";
                     }
                     total_hits = jsono.getString("totalHits");
                     Log.v("totalHits", (total_hits));
