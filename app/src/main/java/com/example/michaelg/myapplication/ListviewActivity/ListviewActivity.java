@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.ConsoleMessage;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
+import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -54,6 +56,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String searchfor;
     private String fromyear;
     private String toyear;
+    private String free_txt;
     private String txt;
     private TextView resultstitle;
     private int totalhits;
@@ -61,6 +64,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private FloatingActionButton nxt, prev;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +77,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
-             user=extras.getString("userId");
+             user = extras.getString("userid");
              myURL = extras.getString("Value1");
              fromyear=extras.getString("fromyear");
              toyear=extras.getString("toyear");
@@ -77,6 +86,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
              index=extras.getInt("index");
              searchby= extras.getString("searchby");
              searchfor=extras.getString("searchfor");
+             free_txt = extras.getString("freetxt");
          }
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
@@ -108,6 +118,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
+                        .appendQueryParameter("freeTxt", free_txt)
                         .build();
 
                 Log.v(TAG, builtUri.toString());
@@ -123,6 +134,9 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
+                i.putExtra("searchfor", searchfor);
+                i.putExtra("freetxt", free_txt);
+
                 startActivity(i);
             }
 
@@ -142,6 +156,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
+                        .appendQueryParameter("freeTxt", free_txt)
                         .build();
 
                 Log.v(TAG, builtUri.toString());
@@ -155,6 +170,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("index", index);
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
+                i.putExtra("searchfor", searchfor);
+                i.putExtra("freetxt", free_txt);
                 startActivity(i);
 
             }
@@ -173,7 +190,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
-
+                intent1.putExtra("userId",user);
                 intent1.putExtra("author",bookList.get(position).getAuthor());
                 intent1.putExtra("title",bookList.get(position).getTitle());
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
@@ -205,7 +222,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         protected void onPreExecute() {
             super.onPreExecute();
             dialog = new ProgressDialog(ListviewActivity.this);
-//            dialog.setMessage(getResources().getString(R.string.loading_wait));
+            dialog.setMessage(getResources().getString(R.string.l_wait));
             dialog.setTitle(R.string.connecting_server);
             dialog.show();
             dialog.setCancelable(false);
@@ -230,10 +247,13 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                     String data = EntityUtils.toString(entity);
 
                     JSONObject jsono = new JSONObject(data);
+                    if (!jsono.has("result")) {
+                        System.out.print(jsono.getString("result"));
+                    }
                     String res = jsono.getString("result");
+                    Log.v("results", res);
                     if (res.equals("false")) {
-                        Toast.makeText(getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
-                        finish();
+                        total_hits = "0";
                     }
                     total_hits = jsono.getString("totalHits");
                     Log.v("totalHits", (total_hits));

@@ -1,7 +1,10 @@
 package com.example.michaelg.myapplication.Item;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -26,12 +30,14 @@ import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
 import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
+import com.example.michaelg.myapplication.Trivia.AddQuestion;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,6 +81,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     int count=0;
     int k=0;
     int counti=0;
+    ZoomableDraweeView view2;
 
 
     public void bookinfo(View v){
@@ -95,7 +102,12 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
-            textView1.setText(stringnumber + "/" + pagesStr.size());
+            if(Integer.parseInt(stringnumber)>pagesStr.size()){
+                textView1.setText(pagesStr.size() + "/" + pagesStr.size());
+            }
+            else {
+                textView1.setText(stringnumber + "/" + pagesStr.size());
+            }
             isJump = true;
         }
 
@@ -136,6 +148,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                 alertDialog.show();
             }
         });
+
+
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
@@ -152,9 +166,50 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if(type.equals("sheet")){
             pagesStr.add(weblink);
-            Log.v("amal", weblink);
+            try {
+                InputStream is = (InputStream) new URL(weblink).getContent();
+                Bitmap d = BitmapFactory.decodeStream(is);
+                is.close();
+             //   return d;
+            } catch (Exception e) {
+              //  return null;
+            }
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-            vpGallery.setAdapter(new GalleryAdapter(pagesStr));
+            vpGallery.setVisibility(View.GONE);
+            TextView textView9=(TextView) findViewById(R.id.textView13);
+            textView9.setVisibility(View.GONE);
+            ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+            //  imageView.setImageBitmap(bitmaps.get(position));
+            // imageView.setImageDrawable(d[position]);
+            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+            imageView.setVisibility(View.VISIBLE);
+            textView1.setText( 1+"/"+1);
+            view2= new ZoomableDraweeView(imageView.getContext());
+            view2.setController(
+                    Fresco.newDraweeControllerBuilder()
+                            .setUri(Uri.parse(weblink))
+                            .build());
+            GenericDraweeHierarchy hierarchy =
+                    new GenericDraweeHierarchyBuilder(getApplicationContext().getResources())
+                            .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
+                            .setProgressBarImage(new ProgressBarDrawable())
+                            .build();
+
+            view2.setHierarchy(hierarchy);
+
+//            imageView.setClickable(true);
+
+
+           // imageView.setOnClickListener(new View.OnClickListener() {
+             //   @Override
+            //    public void onClick(View v) {
+                 //   Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();                }
+          //  }
+
+        //    );
+
+//            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
+//            vpGallery.setAdapter(new ImagePagerAdapter());
             return;
         }
 
@@ -177,7 +232,18 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.shutDown();
     }
 
-//////////////////////////////////////////////////////////////////////////////// ASYNC TASK
+    public void addQuestion(View view) {
+
+        Intent addq = new Intent(this, AddQuestion.class);
+        addq.putExtra("userId", userId);
+        addq.putExtra("itemId", ID);
+        addq.putExtra("author", author);
+        addq.putExtra("itemName", title);
+        startActivity(addq);
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////// ASYNC TASK
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String bookId;
@@ -295,6 +361,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                         .bitmapTransform(new BlurTransformation(mybg.getContext(),100,2 ))
                         .into(mybg);
                 */
+                ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+                imageView.setVisibility(View.GONE);
                 for (int i = 1; i < pages.length()-1; i++) {
                     pagesStr.add(first +pages.getString(i) + last);
                     Log.e("ItemsQ pages",tmp);
@@ -328,8 +396,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
 
-            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
 
+            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
         }
 
@@ -356,16 +424,15 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-
-                //    count=0;
+            //    count=0;
             //if(!isJump) {
-                //counti=1;
-               // if (isNoPages == 0) {
-                    if (j == 0) {
-                        textView1.setText(position + "/" + items.size());
+            //counti=1;
+            // if (isNoPages == 0) {
+            if (j == 0) {
+                textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
-                           i = 1;
-                     }
+                i = 1;
+            }
 //                    }
 //                    if (j == 1) {
 //                        textView1.setText(items.size() - 1 + "/" + items.size());
@@ -375,26 +442,23 @@ public class ViewPagerActivity extends AppCompatActivity{
 //            }
 
 
+               ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
+               view.setController(
+                       Fresco.newDraweeControllerBuilder()
+                               .setUri(Uri.parse(items.get(position)))
+                               .build());
 
-            ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
-            view.setController(
-                    Fresco.newDraweeControllerBuilder()
-                            .setUri(Uri.parse(items.get(position)))
-                            .build());
+               GenericDraweeHierarchy hierarchy =
+                       new GenericDraweeHierarchyBuilder(container.getResources())
+                               .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
+                               .setProgressBarImage(new ProgressBarDrawable())
+                               .build();
 
+               view.setHierarchy(hierarchy);
 
+               container.addView(view,
+                       ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-            GenericDraweeHierarchy hierarchy =
-                    new GenericDraweeHierarchyBuilder(container.getResources())
-                            .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
-                            .setProgressBarImage(new ProgressBarDrawable())
-                            .build();
-
-            view.setHierarchy(hierarchy);
-
-
-            container.addView(view,
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 
             return view;
@@ -403,7 +467,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-            /*if(counti==0) {
+           /*if(counti==0) {
                 if (!isJump) {
                     if (i == 0) {
                         textView1.setText((position - 1) + "/" + items.size());
@@ -425,10 +489,10 @@ public class ViewPagerActivity extends AppCompatActivity{
             }
             else  counti=0;*/
 
-           if((i==1)&&(isJump==false)){
-               textView1.setText((position - 1) + "/" + items.size());
-               i=0;
-           }
+            if((i==1)&&(isJump==false)){
+                textView1.setText((position - 1) + "/" + items.size());
+                i=0;
+            }
             if((i==1)&&(isJump==true)){
                 isJump=false;
                 i=0;
@@ -446,6 +510,45 @@ public class ViewPagerActivity extends AppCompatActivity{
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+    }
+
+    /************************************/
+    private class ImagePagerAdapter extends PagerAdapter {
+
+
+        @Override
+        public int getCount() {
+            //this.notifyDataSetChanged();
+            return 1;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == ((ImageView) object);
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+         //  Context context = PhotoBeforeFoeFragment.this.getActivity();
+
+            ImageView imageView = new ImageView(getApplicationContext());
+          //  imageView.setImageBitmap(bitmaps.get(position));
+            // imageView.setImageDrawable(d[position]);
+            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+            ((ViewPager) container).addView(imageView);
+            return imageView;
+        }
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            ((ViewPager) container).removeView((ImageView) object);
+        }
+
+
     }
 }
 

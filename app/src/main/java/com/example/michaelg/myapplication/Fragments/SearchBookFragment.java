@@ -36,10 +36,6 @@ import org.json.JSONObject;
 public class SearchBookFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
     String _SEARCH_URL;
-    //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
-    //private userId;
-    //TODO: @michael inorder to recieve it we should get it from the prev intent,
-    // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
     private boolean str_serchby;
     private Switch searchby;
     private String username;
@@ -51,6 +47,8 @@ public class SearchBookFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
+    //ToDo :  change the String to editText ( waiting for Emeil to add the freetext to the xml
+    private String free_txt;
 
     public SearchBookFragment() {
         // Required empty public constructor
@@ -70,10 +68,8 @@ public class SearchBookFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
-     /*   if (username.equals("Guest")) {
-            username="guest@lib";
+        free_txt = "any";
 
-        }*/
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -108,7 +104,7 @@ public class SearchBookFragment extends Fragment {
         username = newUser.getUsername();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
-                android.R.layout.simple_spinner_item);
+                R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -162,11 +158,11 @@ public class SearchBookFragment extends Fragment {
         {
             Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                     .appendQueryParameter("userId",    username)
-                    // .appendQueryParameter("title",    title.getText().toString())
                     .appendQueryParameter("title", txt)
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -180,6 +176,8 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor","book");
+            i.putExtra("freetxt", free_txt);
+
 
             //TODO: @Michael i.putExtra("userId",userId);
             startActivity(i);
@@ -188,10 +186,11 @@ public class SearchBookFragment extends Fragment {
         {
             Uri builtUri=  Uri.parse(_SEARCH_URL).buildUpon()
                     .appendQueryParameter("userId",    username)
-                    .appendQueryParameter("author",    title.getText().toString())
+                    .appendQueryParameter("author", txt)
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
@@ -204,13 +203,11 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","book");
-/***************************************************/
+            i.putExtra("freetxt", free_txt);
+
             startActivity(i);
         }
 
-        //  Search searchtask = new Search(total);
-        //  searchtask.execute();
-        //check if json fetched
 
     }
 
@@ -235,7 +232,6 @@ public class SearchBookFragment extends Fragment {
                     MenuFragment menufragment = new MenuFragment();
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     Bundle bundle = new Bundle();
-                    //bundle.putInt("Type", userType);
                     menufragment.setArguments(bundle);
                     manager.beginTransaction().replace(R.id.fragment_main,
                             menufragment,

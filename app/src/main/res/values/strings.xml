@@ -53,7 +53,7 @@
     <string name="search_publisher">Publisher:  </string>
     <string name="settings_chose_lang">Click To Choose Language</string>
     <string name="settings_lang">Language</string>
-    <string name="no_pages_error">There are no pages</string>
+    <string name="no_pages_error">No scanned version of this item</string>
     <string name="jump_to_page">Jump To Page</string>
     <string name="enter_page">Enter Page</string>
     <string name="l_wait">Loading, please wait</string>

@@ -36,6 +36,10 @@ public class AddQuestion extends AppCompatActivity {
     EditText uncorrect2;
     EditText uncorrect3;
     ImageButton addQuestionButton;
+    String myuserid;
+    String thisItemid;
+    String thisAuther;
+    String thisItemName;
 
     private AddQTask addQueTask = null;
 
@@ -51,10 +55,12 @@ public class AddQuestion extends AppCompatActivity {
         uncorrect3 = (EditText) findViewById(R.id.uncorrect_answer3);
 
 
-        String question1 = question.getText().toString();
+        String
+
+                question1 = question.getText().toString();
         addQuestionButton = (ImageButton) findViewById(R.id.imageButton);
         //addQuestionButton = (Button) findViewById(R.id.imageButton);
-       /* Intent intent = getIntent();*/
+        Intent intent = getIntent();
         /*final String myuserid =(String) intent.getSerializableExtra("userid");
         final String thisItemid =(String) intent.getSerializableExtra("itemid");
         String  thisAuther = (String) intent.getSerializableExtra("auther")
@@ -62,10 +68,16 @@ public class AddQuestion extends AppCompatActivity {
           thisAuther = "unknown";
         final String thisItemName =(String) intent.getSerializableExtra("itemname"); */
 
-        final String myuserid ="shsmichael@gmail.com";
-        final String thisItemid ="12444";
-        final String thisAuther ="abu-khater";
-        final String thisItemName ="ala5dar";
+
+
+
+
+
+
+        myuserid = intent.getStringExtra("userId");
+        thisItemid = intent.getStringExtra("itemId");
+        thisAuther = intent.getStringExtra("author");
+        thisItemName = intent.getStringExtra("itemName");
 
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override

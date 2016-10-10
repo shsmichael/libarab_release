@@ -32,15 +32,16 @@ import java.util.List;
 public class triviaListview extends AppCompatActivity {
     private ArrayList<ItemsQ>items=new ArrayList<ItemsQ>();
     ListviewQAdapter adapter;
-    //private getQuizeTask quizes;
+    private getQuizeTask quizes;
     //Array of options --> Array adapter--> Listview
     //listview :(views:trivia_q_items.xml)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_listview);
-        //quizes=new getQuizeTask();
+        quizes=new getQuizeTask();
         populateListView();
+        quizes.execute();
     }
 
     private void populateListView() {
@@ -75,7 +76,7 @@ public class triviaListview extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(getApplicationContext(), items.get(position).getAuthor(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), items.get(position).getAuthor(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
                 /*intent1.putExtra("author",items.get(position).getAuthor());
                 intent1.putExtra("itemName",items.get(position).getItemName());*/
@@ -90,15 +91,11 @@ public class triviaListview extends AppCompatActivity {
 
     }
 
-/*
+
     public class getQuizeTask extends AsyncTask<Void, Void, JSONObject> {
         @Override
         protected JSONObject doInBackground(Void... params) {
-
-            if (params.length == 0) {
-                return null;
-            }
-
+            Log.v("connect", "CONNECTED");
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
@@ -106,16 +103,15 @@ public class triviaListview extends AppCompatActivity {
             String format = "json";
 
             try {
-                final String FORECAST_BASE_URL ="http://52.29.110.203:8080/LibArab/gamification/leaderBorad?";
-                // Params.getServer() + "gamification/leaderBorad?";
-                //check format
-                final String USER = "userId";
-
+                //change
+                final String FORECAST_BASE_URL =
+                        "http://52.29.110.203:8080/LibArab/gamification/getQuziItems";;
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .build();
 
                 URL url = new URL(builtUri.toString());
+                Log.v("URL", builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
 
@@ -141,10 +137,10 @@ public class triviaListview extends AppCompatActivity {
                 }
 
                 serverJsonStr = buffer.toString();
-                //Log.d("PROBLEM", serverJsonStr);
+                Log.d("PROBLEM", serverJsonStr);
 
             } catch (IOException e) {
-                Log.e("LOGE", "Error ", e);
+
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
@@ -170,25 +166,26 @@ public class triviaListview extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return serverJson;
+
+            return null;
         }
 
         ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
         protected void onPostExecute(final JSONObject itemsQ) {
             if(itemsQ==null){
-                Toast.makeText(getApplicationContext(),"null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"null yes", Toast.LENGTH_LONG).show();
             }
             //else Toast.makeText(getApplicationContext(),"done", Toast.LENGTH_LONG).show();
 
             else {
+                Toast.makeText(getApplicationContext(),itemsQ.toString(), Toast.LENGTH_LONG).show();
 
-
-                quizes = null;
+               /* quizes = null;
                 try {
                     JSONArray itemsRelateQ = itemsQ.getJSONArray("ItemsQuestions");
                     for(int i=0;i<itemsQ.length();i++){
                         JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
-                        String itemName = itemQuize.getString("itemName");
+                        String itemName = itemQuize.getString("name");
                         String auther = itemQuize.getString("auther");
                         ItemsQ item=new ItemsQ();
                         item.setAuthor(auther);
@@ -203,11 +200,11 @@ public class triviaListview extends AppCompatActivity {
 
 
                 //finish();
-
+                */
             }
         }
 
 
 
-    }*/
+    }
 }
