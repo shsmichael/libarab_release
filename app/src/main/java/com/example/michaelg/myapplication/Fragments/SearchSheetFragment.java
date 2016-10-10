@@ -53,7 +53,7 @@ public class SearchSheetFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
-
+    private String free_txt;
     public SearchSheetFragment() {
         // Required empty public constructor
     }
@@ -75,7 +75,7 @@ public class SearchSheetFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
-//
+        free_txt = "jerusalem";
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -165,11 +165,11 @@ public class SearchSheetFragment extends Fragment {
         {
             Uri builtUri =  Uri.parse(_SEARCH_URL).buildUpon()
                     .appendQueryParameter("userId",    username)
-                    // .appendQueryParameter("title",    title.getText().toString())
                     .appendQueryParameter("title", txt)
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -183,8 +183,7 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor","sheet");
-/**************************/
-            //TODO: @Michael i.putExtra("userId",userId);
+            i.putExtra("freetxt", free_txt);
             startActivity(i);
         }
         else
@@ -195,6 +194,7 @@ public class SearchSheetFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
@@ -207,6 +207,7 @@ public class SearchSheetFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","sheet");
+            i.putExtra("freetxt", free_txt);
 
 
             startActivity(i);
