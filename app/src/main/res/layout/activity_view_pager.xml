@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
+        android:id="@+id/frame"
         >
 
         <com.github.ivbaranov.mfb.MaterialFavoriteButton
@@ -43,6 +44,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/frame"
+
         android:weightSum="16">
 
         <LinearLayout
