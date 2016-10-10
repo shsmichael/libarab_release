@@ -101,7 +101,12 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
-            textView1.setText(stringnumber + "/" + pagesStr.size());
+            if(Integer.parseInt(stringnumber)>pagesStr.size()){
+                textView1.setText(pagesStr.size() + "/" + pagesStr.size());
+            }
+            else {
+                textView1.setText(stringnumber + "/" + pagesStr.size());
+            }
             isJump = true;
         }
 
@@ -178,13 +183,13 @@ public class ViewPagerActivity extends AppCompatActivity{
             Picasso.with(getApplicationContext()).load(weblink).into(imageView);
             imageView.setVisibility(View.VISIBLE);
             imageView.setClickable(true);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();                }
-            }
+           // imageView.setOnClickListener(new View.OnClickListener() {
+             //   @Override
+            //    public void onClick(View v) {
+                 //   Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();                }
+          //  }
 
-            );
+        //    );
 
 //            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
 //            vpGallery.setAdapter(new ImagePagerAdapter());
