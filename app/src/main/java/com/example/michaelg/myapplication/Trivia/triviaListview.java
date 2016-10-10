@@ -40,22 +40,17 @@ public class triviaListview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_listview);
         quizes=new getQuizeTask();
-        populateListView();
+
         quizes.execute();
+        /*adapter=new ListviewQAdapter(
+                this,//context for the activity
+                R.layout.trivia_q_items,//layout to use
+                items);//items to be displayed*/
     }
 
     private void populateListView() {
         //creat list of items
-        ItemsQ item1=new ItemsQ();
-        item1.setAuthor("dania");
-        item1.setItemName("secret");
 
-        ItemsQ item2=new ItemsQ();
-        item2.setAuthor("ahlam");
-        item2.setItemName("yup");
-
-        items.add(item1);
-        items.add(item2);
 /////////////////////////////////////////////////////////////////////////////////
         /////////// add async task object
 /////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +59,7 @@ public class triviaListview extends AppCompatActivity {
                 this,//context for the activity
                 R.layout.trivia_q_items,//layout to use
                 items);//items to be displayed
+
 
 
         //configure the list view
@@ -178,21 +174,36 @@ public class triviaListview extends AppCompatActivity {
             //else Toast.makeText(getApplicationContext(),"done", Toast.LENGTH_LONG).show();
 
             else {
-                Toast.makeText(getApplicationContext(),itemsQ.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),itemsQ.toString(), Toast.LENGTH_LONG).show();
 
-               /* quizes = null;
+                quizes = null;
                 try {
-                    JSONArray itemsRelateQ = itemsQ.getJSONArray("ItemsQuestions");
-                    for(int i=0;i<itemsQ.length();i++){
+                    JSONArray itemsRelateQ = itemsQ.getJSONArray("items");
+                    //Toast.makeText(getApplicationContext(),itemsQ.length(), Toast.LENGTH_LONG).show();
+                    for(int i=0;i<itemsRelateQ.length();i++){
                         JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
-                        String itemName = itemQuize.getString("name");
-                        String auther = itemQuize.getString("auther");
+                        //String question = itemQuize.getString("qustion");
+
+                        String auther1 = itemQuize.getString("author ");
+
+
+
+                        String itemName1 = itemQuize.getString("name ");
+
+
                         ItemsQ item=new ItemsQ();
-                        item.setAuthor(auther);
-                        item.setItemName(itemName);
+                        item.setAuthor(auther1);
+                        item.setItemName(itemName1);
+
+
+
+
 
                         items.add(item);
+                        //Toast.makeText(getApplicationContext(),i+"", Toast.LENGTH_LONG).show();
                     }
+                    populateListView();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -200,7 +211,7 @@ public class triviaListview extends AppCompatActivity {
 
 
                 //finish();
-                */
+
             }
         }
 
