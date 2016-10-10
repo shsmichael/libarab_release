@@ -2,18 +2,36 @@ package com.example.michaelg.myapplication.Trivia;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Fragments.Params;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by Badernation on 29/9/16.
  */
 public class DBAdapter extends SQLiteOpenHelper {
-
+    //private StartQ quizList;
     private static final int DATABASE_VERSION = 2;
 
     // Database Name
@@ -39,6 +57,7 @@ public class DBAdapter extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         myDatabase4=db;
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION + " ( "
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUESION
@@ -46,8 +65,10 @@ public class DBAdapter extends SQLiteOpenHelper {
                 +KEY_OPTB +" TEXT, "+KEY_OPTC +" TEXT, "+KEY_OPTD+" TEXT)";
 
         db.execSQL(sql);
-
+        //quizList=new StartQ("Anya@","Anya@");
+        //quizList.execute();
         addQuestions();
+
 
     }
 
@@ -102,7 +123,6 @@ public class DBAdapter extends SQLiteOpenHelper {
     private void addQuestions()
     {
         //format is question-option1-option2-option3-option4-answer
-
         Question q1=new Question("ماهو تاريخ اصدار كتاب عمليه السلام في الشرق الاوسط؟","2002", "2000", "1990", "1980","2002");
         this.addQuestion(q1);
 
@@ -117,11 +137,6 @@ public class DBAdapter extends SQLiteOpenHelper {
 
         Question q5=new Question("من الرئيس الذي منع مؤتمر القاهره لمناهضه الحرب؟","محمود عباس", "حسني مبارك", "ارئيل شارون", "الملك عبدالله الثاني","حسني مبارك");
         this.addQuestion(q5);
-
-
-
-
-
 
     }
 
@@ -140,6 +155,181 @@ public class DBAdapter extends SQLiteOpenHelper {
         // Inserting Row
         myDatabase4.insert(TABLE_QUESTION, null, values);
     }
+
+/*
+
+    public class StartQ extends AsyncTask<Void, Void, JSONObject> {
+
+        private final String userName;
+        private final String itemId;
+
+
+        StartQ(String name, String id) {
+            userName=name;
+            itemId=id;
+        }
+
+        protected JSONObject doInBackground(Void... params) {
+
+            if (params.length == 0) {
+                return null;
+            }
+
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+
+            String serverJsonStr = null;
+            String format = "json";
+
+            try {
+                //change
+                final String FORECAST_BASE_URL =
+                        Params.getServer() +"LibArab/gamification/Startquzi?";
+
+                final String USER_NAME = "userName";
+                final String ITEM_ID = "itemId";
+
+
+                Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+                        .appendQueryParameter(USER_NAME, userName)
+                        .appendQueryParameter(ITEM_ID, itemId)
+                        .build();
+
+                URL url = new URL(builtUri.toString());
+                Log.v("URL", builtUri.toString());
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+
+
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    // Nothing to do.
+                    return null;
+                }
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+
+                    buffer.append(line + "\n");
+                }
+
+                if (buffer.length() == 0) {
+                    return null;
+                }
+
+                serverJsonStr = buffer.toString();
+                Log.d("PROBLEM", serverJsonStr);
+
+            } catch (IOException e) {
+
+                // If the code didn't successfully get the weather data, there's no point in attemping
+                // to parse it.
+                return null;
+
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("LOGE", "Error closing stream", e);
+                    }
+                }
+            }
+
+            JSONObject serverJson = null;
+            try {
+                serverJson = new JSONObject(serverJsonStr);
+                return serverJson;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
+        @Override
+        protected void onPostExecute(final JSONObject quizListJson) {
+            quizList= null;
+
+            if(quizListJson==null){
+                System.out.print("sss");
+            }
+            //else Toast.makeText(getApplicationContext(),"done", Toast.LENGTH_LONG).show();
+
+            else {
+
+
+                quizList = null;
+                try {
+                    JSONArray itemsRelateQ = quizListJson.getJSONArray("questions");
+                    for(int i=0;i<itemsRelateQ.length();i++){
+                        JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
+                        String question = itemQuize.getString("qustion");
+                        String answer1 = itemQuize.getString("answer1");
+                        String answer2 = itemQuize.getString("answer2");
+                        String answer3 = itemQuize.getString("answer3");
+                        String answer4 = itemQuize.getString("answer4");
+                        String correct = itemQuize.getString("answer1");
+                        Question q5=new Question(question,answer1,answer2,answer3,
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                //finish();
+
+            }
+
+
+
+
+
+            //Toast.makeText(DBAdapter.this, quizListJson.toString(), Toast.LENGTH_LONG).show();
+           /* if(success==null)
+                Toast.makeText(quizList.this, "null", Toast.LENGTH_LONG).show();
+            else {
+                String answer = null;
+                try {
+                    answer = success.getString("client reply");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                if (answer.equals("success")) {  //case the user does'nt exist
+
+                    //finish();
+                    //Intent intent = new Intent(getApplicationContext(), Progress.class);
+                    //startActivity(intent);
+
+                } else {   // case failed
+                    try {
+                        Toast.makeText(quizList.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            quizList = null;
+
+        }
+    }*/
+
 
 
 }

@@ -51,7 +51,9 @@ public class AddQuestion extends AppCompatActivity {
         uncorrect3 = (EditText) findViewById(R.id.uncorrect_answer3);
 
 
-        String question1 = question.getText().toString();
+        String
+
+                question1 = question.getText().toString();
         addQuestionButton = (ImageButton) findViewById(R.id.imageButton);
         //addQuestionButton = (Button) findViewById(R.id.imageButton);
        /* Intent intent = getIntent();*/
