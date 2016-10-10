@@ -106,7 +106,7 @@ public class triviaListview extends AppCompatActivity {
             String format = "json";
 
             try {
-                final String FORECAST_BASE_URL ="http://52.29.110.203:8080/LibArab/gamification/leaderBorad?";
+                final String FORECAST_BASE_URL ="http://52.29.110.203:8080/LibArab/gamification/getQuziItems";
                 // Params.getServer() + "gamification/leaderBorad?";
                 //check format
                 final String USER = "userId";
