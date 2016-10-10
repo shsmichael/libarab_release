@@ -13,12 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 
 public class bookAdapter extends ArrayAdapter<Book> {
+    private Context context;
     ArrayList<Book> bookList;
     LayoutInflater vi;
     int Resource;
@@ -26,6 +29,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
 
     public bookAdapter(Context context, int resource, ArrayList<Book> objects) {
         super(context, resource, objects);
+        this.context = context;
         vi = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Resource = resource;
@@ -43,14 +47,37 @@ public class bookAdapter extends ArrayAdapter<Book> {
             holder.creationdate = (TextView) v.findViewById(R.id.tv_creationdate);
             holder.publisher = (TextView) v.findViewById(R.id.tv_publisher);
             holder.author = (TextView) v.findViewById(R.id.tv_author);
-            holder.imageview =(ImageView) v.findViewById(R.id.ivImage);
+            holder.imageview =(ImageView) v.findViewById(R.id.book_item_image);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
         }
         //holder.imageview.setImageResource(R.drawable.ic_launcher);
-        //new DownloadImageTask(holder.imageview).execute(actorList.get(position).getImage());
-        holder.title.setText(bookList.get(position).getTitle());
+        String mytest ="http://icons.iconarchive.com/icons/icons8/ios7/256/Files-Jpg-icon.png";
+
+        if((bookList.get(position).getType()).equals("book"))
+        {
+            Picasso
+                    .with(this.context)
+                    .load(bookList.get(position).getThumbnail())
+                    .fit()
+                    .into(holder.imageview);
+            String test = bookList.get(position).getThumbnail();
+            Log.e("this:", test);
+
+
+        }
+        else {
+            Picasso
+                    .with(this.context)
+                    .load(bookList.get(position).getWeblink())
+                    .fit()
+                    .into(holder.imageview);
+            String test = bookList.get(position).getWeblink();
+            Log.e("this:", test);
+        }
+        //new DownloadImageTask(holder.imageview).execute(bookList.get(position).getThumbnail());
+        holder.title.setText(bookList.get(position).getWeblink());
         //holder.tvDescription.setText(actorList.get(position).getDescription());
         holder.creationdate.setText( bookList.get(position).getCreationdate());
         holder.publisher.setText(bookList.get(position).getPublisher());

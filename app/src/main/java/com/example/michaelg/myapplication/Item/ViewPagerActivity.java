@@ -166,6 +166,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         if(type.equals("sheet")){
             pagesStr.add(weblink);
+            /*
             try {
                 InputStream is = (InputStream) new URL(weblink).getContent();
                 Bitmap d = BitmapFactory.decodeStream(is);
@@ -174,6 +175,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             } catch (Exception e) {
               //  return null;
             }
+            */
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setVisibility(View.GONE);
             TextView textView9=(TextView) findViewById(R.id.textView13);

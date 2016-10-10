@@ -10,13 +10,14 @@ public class Book {
     private String publisher;
     private String source;
     private String title;
+    private String type;
 
     public Book() {
         // TODO Auto-generated constructor stub
     }
 
     public Book(String recordid, String creationdate, String thumbnail, String weblink,
-                String author, String publisher, String source, String title) {
+                String author, String publisher, String source, String title,String type) {
         super();
         this.recordid = recordid;
         this.creationdate = creationdate;
@@ -26,7 +27,9 @@ public class Book {
         this.publisher = publisher;
         this.source = source;
         this.title = title;
+        this.type = type;
     }
+    public void setType(String type) {this.type=type;}
 
     public void setRecordid(String recordid) {
         this.recordid = recordid;
@@ -59,6 +62,8 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getType() {return type;}
 
     public String getRecordid() {
 

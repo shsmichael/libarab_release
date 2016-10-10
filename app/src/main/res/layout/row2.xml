@@ -21,7 +21,7 @@ app:cardBackgroundColor="#ffffff"
 
     <ImageView
         android:id="@+id/book_item_image"
-        android:layout_width="25dp"
+        android:layout_width="93dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/book_item_price_background" />

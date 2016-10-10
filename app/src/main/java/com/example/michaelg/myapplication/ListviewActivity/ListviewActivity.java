@@ -62,6 +62,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private int totalhits;
     private String searchby;
     private FloatingActionButton nxt, prev;
+    private  ListView listview;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 
@@ -72,8 +73,14 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewactivity);
+        listview = (ListView)findViewById(R.id.list);
+        resultstitle = (TextView) findViewById(R.id.textView11);
+        prev= (FloatingActionButton) findViewById(R.id.fab1);
+        nxt= (FloatingActionButton) findViewById(R.id.fab);
+
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -90,15 +97,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
          }
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
-       Log.v("ListviewActivity URL:",myURL);
+        Log.v(TAG + "querey to sever :",myURL);
         new JSONAsyncTask().execute(myURL);
-        ListView listview = (ListView)findViewById(R.id.list);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
         listview.setAdapter(adapter);
-        resultstitle = (TextView) findViewById(R.id.textView11) ;
         resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
-        prev= (FloatingActionButton) findViewById(R.id.fab1);
-        nxt= (FloatingActionButton) findViewById(R.id.fab);
 
         if(index==0)
             prev.hide();
@@ -275,21 +278,23 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         currentbook.setCreationdate(new String (object.getString("creationdate").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setPublisher(new String(object.getString("publisher").getBytes("ISO-8859-1"), "UTF-8"));
                         currentbook.setAuthor(author);
+                        currentbook.setType(searchfor);
                         //if there is a libweblink that means thats a sheet
                         //else is a book
                         if(object.has("libWebLink"))
                         {
                             currentbook.setWeblink(object.getString("page"));
-
+                            currentbook.setThumbnail(object.getString("libWebLink"));
                         }
                         else
                         {
                             currentbook.setWeblink(object.getString("webLink"));
+                            currentbook.setThumbnail(object.getString("thumbnail"));
 
                         }
 
                         currentbook.setSource(object.getString("source"));
-                        //   currentbook.setThumbnail(object.getString());
+
                         //this solves the no results issue
                         if (!total_hits.equals("0"))
                             bookList.add(currentbook);
