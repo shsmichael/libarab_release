@@ -176,7 +176,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
-
+                intent1.putExtra("userId",user);
                 intent1.putExtra("author",bookList.get(position).getAuthor());
                 intent1.putExtra("title",bookList.get(position).getTitle());
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
