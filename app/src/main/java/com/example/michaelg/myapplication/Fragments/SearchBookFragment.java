@@ -36,10 +36,6 @@ import org.json.JSONObject;
 public class SearchBookFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
     String _SEARCH_URL;
-    //TODO: @michael we shall be able to save the userIf as private to be able to send it to the next intents
-    //private userId;
-    //TODO: @michael inorder to recieve it we should get it from the prev intent,
-    // to do that we shall call that function -> Exrtra.getString("userId"); from onCreate
     private boolean str_serchby;
     private Switch searchby;
     private String username;
@@ -72,11 +68,8 @@ public class SearchBookFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
-        free_txt = "jerusalem";
-     /*   if (username.equals("Guest")) {
-            username="guest@lib";
+        free_txt = "any";
 
-        }*/
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
