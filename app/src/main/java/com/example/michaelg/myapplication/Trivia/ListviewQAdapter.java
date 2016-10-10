@@ -51,7 +51,7 @@ public class ListviewQAdapter extends ArrayAdapter<ItemsQ>{
             holder = (com.example.michaelg.myapplication.Trivia.ListviewQAdapter.ViewHolder) v.getTag();
         }
         holder.title.setText(bookList.get(position).getItemName());
-        holder.author.setText(bookList.get(position).getAuthor());
+        //holder.author.setText(bookList.get(position).getAuthor());
         return v;
 
     }
