@@ -181,7 +181,8 @@ public class ViewPagerActivity extends AppCompatActivity{
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();                }
+                    //Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();
+                }
             }
 
             );
