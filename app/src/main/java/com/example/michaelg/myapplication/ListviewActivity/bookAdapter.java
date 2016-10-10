@@ -74,13 +74,18 @@ public class bookAdapter extends ArrayAdapter<Book> {
 
         }
         else {
-            Picasso
-                    .with(this.context)
-                    .load(bookList.get(position).getWeblink())
-                    .fit()
-                    .into(holder.imageview);
-            String test = bookList.get(position).getWeblink();
-            Log.e("this:", test);
+            if(bookList.get(position).getWeblink().contains("DeliveryManagerServlet")) {
+                holder.imageview.setVisibility(View.VISIBLE);
+                Picasso
+                        .with(this.context)
+                        .load(bookList.get(position).getWeblink())
+                        .fit()
+                        .into(holder.imageview);
+                String test = bookList.get(position).getWeblink();
+                Log.e("this:", test);
+            }else{
+                holder.imageview.setVisibility(View.GONE);
+            }
         }
         //new DownloadImageTask(holder.imageview).execute(bookList.get(position).getThumbnail());
         holder.title.setText(bookList.get(position).getTitle());
