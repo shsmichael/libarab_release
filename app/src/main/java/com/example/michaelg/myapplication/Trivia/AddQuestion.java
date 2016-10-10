@@ -78,6 +78,7 @@ public class AddQuestion extends AppCompatActivity {
         thisItemid = intent.getStringExtra("itemId");
         thisAuther = intent.getStringExtra("author");
         thisItemName = intent.getStringExtra("itemName");
+        //Toast.makeText(AddQuestion.this,  thisItemName, Toast.LENGTH_LONG).show();
 
         addQuestionButton.setOnClickListener(new OnClickListener() {
             @Override

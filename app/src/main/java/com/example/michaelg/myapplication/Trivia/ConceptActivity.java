@@ -56,19 +56,17 @@ public class ConceptActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trivia_activity_concept);
-        Toast.makeText(getApplicationContext(), "yes", Toast.LENGTH_LONG).show();
-        quizList=new AddQTask("Anya@","123");
+        Intent intent = getIntent();
+        final String auther =(String) intent.getSerializableExtra("auther");
+        final String item =(String) intent.getSerializableExtra("itemName");
+        Toast.makeText(getApplicationContext(), item, Toast.LENGTH_LONG).show();
+        quizList=new AddQTask(auther,item);
         ques=new ArrayList<Question>();
 
 
         quizList.execute();
         //Toast.makeText(getApplicationContext(), ques.get(0).getOptionA().toString(), Toast.LENGTH_LONG).show();
         init();
-        //Toast.makeText(getApplicationContext(), ques.get(0).getOptionA().toString(), Toast.LENGTH_LONG).show();
-        //Initialize the database
-        // Toast.makeText(getApplicationContext(), ques.toString(), Toast.LENGTH_LONG).show();
-
-        //currentQuestion=ques.get(questionId);
 
         //Set question
         // setQuestionsView();
@@ -188,9 +186,13 @@ public class ConceptActivity extends AppCompatActivity {
             try {
                 //change
                 final String FORECAST_BASE_URL =
-                        "http://52.29.110.203:8080/LibArab/gamification/Startquzi?userName=shsmichael@gmail.com&itemId=12444";;
+                        "http://52.29.110.203:8080/LibArab/gamification/Startquzi?";
+                userName="shsmichael@gmail.com";
+                itemId="12444";
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+                        .appendQueryParameter("userName", userName)
+                        .appendQueryParameter("itemId", itemId)
                         .build();
 
                 URL url = new URL(builtUri.toString());

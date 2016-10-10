@@ -74,8 +74,8 @@ public class triviaListview extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 //Toast.makeText(getApplicationContext(), items.get(position).getAuthor(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
-                /*intent1.putExtra("author",items.get(position).getAuthor());
-                intent1.putExtra("itemName",items.get(position).getItemName());*/
+                intent1.putExtra("auther",items.get(position).getAuthor());
+                intent1.putExtra("itemName",items.get(position).getItemName());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);
@@ -182,25 +182,15 @@ public class triviaListview extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(),itemsQ.length(), Toast.LENGTH_LONG).show();
                     for(int i=0;i<itemsRelateQ.length();i++){
                         JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
-                        //String question = itemQuize.getString("qustion");
 
                         String auther1 = itemQuize.getString("author ");
-
-
-
                         String itemName1 = itemQuize.getString("name ");
-
 
                         ItemsQ item=new ItemsQ();
                         item.setAuthor(auther1);
                         item.setItemName(itemName1);
 
-
-
-
-
                         items.add(item);
-                        //Toast.makeText(getApplicationContext(),i+"", Toast.LENGTH_LONG).show();
                     }
                     populateListView();
 
