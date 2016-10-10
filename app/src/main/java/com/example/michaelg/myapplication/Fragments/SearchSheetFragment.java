@@ -110,7 +110,7 @@ public class SearchSheetFragment extends Fragment {
         username = newUser.getUsername();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
-                android.R.layout.simple_spinner_item);
+                R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
