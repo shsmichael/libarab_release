@@ -69,7 +69,7 @@ public class SearchMapFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor = (TextView) view.findViewById(R.id.tv_title);
-        free_txt = "jerusalem";
+        free_txt = "any";
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
