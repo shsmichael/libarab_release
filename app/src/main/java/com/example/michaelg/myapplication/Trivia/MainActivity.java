@@ -20,22 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.trivia_activity_main);
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         //userType = intent.getIntExtra("Type",0);
         // myuser =(User) intent.getSerializableExtra("user");
          myuser = new User();
         myuser.setuserid("dror@d");
-       ImageButton bt= (ImageButton) findViewById(R.id.imageButton2);
+       ImageButton bt= (ImageButton) findViewById(R.id.imageButton2);*/
 
-        bt.setOnClickListener(new View.OnClickListener() {
+       /* bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 aboutTrivia();
             }
-        });
+        });*/
 
     }
-
+/*
     public void aboutTrivia(){
         Intent intent= new Intent(getApplicationContext(), About.class);
         startActivity(intent);
@@ -58,5 +58,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Leader.class);
         intent.putExtra("user",myuser);
         startActivity(intent);
-    }
+    }*/
 }
+

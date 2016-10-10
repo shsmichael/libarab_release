@@ -13,8 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.Trivia.About;
+import com.example.michaelg.myapplication.Trivia.AddQuestion;
+import com.example.michaelg.myapplication.Trivia.Leader;
+import com.example.michaelg.myapplication.Trivia.triviaListview;
+import com.example.michaelg.myapplication.User;
 
 
 /**
@@ -23,6 +30,8 @@ import com.example.michaelg.myapplication.R;
 public class TriviaFragment extends Fragment {
 
     private final String TAG =this.getClass().getSimpleName();
+
+    User myuser;
 
     public TriviaFragment() {
         // Required empty public constructor
@@ -34,9 +43,9 @@ public class TriviaFragment extends Fragment {
         // Inflate the layout for this fragment
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
         getActivity().setTitle(R.string.menu_trivia);
-        Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
+        /*Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
         Intent i = new Intent(getContext() , com.example.michaelg.myapplication.Trivia.MainActivity.class);
-        startActivity(i);
+        startActivity(i);*/
         /*
         btn_triv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +55,40 @@ public class TriviaFragment extends Fragment {
             }
         });
         */
+        FrameLayout button = (FrameLayout) myview.findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create(v);
+            }
+        });
 
+        FrameLayout button2 = (FrameLayout) myview.findViewById(R.id.button);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start(v);
+            }
+        });
+
+        FrameLayout button3 = (FrameLayout) myview.findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leaderboard(v);
+            }
+        });
+
+        myuser = new User();
+        myuser.setuserid("dror@d");
+
+        ImageButton bt= (ImageButton) myview.findViewById(R.id.imageButton2);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aboutTrivia(v);
+            }
+        });
 
 
         return myview;
@@ -92,5 +134,29 @@ public class TriviaFragment extends Fragment {
         super.onAttach(context);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+    }
+
+    public void aboutTrivia(View view){
+        Intent intent= new Intent(view.getContext(), About.class);
+        startActivity(intent);
+    }
+
+    public void start(View view) {
+
+        //Intent intent = new Intent(getApplicationContext(), StartQuiz.class);
+        Intent intent = new Intent(view.getContext(), triviaListview.class);
+        startActivity(intent);
+    }
+
+    public void create(View view) {
+        Intent intent = new Intent(view.getContext(), AddQuestion.class);
+        startActivity(intent);
+    }
+
+    public void leaderboard(View view ) {
+        //Toast.makeText(getApplicationContext(), "score:"  , Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(view.getContext(), Leader.class);
+        intent.putExtra("user",myuser);
+        startActivity(intent);
     }
 }

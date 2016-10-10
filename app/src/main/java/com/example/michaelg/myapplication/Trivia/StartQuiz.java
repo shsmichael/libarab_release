@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
 
@@ -18,6 +19,15 @@ public class StartQuiz extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trivia_app_bar_main);
+        Intent intent = getIntent();
+        final String auther =(String) intent.getSerializableExtra("auther");
+        final String item =(String) intent.getSerializableExtra("itemName");
+
+
+        Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
+        intent1.putExtra("auther",auther);
+        intent1.putExtra("itemName",item);
+        Toast.makeText(getApplicationContext(),item, Toast.LENGTH_LONG).show();
 
 
         Button btnStart=(Button) findViewById(R.id.btnStart);
