@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
+import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -55,6 +56,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String searchfor;
     private String fromyear;
     private String toyear;
+    private String free_txt;
     private String txt;
     private TextView resultstitle;
     private int totalhits;
@@ -62,6 +64,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private FloatingActionButton nxt, prev;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +86,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
              index=extras.getInt("index");
              searchby= extras.getString("searchby");
              searchfor=extras.getString("searchfor");
+             free_txt = extras.getString("freetxt");
          }
         //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
         //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
@@ -109,6 +118,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
+                        .appendQueryParameter("freeTxt", free_txt)
                         .build();
 
                 Log.v(TAG, builtUri.toString());
@@ -125,6 +135,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
                 i.putExtra("searchfor", searchfor);
+                i.putExtra("freetxt", free_txt);
+
                 startActivity(i);
             }
 
@@ -144,6 +156,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                         .appendQueryParameter("fromyear", fromyear)
                         .appendQueryParameter("toyear",   toyear)
                         .appendQueryParameter("index", Integer.toString(index) )
+                        .appendQueryParameter("freeTxt", free_txt)
                         .build();
 
                 Log.v(TAG, builtUri.toString());
@@ -158,6 +171,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("searchby", searchby);
                 i.putExtra("type",searchfor);
                 i.putExtra("searchfor", searchfor);
+                i.putExtra("freetxt", free_txt);
                 startActivity(i);
 
             }
