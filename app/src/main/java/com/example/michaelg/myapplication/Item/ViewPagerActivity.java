@@ -30,6 +30,7 @@ import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
 import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
+import com.example.michaelg.myapplication.Trivia.AddQuestion;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
@@ -141,6 +142,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                 alertDialog.show();
             }
         });
+
+
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
@@ -207,7 +210,18 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.shutDown();
     }
 
-//////////////////////////////////////////////////////////////////////////////// ASYNC TASK
+    public void addQuestion(View view) {
+
+        Intent addq = new Intent(this, AddQuestion.class);
+        addq.putExtra("userId", userId);
+        addq.putExtra("itemId", ID);
+        addq.putExtra("author", author);
+        addq.putExtra("itemName", title);
+        startActivity(addq);
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////// ASYNC TASK
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String bookId;

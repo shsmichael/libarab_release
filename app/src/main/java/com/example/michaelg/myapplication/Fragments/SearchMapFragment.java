@@ -50,6 +50,7 @@ public class SearchMapFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
+    private String free_txt;
 
     public SearchMapFragment() {
         // Required empty public constructor
@@ -61,10 +62,6 @@ public class SearchMapFragment extends Fragment {
 
 
         final View view = inflater.inflate(R.layout.fragment_search_map, container, false);
-     /*   if (username.equals("Guest")) {
-            username="guest@lib";
-
-        }*/
         getActivity().setTitle(R.string.menu_search);
         spinner = (Spinner) view.findViewById(R.id.spinner);
         title = (EditText) view.findViewById(R.id.title_edittext);
@@ -72,7 +69,7 @@ public class SearchMapFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor = (TextView) view.findViewById(R.id.tv_title);
-//
+        free_txt = "jerusalem";
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -164,6 +161,7 @@ public class SearchMapFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear", toyear.getText().toString())
                     .appendQueryParameter("index", Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -177,8 +175,7 @@ public class SearchMapFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor", "map");
-/**************************/
-            //TODO: @Michael i.putExtra("userId",userId);
+            i.putExtra("freetxt", free_txt);
             startActivity(i);
         } else {
             Uri builtUri = Uri.parse(_SEARCH_URL).buildUpon()
@@ -187,6 +184,7 @@ public class SearchMapFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear", toyear.getText().toString())
                     .appendQueryParameter("index", Integer.toString(0))
+                    .appendQueryParameter("freeTxt", free_txt)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext(), ListviewActivity.class);
@@ -199,8 +197,7 @@ public class SearchMapFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor", "map");
-
-
+            i.putExtra("freetxt", free_txt);
             startActivity(i);
         }
 
