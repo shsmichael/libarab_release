@@ -91,5 +91,6 @@
     <string name="loading_wait">جاري التحميل الرجاء الانتظار</string>
     <string name="connecting_server">الاتصال بالخادم</string>
     <string name="search_map">خريطه</string>
+    <string name="l_wait">جاري التحميل الرجاء الانتظار</string>
 
 </resources>
