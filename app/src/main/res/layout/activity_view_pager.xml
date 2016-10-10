@@ -93,6 +93,12 @@
                 android:layout_gravity="center_vertical"
                 android:id="@+id/textView13" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@color/black"
+                android:id="@+id/imageView2" />
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_gallery"
                 android:layout_width="match_parent"
