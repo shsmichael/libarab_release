@@ -81,6 +81,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     int count=0;
     int k=0;
     int counti=0;
+    ZoomableDraweeView view2;
 
 
     public void bookinfo(View v){
@@ -182,7 +183,23 @@ public class ViewPagerActivity extends AppCompatActivity{
             // imageView.setImageDrawable(d[position]);
             Picasso.with(getApplicationContext()).load(weblink).into(imageView);
             imageView.setVisibility(View.VISIBLE);
-            imageView.setClickable(true);
+            textView1.setText( 1+"/"+1);
+            view2= new ZoomableDraweeView(imageView.getContext());
+            view2.setController(
+                    Fresco.newDraweeControllerBuilder()
+                            .setUri(Uri.parse(weblink))
+                            .build());
+            GenericDraweeHierarchy hierarchy =
+                    new GenericDraweeHierarchyBuilder(getApplicationContext().getResources())
+                            .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
+                            .setProgressBarImage(new ProgressBarDrawable())
+                            .build();
+
+            view2.setHierarchy(hierarchy);
+
+//            imageView.setClickable(true);
+
+
            // imageView.setOnClickListener(new View.OnClickListener() {
              //   @Override
             //    public void onClick(View v) {
