@@ -35,7 +35,7 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/textview_tag_bg"
+                android:background="@drawable/custom_spinner"
                 android:id="@+id/spinner" />
 
             <LinearLayout
