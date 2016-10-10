@@ -360,11 +360,11 @@ public class ViewPagerActivity extends AppCompatActivity{
             //if(!isJump) {
                 //counti=1;
                // if (isNoPages == 0) {
-                    if (j == 0) {
+                    //if (j == 0) {
                         textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
-                           i = 1;
-                     }
+                          // i = 1;
+//                     }
 //                    }
 //                    if (j == 1) {
 //                        textView1.setText(items.size() - 1 + "/" + items.size());
@@ -373,15 +373,11 @@ public class ViewPagerActivity extends AppCompatActivity{
 //                }
 //            }
 
-
-
             ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
             view.setController(
                     Fresco.newDraweeControllerBuilder()
                             .setUri(Uri.parse(items.get(position)))
                             .build());
-
-
 
             GenericDraweeHierarchy hierarchy =
                     new GenericDraweeHierarchyBuilder(container.getResources())
@@ -391,10 +387,8 @@ public class ViewPagerActivity extends AppCompatActivity{
 
             view.setHierarchy(hierarchy);
 
-
             container.addView(view,
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
 
             return view;
         }
@@ -424,14 +418,14 @@ public class ViewPagerActivity extends AppCompatActivity{
             }
             else  counti=0;*/
 
-           if((i==1)&&(isJump==false)){
-               textView1.setText((position - 1) + "/" + items.size());
-               i=0;
-           }
-            if((i==1)&&(isJump==true)){
-                isJump=false;
-                i=0;
-            }
+//           if((i==1)&&(isJump==false)){
+//               textView1.setText((position - 1) + "/" + items.size());
+//               i=0;
+//           }
+//            if((i==1)&&(isJump==true)){
+//                isJump=false;
+//                i=0;
+//            }
 
             container.removeView((View) object);
         }
