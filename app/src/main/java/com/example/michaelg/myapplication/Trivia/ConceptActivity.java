@@ -94,7 +94,7 @@ public class ConceptActivity extends AppCompatActivity {
                     }else{
                         Log.e("comments", "Wrong Answer");
                     }
-                    if(questionId<3){
+                    if(questionId<numOfQ){
                         currentQuestion=ques.get(questionId);
                         setQuestionsView();
                     }else{
@@ -188,7 +188,7 @@ public class ConceptActivity extends AppCompatActivity {
             try {
                 //change
                 final String FORECAST_BASE_URL =
-                        "http://52.29.110.203:8080/LibArab/gamification/Startquzi?userName=Anya@sk&itemId=123";;
+                        "http://52.29.110.203:8080/LibArab/gamification/Startquzi?userName=shsmichael@gmail.com&itemId=12444";;
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .build();
@@ -268,7 +268,7 @@ public class ConceptActivity extends AppCompatActivity {
                 try {
                     JSONArray itemsRelateQ = quizListJson.getJSONArray("questions");
                     numOfQ=itemsRelateQ.length();
-
+                    Toast.makeText(getApplicationContext(), numOfQ+"", Toast.LENGTH_LONG).show();
                     for(int i=0;i<itemsRelateQ.length();i++){
 
                         JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
