@@ -536,7 +536,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             ImageView imageView = new ImageView(getApplicationContext());
           //  imageView.setImageBitmap(bitmaps.get(position));
             // imageView.setImageDrawable(d[position]);
-            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+            Picasso.with(getApplicationContext()).load(weblink).fit().into(imageView);
             ((ViewPager) container).addView(imageView);
             return imageView;
         }

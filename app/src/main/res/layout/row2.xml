@@ -45,7 +45,8 @@ app:cardBackgroundColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_tag_bg"
                 android:textColor="@color/book_item_texttitlecolor"
-                android:id="@+id/textView2" />
+                android:id="@+id/textView2"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -53,6 +54,7 @@ app:cardBackgroundColor="#ffffff"
                 android:gravity="right"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="12sp"
                 android:text="Book Title"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textAppearance="@android:style/TextAppearance.Small"
@@ -69,6 +71,7 @@ app:cardBackgroundColor="#ffffff"
                 android:text="@string/search_creation_date"
                 android:layout_width="wrap_content"
                 android:background="@drawable/textview_tag_bg"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView8"
                 android:textColor="@color/black"
@@ -81,6 +84,7 @@ app:cardBackgroundColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/tertiary_text_light"
                 android:text="July 3, 1962"
+                android:textSize="12sp"
                 android:autoText="false" />
 
         </LinearLayout>
@@ -95,6 +99,7 @@ app:cardBackgroundColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView18"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 />
 
@@ -107,6 +112,7 @@ app:cardBackgroundColor="#ffffff"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:singleLine="false"
+                android:textSize="12sp"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -122,6 +128,7 @@ app:cardBackgroundColor="#ffffff"
                 android:background="@drawable/textview_tag_bg"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView19"
+                android:textSize="12sp"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -129,6 +136,7 @@ app:cardBackgroundColor="#ffffff"
                 android:layout_width="match_parent"
                 android:gravity="right"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
                 android:textColor="@android:color/tertiary_text_light"
                 android:text="The National Libary"
                 android:layout_weight="1" />
