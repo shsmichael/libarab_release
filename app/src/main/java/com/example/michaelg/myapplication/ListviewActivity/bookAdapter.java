@@ -77,7 +77,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
             Log.e("this:", test);
         }
         //new DownloadImageTask(holder.imageview).execute(bookList.get(position).getThumbnail());
-        holder.title.setText(bookList.get(position).getWeblink());
+        holder.title.setText(bookList.get(position).getTitle());
         //holder.tvDescription.setText(actorList.get(position).getDescription());
         holder.creationdate.setText( bookList.get(position).getCreationdate());
         holder.publisher.setText(bookList.get(position).getPublisher());
