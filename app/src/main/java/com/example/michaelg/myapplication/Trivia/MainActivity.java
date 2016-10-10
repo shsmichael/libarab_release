@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.trivia_activity_main);
+        //setContentView(R.layout.trivia_activity_main);
 
         /*Intent intent = getIntent();
         //userType = intent.getIntExtra("Type",0);
