@@ -89,4 +89,5 @@
     <string name="loading_wait">בטעינה אנא המתן</string>
     <string name="connecting_server">מתחבר לשרת</string>
     <string name="search_map">מפה</string>
+    <string name="l_wait">בטעינה אנא המתן</string>
 </resources>
