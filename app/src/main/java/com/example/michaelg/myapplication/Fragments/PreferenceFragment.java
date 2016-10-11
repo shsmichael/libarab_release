@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -24,12 +25,14 @@ import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Trivia.MainActivity;
 
 import java.util.Locale;
+import java.util.zip.CheckedInputStream;
 
 
 public  class PreferenceFragment extends com.github.machinarius.preferencefragment.PreferenceFragment {
 
     private final String TAG =this.getClass().getSimpleName();
     private ListPreference mListPreference;
+    private CheckBoxPreference mcheckBoxPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -78,6 +81,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                 return true;
             }
         });
+
     }
 
     @Override
