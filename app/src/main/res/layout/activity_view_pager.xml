@@ -35,12 +35,14 @@
                 android:layout_weight="3">
 
                 <com.github.ivbaranov.mfb.MaterialFavoriteButton
+                    android:id="@+id/lovebutton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     app:mfb_color="white"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="3dp"
                     android:layout_gravity="left"
+                    app:mfb_type="heart"
                     android:layout_weight="1" />
             </LinearLayout>
 

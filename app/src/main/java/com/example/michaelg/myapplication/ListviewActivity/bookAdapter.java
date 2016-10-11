@@ -57,27 +57,38 @@ public class bookAdapter extends ArrayAdapter<Book> {
 
         if((bookList.get(position).getType()).equals("book"))
         {
-            Picasso
-                    .with(this.context)
-                    .load(bookList.get(position).getThumbnail())
-                    .fit()
-                    .into(holder.imageview);
-            String test = bookList.get(position).getThumbnail();
-            Log.e("this:", test);
+            if(bookList.get(position).getThumbnail().contains("DeliveryManagerServlet")){// "http://books.google.com/books?bibkeys=ISBN:,OCLC:,LCCN:&jscmd=viewapi&callback=updateGBSCover"){
+                holder.imageview.setVisibility(View.VISIBLE);
+                Picasso
+                        .with(this.context)
+                        .load(bookList.get(position).getThumbnail())
+                        .fit()
+                        .into(holder.imageview);
+                String test = bookList.get(position).getThumbnail();
+                Log.e("this:", test);
+
+            }else {
+                holder.imageview.setVisibility(View.GONE);
+            }
 
 
         }
         else {
-            Picasso
-                    .with(this.context)
-                    .load(bookList.get(position).getWeblink())
-                    .fit()
-                    .into(holder.imageview);
-            String test = bookList.get(position).getWeblink();
-            Log.e("this:", test);
+            if(bookList.get(position).getWeblink().contains("DeliveryManagerServlet")) {
+                holder.imageview.setVisibility(View.VISIBLE);
+                Picasso
+                        .with(this.context)
+                        .load(bookList.get(position).getWeblink())
+                        .fit()
+                        .into(holder.imageview);
+                String test = bookList.get(position).getWeblink();
+                Log.e("this:", test);
+            }else{
+                holder.imageview.setVisibility(View.GONE);
+            }
         }
         //new DownloadImageTask(holder.imageview).execute(bookList.get(position).getThumbnail());
-        holder.title.setText(bookList.get(position).getWeblink());
+        holder.title.setText(bookList.get(position).getTitle());
         //holder.tvDescription.setText(actorList.get(position).getDescription());
         holder.creationdate.setText( bookList.get(position).getCreationdate());
         holder.publisher.setText(bookList.get(position).getPublisher());

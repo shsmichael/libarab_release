@@ -47,8 +47,9 @@ public class SearchBookFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
+    private EditText free_txt;
     //ToDo :  change the String to editText ( waiting for Emeil to add the freetext to the xml
-    private String free_txt;
+
 
     public SearchBookFragment() {
         // Required empty public constructor
@@ -68,7 +69,9 @@ public class SearchBookFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor=(TextView) view.findViewById(R.id.tv_title);
-        free_txt = "any";
+        free_txt = (EditText) view.findViewById(R.id.freetext_edittext);
+
+        //free_txt = "any";
 
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -162,7 +165,7 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt)
+                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -176,7 +179,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt);
+            i.putExtra("freetxt", free_txt.getText().toString());
 
 
             //TODO: @Michael i.putExtra("userId",userId);
@@ -190,7 +193,7 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt)
+                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
@@ -203,7 +206,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt);
+            i.putExtra("freetxt", free_txt.getText().toString());
 
             startActivity(i);
         }

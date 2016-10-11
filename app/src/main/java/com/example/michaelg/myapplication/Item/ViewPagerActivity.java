@@ -37,6 +37,7 @@ import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -55,6 +56,10 @@ import java.util.List;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class ViewPagerActivity extends AppCompatActivity{
+    private final String _ADD_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/addToFavorites?";
+    private final String _REMOVE_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/removeFromFavorites?";
+
+    private final String TAG =this.getClass().getSimpleName();
     List<String> pagesStr = new ArrayList<String>();
     private String ID = "NNL_ALEPH003157499";
     private String userId= "100";
@@ -119,11 +124,25 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.initialize(this);
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
+        MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
+
         //etchange =(EditText)findViewById(R.id.et_changepage);
         mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
-
         textView1.setTextSize(20);
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            ID  = extras.getString("recordId");
+            userId=extras.getString("userId");
+            type= extras.getString("type");
+            creationdate = extras.getString("creationdate");
+            title        = extras.getString("title");
+            author       = extras.getString("author");
+            weblink      = extras.getString("webLink");
+            publisher    = extras.getString("publisher");
+            source       = extras.getString("source");
+            //  userId="100";
+        }
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -150,19 +169,39 @@ public class ViewPagerActivity extends AppCompatActivity{
         });
 
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            ID  = extras.getString("recordId");
-            userId=extras.getString("userId");
-            type= extras.getString("type");
-            creationdate = extras.getString("creationdate");
-            title        = extras.getString("title");
-            author       = extras.getString("author");
-            weblink      = extras.getString("webLink");
-            publisher    = extras.getString("publisher");
-            source       = extras.getString("source");
-            //  userId="100";
-        }
+        lovebutton.setOnFavoriteChangeListener(
+                new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                    @Override
+                    public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                        if (favorite) {
+                            Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
+                            Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
+                                    .appendQueryParameter("username",    userId)
+                                    // .appendQueryParameter("title",    title.getText().toString())
+                                    .appendQueryParameter("bibId",    "0")
+                                    .appendQueryParameter("itemId", ID)
+                                    .appendQueryParameter("type", type)
+                                    .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
+                                    .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
+                                    .appendQueryParameter("desc", "This is the Story of Prince Of Bel-Air")
+
+                                    .build();
+                            Log.v(TAG + "ADDFAVURL", builtUri.toString());
+
+                        } else {
+                            // TODO: 11/10/2016 check whats wrong with link
+                            Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
+                            Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
+                                    .appendQueryParameter("username",    userId)
+                                    // .appendQueryParameter("title",    title.getText().toString())
+                                    .appendQueryParameter("bibId",    "0")
+                                    .appendQueryParameter("itemId", ID)
+                                    .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
+                                    .build();
+                            Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                        }
+                    }
+                });
 
         if(type.equals("sheet")){
             pagesStr.add(weblink);
@@ -536,7 +575,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             ImageView imageView = new ImageView(getApplicationContext());
           //  imageView.setImageBitmap(bitmaps.get(position));
             // imageView.setImageDrawable(d[position]);
-            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+            Picasso.with(getApplicationContext()).load(weblink).fit().into(imageView);
             ((ViewPager) container).addView(imageView);
             return imageView;
         }

@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="223dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.80"
             android:layoutAnimation="@anim/layoutanimation"
             android:orientation="vertical"
@@ -111,6 +111,31 @@
                     android:imeOptions="actionGo"
                     android:inputType="number"
                     android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/freetext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textview_tag_bg"
+                    android:fontFamily="sans-serif"
+                    android:text="Free Text:"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/freetext_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionGo"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_weight="1" />
+
             </LinearLayout>
 
         </LinearLayout>
