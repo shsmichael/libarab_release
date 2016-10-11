@@ -1,5 +1,6 @@
 package com.example.michaelg.myapplication;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     int userType;
     User myuser;
+    View item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,21 @@ public class MainActivity extends AppCompatActivity
         TextView textView1 = (TextView) header.findViewById(R.id.textView_second_header);
         textView.setText(myuser.getFirstname() + " " + myuser.getLastname());
         textView1.setText(myuser.getUsername());
+        //item = findViewById(R.id.nav_trivia);
 
+        if(myuser.getUserType().equals("0")){
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_trivia).setVisible(false);
+            nav_Menu.findItem(R.id.nav_bibilo).setVisible(false);
+            nav_Menu.findItem(R.id.nav_favorites).setVisible(false);
+        }else{
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_trivia).setVisible(true);
+            nav_Menu.findItem(R.id.nav_bibilo).setVisible(true);
+            nav_Menu.findItem(R.id.nav_favorites).setVisible(true);
+        }
         //set main frag
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
         MenuFragment menufragment = new MenuFragment();

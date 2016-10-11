@@ -58,6 +58,7 @@
     <string name="enter_page">Enter Page</string>
     <string name="l_wait">Loading, please wait</string>
     <string name="connecting_server">Connecting to server</string>
+    <string name="login_to_access">Log In to access this feature!</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

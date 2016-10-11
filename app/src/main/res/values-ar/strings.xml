@@ -92,5 +92,6 @@
     <string name="connecting_server">الاتصال بالخادم</string>
     <string name="search_map">خريطه</string>
     <string name="l_wait">جاري التحميل الرجاء الانتظار</string>
+    <string name="login_to_access">سجّل للدخول!</string>
 
 </resources>

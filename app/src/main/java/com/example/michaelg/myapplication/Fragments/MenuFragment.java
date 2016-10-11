@@ -24,9 +24,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
+
+import static com.mikepenz.iconics.core.R.attr.colorPrimary;
 
 
 /**
@@ -65,16 +68,83 @@ public class MenuFragment extends Fragment {
        // newUser =(User) this.getArguments().getSerializable("user");
         String usertype =newUser.getUserType();
 
-        if (usertype == "0"){       //user type is guest
+        if (usertype.equals("0")){       //user type is guest
             txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
             txtemail.setVisibility(View.INVISIBLE);
+
+            trivia.setClickable(false);
+            bibilo.setClickable(false);
+            favorites.setClickable(false);
+
+            trivia.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
+            bibilo.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
+            favorites.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
+
+            trivia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), R.string.login_to_access, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            bibilo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), R.string.login_to_access, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            favorites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), R.string.login_to_access, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
         else{
             txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
             txtemail.setText(newUser.getUsername());
+            trivia.setClickable(true);
+            bibilo.setClickable(true);
+            favorites.setClickable(true);
+
+            trivia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: 23/09/2016 Fix color change
+                    //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
+
+                    //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                    TriviaFragment triviafragmentestfragment = new TriviaFragment();
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    Bundle bundle = new Bundle();
+                    //bundle.putInt("Type", userType);
+                    triviafragmentestfragment.setArguments(bundle);
+                    manager.beginTransaction().replace(R.id.fragment_main,
+                            triviafragmentestfragment,
+                            triviafragmentestfragment.getTag()
+                    ).commit();
+                }
+            });
+
+            favorites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: 23/09/2016 Fix color change
+                    //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
+                    FavoriteFragmentnew favoritesfragmentestfragment = new FavoriteFragmentnew();
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    Bundle bundle = new Bundle();
+                    //bundle.putInt("Type", userType);
+                    favoritesfragmentestfragment.setArguments(bundle);
+                    manager.beginTransaction().replace(R.id.fragment_main,
+                            favoritesfragmentestfragment,
+                            favoritesfragmentestfragment.getTag()
+                    ).commit();
+                }
+            });
+
         }
-
-
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,53 +160,9 @@ public class MenuFragment extends Fragment {
                         mainfragmentestfragment,
                         mainfragmentestfragment.getTag()
                 ).commit();
-
-
-
             }
         });
 
-        trivia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: 23/09/2016 Fix color change
-                //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAbout)));
-
-                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
-                TriviaFragment triviafragmentestfragment = new TriviaFragment();
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                Bundle bundle = new Bundle();
-                //bundle.putInt("Type", userType);
-                triviafragmentestfragment.setArguments(bundle);
-                manager.beginTransaction().replace(R.id.fragment_main,
-                        triviafragmentestfragment,
-                        triviafragmentestfragment.getTag()
-                ).commit();
-
-
-
-            }
-        });
-
-        favorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: 23/09/2016 Fix color change
-                //getView().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorTrivia)));
-                FavoriteFragmentnew favoritesfragmentestfragment = new FavoriteFragmentnew();
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                Bundle bundle = new Bundle();
-                //bundle.putInt("Type", userType);
-                favoritesfragmentestfragment.setArguments(bundle);
-                manager.beginTransaction().replace(R.id.fragment_main,
-                        favoritesfragmentestfragment,
-                        favoritesfragmentestfragment.getTag()
-                ).commit();
-
-
-
-            }
-        });
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,11 +177,9 @@ public class MenuFragment extends Fragment {
                         aboutfragment,
                         aboutfragment.getTag()
                 ).commit();
-
-
-
             }
         });
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,12 +194,8 @@ public class MenuFragment extends Fragment {
                          preffragment,
                         preffragment.getTag()
                 ).commit();
-
-
-
             }
         });
-
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,9 +211,6 @@ public class MenuFragment extends Fragment {
                         profilefragmentestfragment,
                         profilefragmentestfragment.getTag()
                 ).commit();
-
-
-
             }
         });
 

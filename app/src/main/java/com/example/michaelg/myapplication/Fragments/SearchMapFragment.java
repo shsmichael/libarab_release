@@ -42,7 +42,7 @@ public class SearchMapFragment extends Fragment {
     private boolean str_serchby;
     private Switch searchby;
     private String username;
-
+    private String usertype;
     private EditText title ,
             fromyear ,
             toyear;
@@ -102,6 +102,7 @@ public class SearchMapFragment extends Fragment {
         });
         User newUser = (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
+        usertype = newUser.getUserType();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 R.layout.spinner_item);
@@ -169,6 +170,7 @@ public class SearchMapFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl", _SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear", fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
@@ -191,6 +193,7 @@ public class SearchMapFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl", _SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear", fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
