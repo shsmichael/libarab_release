@@ -157,6 +157,13 @@ public class SearchBookFragment extends Fragment {
         if (txt.isEmpty()) {
             txt = "any";
         }
+        String free =  free_txt.getText().toString();
+        if (txt.isEmpty()) {
+            txt = "any";
+        }
+        if (free.isEmpty()) {
+            free = "any";
+        }
         //TODO: @michael change userId not 4 in both cases
         if(str_serchby)
         {
@@ -166,7 +173,7 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
+                    .appendQueryParameter("freeTxt", free)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -181,7 +188,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt.getText().toString());
+            i.putExtra("freetxt", free);
 
 
             //TODO: @Michael i.putExtra("userId",userId);
@@ -195,7 +202,7 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
+                    .appendQueryParameter("freeTxt", free)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
@@ -209,7 +216,7 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt.getText().toString());
+            i.putExtra("freetxt", free);
 
             startActivity(i);
         }

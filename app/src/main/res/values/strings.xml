@@ -180,6 +180,7 @@
     <string name="menu_more">menu</string>
     <string name="menu_browser">Open the browser</string>
     <string name="search_map">Map</string>
+    <string name="free_txt">free text</string>
 
 
 </resources>

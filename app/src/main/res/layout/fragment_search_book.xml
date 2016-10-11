@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/textview_tag_bg"
                     android:fontFamily="sans-serif"
-                    android:text="Free Text:"
+                    android:text="@string/free_txt"
                     android:textColor="@color/black" />
 
                 <EditText
