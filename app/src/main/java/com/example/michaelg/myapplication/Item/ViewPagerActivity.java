@@ -30,6 +30,7 @@ import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
 import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
+import com.example.michaelg.myapplication.SignUp;
 import com.example.michaelg.myapplication.Trivia.AddQuestion;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -174,7 +175,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     @Override
                     public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
                         if (favorite) {
-                            Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),(vpGallery.getCurrentItem()+1) +"",Toast.LENGTH_LONG).show();
                             Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
                                     .appendQueryParameter("username",    userId)
                                     // .appendQueryParameter("title",    title.getText().toString())
@@ -187,6 +188,8 @@ public class ViewPagerActivity extends AppCompatActivity{
 
                                     .build();
                             Log.v(TAG + "ADDFAVURL", builtUri.toString());
+                            FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                            fav.execute((Void) null);
 
                         } else {
                             // TODO: 11/10/2016 check whats wrong with link
@@ -284,7 +287,6 @@ public class ViewPagerActivity extends AppCompatActivity{
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////// ASYNC TASK
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String bookId;
@@ -448,6 +450,78 @@ public class ViewPagerActivity extends AppCompatActivity{
             //   showProgress(false);
         }
 
+    }
+
+    public class FavoritesTask extends AsyncTask<Void, Void, JSONObject> {
+
+        private String _SERVER_COMMAND;
+
+        public FavoritesTask(String servercomman) {
+            _SERVER_COMMAND = servercomman;
+        }
+
+        @Override
+        protected JSONObject doInBackground(Void... params) {
+
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String serverJsonStr = null;
+            try {
+                Uri builtUri = Uri.parse(_SERVER_COMMAND).buildUpon().build();
+                URL url = new URL(builtUri.toString());
+                Log.v("FavoritesURL:", builtUri.toString());
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null)
+                    return null; // Nothing to do.
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line + "\n");
+                }
+                if (buffer.length() == 0)
+                    return null;
+                serverJsonStr = buffer.toString();
+                Log.d("getFavoritesjson:", serverJsonStr);
+
+            } catch (IOException e) {
+                Log.e("LOGE", "Error ", e);
+                // If the code didn't successfully get the weather data, there's no point in attempting
+                // to parse it.
+                return null;
+
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("LOGE", "Error closing stream", e);
+                    }
+                }
+            }
+
+            JSONObject serverJson = null;
+            try {
+                serverJson = new JSONObject(serverJsonStr);
+                return serverJson;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
+        @Override
+        protected void onPostExecute(final JSONObject object) {
+
+        }
     }
 
     class GalleryAdapter extends PagerAdapter {

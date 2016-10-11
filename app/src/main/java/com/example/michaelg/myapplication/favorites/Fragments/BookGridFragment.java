@@ -264,9 +264,9 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
             BufferedReader reader = null;
             String serverJsonStr = null;
             try {
-
-                final String SERVER_BASE_URL = "http://www.mocky.io/v2/57f0a2d70f0000f60901353f";
-                Uri builtUri = Uri.parse(SERVER_BASE_URL).buildUpon().build();
+                final String SERVER_GETFAVORITES = "http://52.29.110.203:8080/LibArab/favorites/getFavorites?userId=shsmichael@gmail.com&type=book";
+                //final String SERVER_BASE_URL = "http://www.mocky.io/v2/57f0a2d70f0000f60901353f";
+                Uri builtUri = Uri.parse(SERVER_GETFAVORITES).buildUpon().build();
                 URL url = new URL(builtUri.toString());
                 Log.v("getFavoritesURL:", builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -327,16 +327,17 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     // something to do???
                     return;
                 }
-                jarray = object.getJSONArray("dataarray");
+                jarray = object.getJSONArray("favorites");
 
                 for (int i = 0; i < jarray.length(); i++) {
                     JSONObject bookobj = null;
                     bookobj = jarray.getJSONObject(i);
                     Book currentbook = new Book();
                     currentbook.setId(i);
-                    currentbook.setTitle(bookobj.getString("recordID"));
+                    currentbook.setTitle(bookobj.getString("bookID"));
                     currentbook.setImage(bookobj.getString("pageLink"));
-                    currentbook.setAverage("3");
+                    currentbook.setAverage(bookobj.getString("pageNumber"));
+                    currentbook.setSummary(bookobj.getString("description"));
                     //needed for viewer
 
                     currentbook.setAuthor("Michael Gonic :)");
@@ -348,7 +349,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     currentbook.setPrice("Not For poor Students");
                     currentbook.setBinding("Dont even know what binding is");
                     currentbook.setIsbn13("Isbn13 what??");
-                    currentbook.setSummary("in summary, i need a break ");
+
                     currentbook.setAuthor_intro("nanananan batman");
                     currentbook.setCatalog("IKEA 2016");
                     currentbook.setNote("My Notes is here...");
