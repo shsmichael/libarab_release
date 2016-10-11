@@ -115,7 +115,7 @@ public class Leader extends AppCompatActivity {
         score10=(TextView) findViewById(R.id.score10);
 
 
-        userRank1=(TextView) findViewById(R.id.userRank);
+        //userRank1=(TextView) findViewById(R.id.userRank);
         userName1=(TextView) findViewById(R.id.userName);
         userScore1=(TextView) findViewById(R.id.userScore);
         userRank.execute((Void) null);
@@ -393,7 +393,7 @@ public class Leader extends AppCompatActivity {
                     String userRank = user.getString("rank");
                     String userScore = user.getString("score");
                     String userName = user.getString("name");
-                    userRank1.setText(userRank);
+                    //userRank1.setText(userRank);
                     userName1.setText(userName);
                     userScore1.setText(userScore);
 

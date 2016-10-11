@@ -72,17 +72,12 @@
             android:name=".Trivia.ViewAnswerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Trivia.About" />
-        <activity android:name=".Trivia.triviaListview"></activity>
-        <activity
-            android:name=".favorites.MainActivity"
-             />
-        <activity
-            android:name=".favorites.BaseActivity"
-            />
-        <activity
-            android:name=".favorites.BookInfoActivity"
-            />
-
+        <activity android:name=".Trivia.triviaListview"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".favorites.MainActivity" />
+        <activity android:name=".favorites.BaseActivity" />
+        <activity android:name=".favorites.BookInfoActivity" />
+        <activity android:name=".Trivia.triviaListview2"></activity>
     </application>
 
 </manifest>
