@@ -400,6 +400,7 @@ public class SignUp extends AppCompatActivity {
                     //intent.putExtra("user",user);
                     //intent.putExtra("Type",1);
                     finish();
+                    //LoginActivity.fa.finish();
                     startActivity(intent);
                 }else{
                     String msg = success.getString("error_msg");
