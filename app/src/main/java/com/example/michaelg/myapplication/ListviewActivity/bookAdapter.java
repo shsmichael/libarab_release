@@ -55,7 +55,7 @@ public class bookAdapter extends ArrayAdapter<Book> {
         //holder.imageview.setImageResource(R.drawable.ic_launcher);
         String mytest ="http://icons.iconarchive.com/icons/icons8/ios7/256/Files-Jpg-icon.png";
 
-        if((bookList.get(position).getType()).equals("book"))
+        if((bookList.get(position).getType()).equals("book") || (bookList.get(position).getType()).equals("map"))
         {
             if(bookList.get(position).getThumbnail().contains("DeliveryManagerServlet")){// "http://books.google.com/books?bibkeys=ISBN:,OCLC:,LCCN:&jscmd=viewapi&callback=updateGBSCover"){
                 holder.imageview.setVisibility(View.VISIBLE);
