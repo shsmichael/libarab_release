@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -264,9 +265,15 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
             BufferedReader reader = null;
             String serverJsonStr = null;
             try {
-                final String SERVER_GETFAVORITES = "http://52.29.110.203:8080/LibArab/favorites/getFavorites?userId=shsmichael@gmail.com&type=book";
+                User user= (User) getActivity().getIntent().getSerializableExtra("user");
+
+                final String SERVER_GETFAVORITES = "http://52.29.110.203:8080/LibArab/favorites/getFavorites?";
+
                 //final String SERVER_BASE_URL = "http://www.mocky.io/v2/57f0a2d70f0000f60901353f";
-                Uri builtUri = Uri.parse(SERVER_GETFAVORITES).buildUpon().build();
+                Uri builtUri = Uri.parse(SERVER_GETFAVORITES).buildUpon()
+                        .appendQueryParameter("userId",    user.getUsername())
+                        .appendQueryParameter("type",    "book")
+                        .build();
                 URL url = new URL(builtUri.toString());
                 Log.v("getFavoritesURL:", builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
