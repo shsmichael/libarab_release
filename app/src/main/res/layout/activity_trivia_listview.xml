@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
-        android:background="@drawable/rippletrivia">
+        android:background="@color/colorSearch">
 
         <TextView
             android:text="Quizzes"

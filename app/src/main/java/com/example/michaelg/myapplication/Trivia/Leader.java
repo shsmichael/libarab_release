@@ -394,7 +394,7 @@ public class Leader extends AppCompatActivity {
                     String userScore = user.getString("score");
                     String userName = user.getString("name");
                     //userRank1.setText(userRank);
-                    userName1.setText(userName);
+                    //userName1.setText(userName);
                     userScore1.setText(userScore);
 
 
