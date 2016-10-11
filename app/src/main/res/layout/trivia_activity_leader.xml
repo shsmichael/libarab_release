@@ -1,85 +1,385 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="36dp"
-    tools:context="com.example.michaelg.myapplication.Trivia.Leader">
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@android:drawable/ic_menu_myplaces"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:background="#009688"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:text="  LeaderBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:weightSum="1"
+        android:layout_alignParentStart="true">
+
 
         <TableLayout
+            android:showDividers="middle"
+            android:divider="@drawable/divider_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="5" >
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
 
 
             <TableRow
-                android:background="#607D8B"
-                android:padding="5dp">
+                android:background="#EEEEEE"
+                android:layout_marginBottom="0dp">
+
 
                 <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="1"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:id="@+id/textView12" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rank"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="#2f6699"
-                    android:textSize="18sp"/>
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:id="@+id/imageView17"
+                    android:layout_marginRight="10dp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"
-                    android:textAllCaps="true"
+                    android:id="@+id/name1"
+                    android:text="Rabeea"
+                    android:textSize="25dp"
                     android:textStyle="bold"
-                    android:textColor="#2f6699"
-                    android:textSize="18sp"/>
+                    android:layout_marginBottom="5dp"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Points"
-                    android:textAllCaps="true"
+                    android:text="100"
+                    android:id="@+id/score1"
+                    android:textSize="25dp"
                     android:textStyle="bold"
-                    android:textColor="#2f6699"
-                    android:textSize="18sp"/>
-
+                    />
             </TableRow>
 
+            <TableRow
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="2"
+                    android:textSize="16dp"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView18" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name2"
+                    android:text="Bader"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="100"
+                    android:id="@+id/score2"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="3"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView3" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name3"
+                    android:text="mohammed"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="70"
+                    android:id="@+id/score3"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="4"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView4" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name4"
+                    android:text="dania"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="50"
+                    android:id="@+id/score4"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="5"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView5" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name5"
+                    android:text="nadeen"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="40"
+                    android:id="@+id/score5"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="6"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView6" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name6"
+                    android:text="Rrrr"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30"
+                    android:id="@+id/score6"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="7"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView7" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name7"
+                    android:text="eee"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="25"
+                    android:id="@+id/score7"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="8"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView8" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name8"
+                    android:text="tttt"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="17"
+                    android:id="@+id/score8"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="9"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView9" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name9"
+                    android:text="zzzz"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10"
+                    android:id="@+id/score9"
+                    android:textSize="25dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="10"
+                    android:textSize="16dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_menu_face"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageView10" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name10"
+                    android:text="xxxx"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:id="@+id/score10"
+                    android:textSize="25dp"/>
+            </TableRow>
 
             <TableRow
-                android:background="#E0E0E0"
-                android:layout_marginBottom="3dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rank"
-                    android:id="@+id/userRank"/>
+                android:background="@drawable/circle_leaderboard"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
 
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="My score: "
                     android:id="@+id/userName"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="#2f6699"
-                    android:textSize="18sp"/>
+                    android:textColor="#FAFAFA"
+                    android:gravity="center_horizontal"
+                    android:textSize="30sp"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -87,261 +387,16 @@
                     android:text="Points"
                     android:id="@+id/userScore"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="#2f6699"
-                    android:textSize="18sp"/>
+                    android:textColor="#FAFAFA"
+                    android:gravity="center_horizontal"
+                    android:textSize="30sp"/>
 
             </TableRow>
 
 
-
-            <TableRow
-                android:background="#D1C4E9"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name1"
-                    android:text="Rabeea"
-                    android:textSize="16dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="100"
-                    android:id="@+id/score1"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
-            </TableRow>
-
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2"
-                    android:textSize="16dp"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name2"
-                    android:text="Bader"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="100"
-                    android:id="@+id/score2"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name3"
-                    android:text="mohammed"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="70"
-                    android:id="@+id/score3"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name4"
-                    android:text="dania"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="50"
-                    android:id="@+id/score4"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name5"
-                    android:text="nadeen"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="40"
-                    android:id="@+id/score5"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="6"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name6"
-                    android:text="Rrrr"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="30"
-                    android:id="@+id/score6"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="7"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name7"
-                    android:text="eee"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="25"
-                    android:id="@+id/score7"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="8"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name8"
-                    android:text="tttt"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="17"
-                    android:id="@+id/score8"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name9"
-                    android:text="zzzz"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="10"
-                    android:id="@+id/score9"
-                    android:textSize="16dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#EDE7F6"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="10"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/name10"
-                    android:text="xxxx"
-                    android:textSize="16dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:id="@+id/score10"
-                    android:textSize="16dp"/>
-            </TableRow>
 
         </TableLayout>
+
+
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

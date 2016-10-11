@@ -204,8 +204,8 @@ public class AddQuestion extends AppCompatActivity {
                         .appendQueryParameter(UNCORRECT_ANSWER3, uncorrect31)
                         .appendQueryParameter(USER_ID, userid)
                         .appendQueryParameter(ITEM_ID, itemid)
-                        .appendQueryParameter(AUTHER, auther)
-                        .appendQueryParameter(ITEM_NAME, itemname)
+                        .appendQueryParameter(AUTHER, itemname)
+                        .appendQueryParameter(ITEM_NAME, itemid)
                         .build();
 
                 URL url = new URL(builtUri.toString());
