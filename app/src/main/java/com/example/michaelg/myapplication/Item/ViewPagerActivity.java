@@ -195,13 +195,15 @@ public class ViewPagerActivity extends AppCompatActivity{
                             // TODO: 11/10/2016 check whats wrong with link
                             Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
                             Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
-                                    .appendQueryParameter("username",    userId)
+                                    .appendQueryParameter("userId",    userId)
                                     // .appendQueryParameter("title",    title.getText().toString())
                                     .appendQueryParameter("bibId",    "0")
                                     .appendQueryParameter("itemId", ID)
                                     .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                     .build();
                             Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                            FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                            fav.execute((Void) null);
                         }
                     }
                 });
