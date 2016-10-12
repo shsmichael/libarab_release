@@ -11,15 +11,5 @@
             android:entryValues="@array/entryvalues_list_preference" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-
-        android:title="@string/color">
-        <CheckBoxPreference
-            android:title="@string/dark_background"
-            android:summary="@string/q_main_background"
-            android:key="background_color"
-            android:defaultValue="false" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
