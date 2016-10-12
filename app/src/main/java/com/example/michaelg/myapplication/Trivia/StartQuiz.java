@@ -62,7 +62,10 @@ public class StartQuiz extends AppCompatActivity{
                 intent1.putExtra("webLink","null");
                 intent1.putExtra("type","book");
                 intent1.putExtra("source","null");
+                intent1.putExtra("usertype","null");
                 // Remember that variable (user) is the private variable above that is sent by the search
+
+
 
                 startActivity(intent1);
 

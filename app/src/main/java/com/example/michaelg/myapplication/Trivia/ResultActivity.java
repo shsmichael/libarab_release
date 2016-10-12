@@ -137,7 +137,7 @@ public class ResultActivity extends AppCompatActivity {
             }
         });*/
 
-        Button btnScore=(Button)findViewById(R.id.btnScore);
+       /* Button btnScore=(Button)findViewById(R.id.btnScore);
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +154,7 @@ public class ResultActivity extends AppCompatActivity {
                 Toast.makeText(ResultActivity.this, "Score: " + Sc1 + "userName:" + Id1  , Toast.LENGTH_SHORT).show();
                 //  Toast.makeText(ResultActivity.this, "DDDDDDDDD"  + fin.UserId + " / " + fin.Score, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
    /*    Button bt= (Button) findViewById(R.id.btnScore);

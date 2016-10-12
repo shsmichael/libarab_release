@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ConceptActivity extends AppCompatActivity {
@@ -153,16 +154,20 @@ public class ConceptActivity extends AppCompatActivity {
         rbtnB.setChecked(false);
         rbtnC.setChecked(false);
         rbtnD.setChecked(false);
-
         answeredQsNo=questionId+1;
         tvNoOfQs.setText("Questions "+answeredQsNo+" of "+numOfQ);
-
         txtQuestion.setText(currentQuestion.getQUESTION());
-        rbtnA.setText(currentQuestion.getOptionA());
-        rbtnB.setText(currentQuestion.getOptionB());
-        rbtnC.setText(currentQuestion.getOptionC());
-        rbtnD.setText(currentQuestion.getOptionD());
-
+        ArrayList<String> options = new ArrayList<String>();
+        options.add(currentQuestion.getOptionA());
+        options.add(currentQuestion.getOptionB());
+        options.add(currentQuestion.getOptionC());
+        options.add(currentQuestion.getOptionD());
+        //Shuffle the answers
+        Collections.shuffle(options);
+        rbtnA.setText(options.get(0));
+        rbtnB.setText(options.get(1));
+        rbtnC.setText(options.get(2));
+        rbtnD.setText(options.get(3));
         questionId++;
     }
 

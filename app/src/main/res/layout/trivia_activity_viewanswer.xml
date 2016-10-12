@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvHeading"
             android:padding="6dp"
-            android:text="str_viewans"
+            android:text="Correct Answers"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textAlignment="center"
