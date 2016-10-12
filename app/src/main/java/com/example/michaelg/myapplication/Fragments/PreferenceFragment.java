@@ -32,7 +32,6 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
 
     private final String TAG =this.getClass().getSimpleName();
     private ListPreference mListPreference;
-    private CheckBoxPreference mcheckBoxPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -45,10 +44,7 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 String current = newValue.toString();
-                /*
-                SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(getContext());
-                String mystring = shared.getString("Language","lang");
-                */
+
                 Toast.makeText(getContext(),  newValue.toString(), Toast.LENGTH_SHORT).show();
 
                 if(current.equals("العربيه")){
@@ -77,33 +73,9 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                     ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
 
                 }
-
                 return true;
             }
         });
-        /*mcheckBoxPreference = (CheckBoxPreference) getPreferenceManager().findPreference("background_color");
-        mcheckBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-                boolean tmp = (boolean) newValue;
-
-                if(tmp == false){
-
-                    getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
-                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
-
-
-                }else{
-
-                    getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
-                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
-                }
-
-                return false;
-            }
-        });*/
-
     }
 
     @Override
