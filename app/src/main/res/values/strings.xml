@@ -60,6 +60,7 @@
     <string name="dark_background">Dark Background</string>
     <string name="general">General</string>
     <string name="color">Color</string>
+    <string name="listView_title">Search Results</string>
     <string name="q_main_background">is the main background dark?</string>
     <string name="connecting_server">Connecting to server</string>
     <string name="login_to_access">Log In to access this feature!</string>
