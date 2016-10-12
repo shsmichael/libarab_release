@@ -193,7 +193,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                                 fav.execute((Void) null);
 
                             } else {
-                                // TODO: 11/10/2016 check whats wrong with link
+
                                 Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
                                 Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
                                         .appendQueryParameter("username",    userId)
@@ -203,6 +203,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .build();
                                 Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                                FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                                fav.execute((Void) null);
                             }
                         }
                     });

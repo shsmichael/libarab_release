@@ -44,6 +44,8 @@ import com.example.michaelg.myapplication.favorites.adapter.BookGridAdapter;
 
 import com.example.michaelg.myapplication.favorites.BookInfoActivity;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by HaPBoy on 5/18/16.
  */
@@ -156,7 +158,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         // TODO: 03/10/2016 restore
-        /*
+
         Log.i("HB", "onContextItemSelected:adapter.getCount(): " + bookGridAdapter.getCount());
         Log.i("HB", "onContextItemSelected:gridPosition: " + gridPosition);
         if (item.getItemId() == 1 && gridPosition != -1) {
@@ -175,9 +177,9 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    DataSupport.delete(Book.class, bookGridAdapter.getItemId(gridPosition));
-                                    fetchData();
-                                    bookGridAdapter.notifyDataSetChanged();
+                                    // TODO: 12/10/2016  DataSupport.delete(Book.class, bookGridAdapter.getItemId(gridPosition));
+                                    // TODO: 12/10/2016  fetchData();
+                                    // TODO: 12/10/2016  bookGridAdapter.notifyDataSetChanged();
                                 }
                             }, 800);
 
@@ -207,9 +209,9 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    DataSupport.deleteAll(Book.class);
-                                    fetchData();
-                                    bookGridAdapter.notifyDataSetChanged();
+                                    // TODO: 12/10/2016  DataSupport.deleteAll(Book.class);
+                                    // TODO: 12/10/2016  fetchData();
+                                    // TODO: 12/10/2016  bookGridAdapter.notifyDataSetChanged();
                                 }
                             }, 1000);
                             sDialog
@@ -225,7 +227,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
         } else {
             return super.onContextItemSelected(item);
         }
-        */
+
         return true;
 
     }
