@@ -24,6 +24,12 @@ public class ViewAnswerActivity extends AppCompatActivity {
 
     private ListView lvQsAns;
 
+    int totalQs;
+
+    ArrayList<String> myAnsList=new ArrayList<String>();
+    ArrayList<String> questions=new ArrayList<String>();
+    ArrayList<String> answers=new ArrayList<String>();
+
     private List<Question> questionsList;
     private Question currentQuestion;
 
@@ -37,7 +43,7 @@ public class ViewAnswerActivity extends AppCompatActivity {
 
     private CustomAdapter adapter;
 
-    ArrayList<String> myAnsList=new ArrayList<String>();
+    int numOfQ;
 
 
     @Override
@@ -46,9 +52,16 @@ public class ViewAnswerActivity extends AppCompatActivity {
         setContentView(R.layout.trivia_activity_viewanswer);
 
 
+        Bundle b = getIntent().getExtras();
+        numOfQ= b.getInt("totalQs");
+        myAnsList=b.getStringArrayList("myAnsList");
+        questions=b.getStringArrayList("questions");
+        answers=b.getStringArrayList("answers");
 
-        Intent in = getIntent();
-        myAnsList=in.getExtras().getStringArrayList("myAnsList");
+
+
+        /*Intent in = getIntent();
+        myAnsList=in.getExtras().getStringArrayList("myAnsList");*/
 
 
         lvQsAns=(ListView)findViewById(R.id.lvQsAns);
@@ -58,11 +71,11 @@ public class ViewAnswerActivity extends AppCompatActivity {
         questionsList= dbAdapter.getAllQuestions();
 
 
-        for (int i = 0; i < questionsList.size(); i++) {
-            currentQuestion=questionsList.get(i);
+        for (int i = 0; i < numOfQ; i++) {
+
             temp = new HashMap<String, Object>();
-            temp.put(KEY_QUES,  currentQuestion.getQUESTION());
-            temp.put(KEY_CANS, currentQuestion.getANSWER());
+            temp.put(KEY_QUES,  questions.get(i));
+            temp.put(KEY_CANS, answers.get(i));
             temp.put(KEY_YANS, myAnsList.get(i));
 
             // add the row to the ArrayList

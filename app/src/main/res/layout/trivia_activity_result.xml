@@ -75,7 +75,7 @@
         android:layout_alignEnd="@+id/relativeLayout"
         android:layout_alignStart="@+id/relativeLayout"
         android:weightSum="7"
-        android:background="#EFEBE9">
+>
 
         <Button
             android:layout_width="150dp"
