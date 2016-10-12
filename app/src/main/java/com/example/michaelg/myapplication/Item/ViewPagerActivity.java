@@ -441,17 +441,19 @@ public class ViewPagerActivity extends AppCompatActivity{
                     Log.e("ItemsQ pages",tmp);
                 }
                 int a=pagesStr.size();
-                if((pagesStr.size()==0)||(pagesStr.size()==1)){
-                    TextView textView9=(TextView) findViewById(R.id.textView13);
-                    ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
-                    viewPager.setVisibility(View.GONE);
-                    textView9.setText(R.string.no_pages_error);
-                    textView9.setTextSize(30);
-                    textView9.setTextColor(Color.WHITE);
-                    textView9.setVisibility(View.VISIBLE);
+                if(type.equals("book")) {
+                    if ((pagesStr.size() == 0) || (pagesStr.size() == 1)) {
+                        TextView textView9 = (TextView) findViewById(R.id.textView13);
+                        ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
+                        viewPager.setVisibility(View.GONE);
+                        textView9.setText(R.string.no_pages_error);
+                        textView9.setTextSize(30);
+                        textView9.setTextColor(Color.WHITE);
+                        textView9.setVisibility(View.VISIBLE);
 
 
-                    isNoPages =1;
+                        isNoPages = 1;
+                    }
                 }
                 if(isNoPages ==0){
 
@@ -577,6 +579,9 @@ public class ViewPagerActivity extends AppCompatActivity{
                 textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
                 i = 1;
+            }
+            if(type.equals("map")){
+                textView1.setText(1 + "/" + 1);
             }
 //                    }
 //                    if (j == 1) {
