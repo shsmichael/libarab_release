@@ -94,5 +94,9 @@
     <string name="l_wait">جاري التحميل الرجاء الانتظار</string>
     <string name="login_to_access">سجّل للدخول!</string>
     <string name="free_txt">نص حر :</string>
+    <string name="dark_background">خلفية مظلمة</string>
+    <string name="q_main_background">هل الخلفية الرئيسية لون قاتم؟</string>
+    <string name="color">لون</string>
+    <string name="general">عام</string>
 
 </resources>

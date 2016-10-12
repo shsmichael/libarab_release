@@ -81,6 +81,28 @@ public  class PreferenceFragment extends com.github.machinarius.preferencefragme
                 return true;
             }
         });
+        /*mcheckBoxPreference = (CheckBoxPreference) getPreferenceManager().findPreference("background_color");
+        mcheckBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                boolean tmp = (boolean) newValue;
+
+                if(tmp == false){
+
+                    getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
+
+
+                }else{
+
+                    getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+                    ((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
+                }
+
+                return false;
+            }
+        });*/
 
     }
 
