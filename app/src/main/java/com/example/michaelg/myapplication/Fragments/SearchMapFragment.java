@@ -42,7 +42,7 @@ public class SearchMapFragment extends Fragment {
     private boolean str_serchby;
     private Switch searchby;
     private String username;
-
+    private String usertype;
     private EditText title ,
             fromyear ,
             toyear;
@@ -50,7 +50,7 @@ public class SearchMapFragment extends Fragment {
     private Button searchbutton ;
     private JSONObject returnedjson;
     private TextView tv_titleorauthor;
-    private String free_txt;
+    private EditText free_txt;
 
     public SearchMapFragment() {
         // Required empty public constructor
@@ -69,7 +69,7 @@ public class SearchMapFragment extends Fragment {
         toyear = (EditText) view.findViewById(R.id.toYear_editText);
         searchbutton = (Button) view.findViewById(R.id.searchbtn);
         tv_titleorauthor = (TextView) view.findViewById(R.id.tv_title);
-        free_txt = "any";
+        free_txt = (EditText) view.findViewById(R.id.freetext_edittext);
         title.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -102,6 +102,7 @@ public class SearchMapFragment extends Fragment {
         });
         User newUser = (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
+        usertype = newUser.getUserType();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 R.layout.spinner_item);
@@ -149,8 +150,12 @@ public class SearchMapFragment extends Fragment {
     private void doSearch(View v) {
 
         String txt = title.getText().toString();
+        String free =  free_txt.getText().toString();
         if (txt.isEmpty()) {
             txt = "any";
+        }
+        if (free.isEmpty()) {
+            free = "any";
         }
         //TODO: @michael change userId not 4 in both cases
         if (str_serchby) {
@@ -161,7 +166,7 @@ public class SearchMapFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear", toyear.getText().toString())
                     .appendQueryParameter("index", Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt)
+                    .appendQueryParameter("freeTxt", free)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -169,13 +174,14 @@ public class SearchMapFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl", _SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear", fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor", "map");
-            i.putExtra("freetxt", free_txt);
+            i.putExtra("freetxt", free);
             startActivity(i);
         } else {
             Uri builtUri = Uri.parse(_SEARCH_URL).buildUpon()
@@ -184,20 +190,21 @@ public class SearchMapFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear", toyear.getText().toString())
                     .appendQueryParameter("index", Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt)
+                    .appendQueryParameter("freeTxt", free)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext(), ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl", _SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear", fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor", "map");
-            i.putExtra("freetxt", free_txt);
+            i.putExtra("freetxt", free);
             startActivity(i);
         }
 

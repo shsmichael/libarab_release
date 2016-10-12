@@ -115,7 +115,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:clickable="true"
                 android:id="@+id/frame_biblio"
                 android:background="@drawable/ripplebibliography"
                 android:layout_margin="5dp">
@@ -149,7 +148,6 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:clickable="true"
                 android:layout_weight="0.5"
                 android:background="@drawable/ripplefavorites"
                 android:id="@+id/frame_favorites"
@@ -178,7 +176,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:clickable="true"
                 android:id="@+id/frame_trivia"
                 android:background="@drawable/rippletrivia"
                 android:layout_margin="5dp">

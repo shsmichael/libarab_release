@@ -39,7 +39,7 @@ public class SearchBookFragment extends Fragment {
     private boolean str_serchby;
     private Switch searchby;
     private String username;
-
+    private String usertype;
     private EditText title ,
             fromyear ,
             toyear;
@@ -105,6 +105,7 @@ public class SearchBookFragment extends Fragment {
         });
         User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
+        usertype = newUser.getUserType();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searcharray,
                 R.layout.spinner_item);
@@ -156,6 +157,13 @@ public class SearchBookFragment extends Fragment {
         if (txt.isEmpty()) {
             txt = "any";
         }
+        String free =  free_txt.getText().toString();
+        if (txt.isEmpty()) {
+            txt = "any";
+        }
+        if (free.isEmpty()) {
+            free = "any";
+        }
         //TODO: @michael change userId not 4 in both cases
         if(str_serchby)
         {
@@ -165,7 +173,7 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
+                    .appendQueryParameter("freeTxt", free)
                     .build();
 
             Log.v("URLBookFRAG", builtUri.toString());
@@ -173,13 +181,14 @@ public class SearchBookFragment extends Fragment {
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "title");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt.getText().toString());
+            i.putExtra("freetxt", free);
 
 
             //TODO: @Michael i.putExtra("userId",userId);
@@ -193,20 +202,21 @@ public class SearchBookFragment extends Fragment {
                     .appendQueryParameter("fromyear", fromyear.getText().toString())
                     .appendQueryParameter("toyear",   toyear.getText().toString())
                     .appendQueryParameter("index",Integer.toString(0))
-                    .appendQueryParameter("freeTxt", free_txt.getText().toString())
+                    .appendQueryParameter("freeTxt", free)
                     .build();
             Log.v("URLBookFRAG", builtUri.toString());
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
             i.putExtra("userid", username.toString());
+            i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
             i.putExtra("fromyear",fromyear.getText().toString());
             i.putExtra("toyear", toyear.getText().toString());
             i.putExtra("index", Integer.toString(0));
             i.putExtra("searchby", "author");
             i.putExtra("searchfor","book");
-            i.putExtra("freetxt", free_txt.getText().toString());
+            i.putExtra("freetxt", free);
 
             startActivity(i);
         }

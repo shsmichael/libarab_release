@@ -58,6 +58,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String _SEARCH_URL;
     private bookAdapter adapter;
     private String user;
+    private String usertype;
     private String searchfor;
     private String fromyear;
     private String toyear;
@@ -90,6 +91,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
              user = extras.getString("userid");
+             usertype = extras.getString("usertype");
              myURL = extras.getString("Value1");
              fromyear=extras.getString("fromyear");
              toyear=extras.getString("toyear");
@@ -136,6 +138,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
                 i.putExtra("userid",user);
+                i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
@@ -172,6 +175,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("Value1", builtUri.toString());
                 i.putExtra("searchurl",_SEARCH_URL);
                 i.putExtra("userid",user);
+                i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
@@ -199,6 +203,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
                 intent1.putExtra("userId",user);
+                intent1.putExtra("usertype", usertype);
                 intent1.putExtra("author",bookList.get(position).getAuthor());
                 intent1.putExtra("title",bookList.get(position).getTitle());
                 intent1.putExtra("creationdate",bookList.get(position).getCreationdate());

@@ -69,7 +69,7 @@
     <string name="search_enter_from_year">הכנס תחילת טווח שנים</string>
     <string name="search_enter_title">הכנס כותרת ספר:</string>
     <string name="search_enter_to_year">הכנס טווח סיום שנים</string>
-    <string name="search_from_year">משנת:</string>
+    <string name="search_from_year">משנה:</string>
     <string name="search_publisher">מפרסם:</string>
     <string name="search_title">כותרת:</string>
     <string name="search_to_year">עד שנה:</string>
@@ -90,4 +90,10 @@
     <string name="connecting_server">מתחבר לשרת</string>
     <string name="search_map">מפה</string>
     <string name="l_wait">בטעינה אנא המתן</string>
+    <string name="login_to_access">התחבר כדי לגשת לתכונה זו!</string>
+    <string name="free_txt">חיפוש חופשי :</string>
+    <string name="dark_background">רקע כהה</string>
+    <string name="q_main_background">האם הרקע הראשי כהה?</string>
+    <string name="color">צבע</string>
+    <string name="general">כללי</string>
 </resources>

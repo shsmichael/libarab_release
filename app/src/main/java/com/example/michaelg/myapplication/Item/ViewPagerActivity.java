@@ -70,6 +70,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     private String weblink;
     private String publisher;
     private String source;
+    private String usertype;
     private ViewItemTask mAuthTask = null;
     int i = 0;
     int j = 0;
@@ -135,6 +136,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         if(extras != null) {
             ID  = extras.getString("recordId");
             userId=extras.getString("userId");
+            usertype = extras.getString("usertype");
             type= extras.getString("type");
             creationdate = extras.getString("creationdate");
             title        = extras.getString("title");
@@ -144,6 +146,68 @@ public class ViewPagerActivity extends AppCompatActivity{
             source       = extras.getString("source");
             //  userId="100";
         }
+
+        ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
+        if(usertype.equals("0")){
+            addbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ViewPagerActivity.this, R.string.login_to_access, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            lovebutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ViewPagerActivity.this, R.string.login_to_access, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }else{
+            addbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addQuestion(v);
+                }
+            });
+
+            lovebutton.setOnFavoriteChangeListener(
+                    new MaterialFavoriteButton.OnFavoriteChangeListener() {
+                        @Override
+                        public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
+                            if (favorite) {
+                                Toast.makeText(getApplicationContext(),(vpGallery.getCurrentItem()+1) +"",Toast.LENGTH_LONG).show();
+                                Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
+                                        .appendQueryParameter("username",    userId)
+                                        // .appendQueryParameter("title",    title.getText().toString())
+                                        .appendQueryParameter("bibId",    "0")
+                                        .appendQueryParameter("itemId", ID)
+                                        .appendQueryParameter("type", type)
+                                        .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
+                                        .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
+                                        .appendQueryParameter("desc", "This is the Story of Prince Of Bel-Air")
+
+                                        .build();
+                                Log.v(TAG + "ADDFAVURL", builtUri.toString());
+                                FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                                fav.execute((Void) null);
+
+                            } else {
+                                // TODO: 11/10/2016 check whats wrong with link
+                                Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
+                                Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
+                                        .appendQueryParameter("username",    userId)
+                                        // .appendQueryParameter("title",    title.getText().toString())
+                                        .appendQueryParameter("bibId",    "0")
+                                        .appendQueryParameter("itemId", ID)
+                                        .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
+                                        .build();
+                                Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                            }
+                        }
+                    });
+        }
+
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -170,43 +234,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         });
 
 
-        lovebutton.setOnFavoriteChangeListener(
-                new MaterialFavoriteButton.OnFavoriteChangeListener() {
-                    @Override
-                    public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
-                        if (favorite) {
-                            Toast.makeText(getApplicationContext(),(vpGallery.getCurrentItem()+1) +"",Toast.LENGTH_LONG).show();
-                            Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
-                                    .appendQueryParameter("username",    userId)
-                                    // .appendQueryParameter("title",    title.getText().toString())
-                                    .appendQueryParameter("bibId",    "0")
-                                    .appendQueryParameter("itemId", ID)
-                                    .appendQueryParameter("type", type)
-                                    .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
-                                    .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
-                                    .appendQueryParameter("desc", "This is the Story of Prince Of Bel-Air")
 
-                                    .build();
-                            Log.v(TAG + "ADDFAVURL", builtUri.toString());
-                            FavoritesTask fav = new FavoritesTask(builtUri.toString());
-                            fav.execute((Void) null);
-
-                        } else {
-                            // TODO: 11/10/2016 check whats wrong with link
-                            Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
-                            Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
-                                    .appendQueryParameter("userId",    userId)
-                                    // .appendQueryParameter("title",    title.getText().toString())
-                                    .appendQueryParameter("bibId",    "0")
-                                    .appendQueryParameter("itemId", ID)
-                                    .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
-                                    .build();
-                            Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
-                            FavoritesTask fav = new FavoritesTask(builtUri.toString());
-                            fav.execute((Void) null);
-                        }
-                    }
-                });
 
         if(type.equals("sheet")){
             pagesStr.add(weblink);
