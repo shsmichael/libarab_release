@@ -11,5 +11,4 @@
             android:entryValues="@array/entryvalues_list_preference" />
     </PreferenceCategory>
 
-
 </PreferenceScreen>
