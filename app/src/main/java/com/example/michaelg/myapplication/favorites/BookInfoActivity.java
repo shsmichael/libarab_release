@@ -13,7 +13,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.*;
+import com.example.michaelg.myapplication.MainActivity;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class BookInfoActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
 
         // Books ID
@@ -130,12 +132,13 @@ public class BookInfoActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO: 03/10/2016
-        /*
+
         switch (item.getItemId()) {
             case android.R.id.home:
-                startActivity(new Intent(this, MainActivity.class));
+                onBackPressed();
+                //startActivity(new Intent(this, com.example.michaelg.myapplication.MainActivity.class));
                 return true;
-            case R.id.action_favorite:
+           /* case R.id.action_favorite:
                 book.setFavourite(!book.isFavourite());
                 book.save();
                 invalidateOptionsMenu();
@@ -150,13 +153,14 @@ public class BookInfoActivity extends BaseActivity {
                 intent.setData(Uri.parse(book.getAlt()));
                 startActivity(intent);
                 return true;
+             */
             default:
 
                 return super.onOptionsItemSelected(item);
 
         }
-        */
-        return true; //deleteeeeee
+
+       // return true; //deleteeeeee
     }
 
     @Override
