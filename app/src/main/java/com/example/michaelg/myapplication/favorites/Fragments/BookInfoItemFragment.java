@@ -21,9 +21,7 @@ import com.example.michaelg.myapplication.favorites.bean.TagItem;
 
 
 
-/**
- * Created by HaPBoy on 5/18/16.
- */
+
 public class BookInfoItemFragment extends Fragment {
     
     private static final String ARG_BOOK_ID = "book_id";

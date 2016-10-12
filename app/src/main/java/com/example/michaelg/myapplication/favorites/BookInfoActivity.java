@@ -29,9 +29,7 @@ import com.example.michaelg.myapplication.favorites.Fragments.BookNoteFragment;
 import com.example.michaelg.myapplication.favorites.bean.Book;
 import com.example.michaelg.myapplication.favorites.view.ViewPagerIndicator;
 
-/**
- * Created by HaPBoy on 5/18/16.
- */
+
 public class BookInfoActivity extends BaseActivity {
 
     // Context

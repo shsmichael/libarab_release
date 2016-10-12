@@ -31,9 +31,7 @@ import com.example.michaelg.myapplication.favorites.Fragments.BookGridFragment;
 //import me.icxd.bookshelve.view.ViewPagerIndicator;
 
 
-/**
- * Created by HaPBoy on 5/11/16.
- */
+
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // ViewPager

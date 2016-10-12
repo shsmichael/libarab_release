@@ -50,9 +50,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-/**
- * Created by HaPBoy on 5/18/16.
- */
+
 public class
 BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
 

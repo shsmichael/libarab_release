@@ -22,9 +22,7 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import com.example.michaelg.myapplication.favorites.bean.Book;
 
-/**
- * Created by HaPBoy on 5/22/16.
- */
+
 public class BookCoverFragment extends Fragment {
 
     private static final String ARG_BOOK_ID = "book_id";
