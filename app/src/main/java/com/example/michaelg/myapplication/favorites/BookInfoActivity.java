@@ -43,7 +43,7 @@ public class BookInfoActivity extends BaseActivity {
 
     // ViewPagerIndicator
     private ViewPagerIndicator viewPagerIndicator;
-    private List<String> titles = Arrays.asList("Basic Information", "Book Description", "My notes");
+    private List<String> titles = Arrays.asList("Pages", "Info", "My notes");
 
     // Fragment
     private List<Fragment> fragments = new ArrayList<>();

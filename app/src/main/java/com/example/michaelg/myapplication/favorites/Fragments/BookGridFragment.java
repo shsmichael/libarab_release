@@ -181,7 +181,6 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    // TODO: 12/10/2016  DataSupport.delete(Book.class, bookGridAdapter.getItemId(gridPosition));
                                     // TODO: 12/10/2016  fetchData();
                                     // TODO: 12/10/2016  bookGridAdapter.notifyDataSetChanged();
                                     User myuser= (User) getActivity().getIntent().getSerializableExtra("user");
@@ -243,7 +242,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
         } else {
             return super.onContextItemSelected(item);
         }
-
+        //((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
         return true;
 
     }
