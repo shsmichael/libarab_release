@@ -156,6 +156,18 @@
                         android:layout_marginEnd="@dimen/activity_horizontal_margin" />
 
                     <TextView
+                        android:id="@+id/textView_weblink1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weblink_bold"
+                        android:textColor="#ffff"
+                        android:textSize="12sp"
+
+                        android:textAlignment="textEnd"
+                        android:layout_below="@+id/textView_source2"
+                        android:layout_alignEnd="@+id/textView_publisher1" />
+
+                    <TextView
                         android:id="@+id/textView_weblink2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -167,18 +179,6 @@
                         android:textAlignment="textEnd"
 
                         android:layout_below="@+id/textView_source2" />
-
-                    <TextView
-                        android:id="@+id/textView_weblink1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/weblink_bold"
-                        android:textColor="#ffff"
-                        android:textSize="12sp"
-
-                        android:textAlignment="textEnd"
-                        android:layout_below="@+id/textView_source2"
-                        android:layout_alignEnd="@+id/textView_publisher1" />
 
                     <TextView
                         android:id="@+id/textView_source2"
