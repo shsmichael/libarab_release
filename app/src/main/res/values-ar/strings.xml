@@ -99,5 +99,6 @@
     <string name="color">لون</string>
     <string name="general">عام</string>
     <string name="listView_title">نتائج البحث</string>
+    <string name="to_be_done">أن يتم</string>
 
 </resources>
