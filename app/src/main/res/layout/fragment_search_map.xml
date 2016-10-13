@@ -61,8 +61,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/search_enter_title"
                     android:imeOptions="actionGo"
-                    android:singleLine="true"
-                    android:text="تاريخ" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 
