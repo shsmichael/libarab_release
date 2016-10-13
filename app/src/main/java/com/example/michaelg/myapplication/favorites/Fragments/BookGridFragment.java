@@ -144,7 +144,10 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(getActivity(), BookInfoActivity.class);
+           User myuser= (User) getActivity().getIntent().getSerializableExtra("user");
            intent.putExtra("book",  (Book)bookGridAdapter.getItem(position));
+           intent.putExtra("user", myuser);
+           //intent.putExtra("recordId",)
        // intent.putExtra("id", (int) bookGridAdapter.getItemId(position));
 
           startActivity(intent);

@@ -1,5 +1,6 @@
 package com.example.michaelg.myapplication.favorites.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -29,7 +32,7 @@ public class BookCoverFragment extends Fragment {
     private static final String ARG_BOOK = "book";
 
     private Book book;
-
+    private User user;
     // Michael gonic: Should be using Book !!!
 
     public static BookCoverFragment newInstance(int bookId) {
@@ -66,6 +69,29 @@ public class BookCoverFragment extends Fragment {
 
         ImageView ivBookCover = (ImageView) view.findViewById(R.id.book_cover);
         ImageView ivBookCoverBg = (ImageView) view.findViewById(R.id.book_cover_bg);
+
+
+
+        ivBookCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                 user  = (User) getActivity().getIntent().getSerializableExtra("user");
+                Intent intent1=new Intent(getActivity(),ViewPagerActivity.class);
+                //this record id used by the ViewPagerActivity
+                intent1.putExtra("recordId",book.getTitle());
+                intent1.putExtra("userId",user.getUsername());
+                intent1.putExtra("usertype", user.getUserType());
+                intent1.putExtra("type","book");
+
+                //this weblink used by the ViewPagerActivity
+                //intent1.putExtra("webLink",bookList.get(position).getWeblink());
+                // Remember that variable (user) is the private variable above that is sent by the search
+
+                startActivity(intent1);
+
+            }
+        });
 
         //TextView tvRate = (TextView) view.findViewById(R.id.tv_cover_rate);
        // RatingBar rbRate = (RatingBar) view.findViewById(R.id.rb_cover_rate);

@@ -218,7 +218,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                 alertDialog.show();
             }
         });
-
+        // TODO: 13/10/2016 Review Code again ( Michael ) 
         //SHEET
         if(type.equals("sheet")){
 
