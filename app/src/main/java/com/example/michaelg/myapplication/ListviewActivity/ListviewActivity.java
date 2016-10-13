@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,6 +92,8 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'>ActionBarTitle </font>"));
         newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
