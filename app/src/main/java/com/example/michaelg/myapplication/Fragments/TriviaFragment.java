@@ -55,13 +55,13 @@ public class TriviaFragment extends Fragment {
             }
         });
         */
-        FrameLayout button = (FrameLayout) myview.findViewById(R.id.button2);
+        /*FrameLayout button = (FrameLayout) myview.findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 create(v);
             }
-        });
+        });*/
 
         FrameLayout button2 = (FrameLayout) myview.findViewById(R.id.button);
         button2.setOnClickListener(new View.OnClickListener() {

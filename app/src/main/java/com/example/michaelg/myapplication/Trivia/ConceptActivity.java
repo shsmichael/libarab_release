@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ConceptActivity extends AppCompatActivity {
@@ -48,6 +49,8 @@ public class ConceptActivity extends AppCompatActivity {
     private int obtainedScore=0;
     private int numOfQ=0;
     private ArrayList<String> myAnsList;
+    private ArrayList<String> questions;
+    private ArrayList<String> answers;
 
 
 
@@ -62,6 +65,9 @@ public class ConceptActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), item, Toast.LENGTH_LONG).show();
         quizList=new AddQTask(auther,item);
         ques=new ArrayList<Question>();
+        answers=new ArrayList<String>();
+        questions=new ArrayList<String>();
+
 
 
         quizList.execute();
@@ -98,10 +104,15 @@ public class ConceptActivity extends AppCompatActivity {
                     }else{
                         Intent intent = new Intent(ConceptActivity.this, ResultActivity.class);
 
+                        intent.putExtra("numOfQ",numOfQ);
+
+
                         Bundle b = new Bundle();
                         b.putInt("score", obtainedScore);
-                        b.putInt("totalQs", ques.size());
+                        b.putInt("totalQs", numOfQ);
                         b.putStringArrayList("myAnsList", myAnsList);
+                        b.putStringArrayList("questions",questions);
+                        b.putStringArrayList("answers",answers);
                         intent.putExtras(b);
                         startActivity(intent);
                         finish();
@@ -143,16 +154,20 @@ public class ConceptActivity extends AppCompatActivity {
         rbtnB.setChecked(false);
         rbtnC.setChecked(false);
         rbtnD.setChecked(false);
-
         answeredQsNo=questionId+1;
-        tvNoOfQs.setText("Questions "+answeredQsNo+" of "+ques.size());
-
+        tvNoOfQs.setText("Questions "+answeredQsNo+" of "+numOfQ);
         txtQuestion.setText(currentQuestion.getQUESTION());
-        rbtnA.setText(currentQuestion.getOptionA());
-        rbtnB.setText(currentQuestion.getOptionB());
-        rbtnC.setText(currentQuestion.getOptionC());
-        rbtnD.setText(currentQuestion.getOptionD());
-
+        ArrayList<String> options = new ArrayList<String>();
+        options.add(currentQuestion.getOptionA());
+        options.add(currentQuestion.getOptionB());
+        options.add(currentQuestion.getOptionC());
+        options.add(currentQuestion.getOptionD());
+        //Shuffle the answers
+        Collections.shuffle(options);
+        rbtnA.setText(options.get(0));
+        rbtnB.setText(options.get(1));
+        rbtnC.setText(options.get(2));
+        rbtnD.setText(options.get(3));
         questionId++;
     }
 
@@ -270,7 +285,9 @@ public class ConceptActivity extends AppCompatActivity {
                 try {
                     JSONArray itemsRelateQ = quizListJson.getJSONArray("questions");
                     numOfQ=itemsRelateQ.length();
-                    Toast.makeText(getApplicationContext(), numOfQ+"", Toast.LENGTH_LONG).show();
+                    if(numOfQ>=5)
+                        numOfQ=5;
+                    //Toast.makeText(getApplicationContext(), numOfQ+"", Toast.LENGTH_LONG).show();
                     for(int i=0;i<itemsRelateQ.length();i++){
 
                         JSONObject itemQuize = itemsRelateQ.getJSONObject(i);
@@ -281,6 +298,8 @@ public class ConceptActivity extends AppCompatActivity {
                         String answer4 = itemQuize.getString("answer4");
                         String correct = itemQuize.getString("answer1");
                         Question q=new Question(question,answer1,answer2,answer3,answer4,correct);
+                        answers.add(correct);
+                        questions.add(question);
 
                         ques.add(q);
 
@@ -298,9 +317,7 @@ public class ConceptActivity extends AppCompatActivity {
                 //Set question
                 setQuestionsView();
 
-
                 //finish();
-
             }
         }
 
@@ -310,9 +327,4 @@ public class ConceptActivity extends AppCompatActivity {
 
         }
     }
-
-
-
-
-
 }

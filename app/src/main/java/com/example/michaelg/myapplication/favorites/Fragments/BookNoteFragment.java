@@ -16,9 +16,7 @@ import android.widget.TextView;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.favorites.bean.Book;
 
-/**
- * Created by HaPBoy on 5/18/16.
- */
+
 public class BookNoteFragment extends Fragment {
 
     private static final String ARG_BOOK_ID = "book_id";

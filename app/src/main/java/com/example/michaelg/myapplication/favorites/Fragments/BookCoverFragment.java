@@ -22,9 +22,7 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import com.example.michaelg.myapplication.favorites.bean.Book;
 
-/**
- * Created by HaPBoy on 5/22/16.
- */
+
 public class BookCoverFragment extends Fragment {
 
     private static final String ARG_BOOK_ID = "book_id";
@@ -69,10 +67,10 @@ public class BookCoverFragment extends Fragment {
         ImageView ivBookCover = (ImageView) view.findViewById(R.id.book_cover);
         ImageView ivBookCoverBg = (ImageView) view.findViewById(R.id.book_cover_bg);
 
-        TextView tvRate = (TextView) view.findViewById(R.id.tv_cover_rate);
-        RatingBar rbRate = (RatingBar) view.findViewById(R.id.rb_cover_rate);
+        //TextView tvRate = (TextView) view.findViewById(R.id.tv_cover_rate);
+       // RatingBar rbRate = (RatingBar) view.findViewById(R.id.rb_cover_rate);
 
-        View viewRate = view.findViewById(R.id.book_rate);
+        //View viewRate = view.findViewById(R.id.book_rate);
 
         // Book cover
         Glide.with(ivBookCover.getContext())
@@ -92,16 +90,16 @@ public class BookCoverFragment extends Fragment {
                 .into(ivBookCoverBg);
 
         // Book Review
-        tvRate.setText(book.getAverage());
-        rbRate.setRating((Float.parseFloat(book.getAverage())/2));
+       // tvRate.setText(book.getAverage());
+        //rbRate.setRating((Float.parseFloat(book.getAverage())/2));
 
         // Admission animated book cover
         Animation cover_an = AnimationUtils.loadAnimation(getContext(), R.anim.book_cover_anim);
         ivBookCover.startAnimation(cover_an);
 
         // Admission Anime Books Review
-        Animation rate_an = AnimationUtils.loadAnimation(getContext(), R.anim.book_cover_rate_anim);
-        viewRate.startAnimation(rate_an);
+       // Animation rate_an = AnimationUtils.loadAnimation(getContext(), R.anim.book_cover_rate_anim);
+        //viewRate.startAnimation(rate_an);
 
         return view;
     }

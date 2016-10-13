@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 顶部 图书封面-->
+    <!-- Top book cover-->
     <FrameLayout
         android:id="@+id/fav_fragment_book_cover"
         android:layout_width="match_parent"

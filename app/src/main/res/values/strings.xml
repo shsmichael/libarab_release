@@ -57,6 +57,11 @@
     <string name="jump_to_page">Jump To Page</string>
     <string name="enter_page">Enter Page</string>
     <string name="l_wait">Loading, please wait</string>
+    <string name="dark_background">Dark Background</string>
+    <string name="general">General</string>
+    <string name="color">Color</string>
+    <string name="listView_title">Search Results</string>
+    <string name="q_main_background">is the main background dark?</string>
     <string name="connecting_server">Connecting to server</string>
     <string name="login_to_access">Log In to access this feature!</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email

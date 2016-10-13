@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -86,6 +88,11 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         resultstitle = (TextView) findViewById(R.id.textView11);
         prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
+
+        /*ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
 
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
@@ -221,6 +228,25 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 /************************/
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_name) {
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
             @Override
     public boolean onNavigationItemSelected(MenuItem item) {

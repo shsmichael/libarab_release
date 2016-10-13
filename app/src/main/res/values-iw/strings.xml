@@ -92,4 +92,9 @@
     <string name="l_wait">בטעינה אנא המתן</string>
     <string name="login_to_access">התחבר כדי לגשת לתכונה זו!</string>
     <string name="free_txt">חיפוש חופשי :</string>
+    <string name="dark_background">רקע כהה</string>
+    <string name="q_main_background">האם הרקע הראשי כהה?</string>
+    <string name="color">צבע</string>
+    <string name="general">כללי</string>
+    <string name="listView_title">תוצאות חיפוש</string>
 </resources>

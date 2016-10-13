@@ -8,7 +8,6 @@
     android:padding="0dp"
     android:clickable="false"
     android:descendantFocusability="blocksDescendants"
-    android:background="@android:drawable/ic_menu_myplaces"
     android:focusable="false"
     android:focusableInTouchMode="false">
 
@@ -27,7 +26,7 @@
             android:id="@+id/textView11"
             android:layout_weight="1"
             android:gravity="left"
-            android:textSize="25sp"
+            android:textSize="27sp"
             android:textStyle="normal" />
     </LinearLayout>
 
@@ -48,7 +47,7 @@
 
 
             <TableRow
-                android:background="#EEEEEE"
+                android:background="#E0E0E0"
                 android:layout_marginBottom="0dp">
 
 
@@ -59,14 +58,16 @@
                     android:text="1"
                     android:textSize="16dp"
                     android:textStyle="bold"
-                    android:id="@+id/textView12" />
+                    android:id="@+id/textView12"
+                    android:layout_marginLeft="8dp"/>
+
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:id="@+id/imageView17"
-                    android:layout_marginRight="10dp"/>
+                    app:srcCompat="@drawable/leaderboard_first1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/imageView13" />
+
 
                 <TextView
                     android:layout_width="0dp"
@@ -85,6 +86,8 @@
                     android:id="@+id/score1"
                     android:textSize="25dp"
                     android:textStyle="bold"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"
                     />
             </TableRow>
 
@@ -97,14 +100,14 @@
                     android:layout_weight="0.2"
                     android:text="2"
                     android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
                     />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/imageView18" />
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/imageView14" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -120,7 +123,9 @@
                     android:layout_weight="1"
                     android:text="100"
                     android:id="@+id/score2"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
 
@@ -130,12 +135,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="3"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView3" />
                 <TextView
                     android:layout_width="0dp"
@@ -151,7 +157,9 @@
                     android:layout_weight="1"
                     android:text="70"
                     android:id="@+id/score3"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -159,12 +167,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:text="4"/>
+                    android:text="4"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView4" />
                 <TextView
                     android:layout_width="0dp"
@@ -180,7 +189,9 @@
                     android:layout_weight="1"
                     android:text="50"
                     android:id="@+id/score4"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -189,13 +200,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="5"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
+
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView5" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -210,7 +224,9 @@
                     android:layout_weight="1"
                     android:text="40"
                     android:id="@+id/score5"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -219,12 +235,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="6"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView6" />
                 <TextView
                     android:layout_width="0dp"
@@ -240,7 +257,9 @@
                     android:layout_weight="1"
                     android:text="30"
                     android:id="@+id/score6"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -249,12 +268,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="7"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView7" />
                 <TextView
                     android:layout_width="0dp"
@@ -270,7 +290,9 @@
                     android:layout_weight="1"
                     android:text="25"
                     android:id="@+id/score7"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -279,12 +301,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="8"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView8" />
                 <TextView
                     android:layout_width="0dp"
@@ -300,7 +323,9 @@
                     android:layout_weight="1"
                     android:text="17"
                     android:id="@+id/score8"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -309,12 +334,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="9"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView9" />
                 <TextView
                     android:layout_width="0dp"
@@ -330,7 +356,9 @@
                     android:layout_weight="1"
                     android:text="10"
                     android:id="@+id/score9"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
             <TableRow
                 android:layout_marginBottom="0dp">
@@ -339,12 +367,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="10"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    />
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_menu_face"
-                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/leaderboard_second"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/imageView10" />
                 <TextView
                     android:layout_width="0dp"
@@ -360,15 +389,19 @@
                     android:layout_weight="1"
                     android:text="0"
                     android:id="@+id/score10"
-                    android:textSize="25dp"/>
+                    android:textSize="25dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"/>
             </TableRow>
 
             <TableRow
                 android:background="@drawable/circle_leaderboard"
                 android:layout_marginBottom="0dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
+                android:layout_marginLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
 
                 <TextView
@@ -379,7 +412,7 @@
                     android:id="@+id/userName"
                     android:textColor="#FAFAFA"
                     android:gravity="center_horizontal"
-                    android:textSize="30sp"/>
+                    android:textSize="25sp"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -389,7 +422,7 @@
                     android:textAllCaps="true"
                     android:textColor="#FAFAFA"
                     android:gravity="center_horizontal"
-                    android:textSize="30sp"/>
+                    android:textSize="25sp"/>
 
             </TableRow>
 

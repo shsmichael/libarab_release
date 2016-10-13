@@ -64,8 +64,7 @@
                     android:imeOptions="actionGo"
                     android:linksClickable="false"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="تاريخ" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 

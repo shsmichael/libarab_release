@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="@dimen/abc_dialog_padding_material"
         android:textStyle="bold"
-        android:textColor="#673ab7"
+        android:textColor="#FF6D00"
         />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:hint="2- uncorrect answer"
+        android:hint="2- Incorrect answer"
         android:id="@+id/uncorrect_answer1"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:hint="3- uncorrect answer"
+        android:hint="3- Incorrect answer"
         android:id="@+id/uncorrect_answer2"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:hint="4- uncorrect answer"
+        android:hint="4- Incorrect answer"
         android:id="@+id/uncorrect_answer3"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
@@ -100,7 +100,7 @@
             android:id="@+id/imageButton"
             android:onClick="Add"
             android:background="@drawable/ic_add_ques_white_48dp"
-            android:backgroundTint="#F44336"
+            android:backgroundTint="#FFAB00"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true" />

@@ -128,7 +128,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         setContentView(R.layout.activity_view_pager);
         MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
 
-        //etchange =(EditText)findViewById(R.id.et_changepage);
+
         mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
         textView1.setTextSize(20);
@@ -144,7 +144,6 @@ public class ViewPagerActivity extends AppCompatActivity{
             weblink      = extras.getString("webLink");
             publisher    = extras.getString("publisher");
             source       = extras.getString("source");
-            //  userId="100";
         }
 
         ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
@@ -193,16 +192,18 @@ public class ViewPagerActivity extends AppCompatActivity{
                                 fav.execute((Void) null);
 
                             } else {
-                                // TODO: 11/10/2016 check whats wrong with link
+
                                 Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
                                 Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
-                                        .appendQueryParameter("username",    userId)
+                                        .appendQueryParameter("userId",    userId)
                                         // .appendQueryParameter("title",    title.getText().toString())
                                         .appendQueryParameter("bibId",    "0")
                                         .appendQueryParameter("itemId", ID)
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .build();
                                 Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                                FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                                fav.execute((Void) null);
                             }
                         }
                     });
@@ -441,17 +442,19 @@ public class ViewPagerActivity extends AppCompatActivity{
                     Log.e("ItemsQ pages",tmp);
                 }
                 int a=pagesStr.size();
-                if((pagesStr.size()==0)||(pagesStr.size()==1)){
-                    TextView textView9=(TextView) findViewById(R.id.textView13);
-                    ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
-                    viewPager.setVisibility(View.GONE);
-                    textView9.setText(R.string.no_pages_error);
-                    textView9.setTextSize(30);
-                    textView9.setTextColor(Color.WHITE);
-                    textView9.setVisibility(View.VISIBLE);
+                if(type.equals("book")) {
+                    if ((pagesStr.size() == 0) || (pagesStr.size() == 1)) {
+                        TextView textView9 = (TextView) findViewById(R.id.textView13);
+                        ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
+                        viewPager.setVisibility(View.GONE);
+                        textView9.setText(R.string.no_pages_error);
+                        textView9.setTextSize(30);
+                        textView9.setTextColor(Color.WHITE);
+                        textView9.setVisibility(View.VISIBLE);
 
 
-                    isNoPages =1;
+                        isNoPages = 1;
+                    }
                 }
                 if(isNoPages ==0){
 
@@ -577,6 +580,9 @@ public class ViewPagerActivity extends AppCompatActivity{
                 textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
                 i = 1;
+            }
+            if(type.equals("map")){
+                textView1.setText(1 + "/" + 1);
             }
 //                    }
 //                    if (j == 1) {

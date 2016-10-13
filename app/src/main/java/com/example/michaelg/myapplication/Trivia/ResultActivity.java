@@ -37,9 +37,11 @@ public class ResultActivity extends AppCompatActivity {
     private String Id1=null;
     private int Sc1 = 0 ;
     private   FinishTask finTask=null;
+    int totalQs;
 
     ArrayList<String> myAnsList=new ArrayList<String>();
-
+    ArrayList<String> questions=new ArrayList<String>();
+    ArrayList<String> answers=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +65,11 @@ public class ResultActivity extends AppCompatActivity {
         //get score
         Bundle b = getIntent().getExtras();
         final int score= b.getInt("score");
-        int totalQs= b.getInt("totalQs");
+        totalQs= b.getInt("totalQs");
         final int points=score*3;
         myAnsList=b.getStringArrayList("myAnsList");
+        questions=b.getStringArrayList("questions");
+        answers=b.getStringArrayList("answers");
 
 
         //display score
@@ -111,6 +115,12 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent vIntent=new Intent(ResultActivity.this,ViewAnswerActivity.class);
                 vIntent.putStringArrayListExtra("myAnsList",myAnsList);
+                Bundle b = new Bundle();
+                b.putInt("totalQs", totalQs);
+                b.putStringArrayList("myAnsList", myAnsList);
+                b.putStringArrayList("questions",questions);
+                b.putStringArrayList("answers",answers);
+                vIntent.putExtras(b);
                 startActivity(vIntent);
 
             }
@@ -127,7 +137,7 @@ public class ResultActivity extends AppCompatActivity {
             }
         });*/
 
-        Button btnScore=(Button)findViewById(R.id.btnScore);
+       /* Button btnScore=(Button)findViewById(R.id.btnScore);
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +154,7 @@ public class ResultActivity extends AppCompatActivity {
                 Toast.makeText(ResultActivity.this, "Score: " + Sc1 + "userName:" + Id1  , Toast.LENGTH_SHORT).show();
                 //  Toast.makeText(ResultActivity.this, "DDDDDDDDD"  + fin.UserId + " / " + fin.Score, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
    /*    Button bt= (Button) findViewById(R.id.btnScore);
