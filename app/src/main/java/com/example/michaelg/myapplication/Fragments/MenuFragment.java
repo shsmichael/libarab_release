@@ -106,8 +106,10 @@ public class MenuFragment extends Fragment {
             txtemail.setText(newUser.getUsername());
             trivia.setClickable(true);
             bibilo.setClickable(false);
-            favorites.setClickable(true);
+            //favorites.setClickable(true);
+            favorites.setClickable(false);
 
+            favorites.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
             bibilo.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
 
             trivia.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +138,7 @@ public class MenuFragment extends Fragment {
                 }
             });
 
-            favorites.setOnClickListener(new View.OnClickListener() {
+            /*favorites.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // TODO: 23/09/2016 Fix color change
@@ -151,8 +153,14 @@ public class MenuFragment extends Fragment {
                             favoritesfragmentestfragment.getTag()
                     ).commit();
                 }
-            });
+            });*/
 
+            favorites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         search.setOnClickListener(new View.OnClickListener() {
