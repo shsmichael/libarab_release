@@ -17,9 +17,7 @@ import com.example.michaelg.myapplication.favorites.bean.Book;
 import com.example.michaelg.myapplication.favorites.bean.TagItem;
 import com.example.michaelg.myapplication.favorites.adapter.BookIntroAdapter;
 
-/**
- * Created by HaPBoy on 5/26/16.
- */
+
 public class BookIntroFragment extends Fragment {
 
     private static final String ARG_BOOK_ID = "book_id";

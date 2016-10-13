@@ -17,7 +17,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -44,9 +46,11 @@ import com.example.michaelg.myapplication.favorites.adapter.BookGridAdapter;
 
 import com.example.michaelg.myapplication.favorites.BookInfoActivity;
 
-/**
- * Created by HaPBoy on 5/18/16.
- */
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+
 public class
 BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -156,7 +160,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         // TODO: 03/10/2016 restore
-        /*
+
         Log.i("HB", "onContextItemSelected:adapter.getCount(): " + bookGridAdapter.getCount());
         Log.i("HB", "onContextItemSelected:gridPosition: " + gridPosition);
         if (item.getItemId() == 1 && gridPosition != -1) {
@@ -175,9 +179,20 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    DataSupport.delete(Book.class, bookGridAdapter.getItemId(gridPosition));
-                                    fetchData();
-                                    bookGridAdapter.notifyDataSetChanged();
+                                    // TODO: 12/10/2016  fetchData();
+                                    // TODO: 12/10/2016  bookGridAdapter.notifyDataSetChanged();
+                                    User myuser= (User) getActivity().getIntent().getSerializableExtra("user");
+                                    String _REMOVE_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/removeFromFavorites?";
+                                    Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
+                                            .appendQueryParameter("userId",    myuser.getUsername())
+                                            // .appendQueryParameter("title",    title.getText().toString())
+                                            .appendQueryParameter("bibId",    "0")
+                                            .appendQueryParameter("itemId",((Book)bookGridAdapter.getItem(gridPosition)).getTitle() )
+                                            .appendQueryParameter("pagenum", ((Book)bookGridAdapter.getItem(gridPosition)).getAverage())
+                                            .build();
+                                    //Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                                    FavoritesTask fav = new FavoritesTask(builtUri.toString());
+                                    fav.execute((Void) null);
                                 }
                             }, 800);
 
@@ -207,9 +222,9 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    DataSupport.deleteAll(Book.class);
-                                    fetchData();
-                                    bookGridAdapter.notifyDataSetChanged();
+                                    // TODO: 12/10/2016  DataSupport.deleteAll(Book.class);
+                                    // TODO: 12/10/2016  fetchData();
+                                    // TODO: 12/10/2016  bookGridAdapter.notifyDataSetChanged();
                                 }
                             }, 1000);
                             sDialog
@@ -225,7 +240,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
         } else {
             return super.onContextItemSelected(item);
         }
-        */
+        //((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
         return true;
 
     }
@@ -340,6 +355,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     JSONObject bookobj = null;
                     bookobj = jarray.getJSONObject(i);
                     Book currentbook = new Book();
+                    // TODO: 12/10/2016  replace code with real name params
                     currentbook.setId(i);
                     currentbook.setTitle(bookobj.getString("bookID"));
                     currentbook.setImage(bookobj.getString("pageLink"));
@@ -377,4 +393,76 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
 
         }
     }
+    public class FavoritesTask extends AsyncTask<Void, Void, JSONObject> {
+
+        private String _SERVER_COMMAND;
+
+        public FavoritesTask(String servercomman) {
+            _SERVER_COMMAND = servercomman;
+        }
+
+        @Override
+        protected JSONObject doInBackground(Void... params) {
+
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String serverJsonStr = null;
+            try {
+                Uri builtUri = Uri.parse(_SERVER_COMMAND).buildUpon().build();
+                URL url = new URL(builtUri.toString());
+                Log.v("FavoritesURL:", builtUri.toString());
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null)
+                    return null; // Nothing to do.
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line + "\n");
+                }
+                if (buffer.length() == 0)
+                    return null;
+                serverJsonStr = buffer.toString();
+                Log.d("getFavoritesjson:", serverJsonStr);
+
+            } catch (IOException e) {
+                Log.e("LOGE", "Error ", e);
+                // If the code didn't successfully get the weather data, there's no point in attempting
+                // to parse it.
+                return null;
+
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("LOGE", "Error closing stream", e);
+                    }
+                }
+            }
+
+            JSONObject serverJson = null;
+            try {
+                serverJson = new JSONObject(serverJsonStr);
+                return serverJson;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
+        @Override
+        protected void onPostExecute(final JSONObject object) {
+
+        }
+    }
+
 }

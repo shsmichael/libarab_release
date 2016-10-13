@@ -104,7 +104,7 @@
                     />
 
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView14" />
@@ -139,7 +139,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView3" />
@@ -171,7 +171,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView4" />
@@ -205,7 +205,7 @@
                     />
 
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView5" />
@@ -239,7 +239,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView6" />
@@ -272,7 +272,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView7" />
@@ -305,7 +305,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView8" />
@@ -338,7 +338,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-                    app:srcCompat="@drawable/leaderboard_first1"
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView9" />
@@ -371,7 +371,7 @@
                     android:layout_marginLeft="8dp"
                     />
                 <ImageView
-
+                    app:srcCompat="@drawable/leaderboard_second"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imageView10" />
