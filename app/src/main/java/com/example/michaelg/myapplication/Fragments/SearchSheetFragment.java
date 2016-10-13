@@ -49,6 +49,7 @@ public class SearchSheetFragment extends Fragment {
     private EditText title ,
             fromyear ,
             toyear;
+    User newUser;
     private Spinner spinner;
     private EditText free_txt;
 
@@ -107,7 +108,7 @@ public class SearchSheetFragment extends Fragment {
                 return false;
             }
         });
-        User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
+        newUser= (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
         usertype = newUser.getUserType();
 
@@ -182,6 +183,7 @@ public class SearchSheetFragment extends Fragment {
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
+            i.putExtra("wholeUser", newUser);
             i.putExtra("userid", username.toString());
             i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
@@ -207,6 +209,7 @@ public class SearchSheetFragment extends Fragment {
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
+            i.putExtra("wholeUser", newUser);
             i.putExtra("userid", username.toString());
             i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);

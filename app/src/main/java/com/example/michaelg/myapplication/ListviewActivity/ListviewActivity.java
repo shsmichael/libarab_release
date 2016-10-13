@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
+import com.example.michaelg.myapplication.MainActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -66,6 +67,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String toyear;
     private String free_txt;
     private String txt;
+    User newUser;
     private TextView resultstitle;
     private int totalhits;
     private String searchby;
@@ -94,6 +96,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
 
+        newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -240,7 +243,9 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.action_name) {
-
+            Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
+            intentToMain.putExtra("user", newUser);
+            startActivity(intentToMain);
             return true;
         }
 
