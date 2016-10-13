@@ -76,9 +76,9 @@ public class Leader extends AppCompatActivity {
         //android
         // CHANGE
         Intent intent = getIntent();
-        User myuser =(User) intent.getSerializableExtra("user");
+        userId =(String) intent.getSerializableExtra("userId");
 
-        userId = myuser.getuserid();
+       // userId = myuser.getuserid();
         userRank=new LeaderBoardTask(userId);
 
         /*rank1=(TextView) findViewById(R.id.rank1);

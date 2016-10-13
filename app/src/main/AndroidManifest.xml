@@ -71,10 +71,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trivia.Start"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme3"
+            android:label="Trivia"/>
         <activity
             android:name=".Trivia.StartQuiz"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".Trivia.ViewAnswerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
