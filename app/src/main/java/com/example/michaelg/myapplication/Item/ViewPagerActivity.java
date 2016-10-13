@@ -413,9 +413,13 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         protected void onPostExecute(final JSONObject success) {
             JSONArray pages=null;
-
+            JSONObject book =null;
             JSONArray pages3 = null;
+            String recordId,creationdate,thumbnail,author,subject,webLink,publisher,source,title;
             try {
+            // TODO: 13/10/2016
+             //   book =success.getJSONObject("book");
+              //  recordId =
                 pages = success.getJSONArray("pages");
 
                 // JSONObject page2 = pages3.getJSONObject(0);
