@@ -64,12 +64,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     List<String> pagesStr = new ArrayList<String>();
     private String ID = "NNL_ALEPH003157499";
     private String userId= "100";
-    private String creationdate;
-    private String title;
-    private String author;
     private String weblink;
-    private String publisher;
-    private String source;
     private String usertype;
     private ViewItemTask mAuthTask = null;
     int i = 0;
@@ -89,12 +84,12 @@ public class ViewPagerActivity extends AppCompatActivity{
     public void bookinfo(View v){
 
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
-        bookinfoactivity.putExtra("creationdate" ,creationdate);
-        bookinfoactivity.putExtra("title"        ,title);
-        bookinfoactivity.putExtra("author"       ,author);
-        bookinfoactivity.putExtra("webLink"      ,weblink);
-        bookinfoactivity.putExtra("publisher"    ,publisher);
-        bookinfoactivity.putExtra("source"       ,source);
+        bookinfoactivity.putExtra("creationdate" ,book.getCreationdate());
+        bookinfoactivity.putExtra("title"        ,book.getTitle());
+        bookinfoactivity.putExtra("author"       ,book.getAuthor());
+        bookinfoactivity.putExtra("webLink"      ,book.getWeblink());
+        bookinfoactivity.putExtra("publisher"    ,book.getPublisher());
+        bookinfoactivity.putExtra("source"       ,book.getSource());
         startActivity(bookinfoactivity);
     }
 
@@ -283,13 +278,14 @@ public class ViewPagerActivity extends AppCompatActivity{
         Intent addq = new Intent(this, AddQuestion.class);
         addq.putExtra("userId", userId);
         addq.putExtra("itemId", ID);
-        addq.putExtra("author", author);
-        addq.putExtra("itemName", title);
+        addq.putExtra("author", book.getAuthor());
+        addq.putExtra("itemName", book.getTitle());
         startActivity(addq);
 
     }
     /**************************************************************************************
         This is a AsyncTASK for the Data fetching of the Book/MAP *************************
+     *************************************************************************************
     */
 
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
@@ -383,20 +379,26 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         protected void onPostExecute(final JSONObject success) {
             JSONArray pages=null;
-            JSONObject book =null;
+            JSONObject fetchedbook =null;
             JSONArray pages3 = null;
-            String recordId,creationdate,thumbnail,author,subject,webLink,publisher,source,title;
+            String creationdate,thumbnail,author,subject,webLink,publisher,source,title;
             try {
-            // TODO: 13/10/2016
-                book =success.getJSONObject("book");
-              // recordId =
+
+                //Handle Data for the Fetched Book
+
+                fetchedbook =success.getJSONObject("book");
+                book.setCreationdate(fetchedbook.getString("creationdate"));
+                book.setThumbnail(fetchedbook.getString("thumbnail"));
+                book.setAuthor(fetchedbook.getString("author"));
+                //book.setSubject(fetchedbook.getString("subject"));
+                book.setWeblink(fetchedbook.getString("webLink"));
+                book.setPublisher(fetchedbook.getString("publisher"));
+                book.setSource(fetchedbook.getString("source"));
+                book.setTitle(fetchedbook.getString("title"));
+
+                //Handle Array of Pages of Fetched Book
+
                 pages = success.getJSONArray("pages");
-
-                // JSONObject page2 = pages3.getJSONObject(0);
-                //  pages = page2.getJSONArray("canvases");
-
-                // JSONObject object = pages.getJSONObject(0);
-                //JSONObject object1 = pages.getJSONObject(pages.length() - 1);
 
                 String first = "http://iiif.nli.org.il/IIIF/";
                 String last = "/full/full/0/default.jpg";
@@ -404,11 +406,11 @@ public class ViewPagerActivity extends AppCompatActivity{
 
                 ImageView imageView = (ImageView) findViewById(R.id.imageView2);
                 imageView.setVisibility(View.GONE);
+
                 for (int i = 1; i < pages.length()-1; i++) {
                     pagesStr.add(first +pages.getString(i) + last);
                     Log.e("ItemsQ pages",tmp);
                 }
-                int a=pagesStr.size();
                 if(type.equals("book")) {
                     if ((pagesStr.size() == 0) || (pagesStr.size() == 1)) {
                         TextView textView9 = (TextView) findViewById(R.id.textView13);
@@ -430,15 +432,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                     ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
                     viewPager.setVisibility(View.VISIBLE);
                 }
-                // ViewPagerActivity.GalleryAdapter(pagesStr);
-
-                // Intent intent=new Intent(getApplicationContext(),ViewPagerActivity.class);
-                // startActivity(intent);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
@@ -452,8 +449,8 @@ public class ViewPagerActivity extends AppCompatActivity{
 
     }
 
-    /*
-        This is a AsyncTASK for the Favorites
+    /*****************************************************************************************************************************************
+        This is a AsyncTASK for the Favorites*************************************************************************************************
     */
 
     public class FavoritesTask extends AsyncTask<Void, Void, JSONObject> {
