@@ -117,8 +117,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
         MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
-
-
+        vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
         mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
         textView1.setTextSize(20);
@@ -128,12 +127,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             userId=extras.getString("userId");
             usertype = extras.getString("usertype");
             type= extras.getString("type");
-           // creationdate = extras.getString("creationdate");
-           // title        = extras.getString("title");
-           // author       = extras.getString("author");
             weblink      = extras.getString("webLink");
-           // publisher    = extras.getString("publisher");
-           // source       = extras.getString("source");
         }
 
         ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
@@ -228,15 +222,15 @@ public class ViewPagerActivity extends AppCompatActivity{
         //SHEET
         if(type.equals("sheet")){
 
+            //add sheet page linke
             pagesStr.add(weblink);
-            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-            vpGallery.setVisibility(View.GONE);
-            TextView textView9=(TextView) findViewById(R.id.textView13);
-            textView9.setVisibility(View.GONE);
+           // vpGallery.setVisibility(View.GONE);
+           // TextView textView9=(TextView) findViewById(R.id.textView13);
+            //textView9.setVisibility(View.GONE);
             ImageView imageView = (ImageView) findViewById(R.id.imageView2);
-            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
-            imageView.setVisibility(View.VISIBLE);
-            textView1.setText( 1+"/"+1);
+           // Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+           // imageView.setVisibility(View.VISIBLE);
+          //  textView1.setText( 1+"/"+1);
             view2= new ZoomableDraweeView(imageView.getContext());
             view2.setController(
                     Fresco.newDraweeControllerBuilder()
@@ -248,6 +242,11 @@ public class ViewPagerActivity extends AppCompatActivity{
                             .setProgressBarImage(new ProgressBarDrawable())
                             .build();
             view2.setHierarchy(hierarchy);
+
+            book = new Book();
+
+            mAuthTask = new ViewItemTask(ID, userId);
+            mAuthTask.execute((Void) null);
             return;
         }
         //BOOK OR MAP
@@ -313,7 +312,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                         .appendQueryParameter(USER_PARAM,userId)
                         .build();
                 URL url = new URL(builtUri.toString());
-                Log.v(TAG + "Book/MAP data fetch", builtUri.toString());
+                Log.v(TAG + "Type: " + type, builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
                 InputStream inputStream = urlConnection.getInputStream();
