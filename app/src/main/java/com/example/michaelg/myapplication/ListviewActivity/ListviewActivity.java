@@ -91,11 +91,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
 
-        /*ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
-
         newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
