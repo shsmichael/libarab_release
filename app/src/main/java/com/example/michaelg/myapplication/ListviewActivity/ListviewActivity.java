@@ -118,7 +118,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         new JSONAsyncTask().execute(myURL);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
         listview.setAdapter(adapter);
-        resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
+        resultstitle.setText("["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
 
         if(index==0)
             prev.hide();
@@ -367,7 +367,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 finish();
             }
             if (total.equals("0")) {
-                Toast.makeText(getApplicationContext(), "Sorry , No Results Found", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.no_results_found, Toast.LENGTH_LONG).show();
                 finish();
 
             }

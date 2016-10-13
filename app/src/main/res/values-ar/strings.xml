@@ -101,5 +101,6 @@
     <string name="listView_title">نتائج البحث</string>
     <string name="to_be_done">أن يتم</string>
     <string name="search_enter_author">أدخل اسم المؤلف:</string>
+    <string name="no_results_found">لا توجد نتائج</string>
 
 </resources>
