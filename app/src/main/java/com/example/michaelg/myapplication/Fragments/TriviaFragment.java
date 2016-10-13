@@ -16,12 +16,15 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Trivia.About;
 import com.example.michaelg.myapplication.Trivia.AddQuestion;
 import com.example.michaelg.myapplication.Trivia.Leader;
 import com.example.michaelg.myapplication.Trivia.triviaListview;
 import com.example.michaelg.myapplication.User;
+
+
 
 
 /**
@@ -32,6 +35,7 @@ public class TriviaFragment extends Fragment {
     private final String TAG =this.getClass().getSimpleName();
 
     User myuser;
+   // String myuser;
 
     public TriviaFragment() {
         // Required empty public constructor
@@ -42,7 +46,10 @@ public class TriviaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
+
         getActivity().setTitle(R.string.menu_trivia);
+       // myuser= (User) getActivity().getIntent().getSerializableExtra("user");
+
         /*Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
         Intent i = new Intent(getContext() , com.example.michaelg.myapplication.Trivia.MainActivity.class);
         startActivity(i);*/
@@ -75,12 +82,14 @@ public class TriviaFragment extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 leaderboard(v);
             }
         });
 
-        myuser = new User();
-        myuser.setuserid("dror@d");
+        /*myuser = new User();
+        myuser.setuserid("dror@d");*/
+
 
         ImageButton bt= (ImageButton) myview.findViewById(R.id.imageButton2);
         bt.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +153,11 @@ public class TriviaFragment extends Fragment {
     public void start(View view) {
 
         //Intent intent = new Intent(getApplicationContext(), StartQuiz.class);
+        //Intent i = new Intent(v.getContext() ,ListviewActivity.class);
+
         Intent intent = new Intent(view.getContext(), triviaListview.class);
+        //intent.putExtra("userId",myuser.getuserid());
+        intent.putExtra("userId","anya@");
         startActivity(intent);
     }
 
@@ -156,7 +169,9 @@ public class TriviaFragment extends Fragment {
     public void leaderboard(View view ) {
         //Toast.makeText(getApplicationContext(), "score:"  , Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(view.getContext(), Leader.class);
-        intent.putExtra("user",myuser);
+        //intent.putExtra("userId",myuser.getuserid());
+        intent.putExtra("userId","anya@");
+        //intent.putExtra("user",myuser);
         startActivity(intent);
     }
 }

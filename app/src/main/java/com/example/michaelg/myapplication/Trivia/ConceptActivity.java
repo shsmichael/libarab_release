@@ -62,7 +62,7 @@ public class ConceptActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String auther =(String) intent.getSerializableExtra("auther");
         final String item =(String) intent.getSerializableExtra("itemName");
-        Toast.makeText(getApplicationContext(), item, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), auther, Toast.LENGTH_LONG).show();
         quizList=new AddQTask(auther,item);
         ques=new ArrayList<Question>();
         answers=new ArrayList<String>();
@@ -113,6 +113,7 @@ public class ConceptActivity extends AppCompatActivity {
                         b.putStringArrayList("myAnsList", myAnsList);
                         b.putStringArrayList("questions",questions);
                         b.putStringArrayList("answers",answers);
+                        //b.putStringArrayList("itemId",itemId);
                         intent.putExtras(b);
                         startActivity(intent);
                         finish();
@@ -203,7 +204,7 @@ public class ConceptActivity extends AppCompatActivity {
                 final String FORECAST_BASE_URL =
                         "http://52.29.110.203:8080/LibArab/gamification/Startquzi?";
                 userName="shsmichael@gmail.com";
-                itemId="12444";
+                //itemId="12444";
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .appendQueryParameter("userName", userName)
@@ -279,6 +280,7 @@ public class ConceptActivity extends AppCompatActivity {
             if(quizListJson==null)
                 Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_LONG).show();
             else {
+
 
 
                 quizList = null;

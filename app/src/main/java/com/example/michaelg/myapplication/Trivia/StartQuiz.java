@@ -26,9 +26,9 @@ public class StartQuiz extends AppCompatActivity{
         final String item =(String) intent.getSerializableExtra("itemName");
 
 
-        Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
+        /*Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
         intent1.putExtra("auther",auther);
-        intent1.putExtra("itemName",item);
+        intent1.putExtra("itemName",item);*/
 
         TextView text=(TextView) findViewById(R.id.title);
         text.setText(auther);
@@ -39,6 +39,9 @@ public class StartQuiz extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent conceptIntent=new Intent(StartQuiz.this,ConceptActivity.class);
+                conceptIntent.putExtra("auther",auther);
+                conceptIntent.putExtra("itemName",item);
+
                 startActivity(conceptIntent);
 
             }
@@ -81,6 +84,8 @@ public class StartQuiz extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.appbar, menu);
         return true;
     }
 
