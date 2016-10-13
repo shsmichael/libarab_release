@@ -253,14 +253,6 @@ public class ViewPagerActivity extends AppCompatActivity{
         //BOOK OR MAP
         else {
             book = new Book();
-            //book.setCreationdate(creationdate);
-            //book.setTitle(title);
-            //book.setAuthor(author);
-            //book.setWeblink(weblink);
-            //book.setPublisher(publisher);
-            //book.setSource(source);
-
-
             mAuthTask = new ViewItemTask(ID, userId);
             mAuthTask.execute((Void) null);
         }
