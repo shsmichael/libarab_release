@@ -216,14 +216,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
                 intent1.putExtra("userId",user);
                 intent1.putExtra("usertype", usertype);
-                intent1.putExtra("author",bookList.get(position).getAuthor());
-                intent1.putExtra("title",bookList.get(position).getTitle());
-                intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
-                intent1.putExtra("publisher",bookList.get(position).getPublisher());
+                // TODO: 13/10/2016 dosent need those details from here on
+                intent1.putExtra("type",searchfor);
                 //this weblink used by the ViewPagerActivity
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
-                intent1.putExtra("type",searchfor);
-                intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);
