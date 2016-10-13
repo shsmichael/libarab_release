@@ -584,6 +584,13 @@ public class ViewPagerActivity extends AppCompatActivity{
             if(type.equals("map")){
                 textView1.setText(1 + "/" + 1);
             }
+          //  if(count==2){
+           //     textView1.setText(items.size()-1 + "/" + items.size());
+            //    count=0;
+           // }
+
+
+
 //                    }
 //                    if (j == 1) {
 //                        textView1.setText(items.size() - 1 + "/" + items.size());
@@ -648,8 +655,20 @@ public class ViewPagerActivity extends AppCompatActivity{
                 isJump=false;
                 i=0;
             }
+            int s=position;
+          //  if((isJump==true)){
+           //     count++;
+           // }
+            if(position==2) {
+                textView1.setText(1 + "/" + items.size());
+            }
+
+
+
+
 
             container.removeView((View) object);
+
         }
 
         @Override
