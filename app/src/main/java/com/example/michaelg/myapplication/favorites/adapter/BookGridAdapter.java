@@ -64,8 +64,8 @@ public class BookGridAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.fav_fragment_book_grid_item, null);
             viewHolder.ivCover = (ImageView) convertView.findViewById(R.id.iv_cover);
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
-            viewHolder.rbRate = (RatingBar) convertView.findViewById(R.id.rb_rate);
-            viewHolder.tvRate = (TextView) convertView.findViewById(R.id.tv_rate);
+            //viewHolder.rbRate = (RatingBar) convertView.findViewById(R.id.rb_rate);
+            //viewHolder.tvRate = (TextView) convertView.findViewById(R.id.tv_rate);
             convertView.setTag(viewHolder);
         }
 
@@ -82,8 +82,8 @@ public class BookGridAdapter extends BaseAdapter {
 
         // Other settings
         viewHolder.tvTitle.setText(bean.getTitle());
-        viewHolder.rbRate.setRating((Float.parseFloat(bean.getAverage())/2));
-        viewHolder.tvRate.setText(bean.getAverage());
+        //viewHolder.rbRate.setRating((Float.parseFloat(bean.getAverage())/2));
+        //viewHolder.tvRate.setText(bean.getAverage());
 
         return convertView;
     }

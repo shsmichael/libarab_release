@@ -43,6 +43,7 @@ public class SearchBookFragment extends Fragment {
     private EditText title ,
             fromyear ,
             toyear;
+    User newUser;
     private Spinner spinner;
     private Button searchbutton ;
     private JSONObject returnedjson;
@@ -103,7 +104,7 @@ public class SearchBookFragment extends Fragment {
                 return false;
             }
         });
-        User newUser= (User) getActivity().getIntent().getSerializableExtra("user");
+        newUser= (User) getActivity().getIntent().getSerializableExtra("user");
         username = newUser.getUsername();
         usertype = newUser.getUserType();
 
@@ -122,11 +123,13 @@ public class SearchBookFragment extends Fragment {
                 switch (position){
                     case 0:
                         tv_titleorauthor.setText(R.string.search_title);
+                        title.setHint(R.string.search_enter_title);
                         _SEARCH_URL =   Params.server +"search/booktitle?";
                         str_serchby=true;
                         break;
                     case 1:
                         tv_titleorauthor.setText(R.string.search_author);
+                        title.setHint(R.string.search_enter_author);
                         _SEARCH_URL = Params.server +"search/bookauthor?";
                         str_serchby=false;
                     default:
@@ -180,6 +183,7 @@ public class SearchBookFragment extends Fragment {
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
+            i.putExtra("wholeUser", newUser);
             i.putExtra("userid", username.toString());
             i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);
@@ -208,6 +212,7 @@ public class SearchBookFragment extends Fragment {
             Intent i = new Intent(v.getContext() ,ListviewActivity.class);
             i.putExtra("Value1", builtUri.toString());
             i.putExtra("searchurl",_SEARCH_URL);
+            i.putExtra("wholeUser", newUser);
             i.putExtra("userid", username.toString());
             i.putExtra("usertype", usertype);
             i.putExtra("txt", txt);

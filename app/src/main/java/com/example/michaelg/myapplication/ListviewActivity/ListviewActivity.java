@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
+import com.example.michaelg.myapplication.MainActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -66,6 +67,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String toyear;
     private String free_txt;
     private String txt;
+    User newUser;
     private TextView resultstitle;
     private int totalhits;
     private String searchby;
@@ -94,6 +96,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
 
+        newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -115,7 +118,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         new JSONAsyncTask().execute(myURL);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
         listview.setAdapter(adapter);
-        resultstitle.setText("Results ["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
+        resultstitle.setText("["+Integer.toString(index)+"-"+ Integer.toString(index+24)+"]");
 
         if(index==0)
             prev.hide();
@@ -240,7 +243,10 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.action_name) {
-
+            Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
+            intentToMain.putExtra("user", newUser);
+            finish();
+            startActivity(intentToMain);
             return true;
         }
 
@@ -361,7 +367,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 finish();
             }
             if (total.equals("0")) {
-                Toast.makeText(getApplicationContext(), "Sorry , No Results Found", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.no_results_found, Toast.LENGTH_LONG).show();
                 finish();
 
             }

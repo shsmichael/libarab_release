@@ -19,7 +19,7 @@
         android:background="@color/colorSearch">
 
         <TextView
-            android:text="Results [0-24]"
+            android:text="[0-24]"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView11"
