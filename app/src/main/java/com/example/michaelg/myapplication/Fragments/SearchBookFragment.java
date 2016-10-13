@@ -122,11 +122,13 @@ public class SearchBookFragment extends Fragment {
                 switch (position){
                     case 0:
                         tv_titleorauthor.setText(R.string.search_title);
+                        title.setHint(R.string.search_enter_title);
                         _SEARCH_URL =   Params.server +"search/booktitle?";
                         str_serchby=true;
                         break;
                     case 1:
                         tv_titleorauthor.setText(R.string.search_author);
+                        title.setHint(R.string.search_enter_author);
                         _SEARCH_URL = Params.server +"search/bookauthor?";
                         str_serchby=false;
                     default:

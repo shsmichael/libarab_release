@@ -98,4 +98,5 @@
     <string name="general">כללי</string>
     <string name="listView_title">תוצאות חיפוש</string>
     <string name="to_be_done">יעבוד בהמשך</string>
+    <string name="search_enter_author">הכנס שם מחבר:</string>
 </resources>
