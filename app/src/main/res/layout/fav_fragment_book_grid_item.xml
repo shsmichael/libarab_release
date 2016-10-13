@@ -16,36 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_cover"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="书籍名称"
-        android:textColor="#000000" />
+        android:text="Books Name"
+        android:textColor="@color/book_info_bg"
+        android:textSize="6dp"
+        android:background="@drawable/textview_tag_fav_bg"
+        />
 
     <!--style="?android:attr/ratingBarStyleSmall"-->
-    <RatingBar
-        android:id="@+id/rb_rate"
-        style="@style/RatingBar_Yellow_Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title"
-        android:layout_marginTop="2dp"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:rating="3.1"
-        android:stepSize="0.1" />
-
-    <TextView
-        android:id="@+id/tv_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.1"
-        android:textSize="12sp"
-        android:textColor="@color/grid_rate_text"
-        android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="4dp"
-        android:layout_toEndOf="@id/rb_rate"
-        android:layout_alignBaseline="@id/rb_rate"
-        android:layout_toRightOf="@id/rb_rate" />
 
 </RelativeLayout>

@@ -136,7 +136,6 @@ public class BookInfoActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-                //startActivity(new Intent(this, com.example.michaelg.myapplication.MainActivity.class));
                 return true;
            /* case R.id.action_favorite:
                 book.setFavourite(!book.isFavourite());
