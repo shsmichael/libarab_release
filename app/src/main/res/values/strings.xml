@@ -60,6 +60,8 @@
     <string name="dark_background">Dark Background</string>
     <string name="general">General</string>
     <string name="color">Color</string>
+    <string name="listView_title">Search Results</string>
+    <string name="to_be_done">To be done</string>
     <string name="q_main_background">is the main background dark?</string>
     <string name="connecting_server">Connecting to server</string>
     <string name="login_to_access">Log In to access this feature!</string>
@@ -185,6 +187,7 @@
     <string name="menu_browser">Open the browser</string>
     <string name="search_map">Map</string>
     <string name="free_txt">free text</string>
+    <string name="search_enter_author">Enter author</string>
 
 
 </resources>

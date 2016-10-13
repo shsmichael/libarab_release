@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -27,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.Fragments.SearchTabHostFragment;
+import com.example.michaelg.myapplication.MainActivity;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.User;
@@ -64,6 +67,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
     private String toyear;
     private String free_txt;
     private String txt;
+    User newUser;
     private TextView resultstitle;
     private int totalhits;
     private String searchby;
@@ -87,6 +91,12 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
 
+        /*ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
+
+        newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
          if(extras != null) {
@@ -221,6 +231,28 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
 /************************/
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_name) {
+            Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
+            intentToMain.putExtra("user", newUser);
+            finish();
+            startActivity(intentToMain);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
             @Override
     public boolean onNavigationItemSelected(MenuItem item) {

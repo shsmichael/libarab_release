@@ -98,5 +98,8 @@
     <string name="q_main_background">هل الخلفية الرئيسية لون قاتم؟</string>
     <string name="color">لون</string>
     <string name="general">عام</string>
+    <string name="listView_title">نتائج البحث</string>
+    <string name="to_be_done">أن يتم</string>
+    <string name="search_enter_author">أدخل اسم المؤلف:</string>
 
 </resources>

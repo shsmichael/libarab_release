@@ -105,8 +105,10 @@ public class MenuFragment extends Fragment {
             txtfullname.setText(newUser.getFirstname() + " " +newUser.getLastname());
             txtemail.setText(newUser.getUsername());
             trivia.setClickable(true);
-            bibilo.setClickable(true);
+            bibilo.setClickable(false);
             favorites.setClickable(true);
+
+            bibilo.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
 
             trivia.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -124,6 +126,13 @@ public class MenuFragment extends Fragment {
                             triviafragmentestfragment,
                             triviafragmentestfragment.getTag()
                     ).commit();
+                }
+            });
+
+            bibilo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), R.string.to_be_done, Toast.LENGTH_SHORT).show();
                 }
             });
 

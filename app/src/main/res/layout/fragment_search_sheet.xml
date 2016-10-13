@@ -57,12 +57,11 @@
 
                 <EditText
                     android:id="@+id/title_edittext"
-                    android:layout_width="255dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/search_enter_title"
                     android:imeOptions="actionGo"
-                    android:singleLine="true"
-                    android:text="تاريخ" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 

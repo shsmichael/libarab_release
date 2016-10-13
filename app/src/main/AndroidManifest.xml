@@ -23,8 +23,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ListviewActivity.ListviewActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:theme="@style/AppTheme2"
+            android:windowSoftInputMode="stateHidden"
+            android:label="@string/listView_title" />
         <activity
             android:name=".Item.ViewPagerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -41,6 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <fragment android:name="com.example.michaelg.myapplication.Fragments.MenuFragment"
+            android:id="@+id/fragment_menu2"
+            />
         <activity
             android:name=".SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
