@@ -196,6 +196,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                                     //Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
                                     FavoritesTask fav = new FavoritesTask(builtUri.toString());
                                     fav.execute((Void) null);
+                                    fetchData();
                                 }
                             }, 800);
 
@@ -243,7 +244,6 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
         } else {
             return super.onContextItemSelected(item);
         }
-        //((com.example.michaelg.myapplication.MainActivity)getActivity()).refreshUI();
         return true;
 
     }
@@ -261,8 +261,8 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
             bookGridAdapter.setData(DataSupport.order("id desc").find(Book.class));
         }*/
 
-        getFavoritesTask getfavtask = new getFavoritesTask();
-        getfavtask.execute((Void) null);
+            getFavoritesTask getfavtask = new getFavoritesTask();
+            getfavtask.execute((Void) null);
 
 
     }
@@ -352,6 +352,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     // something to do???
                     return;
                 }
+                bookList.clear();
                 jarray = object.getJSONArray("favorites");
 
                 for (int i = 0; i < jarray.length(); i++) {
