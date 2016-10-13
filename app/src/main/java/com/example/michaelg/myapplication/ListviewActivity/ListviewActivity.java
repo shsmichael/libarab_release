@@ -245,6 +245,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         if (id == R.id.action_name) {
             Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
             intentToMain.putExtra("user", newUser);
+            finish();
             startActivity(intentToMain);
             return true;
         }
