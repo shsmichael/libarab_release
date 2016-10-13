@@ -150,6 +150,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("userid",user);
                 i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
+                i.putExtra("wholeUser",newUser);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
@@ -187,6 +188,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("userid",user);
                 i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
+                i.putExtra("wholeUser",newUser);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
@@ -245,7 +247,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         if (id == R.id.action_name) {
             Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
             intentToMain.putExtra("user", newUser);
-            finish();
             startActivity(intentToMain);
             return true;
         }
