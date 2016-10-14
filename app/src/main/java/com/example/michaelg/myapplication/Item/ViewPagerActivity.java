@@ -163,6 +163,9 @@ public class ViewPagerActivity extends AppCompatActivity{
                                 Toast.makeText(getApplicationContext(),(vpGallery.getCurrentItem()+1) +"",Toast.LENGTH_LONG).show();
                                 Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
                                         .appendQueryParameter("username",    userId)
+
+
+                                        //////////////////THIS WAS COMMENTED I DIDNT TOUCH IT (EMIL)
                                         // .appendQueryParameter("title",    title.getText().toString())
                                         .appendQueryParameter("bibId",    "0")
                                         .appendQueryParameter("itemId", ID)
@@ -170,10 +173,15 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .appendQueryParameter("desc", "No Description")
-                                        .appendQueryParameter("title", book.getTitle()+"")
-                                        .appendQueryParameter("author", book.getAuthor())
-                                        .appendQueryParameter("publisher", book.getPublisher())
-                                        .appendQueryParameter("creationDate", book.getCreationdate())
+
+                                        ///////////// THIS IS WHAT I COMMENTED (EMIL)
+                                        //.appendQueryParameter("title", book.getTitle()+"")
+                                        //.appendQueryParameter("author", book.getAuthor())
+                                        //.appendQueryParameter("publisher", book.getPublisher())
+                                        //.appendQueryParameter("creationDate", book.getCreationdate())
+
+
+                                        ///////////// THIS WAS COMMENTED... I DIDNT TOUCH THEM (EMIL)
                                         //.appendQueryParameter("source", book.getSource())
                                         //.appendQueryParameter("other", book.getOther())
                                         .build();

@@ -2,6 +2,8 @@ package com.example.michaelg.myapplication.favorites.bean;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by HaPBoy on 5/14/16.
@@ -18,6 +20,11 @@ public class Book implements Serializable {
     private String source;
     private String other;
     private String image;
+    private ArrayList<Integer> pageList;
+
+    public Book() {
+        pageList = new ArrayList<Integer>();
+    }
 
     public String getBookid() {
         return bookid;
@@ -75,8 +82,6 @@ public class Book implements Serializable {
         this.id = id;
     }
 
-
-
     public String getTitle() {
         return title;
     }
@@ -84,8 +89,6 @@ public class Book implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-
-
 
     public String getImage() {
         return image;
@@ -95,7 +98,6 @@ public class Book implements Serializable {
         this.image = image;
     }
 
-
     public String getAuthor() {
         return author;
     }
@@ -103,7 +105,6 @@ public class Book implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
-
 
     public String getPublisher() {
         return publisher;
@@ -113,6 +114,11 @@ public class Book implements Serializable {
         this.publisher = publisher;
     }
 
+    public ArrayList<Integer> getPageList() {
+        return pageList;
+    }
 
-
+    public void setPageList(ArrayList<Integer> pageList) {
+        this.pageList = pageList;
+    }
 }

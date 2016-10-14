@@ -356,25 +356,55 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                 jarray = object.getJSONArray("favorites");
 
                 for (int i = 0; i < jarray.length(); i++) {
+
+                    Book lastBook = null;
+                    String lastId = null;
+                    String currentId = null;
+                    String pageNumber = null;
+                    int pageNumber2 = 0;
+                    int lastId2 = 0;
+                    int currentId2 = 1;
+
+                    if(i != 0){
+                        lastBook = bookList.get(bookList.size() - 1);
+                    }
+
                     JSONObject bookobj = null;
                     bookobj = jarray.getJSONObject(i);
                     Book currentbook = new Book();
-                    // TODO: 12/10/2016  replace code with real name params
+
                     currentbook.setId(i);
                     currentbook.setBookid(bookobj.getString("bookID"));
                     currentbook.setTitle(bookobj.getString("title"));
                     currentbook.setImage(bookobj.getString("pageLink"));
-                    //currentbook.setAverage(bookobj.getString("pageNumber"));
                     currentbook.setDescription(bookobj.getString("description"));
-                    //needed for viewer
 
+                    //needed for viewer
                     currentbook.setAuthor(bookobj.getString("author"));
                     currentbook.setPublisher(bookobj.getString("publisher"));
                     currentbook.setCreationDate(bookobj.getString("creationDate"));
                     currentbook.setPagenum(bookobj.getString("pageNumber"));
-                    //
+                    pageNumber = bookobj.getString("pageNumber");
+                    pageNumber2 = Integer.parseInt(pageNumber);
+                    if(lastBook != null){
+                        lastId = lastBook.getBookid();
+                        currentId =currentbook.getBookid();
+                        String[] separate = lastId.split("H");
+                        String[] separate1 = currentId.split("H");
+                        lastId2 = Integer.parseInt(separate[1]);
+                        currentId2 = Integer.parseInt(separate1[1]);
+                    }
+                    if (lastId2 == currentId2){
+                        lastId2 = 0;
+                        currentId2 = 1;
+                        //lastBook.getPageList().add(pageNumber2);
+                        //bookList.remove(bookList.size() - 1);
+                        bookList.get(bookList.size() - 1).getPageList().add(pageNumber2);
+                    }else{
+                        bookList.add(currentbook);
+                    }
 
-                    bookList.add(currentbook);
+
 
                 }
 
