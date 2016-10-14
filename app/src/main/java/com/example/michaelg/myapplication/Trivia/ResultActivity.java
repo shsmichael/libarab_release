@@ -38,6 +38,7 @@ public class ResultActivity extends AppCompatActivity {
     private int Sc1 = 0 ;
     private   FinishTask finTask=null;
     int totalQs;
+    String userId;
 
     ArrayList<String> myAnsList=new ArrayList<String>();
     ArrayList<String> questions=new ArrayList<String>();
@@ -66,6 +67,7 @@ public class ResultActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         final int score= b.getInt("score");
         totalQs= b.getInt("totalQs");
+        userId=b.getString("userId");
         final int points=score*3;
         myAnsList=b.getStringArrayList("myAnsList");
         questions=b.getStringArrayList("questions");
@@ -120,6 +122,7 @@ public class ResultActivity extends AppCompatActivity {
                 b.putStringArrayList("myAnsList", myAnsList);
                 b.putStringArrayList("questions",questions);
                 b.putStringArrayList("answers",answers);
+                b.putString("userId",userId);
                 vIntent.putExtras(b);
                 startActivity(vIntent);
 
@@ -144,6 +147,7 @@ public class ResultActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), triviaListview.class);
                 //  Intent intent = new Intent(getApplicationContext(), Finish.class);
+                intent.putExtra("userId",userId);
 
                 startActivity(intent);
                 //Toast.makeText(ResultActivity.this, "Score:"+points  , Toast.LENGTH_SHORT).show();
@@ -203,11 +207,11 @@ public class ResultActivity extends AppCompatActivity {
 
                 //String UserId1 = myuser.getuserid();
 
-                final String UserId1 = "shsmichael@gmail.com";
+                //final String UserId1 = "shsmichael@gmail.com";
                 final int score1 = 3;
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
-                        .appendQueryParameter("userId", UserId1)
+                        .appendQueryParameter("userId", userId)
 
                         .appendQueryParameter("score", score1+"")
 

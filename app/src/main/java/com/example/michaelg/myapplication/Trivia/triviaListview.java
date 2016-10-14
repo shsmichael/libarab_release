@@ -33,13 +33,19 @@ public class triviaListview extends AppCompatActivity {
     private ArrayList<ItemsQ>items=new ArrayList<ItemsQ>();
     ListviewQAdapter adapter;
     private getQuizeTask quizes;
+    String userId;
     //Array of options --> Array adapter--> Listview
     //listview :(views:trivia_q_items.xml)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_listview);
+        Intent intent = getIntent();
+        userId =(String) intent.getSerializableExtra("userId");
+       // Toast.makeText(getApplicationContext(),userId, Toast.LENGTH_LONG).show();
+
         quizes=new getQuizeTask();
+
 
         quizes.execute();
         /*adapter=new ListviewQAdapter(
@@ -76,6 +82,7 @@ public class triviaListview extends AppCompatActivity {
                 Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
                 intent1.putExtra("auther",items.get(position).getAuthor());
                 intent1.putExtra("itemName",items.get(position).getItemName());
+                intent1.putExtra("userId",userId);
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);

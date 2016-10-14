@@ -51,6 +51,7 @@ public class ConceptActivity extends AppCompatActivity {
     private ArrayList<String> myAnsList;
     private ArrayList<String> questions;
     private ArrayList<String> answers;
+    String userId;
 
 
 
@@ -62,7 +63,9 @@ public class ConceptActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String auther =(String) intent.getSerializableExtra("auther");
         final String item =(String) intent.getSerializableExtra("itemName");
-        Toast.makeText(getApplicationContext(), auther, Toast.LENGTH_LONG).show();
+        userId =(String) intent.getSerializableExtra("userId");
+
+        //Toast.makeText(getApplicationContext(), userId, Toast.LENGTH_LONG).show();
         quizList=new AddQTask(auther,item);
         ques=new ArrayList<Question>();
         answers=new ArrayList<String>();
@@ -113,6 +116,7 @@ public class ConceptActivity extends AppCompatActivity {
                         b.putStringArrayList("myAnsList", myAnsList);
                         b.putStringArrayList("questions",questions);
                         b.putStringArrayList("answers",answers);
+                        b.putString("userId",userId);
                         //b.putStringArrayList("itemId",itemId);
                         intent.putExtras(b);
                         startActivity(intent);

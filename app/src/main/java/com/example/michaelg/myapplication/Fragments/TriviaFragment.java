@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.michaelg.myapplication.ListviewActivity.ListviewActivity;
 import com.example.michaelg.myapplication.R;
@@ -24,7 +25,7 @@ import com.example.michaelg.myapplication.Trivia.Leader;
 import com.example.michaelg.myapplication.Trivia.triviaListview;
 import com.example.michaelg.myapplication.User;
 
-
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -48,6 +49,7 @@ public class TriviaFragment extends Fragment {
         View myview= inflater.inflate(R.layout.fragment_trivia, container, false);
 
         getActivity().setTitle(R.string.menu_trivia);
+        myuser= (User) getActivity().getIntent().getSerializableExtra("user");
        // myuser= (User) getActivity().getIntent().getSerializableExtra("user");
 
         /*Button btn_triv = (Button) myview.findViewById(R.id.btn_trivia);
@@ -156,8 +158,8 @@ public class TriviaFragment extends Fragment {
         //Intent i = new Intent(v.getContext() ,ListviewActivity.class);
 
         Intent intent = new Intent(view.getContext(), triviaListview.class);
-        //intent.putExtra("userId",myuser.getuserid());
-        intent.putExtra("userId","anya@");
+        intent.putExtra("userId",myuser.getUsername());
+        //intent.putExtra("userId","anya@");
         startActivity(intent);
     }
 
@@ -167,10 +169,10 @@ public class TriviaFragment extends Fragment {
     }
 
     public void leaderboard(View view ) {
-        //Toast.makeText(getApplicationContext(), "score:"  , Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(view.getContext(), Leader.class);
-        //intent.putExtra("userId",myuser.getuserid());
-        intent.putExtra("userId","anya@");
+        intent.putExtra("userId",myuser.getUsername());
+        //intent.putExtra("userId","anya@");
         //intent.putExtra("user",myuser);
         startActivity(intent);
     }

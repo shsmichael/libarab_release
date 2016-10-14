@@ -77,6 +77,8 @@ public class Leader extends AppCompatActivity {
         // CHANGE
         Intent intent = getIntent();
         userId =(String) intent.getSerializableExtra("userId");
+       // userId="anya@";
+        //Toast.makeText(getApplicationContext(),userId, Toast.LENGTH_LONG).show();
 
        // userId = myuser.getuserid();
         userRank=new LeaderBoardTask(userId);

@@ -7,6 +7,11 @@ package com.example.michaelg.myapplication.Trivia;
 public class ItemsQ {
     private String author;
     private String itemName;
+    private String creationDate;
+    private String realAuther;
+    private String publisher;
+    private String urlImg;
+
 
     public ItemsQ(String author, String itemName) {
         this.author = author;

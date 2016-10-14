@@ -24,6 +24,7 @@ public class StartQuiz extends AppCompatActivity{
         Intent intent = getIntent();
         final String auther =(String) intent.getSerializableExtra("auther");
         final String item =(String) intent.getSerializableExtra("itemName");
+        final String userId =(String) intent.getSerializableExtra("userId");
 
 
         /*Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
@@ -41,6 +42,7 @@ public class StartQuiz extends AppCompatActivity{
                 Intent conceptIntent=new Intent(StartQuiz.this,ConceptActivity.class);
                 conceptIntent.putExtra("auther",auther);
                 conceptIntent.putExtra("itemName",item);
+                conceptIntent.putExtra("userId",userId);
 
                 startActivity(conceptIntent);
 
