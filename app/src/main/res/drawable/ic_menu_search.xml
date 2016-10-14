@@ -10,7 +10,7 @@
         android:scaleX="0.100000"
         android:scaleY="-0.100000">
         <path
-            android:fillColor="#000000"
+            android:fillColor="@color/colorSearch"
             android:strokeWidth="1"
             android:pathData="M3140 6174 c-119 -11 -306 -38 -409 -60 -1143 -244 -2041 -1142 -2285 -2285 -48
 -223 -61 -357 -61 -619 0 -262 13 -396 61 -619 244 -1143 1142 -2041 2285 -2285

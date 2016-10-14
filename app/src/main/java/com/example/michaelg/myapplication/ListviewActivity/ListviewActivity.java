@@ -91,11 +91,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         prev= (FloatingActionButton) findViewById(R.id.fab1);
         nxt= (FloatingActionButton) findViewById(R.id.fab);
 
-        /*ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.drawable.ic_home_white_24dp);*/
-
         newUser= (User) getIntent().getSerializableExtra("wholeUser");
         bookList = new ArrayList<Book>();
         Bundle extras = getIntent().getExtras();
@@ -112,8 +107,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
              searchfor=extras.getString("searchfor");
              free_txt = extras.getString("freetxt");
          }
-        //new JSONAsyncTask().execute("http://ec2-52-43-108-148.us-west-2.compute.amazonaws.com:8080/useraccount/search/dosearchbytitle?userid=123123&title=me&fromyear=1960&toyear=1970");
-        //new JSONAsyncTask().execute("http://52.29.110.203:8080/LibArab/search/booktitle?userId=23&title=any");
+
         Log.v(TAG + "querey to sever :",myURL);
         new JSONAsyncTask().execute(myURL);
         adapter = new bookAdapter(getApplicationContext(), R.layout.row2, bookList);
@@ -150,6 +144,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("userid",user);
                 i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
+                i.putExtra("wholeUser",newUser);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
@@ -187,6 +182,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 i.putExtra("userid",user);
                 i.putExtra("usertype", usertype);
                 i.putExtra("txt", txt);
+                i.putExtra("wholeUser",newUser);
                 i.putExtra("fromyear", fromyear);
                 i.putExtra("toyear", toyear);
                 i.putExtra("index", index);
@@ -208,29 +204,22 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long id) {
                 // TODO Auto-generated method stub
-                //Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
                 intent1.putExtra("userId",user);
                 intent1.putExtra("usertype", usertype);
-                intent1.putExtra("author",bookList.get(position).getAuthor());
-                intent1.putExtra("title",bookList.get(position).getTitle());
-                intent1.putExtra("creationdate",bookList.get(position).getCreationdate());
-                intent1.putExtra("publisher",bookList.get(position).getPublisher());
+                intent1.putExtra("type",searchfor);
                 //this weblink used by the ViewPagerActivity
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());
-                intent1.putExtra("type",searchfor);
-                intent1.putExtra("source",bookList.get(position).getSource());
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);
             }
         });
 
-/************************/
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -245,7 +234,6 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
         if (id == R.id.action_name) {
             Intent intentToMain=new Intent(getApplicationContext() ,MainActivity.class);
             intentToMain.putExtra("user", newUser);
-            finish();
             startActivity(intentToMain);
             return true;
         }

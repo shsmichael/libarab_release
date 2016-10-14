@@ -2,6 +2,7 @@ package com.example.michaelg.myapplication.favorites;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -84,7 +85,7 @@ public class BookInfoActivity extends BaseActivity {
 
         // Activity title
         setTitle(book.getTitle());
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorFav)));
         // ViewPager
         viewPager = (ViewPager) findViewById(R.id.fav_view_pager);
 
@@ -172,7 +173,7 @@ public class BookInfoActivity extends BaseActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem menuItem = menu.findItem(R.id.fav_action_favorite);
-        menuItem.setIcon(iconFavorite[book.isFavourite() ? 1 : 0]);
+        //menuItem.setIcon(iconFavorite[book.isFavourite() ? 1 : 0]);
         return super.onPrepareOptionsMenu(menu);
     }
 

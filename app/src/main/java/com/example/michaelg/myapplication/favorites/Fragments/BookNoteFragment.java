@@ -81,8 +81,8 @@ public class BookNoteFragment extends Fragment {
         // Books data
         //Book book = DataSupport.find(Book.class, booId);
 
-        String note = book.getNote();
-        String note_date = book.getNote_date();
+        String note = book.getDescription();
+        String note_date = "Today";
 
         if (note.isEmpty()) {
             note = "\nNo notes, top right, click the button to start to write notes it! \n";

@@ -9,7 +9,7 @@
         android:id="@+id/tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_tag_bg"
+        android:background="@drawable/textview_tag_fav_bg"
         android:gravity="center"
         android:minWidth="68dp"
         android:textAppearance="?attr/textAppearanceListItem"

@@ -64,12 +64,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     List<String> pagesStr = new ArrayList<String>();
     private String ID = "NNL_ALEPH003157499";
     private String userId= "100";
-    private String creationdate;
-    private String title;
-    private String author;
     private String weblink;
-    private String publisher;
-    private String source;
     private String usertype;
     private ViewItemTask mAuthTask = null;
     int i = 0;
@@ -80,26 +75,21 @@ public class ViewPagerActivity extends AppCompatActivity{
     EditText etchange;
     TextView textView1;
     ImageView mybg;
-    DiscreteSeekBar discreteSeekBar1;
     private Book book;
     private String type;
-    final String typeBook="book";
-    final String typeSheet="sheet";
-    int count=0;
-    int k=0;
-    int counti=0;
+
     ZoomableDraweeView view2;
 
 
     public void bookinfo(View v){
 
         Intent bookinfoactivity = new Intent(this,BookinfoActivity.class);
-        bookinfoactivity.putExtra("creationdate" ,creationdate);
-        bookinfoactivity.putExtra("title"        ,title);
-        bookinfoactivity.putExtra("author"       ,author);
-        bookinfoactivity.putExtra("webLink"      ,weblink);
-        bookinfoactivity.putExtra("publisher"    ,publisher);
-        bookinfoactivity.putExtra("source"       ,source);
+        bookinfoactivity.putExtra("creationdate" ,book.getCreationdate());
+        bookinfoactivity.putExtra("title"        ,book.getTitle());
+        bookinfoactivity.putExtra("author"       ,book.getAuthor());
+        bookinfoactivity.putExtra("webLink"      ,book.getWeblink());
+        bookinfoactivity.putExtra("publisher"    ,book.getPublisher());
+        bookinfoactivity.putExtra("source"       ,book.getSource());
         startActivity(bookinfoactivity);
     }
 
@@ -127,8 +117,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
         MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
-
-
+        vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
         mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
         textView1.setTextSize(20);
@@ -138,15 +127,11 @@ public class ViewPagerActivity extends AppCompatActivity{
             userId=extras.getString("userId");
             usertype = extras.getString("usertype");
             type= extras.getString("type");
-            creationdate = extras.getString("creationdate");
-            title        = extras.getString("title");
-            author       = extras.getString("author");
             weblink      = extras.getString("webLink");
-            publisher    = extras.getString("publisher");
-            source       = extras.getString("source");
         }
 
         ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
+        // if usertype is a guest user should be 0
         if(usertype.equals("0")){
             addbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,8 +169,13 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("type", type)
                                         .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
-                                        .appendQueryParameter("desc", "This is the Story of Prince Of Bel-Air")
-
+                                        .appendQueryParameter("desc", "No Description")
+                                        .appendQueryParameter("title", book.getTitle()+"")
+                                        .appendQueryParameter("author", book.getAuthor())
+                                        .appendQueryParameter("publisher", book.getPublisher())
+                                        .appendQueryParameter("creationDate", book.getCreationdate())
+                                        //.appendQueryParameter("source", book.getSource())
+                                        //.appendQueryParameter("other", book.getOther())
                                         .build();
                                 Log.v(TAG + "ADDFAVURL", builtUri.toString());
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());
@@ -233,32 +223,19 @@ public class ViewPagerActivity extends AppCompatActivity{
                 alertDialog.show();
             }
         });
-
-
-
-
+        // TODO: 13/10/2016 Review Code again ( Michael ) 
+        //SHEET
         if(type.equals("sheet")){
+
+            //add sheet page linke
             pagesStr.add(weblink);
-            /*
-            try {
-                InputStream is = (InputStream) new URL(weblink).getContent();
-                Bitmap d = BitmapFactory.decodeStream(is);
-                is.close();
-             //   return d;
-            } catch (Exception e) {
-              //  return null;
-            }
-            */
-            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-            vpGallery.setVisibility(View.GONE);
-            TextView textView9=(TextView) findViewById(R.id.textView13);
-            textView9.setVisibility(View.GONE);
+           // vpGallery.setVisibility(View.GONE);
+           // TextView textView9=(TextView) findViewById(R.id.textView13);
+            //textView9.setVisibility(View.GONE);
             ImageView imageView = (ImageView) findViewById(R.id.imageView2);
-            //  imageView.setImageBitmap(bitmaps.get(position));
-            // imageView.setImageDrawable(d[position]);
-            Picasso.with(getApplicationContext()).load(weblink).into(imageView);
-            imageView.setVisibility(View.VISIBLE);
-            textView1.setText( 1+"/"+1);
+           // Picasso.with(getApplicationContext()).load(weblink).into(imageView);
+           // imageView.setVisibility(View.VISIBLE);
+          //  textView1.setText( 1+"/"+1);
             view2= new ZoomableDraweeView(imageView.getContext());
             view2.setController(
                     Fresco.newDraweeControllerBuilder()
@@ -269,35 +246,20 @@ public class ViewPagerActivity extends AppCompatActivity{
                             .setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER)
                             .setProgressBarImage(new ProgressBarDrawable())
                             .build();
-
             view2.setHierarchy(hierarchy);
 
-//            imageView.setClickable(true);
+            book = new Book();
 
-
-           // imageView.setOnClickListener(new View.OnClickListener() {
-             //   @Override
-            //    public void onClick(View v) {
-                 //   Toast.makeText(v.getContext(),"image view",Toast.LENGTH_LONG).show();                }
-          //  }
-
-        //    );
-
-//            vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-//            vpGallery.setAdapter(new ImagePagerAdapter());
+            mAuthTask = new ViewItemTask(ID, userId);
+            mAuthTask.execute((Void) null);
             return;
         }
-
-        book = new Book();
-        book.setCreationdate(creationdate);
-        book.setTitle(title);
-        book.setAuthor(author);
-        book.setWeblink(weblink);
-        book.setPublisher(publisher);
-        book.setSource(source);
-
-        mAuthTask = new ViewItemTask(ID,userId);
-        mAuthTask.execute((Void) null);
+        //BOOK OR MAP
+        else {
+            book = new Book();
+            mAuthTask = new ViewItemTask(ID, userId);
+            mAuthTask.execute((Void) null);
+        }
 
     }
 
@@ -312,16 +274,21 @@ public class ViewPagerActivity extends AppCompatActivity{
         Intent addq = new Intent(this, AddQuestion.class);
         addq.putExtra("userId", userId);
         addq.putExtra("itemId", ID);
-        addq.putExtra("author", author);
-        addq.putExtra("itemName", title);
+        addq.putExtra("author", book.getAuthor());
+        addq.putExtra("itemName", book.getTitle());
         startActivity(addq);
 
     }
+    /**************************************************************************************
+        This is a AsyncTASK for the Data fetching of the Book/MAP *************************
+     *************************************************************************************
+    */
 
     public class ViewItemTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String bookId;
         private final String userId;
+
 
         ViewItemTask(String bookId,String userId) {
             this.bookId = bookId;
@@ -343,19 +310,14 @@ public class ViewPagerActivity extends AppCompatActivity{
             try {
                 final String ID_PARAM = "recordId";
                 final String USER_PARAM ="userId";
-                final String SERVER_BASE_URL = //"http://172.20.10.6:8080/LibArab/"+"search/bookquery?";
-                        Params.getServer() + "search/bookquery?";
-                //TODO: amal sheetquery
-                // "search/bookquery/userId/recordId
-                //TODO: change according to the server function format
-
+                final String SERVER_BASE_URL = Params.getServer() + "search/bookquery?";
                 Uri builtUri = Uri.parse(SERVER_BASE_URL)
                         .buildUpon()
                         .appendQueryParameter(ID_PARAM, bookId)
                         .appendQueryParameter(USER_PARAM,userId)
                         .build();
                 URL url = new URL(builtUri.toString());
-                Log.v("URL", builtUri.toString());
+                Log.v(TAG + "Type: " + type, builtUri.toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
                 InputStream inputStream = urlConnection.getInputStream();
@@ -413,35 +375,38 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         protected void onPostExecute(final JSONObject success) {
             JSONArray pages=null;
-
+            JSONObject fetchedbook =null;
             JSONArray pages3 = null;
+            String creationdate,thumbnail,author,subject,webLink,publisher,source,title;
             try {
+
+                //Handle Data for the Fetched Book
+
+                fetchedbook =success.getJSONObject("book");
+                book.setCreationdate(fetchedbook.getString("creationdate"));
+                book.setThumbnail(fetchedbook.getString("thumbnail"));
+                book.setAuthor(fetchedbook.getString("author"));
+                //book.setSubject(fetchedbook.getString("subject"));
+                book.setWeblink(fetchedbook.getString("webLink"));
+                book.setPublisher(fetchedbook.getString("publisher"));
+                book.setSource(fetchedbook.getString("source"));
+                book.setTitle(fetchedbook.getString("title"));
+
+                //Handle Array of Pages of Fetched Book
+
                 pages = success.getJSONArray("pages");
-
-                // JSONObject page2 = pages3.getJSONObject(0);
-                //  pages = page2.getJSONArray("canvases");
-
-                // JSONObject object = pages.getJSONObject(0);
-                //JSONObject object1 = pages.getJSONObject(pages.length() - 1);
 
                 String first = "http://iiif.nli.org.il/IIIF/";
                 String last = "/full/full/0/default.jpg";
                 String tmp = "";
-                /*
-                Glide.with(mybg.getContext())
-                        .load(first +pages.getString(1) + last)
-                        .centerCrop()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .bitmapTransform(new BlurTransformation(mybg.getContext(),100,2 ))
-                        .into(mybg);
-                */
+
                 ImageView imageView = (ImageView) findViewById(R.id.imageView2);
                 imageView.setVisibility(View.GONE);
+
                 for (int i = 1; i < pages.length()-1; i++) {
                     pagesStr.add(first +pages.getString(i) + last);
                     Log.e("ItemsQ pages",tmp);
                 }
-                int a=pagesStr.size();
                 if(type.equals("book")) {
                     if ((pagesStr.size() == 0) || (pagesStr.size() == 1)) {
                         TextView textView9 = (TextView) findViewById(R.id.textView13);
@@ -463,15 +428,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                     ViewPager viewPager = (ViewPager) findViewById(R.id.vp_gallery);
                     viewPager.setVisibility(View.VISIBLE);
                 }
-                // ViewPagerActivity.GalleryAdapter(pagesStr);
-
-                // Intent intent=new Intent(getApplicationContext(),ViewPagerActivity.class);
-                // startActivity(intent);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             vpGallery.setAdapter(new GalleryAdapter(pagesStr));
@@ -484,6 +444,10 @@ public class ViewPagerActivity extends AppCompatActivity{
         }
 
     }
+
+    /*****************************************************************************************************************************************
+        This is a AsyncTASK for the Favorites*************************************************************************************************
+    */
 
     public class FavoritesTask extends AsyncTask<Void, Void, JSONObject> {
 

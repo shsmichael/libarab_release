@@ -107,7 +107,9 @@ public class MenuFragment extends Fragment {
             trivia.setClickable(true);
             bibilo.setClickable(false);
             favorites.setClickable(true);
+           // favorites.setClickable(true);
 
+           // favorites.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
             bibilo.setBackground(getResources().getDrawable(R.drawable.ripplebibliography_guest));
 
             trivia.setOnClickListener(new View.OnClickListener() {
@@ -152,6 +154,7 @@ public class MenuFragment extends Fragment {
                     ).commit();
                 }
             });
+
 
         }
 

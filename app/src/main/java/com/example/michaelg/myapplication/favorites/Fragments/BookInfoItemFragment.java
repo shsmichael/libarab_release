@@ -64,15 +64,21 @@ public class BookInfoItemFragment extends Fragment {
 
         // data
         data = new ArrayList<>();
+        data.add(new TagItem("Title", book.getTitle()));
         data.add(new TagItem("Author", book.getAuthor()));
-        data.add(new TagItem("Press", book.getPublisher()));
-        if (!book.getOrigin_title().isEmpty()) data.add(new TagItem("Original name", book.getOrigin_title()));
-        if (!book.getTranslator().isEmpty()) data.add(new TagItem("Translator", book.getTranslator()));
-        data.add(new TagItem("Published", book.getPubdate()));
-        data.add(new TagItem("Pages", book.getPages()));
-        data.add(new TagItem("Pricing", book.getPrice()));
-        if (!book.getBinding().isEmpty()) data.add(new TagItem("Binding", book.getBinding()));
-        data.add(new TagItem("ISBN", book.getIsbn13()));
+
+
+        //data.add(new TagItem("Press", book.getPublisher()));
+        //if (!book.getOrigin_title().isEmpty()) data.add(new TagItem("Original name", book.getOrigin_title()));
+        //if (!book.getTranslator().isEmpty()) data.add(new TagItem("Translator", book.getTranslator()));
+        data.add(new TagItem("Publisher", book.getPublisher()));
+        data.add(new TagItem("Creation Date", book.getCreationDate()));
+//        data.add(new TagItem("Creation Date", book.getPubdate()));
+
+        data.add(new TagItem("Pages", book.getPagenum()));
+        //data.add(new TagItem("Pricing", book.getPrice()));
+        //if (!book.getBinding().isEmpty()) data.add(new TagItem("Binding", book.getBinding()));
+        //data.add(new TagItem("ISBN", book.getIsbn13()));
 
         // List Adapter
         BookInfoAdapter lvBaseAdapter = new BookInfoAdapter(getContext(), data);
