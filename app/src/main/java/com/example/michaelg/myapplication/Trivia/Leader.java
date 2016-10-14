@@ -6,10 +6,13 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
+import com.example.michaelg.myapplication.Fragments.TriviaFragment;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.User;
 
@@ -25,7 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Leader extends AppCompatActivity {
-    String userId;
+    User userId;
     private LeaderBoardTask userRank; //= null;
     //Leaderboard
 
@@ -76,12 +79,12 @@ public class Leader extends AppCompatActivity {
         //android
         // CHANGE
         Intent intent = getIntent();
-        userId =(String) intent.getSerializableExtra("userId");
+        userId =(User) intent.getSerializableExtra("userId");
        // userId="anya@";
         //Toast.makeText(getApplicationContext(),userId, Toast.LENGTH_LONG).show();
 
        // userId = myuser.getuserid();
-        userRank=new LeaderBoardTask(userId);
+        userRank=new LeaderBoardTask(userId.getUsername());
 
         /*rank1=(TextView) findViewById(R.id.rank1);
         rank2=(TextView) findViewById(R.id.rank2);
@@ -125,6 +128,27 @@ public class Leader extends AppCompatActivity {
 
 
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_name) {
+            Intent intentToMain = new Intent(getApplicationContext(), TriviaFragment.class);
+            intentToMain.putExtra("user", userId);
+            startActivity(intentToMain);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 

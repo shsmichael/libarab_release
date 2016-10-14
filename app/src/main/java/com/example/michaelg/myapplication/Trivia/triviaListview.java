@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +36,7 @@ public class triviaListview extends AppCompatActivity {
     ListviewQAdapter adapter;
     private getQuizeTask quizes;
     String userId;
+    User myUser;
     //Array of options --> Array adapter--> Listview
     //listview :(views:trivia_q_items.xml)
     @Override
@@ -41,9 +44,9 @@ public class triviaListview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_listview);
         Intent intent = getIntent();
-        userId =(String) intent.getSerializableExtra("userId");
+        myUser =(User) intent.getSerializableExtra("userId");
        // Toast.makeText(getApplicationContext(),userId, Toast.LENGTH_LONG).show();
-
+        userId=myUser.getUsername();
         quizes=new getQuizeTask();
 
 
@@ -52,6 +55,12 @@ public class triviaListview extends AppCompatActivity {
                 this,//context for the activity
                 R.layout.trivia_q_items,//layout to use
                 items);//items to be displayed*/
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
     }
 
     private void populateListView() {
@@ -82,7 +91,7 @@ public class triviaListview extends AppCompatActivity {
                 Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
                 intent1.putExtra("auther",items.get(position).getAuthor());
                 intent1.putExtra("itemName",items.get(position).getItemName());
-                intent1.putExtra("userId",userId);
+                intent1.putExtra("userId",myUser);
                 // Remember that variable (user) is the private variable above that is sent by the search
 
                 startActivity(intent1);

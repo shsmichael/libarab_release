@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Fragments.Params;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,6 +53,7 @@ public class ConceptActivity extends AppCompatActivity {
     private ArrayList<String> questions;
     private ArrayList<String> answers;
     String userId;
+    User myUser;
 
 
 
@@ -63,7 +65,8 @@ public class ConceptActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String auther =(String) intent.getSerializableExtra("auther");
         final String item =(String) intent.getSerializableExtra("itemName");
-        userId =(String) intent.getSerializableExtra("userId");
+        myUser=(User) intent.getSerializableExtra("userId");
+        userId =myUser.getUsername();
 
         //Toast.makeText(getApplicationContext(), userId, Toast.LENGTH_LONG).show();
         quizList=new AddQTask(auther,item);
@@ -108,6 +111,7 @@ public class ConceptActivity extends AppCompatActivity {
                         Intent intent = new Intent(ConceptActivity.this, ResultActivity.class);
 
                         intent.putExtra("numOfQ",numOfQ);
+                        intent.putExtra("userId",myUser);
 
 
                         Bundle b = new Bundle();
@@ -116,7 +120,7 @@ public class ConceptActivity extends AppCompatActivity {
                         b.putStringArrayList("myAnsList", myAnsList);
                         b.putStringArrayList("questions",questions);
                         b.putStringArrayList("answers",answers);
-                        b.putString("userId",userId);
+
                         //b.putStringArrayList("itemId",itemId);
                         intent.putExtras(b);
                         startActivity(intent);

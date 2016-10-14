@@ -59,7 +59,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trivia.Leader"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme3"
+            android:label="LeaderBoard" />
         <activity
             android:name=".Trivia.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -68,7 +69,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trivia.ResultActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme3"
+            android:label="Result"/>
         <activity
             android:name=".Trivia.Start"
             android:theme="@style/AppTheme3"
@@ -78,10 +80,12 @@
             android:theme="@style/AppTheme3" />
         <activity
             android:name=".Trivia.ViewAnswerActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme3"
+            android:label="Quiz Answers"/>
         <activity android:name=".Trivia.About" />
         <activity android:name=".Trivia.triviaListview"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme3"
+            android:label="Quizzes List"/>
         <activity android:name=".favorites.MainActivity" />
         <activity android:name=".favorites.BaseActivity" />
         <activity android:name=".favorites.BookInfoActivity" />

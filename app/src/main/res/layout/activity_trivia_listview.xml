@@ -20,15 +20,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorSearch">
 
-        <TextView
-            android:text="Quizzes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"
-            android:textStyle="normal|bold" />
     </LinearLayout>
 
     <RelativeLayout

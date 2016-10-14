@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,8 @@ public class ResultActivity extends AppCompatActivity {
     private   FinishTask finTask=null;
     int totalQs;
     String userId;
+    User myUser;
+    int score=0;
 
     ArrayList<String> myAnsList=new ArrayList<String>();
     ArrayList<String> questions=new ArrayList<String>();
@@ -49,7 +52,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.trivia_activity_result);
 
         Intent intent = getIntent();
-        User myuser =(User) intent.getSerializableExtra("user");
+        final User myUser =(User) intent.getSerializableExtra("userId");
 
         //  String userId = myuser.getuserid();
 
@@ -65,9 +68,9 @@ public class ResultActivity extends AppCompatActivity {
 
         //get score
         Bundle b = getIntent().getExtras();
-        final int score= b.getInt("score");
+        score= b.getInt("score");
         totalQs= b.getInt("totalQs");
-        userId=b.getString("userId");
+        userId=myUser.getUsername();
         final int points=score*3;
         myAnsList=b.getStringArrayList("myAnsList");
         questions=b.getStringArrayList("questions");
@@ -117,12 +120,12 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent vIntent=new Intent(ResultActivity.this,ViewAnswerActivity.class);
                 vIntent.putStringArrayListExtra("myAnsList",myAnsList);
+                vIntent.putExtra(userId,myUser);
                 Bundle b = new Bundle();
                 b.putInt("totalQs", totalQs);
                 b.putStringArrayList("myAnsList", myAnsList);
                 b.putStringArrayList("questions",questions);
                 b.putStringArrayList("answers",answers);
-                b.putString("userId",userId);
                 vIntent.putExtras(b);
                 startActivity(vIntent);
 
@@ -147,7 +150,7 @@ public class ResultActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), triviaListview.class);
                 //  Intent intent = new Intent(getApplicationContext(), Finish.class);
-                intent.putExtra("userId",userId);
+                intent.putExtra("userId",myUser);
 
                 startActivity(intent);
                 //Toast.makeText(ResultActivity.this, "Score:"+points  , Toast.LENGTH_SHORT).show();
@@ -168,6 +171,11 @@ public class ResultActivity extends AppCompatActivity {
             }
         });*/
 
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
     }
 
     public class FinishTask extends AsyncTask<Void, Void, JSONObject> {

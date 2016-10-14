@@ -19,15 +19,6 @@
         android:background="#009688"
         android:layout_marginBottom="10dp">
 
-        <TextView
-            android:text="  LeaderBoard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:textSize="27sp"
-            android:textStyle="normal" />
     </LinearLayout>
 
     <LinearLayout
@@ -395,7 +386,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/circle_leaderboard"
+                android:background="@drawable/leader_trivia"
                 android:layout_marginBottom="0dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"

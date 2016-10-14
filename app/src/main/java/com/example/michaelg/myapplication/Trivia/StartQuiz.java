@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.example.michaelg.myapplication.Item.ViewPagerActivity;
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 public class StartQuiz extends AppCompatActivity{
     //  implements NavigationView.OnNavigationItemSelectedListener {
+    User myUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,8 @@ public class StartQuiz extends AppCompatActivity{
         Intent intent = getIntent();
         final String auther =(String) intent.getSerializableExtra("auther");
         final String item =(String) intent.getSerializableExtra("itemName");
-        final String userId =(String) intent.getSerializableExtra("userId");
+        myUser =(User) intent.getSerializableExtra("userId");
+        final String userId=myUser.getUsername();
 
 
         /*Intent intent1=new Intent(getApplicationContext(),StartQuiz.class);
@@ -42,7 +45,7 @@ public class StartQuiz extends AppCompatActivity{
                 Intent conceptIntent=new Intent(StartQuiz.this,ConceptActivity.class);
                 conceptIntent.putExtra("auther",auther);
                 conceptIntent.putExtra("itemName",item);
-                conceptIntent.putExtra("userId",userId);
+                conceptIntent.putExtra("userId",myUser);
 
                 startActivity(conceptIntent);
 
@@ -58,7 +61,7 @@ public class StartQuiz extends AppCompatActivity{
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
                 intent1.putExtra("recordId",item);
-                intent1.putExtra("userId","anya@");
+                intent1.putExtra("userId",myUser.getUsername());
                 intent1.putExtra("author",auther);
                 intent1.putExtra("title",auther);
                 intent1.putExtra("creationdate","null");
@@ -93,12 +96,20 @@ public class StartQuiz extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
-        return true;
+        /*if (id == R.id.action_name) {
+            Intent intentToMain = new Intent(getApplicationContext(), MainActivity.class);
+            intentToMain.putExtra("user", newUser);
+            startActivity(intentToMain);
+            return true;
+        }*/
+
+        return super.onOptionsItemSelected(item);
     }
 
 
 
 
 
-}
+    }

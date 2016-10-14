@@ -158,7 +158,7 @@ public class TriviaFragment extends Fragment {
         //Intent i = new Intent(v.getContext() ,ListviewActivity.class);
 
         Intent intent = new Intent(view.getContext(), triviaListview.class);
-        intent.putExtra("userId",myuser.getUsername());
+        intent.putExtra("userId",myuser);
         //intent.putExtra("userId","anya@");
         startActivity(intent);
     }
@@ -171,7 +171,7 @@ public class TriviaFragment extends Fragment {
     public void leaderboard(View view ) {
 
         Intent intent = new Intent(view.getContext(), Leader.class);
-        intent.putExtra("userId",myuser.getUsername());
+        intent.putExtra("userId",myuser);
         //intent.putExtra("userId","anya@");
         //intent.putExtra("user",myuser);
         startActivity(intent);

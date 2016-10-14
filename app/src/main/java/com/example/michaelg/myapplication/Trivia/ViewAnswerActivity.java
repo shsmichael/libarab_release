@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.michaelg.myapplication.R;
+import com.example.michaelg.myapplication.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,14 +28,17 @@ public class ViewAnswerActivity extends AppCompatActivity {
 
     int totalQs;
 
-    ArrayList<String> myAnsList=new ArrayList<String>();
-    ArrayList<String> questions=new ArrayList<String>();
-    ArrayList<String> answers=new ArrayList<String>();
+    ArrayList<String> myAnsList = new ArrayList<String>();
+    ArrayList<String> questions = new ArrayList<String>();
+    ArrayList<String> answers = new ArrayList<String>();
 
     private List<Question> questionsList;
     private Question currentQuestion;
 
-    ArrayList<HashMap<String, Object>> originalValues = new ArrayList<HashMap<String, Object>>();;
+    User myUser;
+
+    ArrayList<HashMap<String, Object>> originalValues = new ArrayList<HashMap<String, Object>>();
+    ;
 
     HashMap<String, Object> temp = new HashMap<String, Object>();
 
@@ -51,12 +56,15 @@ public class ViewAnswerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trivia_activity_viewanswer);
 
+        Intent intent = getIntent();
+        myUser = (User) intent.getSerializableExtra("userId");
+
 
         Bundle b = getIntent().getExtras();
-        numOfQ= b.getInt("totalQs");
-        myAnsList=b.getStringArrayList("myAnsList");
-        questions=b.getStringArrayList("questions");
-        answers=b.getStringArrayList("answers");
+        numOfQ = b.getInt("totalQs");
+        myAnsList = b.getStringArrayList("myAnsList");
+        questions = b.getStringArrayList("questions");
+        answers = b.getStringArrayList("answers");
 
 
 
@@ -64,17 +72,17 @@ public class ViewAnswerActivity extends AppCompatActivity {
         myAnsList=in.getExtras().getStringArrayList("myAnsList");*/
 
 
-        lvQsAns=(ListView)findViewById(R.id.lvQsAns);
+        lvQsAns = (ListView) findViewById(R.id.lvQsAns);
 
         //Initialize the database
-        final DBAdapter dbAdapter=new DBAdapter(this);
-        questionsList= dbAdapter.getAllQuestions();
+        final DBAdapter dbAdapter = new DBAdapter(this);
+        questionsList = dbAdapter.getAllQuestions();
 
 
         for (int i = 0; i < numOfQ; i++) {
 
             temp = new HashMap<String, Object>();
-            temp.put(KEY_QUES,  questions.get(i));
+            temp.put(KEY_QUES, questions.get(i));
             temp.put(KEY_CANS, answers.get(i));
             temp.put(KEY_YANS, myAnsList.get(i));
 
@@ -87,6 +95,12 @@ public class ViewAnswerActivity extends AppCompatActivity {
                 originalValues);
         lvQsAns.setAdapter(adapter);
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
     }
 
     // define your custom adapter
@@ -133,16 +147,15 @@ public class ViewAnswerActivity extends AppCompatActivity {
             viewHolder.tvQS.setText(originalValues.get(position).get(KEY_QUES)
                     .toString());
 
-            viewHolder.tvCans.setText("Correct Ans: "+originalValues.get(position).get(KEY_CANS)
+            viewHolder.tvCans.setText("Correct Ans: " + originalValues.get(position).get(KEY_CANS)
                     .toString());
-            viewHolder.tvYouans.setText("Your Ans: "+originalValues.get(position)
+            viewHolder.tvYouans.setText("Your Ans: " + originalValues.get(position)
                     .get(KEY_YANS).toString());
 
             // return the view to be displayed
             return convertView;
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
