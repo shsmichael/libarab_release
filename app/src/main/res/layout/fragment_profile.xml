@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="269dp"
         android:layout_gravity="center"
+        android:layoutAnimation="@anim/layoutanimationdown"
         android:layout_weight="0.36">
 
         <!---User Circular Image -->
@@ -78,6 +79,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
+        android:layoutAnimation="@anim/layoutanimation"
         android:paddingLeft="50dp">
 
         <LinearLayout
