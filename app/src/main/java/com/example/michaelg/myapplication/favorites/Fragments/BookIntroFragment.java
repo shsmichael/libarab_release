@@ -60,9 +60,9 @@ public class BookIntroFragment extends Fragment {
 
         // data
         data = new ArrayList<>();
-        if (!book.getSummary().isEmpty()) data.add(new TagItem("brief introduction", book.getSummary()));
-        if (!book.getAuthor_intro().isEmpty()) data.add(new TagItem("About the Author", book.getAuthor_intro()));
-        if (!book.getCatalog().isEmpty()) data.add(new TagItem("Book Catalog", book.getCatalog()));
+        //if (!book.getDescription().isEmpty()) data.add(new TagItem("brief introduction", book.getDescription()));
+       // if (!book.getAuthor().isEmpty()) data.add(new TagItem("About the Author", book.getAuthor()));
+       // if (!book.getCatalog().isEmpty()) data.add(new TagItem("Book Catalog", ""));
 
         // List Adapter
         BookIntroAdapter lvBaseAdapter = new BookIntroAdapter(getContext(), data);

@@ -79,7 +79,7 @@ public class BookCoverFragment extends Fragment {
                  user  = (User) getActivity().getIntent().getSerializableExtra("user");
                 Intent intent1=new Intent(getActivity(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
-                intent1.putExtra("recordId",book.getTitle());
+                intent1.putExtra("recordId",book.getBookid());
                 intent1.putExtra("userId",user.getUsername());
                 intent1.putExtra("usertype", user.getUserType());
                 intent1.putExtra("type","book");

@@ -10,7 +10,7 @@
         android:scaleX="0.100000"
         android:scaleY="-0.100000">
         <path
-            android:fillColor="#000000"
+            android:fillColor="@color/colorBibilo"
             android:strokeWidth="1"
             android:pathData="M2993 6164 c-387 -47 -783 -177 -1111 -365 -832 -478 -1376 -1299 -1487 -2245 -20
 -169 -20 -519 0 -688 79 -670 375 -1284 851 -1760 476 -476 1090 -772 1760 -851

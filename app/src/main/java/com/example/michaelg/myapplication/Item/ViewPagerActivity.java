@@ -170,7 +170,12 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .appendQueryParameter("desc", "No Description")
-
+                                        .appendQueryParameter("title", book.getTitle()+"")
+                                        .appendQueryParameter("author", book.getAuthor())
+                                        .appendQueryParameter("publisher", book.getPublisher())
+                                        .appendQueryParameter("creationDate", book.getCreationdate())
+                                        //.appendQueryParameter("source", book.getSource())
+                                        //.appendQueryParameter("other", book.getOther())
                                         .build();
                                 Log.v(TAG + "ADDFAVURL", builtUri.toString());
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());

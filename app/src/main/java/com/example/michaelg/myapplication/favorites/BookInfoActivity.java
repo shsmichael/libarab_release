@@ -173,7 +173,7 @@ public class BookInfoActivity extends BaseActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem menuItem = menu.findItem(R.id.fav_action_favorite);
-        menuItem.setIcon(iconFavorite[book.isFavourite() ? 1 : 0]);
+        //menuItem.setIcon(iconFavorite[book.isFavourite() ? 1 : 0]);
         return super.onPrepareOptionsMenu(menu);
     }
 

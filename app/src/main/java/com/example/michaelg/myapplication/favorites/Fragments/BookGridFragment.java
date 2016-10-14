@@ -190,8 +190,8 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                                             .appendQueryParameter("userId",    myuser.getUsername())
                                             // .appendQueryParameter("title",    title.getText().toString())
                                             .appendQueryParameter("bibId",    "0")
-                                            .appendQueryParameter("itemId",((Book)bookGridAdapter.getItem(gridPosition)).getTitle() )
-                                            .appendQueryParameter("pagenum", ((Book)bookGridAdapter.getItem(gridPosition)).getAverage())
+                                            .appendQueryParameter("itemId",((Book)bookGridAdapter.getItem(gridPosition)).getBookid() )
+                                            .appendQueryParameter("pagenum", ((Book)bookGridAdapter.getItem(gridPosition)).getPagenum())
                                             .build();
                                     //Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
                                     FavoritesTask fav = new FavoritesTask(builtUri.toString());
@@ -203,7 +203,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                             sDialog
                                     .setTitleText("successfully deleted")
                                     .setContentText("The book has been successfully removed。")
-                                    .setConfirmText("determine")
+                                    .setConfirmText("Done")
                                     .showCancelButton(false)
                                     .setConfirmClickListener(null)
                                     .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -361,26 +361,17 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     Book currentbook = new Book();
                     // TODO: 12/10/2016  replace code with real name params
                     currentbook.setId(i);
-                    currentbook.setTitle(bookobj.getString("bookID"));
+                    currentbook.setBookid(bookobj.getString("bookID"));
+                    currentbook.setTitle(bookobj.getString("title"));
                     currentbook.setImage(bookobj.getString("pageLink"));
-                    currentbook.setAverage(bookobj.getString("pageNumber"));
-                    currentbook.setSummary(bookobj.getString("description"));
+                    //currentbook.setAverage(bookobj.getString("pageNumber"));
+                    currentbook.setDescription(bookobj.getString("description"));
                     //needed for viewer
 
-                    currentbook.setAuthor("Michael Gonic :)");
-                    currentbook.setPublisher("Bitch Please :)");
-                    currentbook.setOrigin_title("Bitch Please :)");
-                    currentbook.setTranslator("Bitch Please :)");
-                    currentbook.setPubdate("Bitch Please :)");
-                    currentbook.setPages("Bitch Please :)))");
-                    currentbook.setPrice("Not For poor Students");
-                    currentbook.setBinding("Dont even know what binding is");
-                    currentbook.setIsbn13("Isbn13 what??");
-
-                    currentbook.setAuthor_intro("nanananan batman");
-                    currentbook.setCatalog("IKEA 2016");
-                    currentbook.setNote("My Notes is here...");
-                    currentbook.setNote_date("Today");
+                    currentbook.setAuthor(bookobj.getString("author"));
+                    currentbook.setPublisher(bookobj.getString("publisher"));
+                    currentbook.setCreationDate(bookobj.getString("creationDate"));
+                    currentbook.setPagenum(bookobj.getString("pageNumber"));
                     //
 
                     bookList.add(currentbook);
