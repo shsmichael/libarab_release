@@ -34,6 +34,7 @@ import com.example.michaelg.myapplication.favorites.view.ViewPagerIndicator;
 
 public class BookInfoActivity extends BaseActivity {
 
+    User user;
     // Context
     private Context context;
 
@@ -78,6 +79,7 @@ public class BookInfoActivity extends BaseActivity {
 
         //int bookId = getIntent().getIntExtra("id", -1);
          book =(Book) getIntent().getSerializableExtra("book");
+        user = (User) getIntent().getSerializableExtra("user");
         int  bookId =book.getId();
 
         // Books Obj
