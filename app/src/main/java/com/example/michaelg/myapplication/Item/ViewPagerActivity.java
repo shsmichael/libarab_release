@@ -287,6 +287,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                 }
                 int j =0;
             }*/
+            //Toast.makeText(this, "wasssaaaapp", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -796,13 +797,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     // something to do???
                     return;
                 }
-                for(int i = 0 ; i < bookList.size() -1 ; i++){
-                    if(bookList.get(i).getBookid() == ID){
-                        favoritePages.clear();
-                        favoritePages = bookList.get(i).getPageList();
-                        break;
-                    }
-                }
+
                 bookList.clear();
                 jarray = object.getJSONArray("favorites");
 
@@ -837,6 +832,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                     currentbook.setPagenum(bookobj.getString("pageNumber"));
                     pageNumber = bookobj.getString("pageNumber");
                     pageNumber2 = Integer.parseInt(pageNumber);
+                    currentbook.getPageList().add(pageNumber2);
                     if(lastBook != null){
                         lastId = lastBook.getBookid();
                         currentId =currentbook.getBookid();
@@ -858,6 +854,14 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
                 }
+                for(int i = 0 ; i < bookList.size() ; i++){
+                    if(bookList.get(i).getBookid().equals(ID)){
+                        favoritePages.clear();
+                        favoritePages = bookList.get(i).getPageList();
+                        break;
+                    }
+                }
+                Toast.makeText(ViewPagerActivity.this, "yoo", Toast.LENGTH_SHORT).show();
 
                 /*bookGridAdapter.setData(bookList);
                 bookGridAdapter.notifyDataSetChanged();*/

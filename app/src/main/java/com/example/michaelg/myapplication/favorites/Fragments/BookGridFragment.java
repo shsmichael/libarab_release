@@ -386,6 +386,7 @@ BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
                     currentbook.setPagenum(bookobj.getString("pageNumber"));
                     pageNumber = bookobj.getString("pageNumber");
                     pageNumber2 = Integer.parseInt(pageNumber);
+                    currentbook.getPageList().add(pageNumber2);
                     if(lastBook != null){
                         lastId = lastBook.getBookid();
                         currentId =currentbook.getBookid();
