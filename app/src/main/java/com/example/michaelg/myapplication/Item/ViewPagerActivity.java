@@ -270,13 +270,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             getfavorites();
             /*getFavoritesTask getfavtask = new getFavoritesTask();
             getfavtask.execute((Void) null);*/
-            for(int i = 0 ; i < bookList.size() -1 ; i++){
-                if(bookList.get(i).getBookid() == ID){
-                    favoritePages.clear();
-                    favoritePages = bookList.get(i).getPageList();
-                    break;
-                }
-            }
+
             return;
         }
         //BOOK OR MAP
@@ -287,12 +281,12 @@ public class ViewPagerActivity extends AppCompatActivity{
             getfavorites();
             /*getFavoritesTask getfavtask = new getFavoritesTask();
             getfavtask.execute((Void) null);*/
-            for(int i = 0 ; i < bookList.size() - 1 ; i++){
+            /*for(int i = 0 ; i < bookList.size() - 1 ; i++){
                 if(bookList.get(i).getBookid() == ID){
                     favoritePages = bookList.get(i).getPageList();
                 }
                 int j =0;
-            }
+            }*/
         }
 
     }
@@ -801,6 +795,13 @@ public class ViewPagerActivity extends AppCompatActivity{
                 if (object == null) {
                     // something to do???
                     return;
+                }
+                for(int i = 0 ; i < bookList.size() -1 ; i++){
+                    if(bookList.get(i).getBookid() == ID){
+                        favoritePages.clear();
+                        favoritePages = bookList.get(i).getPageList();
+                        break;
+                    }
                 }
                 bookList.clear();
                 jarray = object.getJSONArray("favorites");
