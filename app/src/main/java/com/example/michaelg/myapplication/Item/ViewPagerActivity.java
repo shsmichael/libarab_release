@@ -180,8 +180,6 @@ public class ViewPagerActivity extends AppCompatActivity{
 
                                 Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
                                         .appendQueryParameter("username",    userId)
-
-
                                         //////////////////THIS WAS COMMENTED I DIDNT TOUCH IT (EMIL)
                                         // .appendQueryParameter("title",    title.getText().toString())
                                         .appendQueryParameter("bibId",    "0")
