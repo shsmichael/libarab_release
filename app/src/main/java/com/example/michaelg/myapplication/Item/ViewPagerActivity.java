@@ -173,6 +173,11 @@ public class ViewPagerActivity extends AppCompatActivity{
                         public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
                             if (favorite) {
                                // Toast.makeText(getApplicationContext(),"Added Page: " +(vpGallery.getCurrentItem()+1),Toast.LENGTH_LONG).show();
+                                if(book.getTitle().length()>30){
+                                    String Short=book.getTitle();
+                                    Short=Short.substring(0,30);
+                                }
+
                                 Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
                                         .appendQueryParameter("username",    userId)
 
@@ -188,7 +193,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
                                         ///////////// THIS IS WHAT I COMMENTED (EMIL)
                                         //if(book.getTitle().length()>30)
-                                        //.appendQueryParameter("title", book.getTitle()+"")
+                                        .appendQueryParameter("title", book.getTitle().substring(0,30))
                                         .appendQueryParameter("author", book.getAuthor())
                                         .appendQueryParameter("publisher", book.getPublisher())
                                         .appendQueryParameter("creationDate", book.getCreationdate())
