@@ -268,8 +268,6 @@ public class ViewPagerActivity extends AppCompatActivity{
             mAuthTask = new ViewItemTask(ID, userId);
             mAuthTask.execute((Void) null);
             getfavorites();
-            /*getFavoritesTask getfavtask = new getFavoritesTask();
-            getfavtask.execute((Void) null);*/
 
             return;
         }
@@ -279,15 +277,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             mAuthTask = new ViewItemTask(ID, userId);
             mAuthTask.execute((Void) null);
             getfavorites();
-            /*getFavoritesTask getfavtask = new getFavoritesTask();
-            getfavtask.execute((Void) null);*/
-            /*for(int i = 0 ; i < bookList.size() - 1 ; i++){
-                if(bookList.get(i).getBookid() == ID){
-                    favoritePages = bookList.get(i).getPageList();
-                }
-                int j =0;
-            }*/
-            //Toast.makeText(this, "wasssaaaapp", Toast.LENGTH_SHORT).show();
+
         }
 
     }
@@ -861,10 +851,6 @@ public class ViewPagerActivity extends AppCompatActivity{
                         break;
                     }
                 }
-                Toast.makeText(ViewPagerActivity.this, "yoo", Toast.LENGTH_SHORT).show();
-
-                /*bookGridAdapter.setData(bookList);
-                bookGridAdapter.notifyDataSetChanged();*/
 
             } catch (JSONException e) {
                 e.printStackTrace();
