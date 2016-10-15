@@ -1,6 +1,7 @@
 package com.example.michaelg.myapplication.favorites.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,11 +76,16 @@ public class BookInfoItemFragment extends Fragment {
         data.add(new TagItem("Creation Date", book.getCreationDate()));
 //        data.add(new TagItem("Creation Date", book.getPubdate()));
 
-        data.add(new TagItem("Pages", book.getPagenum()));
+
         //data.add(new TagItem("Pricing", book.getPrice()));
         //if (!book.getBinding().isEmpty()) data.add(new TagItem("Binding", book.getBinding()));
         //data.add(new TagItem("ISBN", book.getIsbn13()));
-
+        ArrayList<Integer> my  = book.getPageList();
+        String test="";
+        for (Integer object: my) {
+           test=test+object;
+        }
+        data.add(new TagItem("Pages", test));
         // List Adapter
         BookInfoAdapter lvBaseAdapter = new BookInfoAdapter(getContext(), data);
 

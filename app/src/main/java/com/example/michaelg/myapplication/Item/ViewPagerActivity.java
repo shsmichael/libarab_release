@@ -187,10 +187,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("desc", "No Description")
 
                                         ///////////// THIS IS WHAT I COMMENTED (EMIL)
-                                        //.appendQueryParameter("title", book.getTitle()+"")
-                                        //.appendQueryParameter("author", book.getAuthor())
-                                        //.appendQueryParameter("publisher", book.getPublisher())
-                                        //.appendQueryParameter("creationDate", book.getCreationdate())
+                                        .appendQueryParameter("title", book.getTitle()+"")
+                                        .appendQueryParameter("author", book.getAuthor())
+                                        .appendQueryParameter("publisher", book.getPublisher())
+                                        .appendQueryParameter("creationDate", book.getCreationdate())
 
 
                                         ///////////// THIS WAS COMMENTED... I DIDNT TOUCH THEM (EMIL)
