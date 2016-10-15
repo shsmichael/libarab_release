@@ -103,7 +103,9 @@ public class ViewPagerActivity extends AppCompatActivity{
         String stringnumber = etchange.getText().toString();
 
         if (!(stringnumber.matches(""))) {
+
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
+
             if(Integer.parseInt(stringnumber)>pagesStr.size()){
                 textView1.setText(pagesStr.size() + "/" + pagesStr.size());
             }
@@ -213,6 +215,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                         }
                     });
         }
+
+        // Jump to Page Functionality
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -561,10 +565,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            //    count=0;
-            //if(!isJump) {
-            //counti=1;
-            // if (isNoPages == 0) {
+
             if (j == 0) {
                 textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
@@ -573,20 +574,6 @@ public class ViewPagerActivity extends AppCompatActivity{
             if(type.equals("map")){
                 textView1.setText(1 + "/" + 1);
             }
-          //  if(count==2){
-           //     textView1.setText(items.size()-1 + "/" + items.size());
-            //    count=0;
-           // }
-
-
-
-//                    }
-//                    if (j == 1) {
-//                        textView1.setText(items.size() - 1 + "/" + items.size());
-//                        j = 0;
-//                    }
-//                }
-//            }
 
 
                ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
@@ -614,27 +601,6 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
-           /*if(counti==0) {
-                if (!isJump) {
-                    if (i == 0) {
-                        textView1.setText((position - 1) + "/" + items.size());
-
-                    } else {
-                        j = 1;
-                        textView1.setText(items.size() + "/" + items.size());
-                        i = 0;
-                    }
-                } else {
-                    if (count % 2 == 1) {
-                        isJump = false;
-                        count++;
-
-                    } else {
-                        count++;
-                    }
-                }
-            }
-            else  counti=0;*/
 
             if((i==1)&&(isJump==false)){
                 textView1.setText((position - 1) + "/" + items.size());
@@ -644,15 +610,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                 isJump=false;
                 i=0;
             }
-            int s=position;
-          //  if((isJump==true)){
-           //     count++;
-           // }
+
             if(position==2) {
                 textView1.setText(1 + "/" + items.size());
             }
-
-
 
 
 
@@ -672,6 +633,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     }
 
     /************************************/
+    /*
     private class ImagePagerAdapter extends PagerAdapter {
 
 
@@ -709,7 +671,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
     }
-
+*   */
     public class getFavoritesTask extends AsyncTask<Void, Void, JSONObject> {
         @Override
         protected JSONObject doInBackground(Void... params) {
@@ -844,6 +806,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
                 }
+                // Handle Book Pages favorites
                 for(int i = 0 ; i < bookList.size() ; i++){
                     if(bookList.get(i).getBookid().equals(ID)){
                         favoritePages.clear();
