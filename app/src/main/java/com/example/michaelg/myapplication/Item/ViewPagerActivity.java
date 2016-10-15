@@ -465,6 +465,7 @@ public class ViewPagerActivity extends AppCompatActivity{
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
             myadapter=new GalleryAdapter(pagesStr);
             vpGallery.setAdapter(myadapter);
+            tvGoto.setText(1 + "/" +pagesStr.size());
             vpGallery.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
