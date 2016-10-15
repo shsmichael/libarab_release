@@ -72,6 +72,8 @@ public class ViewPagerActivity extends AppCompatActivity{
     private ViewItemTask mAuthTask = null;
     int i = 0;
     int j = 0;
+    int end=0;
+    int first=0;
     int isNoPages =0;
     boolean isJump = false;
     ViewPager vpGallery;
@@ -84,6 +86,7 @@ public class ViewPagerActivity extends AppCompatActivity{
     private ArrayList<com.example.michaelg.myapplication.favorites.bean.Book> bookList;
     private BookGridAdapter bookGridAdapter; // Data Adapter
     ZoomableDraweeView view2;
+    String stringnumber;
 
 
     public void bookinfo(View v){
@@ -100,12 +103,10 @@ public class ViewPagerActivity extends AppCompatActivity{
 
     public void changepage(View v){
 
-        String stringnumber = etchange.getText().toString();
+         stringnumber = etchange.getText().toString();
 
         if (!(stringnumber.matches(""))) {
-
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
-
             if(Integer.parseInt(stringnumber)>pagesStr.size()){
                 textView1.setText(pagesStr.size() + "/" + pagesStr.size());
             }
@@ -216,8 +217,6 @@ public class ViewPagerActivity extends AppCompatActivity{
                     });
         }
 
-        // Jump to Page Functionality
-
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -238,6 +237,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                         changepage(v);
                     }
                 });
+
 
                 alertDialog.show();
             }
@@ -565,15 +565,60 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
+            //    count=0;
+            //if(!isJump) {
+            //counti=1;
+            // if (isNoPages == 0) {
+         //   if(type.equals("map")) {
+                if (items.size() == 1) {
+                    textView1.setText(1 + "/" + items.size());
+              }
+                /*else {
+                    textView1.setText(position + "/" + items.size());
+                    if (position == items.size() - 1) {
+                        end = 1;
+                    }
+                }
+            } */
+            else {
+                    if (first == 1) {
+                        textView1.setText(items.size() - 1 + "/" + items.size());
+                        first = 0;
+                    } else {
+                        first = 0;
 
-            if (j == 0) {
-                textView1.setText(position + "/" + items.size());
+                            if (j == 0) {
+                                textView1.setText(position + "/" + items.size());
 //                        if (position == items.size() - 1) {
-                i = 1;
-            }
-            if(type.equals("map")){
-                textView1.setText(1 + "/" + 1);
-            }
+                                i = 1;
+                            }
+                            if (position == items.size() - 1) {
+                                end = 1;
+                            }
+                        else {
+                                if (end == 1) {
+                                    textView1.setText(items.size() + "/" + items.size());
+                                    end=0;
+                                }
+                            }
+
+                    }
+                }
+
+          //  if(count==2){
+           //     textView1.setText(items.size()-1 + "/" + items.size());
+            //    count=0;
+           // }
+
+
+
+//                    }
+//                    if (j == 1) {
+//                        textView1.setText(items.size() - 1 + "/" + items.size());
+//                        j = 0;
+//                    }
+//                }
+//            }
 
 
                ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
@@ -601,19 +646,73 @@ public class ViewPagerActivity extends AppCompatActivity{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 
+           /*if(counti==0) {
+                if (!isJump) {
+                    if (i == 0) {
+                        textView1.setText((position - 1) + "/" + items.size());
 
-            if((i==1)&&(isJump==false)){
-                textView1.setText((position - 1) + "/" + items.size());
-                i=0;
+                    } else {
+                        j = 1;
+                        textView1.setText(items.size() + "/" + items.size());
+                        i = 0;
+                    }
+                } else {
+                    if (count % 2 == 1) {
+                        isJump = false;
+                        count++;
+
+                    } else {
+                        count++;
+                    }
+                }
             }
-            if((i==1)&&(isJump==true)){
-                isJump=false;
-                i=0;
+            else  counti=0;*/
+           // if(!type.equals("map")) {
+            if((position==items.size()-3)&&(end==1)&&(isJump==false)) {
+                if(end==1){
+                    textView1.setText(items.size() + "/" + items.size());
+                    first=1;
+                }
+                end=0;
+            }
+            else  {
+                end=0;
+                if ((i == 1) && (isJump == false)) {
+                    textView1.setText((position - 1) + "/" + items.size());
+                    i = 0;
+                }
+                if ((i == 1) && (isJump == true)) {
+
+                    if((Integer.parseInt(stringnumber)==items.size())&&(isJump==true)){
+                        textView1.setText(items.size() + "/" + items.size());
+                        first=1;
+                    }
+                    isJump = false;
+                    i = 0;
+                }
+              //  int s = position;
+                //  if((isJump==true)){
+                //     count++;
+                // }
+              else {
+
+                    if (position == 2) {
+                        textView1.setText(1 + "/" + items.size());
+                    }
+                }
+
             }
 
-            if(position==2) {
-                textView1.setText(1 + "/" + items.size());
-            }
+
+          //  }
+    /*        else{
+                if(end==1){
+                    textView1.setText(items.size() + "/" + items.size());
+                    end=0;
+                }
+            } */
+
+
 
 
 
@@ -633,7 +732,6 @@ public class ViewPagerActivity extends AppCompatActivity{
     }
 
     /************************************/
-    /*
     private class ImagePagerAdapter extends PagerAdapter {
 
 
@@ -671,7 +769,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
     }
-*   */
+
     public class getFavoritesTask extends AsyncTask<Void, Void, JSONObject> {
         @Override
         protected JSONObject doInBackground(Void... params) {
@@ -806,7 +904,6 @@ public class ViewPagerActivity extends AppCompatActivity{
 
 
                 }
-                // Handle Book Pages favorites
                 for(int i = 0 ; i < bookList.size() ; i++){
                     if(bookList.get(i).getBookid().equals(ID)){
                         favoritePages.clear();
