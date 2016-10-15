@@ -187,11 +187,15 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("type", type)
                                         .appendQueryParameter("pagelink", pagesStr.get(vpGallery.getCurrentItem())+"")
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
-                                        .appendQueryParameter("desc", "No Description")
+                                        .appendQueryParameter("desc", "No Description").build();
 
                                         ///////////// THIS IS WHAT I COMMENTED (EMIL)
-                                        //if(book.getTitle().length()>30)
-                                        .appendQueryParameter("title", book.getTitle().substring(0,30))
+                                        if(book.getTitle().length()>30) {
+                                            builtUri.buildUpon().appendQueryParameter("title", book.getTitle().substring(0, 30));
+                                        }else{
+                                            builtUri.buildUpon().appendQueryParameter("title", book.getTitle()).build();
+                                        }
+                                        builtUri.buildUpon()
                                         .appendQueryParameter("author", book.getAuthor())
                                         .appendQueryParameter("publisher", book.getPublisher())
                                         .appendQueryParameter("creationDate", book.getCreationdate())
