@@ -48,6 +48,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -171,7 +172,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                         @Override
                         public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite) {
                             if (favorite) {
-                                Toast.makeText(getApplicationContext(),(vpGallery.getCurrentItem()+1) +"",Toast.LENGTH_LONG).show();
+                               // Toast.makeText(getApplicationContext(),"Added Page: " +(vpGallery.getCurrentItem()+1),Toast.LENGTH_LONG).show();
                                 Uri builtUri =  Uri.parse(_ADD_FAV_URL_).buildUpon()
                                         .appendQueryParameter("username",    userId)
 
@@ -197,13 +198,15 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         //.appendQueryParameter("other", book.getOther())
                                         .build();
                                 Log.v(TAG + "ADDFAVURL", builtUri.toString());
+                                if(!(favoritePages.contains(vpGallery.getCurrentItem()+1)))
                                 favoritePages.add(vpGallery.getCurrentItem()+1);
+                                Collections.sort(favoritePages);
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());
                                 fav.execute((Void) null);
 
                             } else {
 
-                                Toast.makeText(getApplicationContext(),vpGallery.getCurrentItem() +"",Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(),"Deleted Page "+ ((vpGallery.getCurrentItem())+1) ,Toast.LENGTH_LONG).show();
                                 Uri builtUri =  Uri.parse(_REMOVE_FAV_URL_).buildUpon()
                                         .appendQueryParameter("userId",    userId)
                                         // .appendQueryParameter("title",    title.getText().toString())
@@ -212,7 +215,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .build();
                                 Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
-                                favoritePages.remove(vpGallery.getCurrentItem()+1);
+                                int my =vpGallery.getCurrentItem()+1;
+                                if( favoritePages.contains(vpGallery.getCurrentItem()+1) )
+                                favoritePages.remove(Integer.valueOf(vpGallery.getCurrentItem()+1));
+                                Collections.sort(favoritePages);
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());
                                 fav.execute((Void) null);
                             }
@@ -476,7 +482,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
                     tvGoto.setText(position+1 + "/" +pagesStr.size() );
                     Boolean starstatus=false;
-                   if( favoritePages.contains(position+1))
+                   if( favoritePages.contains(position+1)==true)
                        starstatus=true;
                     lovebutton.setFavorite(starstatus);
                 }
