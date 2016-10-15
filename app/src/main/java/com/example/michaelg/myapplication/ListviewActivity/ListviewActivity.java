@@ -213,6 +213,7 @@ public class ListviewActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("recordId",bookList.get(position).getRecordid());
                 intent1.putExtra("userId",user);
                 intent1.putExtra("usertype", usertype);
+                intent1.putExtra("user",newUser);
                 intent1.putExtra("type",searchfor);
                 //this weblink used by the ViewPagerActivity
                 intent1.putExtra("webLink",bookList.get(position).getWeblink());

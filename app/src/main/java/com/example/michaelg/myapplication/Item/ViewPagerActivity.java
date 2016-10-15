@@ -32,6 +32,9 @@ import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
 import com.example.michaelg.myapplication.SignUp;
 import com.example.michaelg.myapplication.Trivia.AddQuestion;
+import com.example.michaelg.myapplication.User;
+import com.example.michaelg.myapplication.favorites.Fragments.BookGridFragment;
+import com.example.michaelg.myapplication.favorites.adapter.BookGridAdapter;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
@@ -77,7 +80,9 @@ public class ViewPagerActivity extends AppCompatActivity{
     ImageView mybg;
     private Book book;
     private String type;
-
+    private ArrayList<Integer> favoritePages;
+    private ArrayList<com.example.michaelg.myapplication.favorites.bean.Book> bookList;
+    private BookGridAdapter bookGridAdapter; // Data Adapter
     ZoomableDraweeView view2;
 
 
@@ -121,6 +126,8 @@ public class ViewPagerActivity extends AppCompatActivity{
         mybg  =    (ImageView) findViewById(R.id.bg);
         textView1=(TextView) findViewById(R.id.textView);
         textView1.setTextSize(20);
+        bookList = new ArrayList<com.example.michaelg.myapplication.favorites.bean.Book>();
+        favoritePages = new ArrayList<Integer>();
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
@@ -260,6 +267,16 @@ public class ViewPagerActivity extends AppCompatActivity{
 
             mAuthTask = new ViewItemTask(ID, userId);
             mAuthTask.execute((Void) null);
+            getfavorites();
+            /*getFavoritesTask getfavtask = new getFavoritesTask();
+            getfavtask.execute((Void) null);*/
+            for(int i = 0 ; i < bookList.size() -1 ; i++){
+                if(bookList.get(i).getBookid() == ID){
+                    favoritePages.clear();
+                    favoritePages = bookList.get(i).getPageList();
+                    break;
+                }
+            }
             return;
         }
         //BOOK OR MAP
@@ -267,7 +284,22 @@ public class ViewPagerActivity extends AppCompatActivity{
             book = new Book();
             mAuthTask = new ViewItemTask(ID, userId);
             mAuthTask.execute((Void) null);
+            getfavorites();
+            /*getFavoritesTask getfavtask = new getFavoritesTask();
+            getfavtask.execute((Void) null);*/
+            for(int i = 0 ; i < bookList.size() - 1 ; i++){
+                if(bookList.get(i).getBookid() == ID){
+                    favoritePages = bookList.get(i).getPageList();
+                }
+                int j =0;
+            }
         }
+
+    }
+
+    private void getfavorites() {
+        getFavoritesTask getfavtask = new getFavoritesTask();
+        getfavtask.execute((Void) null);
 
     }
 
@@ -691,6 +723,150 @@ public class ViewPagerActivity extends AppCompatActivity{
         }
 
 
+    }
+
+    public class getFavoritesTask extends AsyncTask<Void, Void, JSONObject> {
+        @Override
+        protected JSONObject doInBackground(Void... params) {
+
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String serverJsonStr = null;
+            try {
+                User user= (User) getIntent().getSerializableExtra("user");
+
+                final String SERVER_GETFAVORITES = "http://52.29.110.203:8080/LibArab/favorites/getFavorites?";
+
+                //final String SERVER_BASE_URL = "http://www.mocky.io/v2/57f0a2d70f0000f60901353f";
+                Uri builtUri = Uri.parse(SERVER_GETFAVORITES).buildUpon()
+                        .appendQueryParameter("userId",    user.getUsername())
+                        .appendQueryParameter("type",    "book")
+                        .build();
+                URL url = new URL(builtUri.toString());
+                Log.v("getFavoritesURL:", builtUri.toString());
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null)
+                    return null; // Nothing to do.
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line + "\n");
+                }
+                if (buffer.length() == 0)
+                    return null;
+                serverJsonStr = buffer.toString();
+                Log.d("getFavoritesjson:", serverJsonStr);
+
+            } catch (IOException e) {
+                Log.e("LOGE", "Error ", e);
+                // If the code didn't successfully get the weather data, there's no point in attempting
+                // to parse it.
+                return null;
+
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("LOGE", "Error closing stream", e);
+                    }
+                }
+            }
+
+            JSONObject serverJson = null;
+            try {
+                serverJson = new JSONObject(serverJsonStr);
+                return serverJson;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        ////////////////////////////////////////////////////////////////////// ON POST EXECUTE
+        @Override
+        protected void onPostExecute(final JSONObject object) {
+            try {
+                JSONArray jarray = null;
+                String answer = null;
+
+                if (object == null) {
+                    // something to do???
+                    return;
+                }
+                bookList.clear();
+                jarray = object.getJSONArray("favorites");
+
+                for (int i = 0; i < jarray.length(); i++) {
+
+                    com.example.michaelg.myapplication.favorites.bean.Book lastBook = null;
+                    String lastId = null;
+                    String currentId = null;
+                    String pageNumber = null;
+                    int pageNumber2 = 0;
+                    int lastId2 = 0;
+                    int currentId2 = 1;
+
+                    if(i != 0){
+                        lastBook = bookList.get(bookList.size() - 1);
+                    }
+
+                    JSONObject bookobj = null;
+                    bookobj = jarray.getJSONObject(i);
+                    com.example.michaelg.myapplication.favorites.bean.Book currentbook = new com.example.michaelg.myapplication.favorites.bean.Book();
+
+                    currentbook.setId(i);
+                    currentbook.setBookid(bookobj.getString("bookID"));
+                    currentbook.setTitle(bookobj.getString("title"));
+                    currentbook.setImage(bookobj.getString("pageLink"));
+                    currentbook.setDescription(bookobj.getString("description"));
+
+                    //needed for viewer
+                    currentbook.setAuthor(bookobj.getString("author"));
+                    currentbook.setPublisher(bookobj.getString("publisher"));
+                    currentbook.setCreationDate(bookobj.getString("creationDate"));
+                    currentbook.setPagenum(bookobj.getString("pageNumber"));
+                    pageNumber = bookobj.getString("pageNumber");
+                    pageNumber2 = Integer.parseInt(pageNumber);
+                    if(lastBook != null){
+                        lastId = lastBook.getBookid();
+                        currentId =currentbook.getBookid();
+                        String[] separate = lastId.split("H");
+                        String[] separate1 = currentId.split("H");
+                        lastId2 = Integer.parseInt(separate[1]);
+                        currentId2 = Integer.parseInt(separate1[1]);
+                    }
+                    if (lastId2 == currentId2){
+                        lastId2 = 0;
+                        currentId2 = 1;
+                        //lastBook.getPageList().add(pageNumber2);
+                        //bookList.remove(bookList.size() - 1);
+                        bookList.get(bookList.size() - 1).getPageList().add(pageNumber2);
+                    }else{
+                        bookList.add(currentbook);
+                    }
+
+
+
+                }
+
+                /*bookGridAdapter.setData(bookList);
+                bookGridAdapter.notifyDataSetChanged();*/
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
     }
 }
 
