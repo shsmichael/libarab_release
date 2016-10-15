@@ -3,8 +3,6 @@ package com.example.michaelg.myapplication.Item;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -23,18 +21,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import com.example.michaelg.myapplication.Fragments.Params;
-import com.example.michaelg.myapplication.Item.discreteseekbar.DiscreteSeekBar;
 import com.example.michaelg.myapplication.ListviewActivity.Book;
 import com.example.michaelg.myapplication.R;
 import com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView;
-import com.example.michaelg.myapplication.SignUp;
 import com.example.michaelg.myapplication.Trivia.AddQuestion;
 import com.example.michaelg.myapplication.User;
-import com.example.michaelg.myapplication.favorites.Fragments.BookGridFragment;
-import com.example.michaelg.myapplication.favorites.adapter.BookGridAdapter;
 import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
@@ -57,34 +50,32 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class ViewPagerActivity extends AppCompatActivity{
-    private final String _ADD_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/addToFavorites?";
-    private final String _REMOVE_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/removeFromFavorites?";
 
     private final String TAG =this.getClass().getSimpleName();
+
+    private final String _ADD_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/addToFavorites?";
+    private final String _REMOVE_FAV_URL_="http://52.29.110.203:8080/LibArab/favorites/removeFromFavorites?";
+    private final String GUEST_USER="0";
+    GalleryAdapter myadapter;
     List<String> pagesStr = new ArrayList<String>();
+    private ArrayList<Integer> favoritePages;
+    private ArrayList<com.example.michaelg.myapplication.favorites.bean.Book> bookList;
+
     private String ID = "NNL_ALEPH003157499";
     private String userId= "100";
     private String weblink;
     private String usertype;
     private ViewItemTask mAuthTask = null;
-    int i = 0;
-    int j = 0;
-    int end=0;
-    int first=0;
     int isNoPages =0;
     boolean isJump = false;
     ViewPager vpGallery;
     EditText etchange;
-    TextView textView1;
-    ImageView mybg;
+    TextView tvGoto;
+
     private Book book;
     private String type;
-    private ArrayList<Integer> favoritePages;
-    private ArrayList<com.example.michaelg.myapplication.favorites.bean.Book> bookList;
-    private BookGridAdapter bookGridAdapter; // Data Adapter
     ZoomableDraweeView view2;
     String stringnumber;
 
@@ -108,10 +99,10 @@ public class ViewPagerActivity extends AppCompatActivity{
         if (!(stringnumber.matches(""))) {
             vpGallery.setCurrentItem(Integer.parseInt(stringnumber) - 1);
             if(Integer.parseInt(stringnumber)>pagesStr.size()){
-                textView1.setText(pagesStr.size() + "/" + pagesStr.size());
+                tvGoto.setText(pagesStr.size() + "/" + pagesStr.size());
             }
             else {
-                textView1.setText(stringnumber + "/" + pagesStr.size());
+                tvGoto.setText(stringnumber + "/" + pagesStr.size());
             }
             isJump = true;
         }
@@ -124,13 +115,19 @@ public class ViewPagerActivity extends AppCompatActivity{
         Fresco.initialize(this);
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         setContentView(R.layout.activity_view_pager);
-        MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
-        vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-        mybg  =    (ImageView) findViewById(R.id.bg);
-        textView1=(TextView) findViewById(R.id.textView);
-        textView1.setTextSize(20);
+        //set love button
         bookList = new ArrayList<com.example.michaelg.myapplication.favorites.bean.Book>();
         favoritePages = new ArrayList<Integer>();
+        //set Love button
+        MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
+        //set addQuestion button
+        ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
+        //set gallery
+        vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
+        //set Goto text on botton
+        tvGoto=(TextView) findViewById(R.id.tv_goto);
+        tvGoto.setTextSize(20);
+        //get Extras from sent Intent
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ID  = extras.getString("recordId");
@@ -139,10 +136,9 @@ public class ViewPagerActivity extends AppCompatActivity{
             type= extras.getString("type");
             weblink      = extras.getString("webLink");
         }
+        //GUEST USER
 
-        ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
-        // if usertype is a guest user should be 0
-        if(usertype.equals("0")){
+        if(usertype.equals(GUEST_USER)){
             addbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -157,7 +153,10 @@ public class ViewPagerActivity extends AppCompatActivity{
                 }
             });
 
-        }else{
+        }
+        //REGULAR USER
+
+        else {
             addbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -217,7 +216,8 @@ public class ViewPagerActivity extends AppCompatActivity{
                     });
         }
 
-        textView1.setOnClickListener(new View.OnClickListener() {
+        // Go To Funcuality
+        tvGoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ViewPagerActivity.this);
@@ -463,7 +463,15 @@ public class ViewPagerActivity extends AppCompatActivity{
             }
 
             vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
-            vpGallery.setAdapter(new GalleryAdapter(pagesStr));
+            myadapter=new GalleryAdapter(pagesStr);
+            vpGallery.setAdapter(myadapter);
+            vpGallery.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                @Override
+                public void onPageSelected(int position) {
+                    tvGoto.setText(position+1 + "/" +pagesStr.size() );
+
+                }
+            });
         }
 
 
@@ -554,71 +562,15 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         List<String> items;
 
-        // };
         public GalleryAdapter(List<String> pages){
-            items=new ArrayList<String>();
-            if(items.addAll(pagesStr)==false){
-                return;
-            }
-
+            items=pages;
         }
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            //    count=0;
-            //if(!isJump) {
-            //counti=1;
-            // if (isNoPages == 0) {
-         //   if(type.equals("map")) {
-                if (items.size() == 1) {
-                    textView1.setText(1 + "/" + items.size());
-              }
-                /*else {
-                    textView1.setText(position + "/" + items.size());
-                    if (position == items.size() - 1) {
-                        end = 1;
-                    }
-                }
-            } */
-            else {
-                    if (first == 1) {
-                        textView1.setText(items.size() - 1 + "/" + items.size());
-                        first = 0;
-                    } else {
-                        first = 0;
-
-                            if (j == 0) {
-                                textView1.setText(position + "/" + items.size());
-//                        if (position == items.size() - 1) {
-                                i = 1;
-                            }
-                            if (position == items.size() - 1) {
-                                end = 1;
-                            }
-                        else {
-                                if (end == 1) {
-                                    textView1.setText(items.size() + "/" + items.size());
-                                    end=0;
-                                }
-                            }
-
-                    }
-                }
-
-          //  if(count==2){
-           //     textView1.setText(items.size()-1 + "/" + items.size());
-            //    count=0;
-           // }
 
 
 
-//                    }
-//                    if (j == 1) {
-//                        textView1.setText(items.size() - 1 + "/" + items.size());
-//                        j = 0;
-//                    }
-//                }
-//            }
 
 
                ZoomableDraweeView view = new ZoomableDraweeView(container.getContext());
@@ -645,79 +597,7 @@ public class ViewPagerActivity extends AppCompatActivity{
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-
-           /*if(counti==0) {
-                if (!isJump) {
-                    if (i == 0) {
-                        textView1.setText((position - 1) + "/" + items.size());
-
-                    } else {
-                        j = 1;
-                        textView1.setText(items.size() + "/" + items.size());
-                        i = 0;
-                    }
-                } else {
-                    if (count % 2 == 1) {
-                        isJump = false;
-                        count++;
-
-                    } else {
-                        count++;
-                    }
-                }
-            }
-            else  counti=0;*/
-           // if(!type.equals("map")) {
-            if((position==items.size()-3)&&(end==1)&&(isJump==false)) {
-                if(end==1){
-                    textView1.setText(items.size() + "/" + items.size());
-                    first=1;
-                }
-                end=0;
-            }
-            else  {
-                end=0;
-                if ((i == 1) && (isJump == false)) {
-                    textView1.setText((position - 1) + "/" + items.size());
-                    i = 0;
-                }
-                if ((i == 1) && (isJump == true)) {
-
-                    if((Integer.parseInt(stringnumber)==items.size())&&(isJump==true)){
-                        textView1.setText(items.size() + "/" + items.size());
-                        first=1;
-                    }
-                    isJump = false;
-                    i = 0;
-                }
-              //  int s = position;
-                //  if((isJump==true)){
-                //     count++;
-                // }
-              else {
-
-                    if (position == 2) {
-                        textView1.setText(1 + "/" + items.size());
-                    }
-                }
-
-            }
-
-
-          //  }
-    /*        else{
-                if(end==1){
-                    textView1.setText(items.size() + "/" + items.size());
-                    end=0;
-                }
-            } */
-
-
-
-
-
             container.removeView((View) object);
-
         }
 
         @Override
@@ -731,44 +611,7 @@ public class ViewPagerActivity extends AppCompatActivity{
         }
     }
 
-    /************************************/
-    private class ImagePagerAdapter extends PagerAdapter {
 
-
-        @Override
-        public int getCount() {
-            //this.notifyDataSetChanged();
-            return 1;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == ((ImageView) object);
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-         //  Context context = PhotoBeforeFoeFragment.this.getActivity();
-
-            ImageView imageView = new ImageView(getApplicationContext());
-          //  imageView.setImageBitmap(bitmaps.get(position));
-            // imageView.setImageDrawable(d[position]);
-            Picasso.with(getApplicationContext()).load(weblink).fit().into(imageView);
-            ((ViewPager) container).addView(imageView);
-            return imageView;
-        }
-        @Override
-        public int getItemPosition(Object object) {
-            return POSITION_NONE;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView((ImageView) object);
-        }
-
-
-    }
 
     public class getFavoritesTask extends AsyncTask<Void, Void, JSONObject> {
         @Override
