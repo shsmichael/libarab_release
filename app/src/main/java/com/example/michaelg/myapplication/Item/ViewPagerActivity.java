@@ -35,7 +35,7 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.github.ivbaranov.mfb.MaterialFavoriteButton;
-import com.squareup.picasso.Picasso;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,12 +68,14 @@ public class ViewPagerActivity extends AppCompatActivity{
     private String weblink;
     private String usertype;
     private ViewItemTask mAuthTask = null;
-    int isNoPages =0;
+
+    private ImageView addbutton;
+    MaterialFavoriteButton lovebutton;
     boolean isJump = false;
     ViewPager vpGallery;
     EditText etchange;
     TextView tvGoto;
-
+    int isNoPages =0;
     private Book book;
     private String type;
     ZoomableDraweeView view2;
@@ -119,9 +121,9 @@ public class ViewPagerActivity extends AppCompatActivity{
         bookList = new ArrayList<com.example.michaelg.myapplication.favorites.bean.Book>();
         favoritePages = new ArrayList<Integer>();
         //set Love button
-        MaterialFavoriteButton lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
+        lovebutton = (MaterialFavoriteButton) findViewById(R.id.lovebutton);
         //set addQuestion button
-        ImageView addbutton = (ImageView) findViewById(R.id.add_question_button);
+        addbutton = (ImageView) findViewById(R.id.add_question_button);
         //set gallery
         vpGallery = (ViewPager) findViewById(R.id.vp_gallery);
         //set Goto text on botton
@@ -195,6 +197,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         //.appendQueryParameter("other", book.getOther())
                                         .build();
                                 Log.v(TAG + "ADDFAVURL", builtUri.toString());
+                                favoritePages.add(vpGallery.getCurrentItem()+1);
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());
                                 fav.execute((Void) null);
 
@@ -209,6 +212,7 @@ public class ViewPagerActivity extends AppCompatActivity{
                                         .appendQueryParameter("pagenum", (vpGallery.getCurrentItem()+1)+"")
                                         .build();
                                 Log.v(TAG + "REMOVEFAVURL", builtUri.toString());
+                                favoritePages.remove(vpGallery.getCurrentItem()+1);
                                 FavoritesTask fav = new FavoritesTask(builtUri.toString());
                                 fav.execute((Void) null);
                             }
@@ -468,8 +472,12 @@ public class ViewPagerActivity extends AppCompatActivity{
             vpGallery.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
-                    tvGoto.setText(position+1 + "/" +pagesStr.size() );
 
+                    tvGoto.setText(position+1 + "/" +pagesStr.size() );
+                    Boolean starstatus=false;
+                   if( favoritePages.contains(position+1))
+                       starstatus=true;
+                    lovebutton.setFavorite(starstatus);
                 }
             });
         }
