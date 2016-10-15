@@ -83,7 +83,7 @@ public class BookInfoItemFragment extends Fragment {
         ArrayList<Integer> my  = book.getPageList();
         String test="";
         for (Integer object: my) {
-           test=test+object;
+           test=test+object+",";
         }
         data.add(new TagItem("Pages", test));
         // List Adapter
