@@ -83,6 +83,7 @@ public class BookCoverFragment extends Fragment {
                 intent1.putExtra("userId",user.getUsername());
                 intent1.putExtra("usertype", user.getUserType());
                 intent1.putExtra("type","book");
+                intent1.putExtra("user",user);
 
                 //this weblink used by the ViewPagerActivity
                 //intent1.putExtra("webLink",bookList.get(position).getWeblink());
