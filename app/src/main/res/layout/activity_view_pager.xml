@@ -80,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/frame"
+        android:imeOptions="actionGo"
         android:weightSum="16">
 
         <LinearLayout
@@ -127,6 +128,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:clickable="true"
+                android:imeOptions="actionGo"
                 android:background="@drawable/textview_tag_bg_white"
                 android:textSize="26sp"
                 android:id="@+id/textView" />
