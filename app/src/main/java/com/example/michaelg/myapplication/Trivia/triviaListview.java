@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -61,6 +62,25 @@ public class triviaListview extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.appbar, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        User newUser=new User("firstname","lastname","username","gender","bday","usertype",true);
+        if (id == R.id.action_name) {
+            Intent intentToMain=new Intent(getApplicationContext() , com.example.michaelg.myapplication.MainActivity.class);
+            intentToMain.putExtra("user", myUser);
+            startActivity(intentToMain);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
     private void populateListView() {

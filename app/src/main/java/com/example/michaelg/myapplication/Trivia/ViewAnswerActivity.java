@@ -14,9 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.michaelg.myapplication.R;
-import com.example.michaelg.myapplication.User;
+import com.example.michaelg.myapplication.*;
+import com.example.michaelg.myapplication.Fragments.TriviaFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class ViewAnswerActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         myUser = (User) intent.getSerializableExtra("userId");
+        //Toast.makeText(ViewAnswerActivity.this, myUser.getUsername(), Toast.LENGTH_LONG).show();
 
 
         Bundle b = getIntent().getExtras();
@@ -157,14 +159,26 @@ public class ViewAnswerActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        int id = item.getItemId();
+        User newUser=new User("firstname","lastname","username","gender","bday","usertype",true);
+        if (id == R.id.action_name) {
+            Intent intentToMain=new Intent(getApplicationContext() , com.example.michaelg.myapplication.Trivia.triviaListview.class);
+            intentToMain.putExtra("userId", myUser);
+            startActivity(intentToMain);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 }

@@ -138,15 +138,20 @@ public class Leader extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        User newUser=new User("firstname","lastname","username","gender","bday","usertype",true);
         if (id == R.id.action_name) {
-            Intent intentToMain = new Intent(getApplicationContext(), TriviaFragment.class);
+            Intent intentToMain=new Intent(getApplicationContext() , com.example.michaelg.myapplication.MainActivity.class);
             intentToMain.putExtra("user", userId);
             startActivity(intentToMain);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
 

@@ -3,7 +3,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="#FF9800" />
+        android:color="@color/colorTrivia" />
 
     <padding
         android:top="1dp"
@@ -11,7 +11,7 @@
         android:right="1dp"
         android:bottom="1dp"/>
 
-    <solid android:color="#FFE0B2" />
+    <solid android:color="#E57373" />
 
     <corners android:radius="5dp" />
 

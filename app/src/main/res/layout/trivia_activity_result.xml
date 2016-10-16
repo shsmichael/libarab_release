@@ -5,63 +5,6 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/trivia_ripple_btn"
-        android:id="@+id/relativeLayout"
-        android:layout_marginBottom="5dp"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvHeading"
-            android:text="next"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#6A1B9A"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvAnsweredInfo"
-            android:layout_below="@+id/tvHeading"
-            android:text="next"
-            android:textSize="20sp"
-            android:textStyle="normal"
-            android:textColor="#880E4F"/>
-
-        <RatingBar
-            android:id="@+id/ratingBar1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1.0"
-            android:rating="0.0"
-            android:layout_below="@+id/tvAnsweredInfo"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/textResult"
-            android:layout_below="@+id/ratingBar1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="bold"
-            android:textColor="#4A148C"/>
-
-    </RelativeLayout>
 
     <Button
         android:layout_width="150dp"
@@ -114,5 +57,63 @@
 
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/trivia_ripple_btn"
+        android:id="@+id/relativeLayout"
+        android:layout_marginBottom="18dp"
+        android:layout_above="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvHeading"
+            android:text="next"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#6A1B9A"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAnsweredInfo"
+            android:layout_below="@+id/tvHeading"
+            android:text="next"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:textColor="#880E4F"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"
+            android:layout_below="@+id/tvAnsweredInfo"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textResult"
+            android:layout_below="@+id/ratingBar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:textColor="#4A148C"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

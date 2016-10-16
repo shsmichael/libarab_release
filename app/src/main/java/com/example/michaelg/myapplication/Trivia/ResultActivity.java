@@ -52,7 +52,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.trivia_activity_result);
 
         Intent intent = getIntent();
-        final User myUser =(User) intent.getSerializableExtra("userId");
+        myUser =(User) intent.getSerializableExtra("userId");
 
         //  String userId = myuser.getuserid();
 
@@ -120,7 +120,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent vIntent=new Intent(ResultActivity.this,ViewAnswerActivity.class);
                 vIntent.putStringArrayListExtra("myAnsList",myAnsList);
-                vIntent.putExtra(userId,myUser);
+                vIntent.putExtra("userId",myUser);
                 Bundle b = new Bundle();
                 b.putInt("totalQs", totalQs);
                 b.putStringArrayList("myAnsList", myAnsList);
@@ -177,6 +177,26 @@ public class ResultActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.appbar, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        User newUser=new User("firstname","lastname","username","gender","bday","usertype",true);
+        if (id == R.id.action_name) {
+            Intent intentToMain=new Intent(getApplicationContext() , com.example.michaelg.myapplication.Trivia.triviaListview.class);
+            intentToMain.putExtra("userId", myUser);
+            startActivity(intentToMain);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
+
+
 
     public class FinishTask extends AsyncTask<Void, Void, JSONObject> {
         private final String UserId;
@@ -294,7 +314,7 @@ public class ResultActivity extends AppCompatActivity {
                 String answer = null;
                 try {
                     answer = success.getString("status");
-                   // Toast.makeText(ResultActivity.this, "SUCCESSSS", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(ResultActivity.this, "SUCCESSSS", Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -327,16 +347,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     public void create(View view) {
         Intent intent = new Intent(getApplicationContext(), Create.class);

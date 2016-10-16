@@ -8,18 +8,32 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:textSize="18dp"
+        android:layout_marginTop="45dp"
+        android:textColor="#ffffff"
+        android:id="@+id/btnNext"
+        android:background="@drawable/trivia_btnyel"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/trivia_background_shape"
-        android:id="@+id/relativeLayout">
+        android:id="@+id/relativeLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvNumberOfQuestions"
             android:text="ICT questions"
-            android:background="#FF9800"
+            android:background="@color/colorTrivia"
             android:textAllCaps="true"
             android:textAlignment="center"
             android:paddingTop="6dp"
@@ -58,7 +72,7 @@
                 android:checked="false"
                 android:textSize="16dp"
                 android:layout_marginTop="8dp"
-                android:background="#FFF3E0"
+                android:background="#FFEBEE"
                 android:layout_weight="25"
                 />
             <RadioButton
@@ -69,7 +83,7 @@
                 android:checked="false"
                 android:textSize="16dp"
                 android:layout_marginTop="8dp"
-                android:background="#FFF3E0"
+                android:background="#FFEBEE"
                 android:layout_weight="25"
                 />
             <RadioButton
@@ -80,7 +94,7 @@
                 android:checked="false"
                 android:textSize="16dp"
                 android:layout_marginTop="8dp"
-                android:background="#FFF3E0"
+                android:background="#FFEBEE"
                 android:layout_weight="25"
                 />
             <RadioButton
@@ -92,24 +106,12 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="25"
-                android:background="#FFF3E0"
+                android:background="#FFEBEE"
 
                 />
         </RadioGroup>
 
     </RelativeLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="next"
-        android:textSize="18dp"
-        android:layout_marginTop="45dp"
-        android:textColor="#ffffff"
-        android:id="@+id/btnNext"
-        android:background="@drawable/trivia_btnyel"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

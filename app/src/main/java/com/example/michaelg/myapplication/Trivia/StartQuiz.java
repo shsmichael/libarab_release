@@ -97,15 +97,20 @@ public class StartQuiz extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        /*if (id == R.id.action_name) {
-            Intent intentToMain = new Intent(getApplicationContext(), MainActivity.class);
-            intentToMain.putExtra("user", newUser);
+        User newUser=new User("firstname","lastname","username","gender","bday","usertype",true);
+        if (id == R.id.action_name) {
+            Intent intentToMain=new Intent(getApplicationContext() , com.example.michaelg.myapplication.Trivia.triviaListview.class);
+            intentToMain.putExtra("userId", myUser);
             startActivity(intentToMain);
             return true;
-        }*/
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
     }
 
 
