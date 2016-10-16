@@ -8,10 +8,7 @@
     <string name="aboutTrivia2">About</string>
     <string name="aboutTrivia">There are two options for the game, the user can create a quiz of 5 questions, or he can solve an existed quiz of 5 questions and gets 3 points for each correct answer. </string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="about_details">LibArab app gives you an access to data of the NATIONAL LIBRARY OF ISREAL.
-    Use LibArab to:
-    Search and read books in different topics.
-    Create your own bibliography and use it for home works and researches.</string>
+    <string name="about_details">This app gives you access to The Israeli National Library Archive. Mainly to the The Library’s Islam and Middle East Collection. The collection contains thousands of books, a wide selection of early-twentieth-century newspapers, and some 200 contemporary periodicals and newspapers in Arabic, Persian and Turkish. The collection also houses a rich repository of approximately 2,000 Arabic and Persian manuscripts.</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
