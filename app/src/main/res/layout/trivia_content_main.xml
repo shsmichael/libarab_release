@@ -40,24 +40,27 @@
         android:paddingRight="6dp"
         android:id="@+id/btnStart"
         android:background="@drawable/trivia_btny"
+        android:drawableTop="@drawable/fav_ic_menu_add"
         android:layout_below="@+id/relativeLayout"
-        android:layout_toStartOf="@+id/button4"
+        android:layout_alignStart="@+id/button4"
+        android:layout_marginTop="39dp"
         android:layout_alignEnd="@+id/button4" />
 
     <Button
         android:text="Book View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnStart"
-        android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
         android:background="@drawable/trivia_btny"
-        android:layout_marginTop="57dp"
-        android:id="@+id/button4" />
-
-
+        android:id="@+id/button4"
+        android:drawableTop="@drawable/book_info"
+        android:scaleY="0.6"
+        android:layout_marginTop="49dp"
+        android:scaleWidth="10dp"
+        android:layout_below="@+id/btnStart"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

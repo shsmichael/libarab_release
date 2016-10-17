@@ -82,7 +82,9 @@
             android:name=".Trivia.ViewAnswerActivity"
             android:theme="@style/AppTheme3"
             android:label="Quiz Answers"/>
-        <activity android:name=".Trivia.About" />
+        <activity android:name=".Trivia.About"
+            android:theme="@style/AppTheme3"
+            />
         <activity android:name=".Trivia.triviaListview"
             android:theme="@style/AppTheme3"
             android:label="Quizzes List"/>

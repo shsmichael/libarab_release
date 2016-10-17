@@ -60,6 +60,14 @@ public class StartQuiz extends AppCompatActivity{
                 //Toast.makeText(getApplicationContext(), bookList.get(position).getRecordid(), Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(getApplicationContext(),ViewPagerActivity.class);
                 //this record id used by the ViewPagerActivity
+
+
+
+
+                intent1.putExtra("user",myUser);
+
+                //this weblink used by the ViewPagerActivity
+
                 intent1.putExtra("recordId",item);
                 intent1.putExtra("userId",myUser.getUsername());
                 intent1.putExtra("author",auther);
