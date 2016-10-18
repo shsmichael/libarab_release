@@ -31,8 +31,8 @@ public class Progress extends AppCompatActivity {
         });
 
 
-
-        addQuestionButton = (Button) findViewById(R.id.button);
+        // TODO: 18/10/2016 Dania fix button view
+       /* addQuestionButton = (Button) findViewById(R.id.button);
         addQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,5 +43,6 @@ public class Progress extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources> <string name="prompt_email">البريد الإلكتروني</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="prompt_password">كلمه السر</string>
     <string name="action_sign_in">تسجيل الدخول</string>
     <string name="action_continue_as_a_guest">ادخل كزائر</string>
@@ -18,6 +19,53 @@
     <string name="about_details">تحتوي المجموعة على آلاف الكتب، ومجموعة متنوعة من الصحف في وقت مبكر من القرن ال 20، وحوالي 200 مجلة والصحف باللغة العربية والفارسية والتركية نشرت اليوم. وبالإضافة إلى ذلك، هناك مجموعة غنية من 2200 مخطوطة باللغة العربية والفارسية.</string>
     <string name="permission_rationale">محتاج اذن لجهات اتصال لتوفير اكمال بريد إلكتروني.</string>
     <string name="menu">القائمة</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="entryvalues_list_preference">
+        <item>English</item>
+        <item>עברית</item>
+        <item>العربيه</item>
+    </string-array>
+    <string-array name="Lan_array">
+    <item>English</item>
+    <item>עברית</item>
+    <item>العربيه</item>
+    </string-array>
     <string-array name="Gender_array">
         <item>جنس</item>
         <item>ذكر</item>
@@ -31,8 +79,6 @@
         <item>ابحث عن عنوان</item>
         <item>ابحث عن مؤلف</item>
     </string-array>
-
-    <string name="app_name" translatable="false"></string>
     <string name="menu_about">الوصف</string>
     <string name="action_settings">اعدادات</string>
     <string name="menu_bibliography">المراجع</string>
@@ -102,5 +148,10 @@
     <string name="to_be_done">أن يتم</string>
     <string name="search_enter_author">أدخل اسم المؤلف:</string>
     <string name="no_results_found">لا توجد نتائج</string>
+    <string name="fav_navigation_drawer_open">Open the menu</string>
+    <string name="fav_navigation_drawer_close">Close menu</string>
+    <string name="menu_favorite">Collect</string>
+    <string name="menu_more">menu</string>
+    <string name="menu_browser">Open the browser</string>
 
 </resources>
