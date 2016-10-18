@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <com.example.michaelg.myapplication.Item.zoomable.ZoomableDraweeView
+    <com.libarab.michaelg.myapplication.Item.zoomable.ZoomableDraweeView
         android:id="@+id/zoomable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

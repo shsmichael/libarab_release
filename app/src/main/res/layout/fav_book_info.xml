@@ -13,7 +13,7 @@
         android:minHeight="280dp" />
 
     <!-- ViewPagerIndicator -->
-    <com.example.michaelg.myapplication.favorites.view.ViewPagerIndicator
+    <com.libarab.michaelg.myapplication.favorites.view.ViewPagerIndicator
         android:id="@+id/fav_indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"

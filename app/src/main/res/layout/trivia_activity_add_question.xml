@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="100"
     android:background="#FAFAFA"
-    tools:context="com.example.michaelg.myapplication.Trivia.AddQuestion" >
+    tools:context="com.libarab.michaelg.myapplication.Trivia.AddQuestion" >
 
     <TextView
         android:layout_width="match_parent"

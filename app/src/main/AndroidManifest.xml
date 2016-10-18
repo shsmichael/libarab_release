@@ -2,11 +2,8 @@
 <manifest
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.michaelg.myapplication">
+    package="com.libarab.michaelg.myapplication">
 
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -42,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <fragment android:name="com.example.michaelg.myapplication.Fragments.MenuFragment"
+        <fragment android:name="com.libarab.michaelg.myapplication.Fragments.MenuFragment"
             android:id="@+id/fragment_menu2"
             />
         <activity

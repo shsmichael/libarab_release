@@ -1,4 +1,4 @@
-package com.example.michaelg.myapplication;
+package com.libarab.michaelg.myapplication;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
